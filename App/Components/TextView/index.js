@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
 import Txt from '../Txt'
 import type { TTxt } from './types'
 import s from './styles'

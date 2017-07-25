@@ -3,7 +3,7 @@ import {Dimensions, Platform} from 'react-native'
 const { width, height } = Dimensions.get('window')
 
 const base = {
-  radius: 5,
+  radius: 4,
   small: 22,
   medium: 36,
   large: 50,
@@ -23,8 +23,8 @@ const metrics = {
   tabBorderRadius: base.radius,
   // Buttons
   btnSizes: {
-    sm: 22,
-    md: 36,
+    sm: 36,
+    md: 50,
     lg: 50,
   },
   btnHeight: base.medium,
@@ -32,8 +32,8 @@ const metrics = {
   btnBorderWidth: base.borderWidth,
   // Inputs
   btnInputs: {
-    sm: 22,
-    md: 36,
+    sm: 36,
+    md: 50,
     lg: 50,
   },
   inputRadius: 0,

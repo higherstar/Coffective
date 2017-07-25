@@ -1,5 +1,4 @@
 import Button from './Button'
-import ButtonN from './ButtonN'
 import Txt from './Txt'
 import TextView from './TextView'
 import Input from './Input'
@@ -11,7 +10,6 @@ import Loader from './Loader'
 
 export {
   Button,
-  ButtonN,
   Txt,
   TextView,
   Input,

@@ -3,9 +3,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { register } from '../../Redux/RegistrationRedux'
-import { View, ScrollView } from 'react-native'
-import { reduxForm, Field } from 'redux-form'
-import { ButtonN, TextView, Input, Loader } from '../../Components'
+import { ScrollView } from 'react-native'
+import { Field, reduxForm } from 'redux-form'
+import { Button, Input, Loader, TextView } from '../../Components'
 import I18n from 'react-native-i18n'
 import CheckBox from 'react-native-check-box'
 import Icon from 'react-native-vector-icons/MaterialIcons'
@@ -14,7 +14,7 @@ import type { TRegistration } from './types'
 
 class RegistrationScreen extends React.Component {
   render () {
-    const { handleSubmit, loading }: TRegistration = this.props
+    const {handleSubmit, loading}: TRegistration = this.props
     return (
       <ScrollView
         style={s.scrollContainer}
@@ -76,27 +76,27 @@ class RegistrationScreen extends React.Component {
           checkedImage={<Icon name='check-box' style={s.checkedIcon}/>}
           unCheckedImage={<Icon name='check-box-outline-blank' style={s.uncheckedIcon}/>}
           style={s.sendUpdates}
-          onClick={()=>{}}
+          onClick={() => {}}
           isChecked={false}
           rightText={I18n.t('pleaseSendUpdates')}
           rightTextStyle={s.sendUpdatesText}
         />
-        <ButtonN
+        <Button
           style={s.termsAndConditionsBtn}
           onPress={() => {}}
           btnType='link'
           size='lg'
         >
           {I18n.t('viewTermsAndConditions')}
-        </ButtonN>
-        <ButtonN
+        </Button>
+        <Button
           style={s.createAccountBtn}
           onPress={handleSubmit}
           size='lg'
           uppercase
         >
           {I18n.t('createMyAccount')}
-        </ButtonN>
+        </Button>
         <Loader visible={loading}/>
       </ScrollView>
     )

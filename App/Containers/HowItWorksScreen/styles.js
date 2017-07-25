@@ -1,35 +1,65 @@
 import { StyleSheet } from 'react-native'
-import { Metrics, Colors, Fonts } from '../../Themes'
+import { Colors, Metrics } from '../../Themes'
 
 export default StyleSheet.create({
-  headerWrapper: {
-    paddingHorizontal: Metrics.baseMargin,
-    paddingTop: Metrics.baseMargin,
-    backgroundColor: Colors.primary
+  container: {
+    flex: 1,
+    position: 'relative',
+    backgroundColor: Colors.background
   },
-  header: {
-    ...Fonts.style.h1,
-    color: Colors.white
+  slide: {
+    flex: 1,
+    paddingBottom: Metrics.doubleBaseMargin,
+  },
+  slideBody: {
+    flex: 1,
+    marginHorizontal: Metrics.containerMarginX
+  },
+  slideBtn: {
+    width: 190,
+    alignSelf: 'center'
+  },
+  image: {
+    resizeMode: 'cover',
+    width: null,
+    height: 240
   },
   titleWrapper: {
-    marginBottom: Metrics.smallMargin,
-    backgroundColor: Colors.primary
+    paddingVertical: Metrics.baseMargin,
   },
   title: {
-    ...Fonts.style.h3,
-    color: Colors.white
+    textAlign: 'center'
+  },
+  descriptionWrapper: {
+    flex: 1,
   },
   description: {
-    color: Colors.whiteMuted
+    textAlign: 'center',
+    color: Colors.description
   },
-  section: {
-    padding: Metrics.baseMargin,
-    borderBottomWidth: 1,
-    borderBottomColor: Colors.white,
+  footer: {},
+  dots: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginBottom: Metrics.containerMarginX * 2,
+    paddingHorizontal: Metrics.containerMarginX,
+  },
+  dot: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    backgroundColor: Colors.lightBlue
+  },
+  notLastDot: {
+    marginRight: Metrics.smallMargin
+  },
+  activeDot: {
     backgroundColor: Colors.primary
   },
-  getStarted: {
-    padding: Metrics.baseMargin,
-    backgroundColor: Colors.primary
-  }
+  skipBtn: {
+    paddingHorizontal: Metrics.smallMargin
+  },
+  skipBtnText: {
+    color: Colors.white
+  },
 })

@@ -1,32 +1,32 @@
+// @flow
+
 import { takeLatest } from 'redux-saga/effects'
-import API from '../Services/Api'
-import FixtureAPI from '../Services/FixtureApi'
-import DebugConfig from '../Config/DebugConfig'
-
-/* ------------- Types ------------- */
-
-import { StartupTypes } from '../Redux/StartupRedux'
-import { GithubTypes } from '../Redux/GithubRedux'
-
-/* ------------- Sagas ------------- */
-
+import { STARTUP } from '../Redux/StartupRedux'
+import { GET_USER_REQUEST } from '../Redux/UserRedux'
+import { LOGIN_REQUEST } from '../Redux/LoginRedux'
+import { REGISTER_REQUEST } from '../Redux/RegistrationRedux'
+import { GET_CHECKLIST_GROUPS_REQUEST } from '../Redux/ChecklistRedux'
+import { FORGOT_PASSWORD_REQUEST } from '../Redux/ForgotPasswordRedux'
+import { RESET_PASSWORD_REQUEST } from '../Redux/ResetPasswordRedux'
 import { startup } from './StartupSagas'
-import { getUserAvatar } from './GithubSagas'
+import { getUser } from './GetUserSaga'
+import { login } from './LoginSaga'
+import { register } from './RegisterSaga'
+import { forgotPassword } from './ForgotPasswordSaga'
+import { resetPassword } from './ResetPasswordSaga'
+import { getChecklistGroups } from './GetChecklistSaga'
 
-/* ------------- API ------------- */
-
-// The API we use is only used from Sagas, so we create it here and pass along
-// to the sagas which need it.
-const api = DebugConfig.useFixtures ? FixtureAPI : API.create()
-
-/* ------------- Connect Types To Sagas ------------- */
-
-export default function * root () {
+// ------------------------------------
+// Connect Types to Sagas
+// ------------------------------------
+export default function * root (): Generator<any, any, void> {
   yield [
-    // some sagas only receive an action
-    takeLatest(StartupTypes.STARTUP, startup),
-
-    // some sagas receive extra parameters in addition to an action
-    takeLatest(GithubTypes.USER_REQUEST, getUserAvatar, api)
+    takeLatest(STARTUP, startup),
+    takeLatest(GET_USER_REQUEST, getUser),
+    takeLatest(LOGIN_REQUEST, login),
+    takeLatest(REGISTER_REQUEST, register),
+    takeLatest(FORGOT_PASSWORD_REQUEST, forgotPassword),
+    takeLatest(RESET_PASSWORD_REQUEST, resetPassword),
+    takeLatest(GET_CHECKLIST_GROUPS_REQUEST, getChecklistGroups),
   ]
 }

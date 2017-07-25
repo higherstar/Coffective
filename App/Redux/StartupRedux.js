@@ -1,10 +1,11 @@
-import { createActions } from 'reduxsauce'
+// @flow
 
-/* ------------- Types and Action Creators ------------- */
+import createReducer from '../Services/ReduxEnhancer'
 
-const { Types, Creators } = createActions({
-  startup: null
-})
+export const STARTUP = 'STARTUP'
 
-export const StartupTypes = Types
-export default Creators
+export const startup = () => ({ type: STARTUP })
+
+export const INITIAL_STATE = {}
+
+export default createReducer(INITIAL_STATE)

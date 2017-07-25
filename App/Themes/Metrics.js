@@ -2,34 +2,72 @@ import {Dimensions, Platform} from 'react-native'
 
 const { width, height } = Dimensions.get('window')
 
+const base = {
+  radius: 5,
+  small: 22,
+  medium: 36,
+  large: 50,
+  borderWidth: 1
+}
+
+const margins = {
+  exSmallMargin: 5,
+  smallMargin: 10,
+  baseMargin: 20,
+  doubleBaseMargin: 40,
+  containerMarginX: 20
+}
+
 // Used via Metrics.baseMargin
 const metrics = {
-  marginHorizontal: 10,
-  marginVertical: 10,
-  section: 25,
-  baseMargin: 10,
-  doubleBaseMargin: 20,
-  smallMargin: 5,
-  doubleSection: 50,
-  horizontalLineHeight: 1,
-  searchBarHeight: 30,
+  tabBorderRadius: base.radius,
+  // Buttons
+  btnSizes: {
+    sm: 22,
+    md: 36,
+    lg: 50,
+  },
+  btnHeight: base.medium,
+  btnRadius: base.radius,
+  btnBorderWidth: base.borderWidth,
+  // Inputs
+  btnInputs: {
+    sm: 22,
+    md: 36,
+    lg: 50,
+  },
+  inputRadius: 0,
+  inputBorderWidth: base.borderWidth,
+  inputPadding: 20,
+  multilineInputHeight: 100,
+  // Loader
+  loaderBgRadius: base.radius,
+  // Progress bar
+  progressBorderRadius: base.radius,
+  progressHeight: 20,
+  // Margins (also are used as paddings)
+  ...margins,
+  ratingStar: {
+    width: 40,
+    height: 40
+  },
   screenWidth: width < height ? width : height,
   screenHeight: width < height ? height : width,
-  navBarHeight: (Platform.OS === 'ios') ? 64 : 54,
-  buttonRadius: 4,
+  navBarHeight: (Platform.OS === 'ios') ? 64 : 64,
   icons: {
     tiny: 15,
     small: 20,
     medium: 30,
     large: 45,
-    xl: 50
+    xl: 60
   },
   images: {
     small: 20,
     medium: 40,
     large: 60,
-    logo: 200
-  }
+    logo: 300
+  },
 }
 
 export default metrics
+

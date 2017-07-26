@@ -16,7 +16,7 @@ class PushNotificationsScreen extends React.Component {
         <TextView style={s.description} textStyle={s.descriptionText}>
           {I18n.t('pushNotificationsDescription')}
         </TextView>
-        <Button style={s.submitBtn} btnType='primary' onPress={this.openAskForFeedbackScreen}>
+        <Button style={s.submitBtn} btnType='primary' onPress={() => {}}>
           {I18n.t('enableNotifications')}
         </Button>
         <Button style={s.skipBtn} textStyle={s.skipBtnText} btnType='link' onPress={() => {}}>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { DrawerNavigator, StackNavigator } from 'react-navigation'
 // import LaunchScreen from '../Containers/LaunchScreen'
-// import PersonTypeScreen from '../Containers/PersonTypeScreen'
+import PersonTypeScreen from '../Containers/PersonTypeScreen'
 // import CategoriesScreen from '../Containers/CategoriesScreen'
 // import CategoryScreen from '../Containers/CategoryScreen'
 import HowItWorksScreen from '../Containers/HowItWorksScreen'
@@ -33,7 +33,7 @@ const NavBarItem = ({iconName, onPress}) => (
 const MainNav = StackNavigator({
   HowItWorksScreen: {screen: HowItWorksScreen},
   // LaunchScreen: {screen: LaunchScreen},
-  // PersonTypeScreen: {screen: PersonTypeScreen},
+  PersonTypeScreen: {screen: PersonTypeScreen},
   // CategoriesScreen: {screen: CategoriesScreen},
   // CategoryScreen: {screen: CategoryScreen},
   // ChecklistScreen: {screen: ChecklistScreen},

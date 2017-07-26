@@ -20,7 +20,7 @@ const colors = {
   secondaryBtnText: 'rgba(135, 133, 133, 1)',
   secondaryBtnBorder: 'rgba(151, 151, 151, 1)',
   inputText: 'rgba(59, 59, 59, 0.79)',
-  inputBorder: 'rgba(151, 151, 151, 1)',
+  inputBorder: 'rgba(151, 151, 151, 0.44)',
   grey: '#878585',
   background: '#ECF4FF',
   facebook: '#507CC0',

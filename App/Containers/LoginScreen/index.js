@@ -52,7 +52,8 @@ class LoginScreen extends React.Component {
         </Button>
         <Divider style={s.orDivider}/>
         <Field
-          style={s.emailInput}
+          style={s.email}
+          inputStyle={s.emailInput}
           withRef
           name='email'
           placeholder={I18n.t('email')}
@@ -61,7 +62,8 @@ class LoginScreen extends React.Component {
           blurOnSubmit={false}
         />
         <Field
-          style={s.passwordInput}
+          inputStyle={s.passwordInput}
+          style={s.password}
           withRef
           name='password'
           placeholder={I18n.t('password')}
@@ -114,7 +116,6 @@ const LoginScreenWrapper = connect(mapStateToProps, mapDispatchToProps)(reduxFor
 })(LoginScreen))
 
 LoginScreenWrapper.navigationOptions = {
-  title: 'Login',
 }
 
 export default LoginScreenWrapper

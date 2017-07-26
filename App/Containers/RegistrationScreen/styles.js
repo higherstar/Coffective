@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { Colors, Metrics, Fonts } from '../../Themes'
+import { Metrics } from '../../Themes'
 
 export default StyleSheet.create({
   scrollContainer: {
@@ -8,49 +8,45 @@ export default StyleSheet.create({
   form: {},
   container: {
     minHeight: Metrics.screenHeight - Metrics.navBarHeight,
+    paddingHorizontal: Metrics.containerMarginX
   },
-  header: {
+  myName: {
     marginTop: Metrics.containerMarginX,
-    marginBottom: Metrics.smallMargin,
-    marginHorizontal: Metrics.containerMarginX,
-  },
-  headerText: {
-    textAlign: 'center',
-    color: Colors.primary,
-  },
-  description: {
     marginBottom: Metrics.doubleBaseMargin,
-    marginHorizontal: Metrics.containerMarginX,
   },
-  descriptionText: {
+  myNameText: {
     textAlign: 'center',
   },
-  input: {
-    backgroundColor: Colors.transparent
+  myZipCode: {
+    marginTop: Metrics.doubleBaseMargin,
+    marginBottom: Metrics.baseMargin,
   },
-  termsAndConditionsBtn: {
-    borderColor: Colors.grey,
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
+  myZipCodeText: {
+    textAlign: 'center',
   },
-  createAccountBtn: {
-    marginHorizontal: Metrics.containerMarginX,
-    marginTop: Metrics.baseMargin,
+  safeData: {
+    marginVertical: Metrics.smallMargin,
+  },
+  safeDataText: {
+    textAlign: 'center',
+  },
+  firstName: {
+    marginBottom: Metrics.baseMargin,
+  },
+  firstNameInput: {
+    textAlign: 'center'
+  },
+  lastNameInput: {
+    textAlign: 'center'
+  },
+  zipCodeInput: {
+    textAlign: 'center'
+  },
+  letsGoBtn: {
     marginBottom: Metrics.containerMarginX,
+    marginTop: 'auto'
   },
-  sendUpdates: {
-    marginHorizontal: Metrics.containerMarginX,
-    marginVertical: Metrics.baseMargin,
-  },
-  sendUpdatesText: {
-    ...Fonts.style.normal
-  },
-  checkedIcon: {
-    fontSize: Metrics.icons.medium,
-    color: Colors.primary
-  },
-  uncheckedIcon: {
-    fontSize: Metrics.icons.medium,
-    color: Colors.grey
+  safeDataLabel: {
+    fontWeight: '500'
   }
 })

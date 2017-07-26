@@ -23,11 +23,17 @@ export default StyleSheet.create({
   descriptionText: {
     textAlign: 'center',
   },
-  emailInput: {
+  email: {
     marginBottom: Metrics.smallMargin,
   },
-  passwordInput: {
+  emailInput: {
+    borderColor: 'rgba(151, 151, 151, 1)'
+  },
+  password: {
     marginBottom: Metrics.baseMargin,
+  },
+  passwordInput: {
+    borderColor: 'rgba(151, 151, 151, 1)'
   },
   facebookBtn: {},
   googleBtn: {},

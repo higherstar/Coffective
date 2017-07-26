@@ -7,9 +7,11 @@ export default StyleSheet.create({
   },
   safeDataText: {
     textAlign: 'center',
-    color: Colors.lightGrey
+    color: Colors.lightGrey,
+    fontSize: 15
   },
   safeDataLabel: {
-    fontWeight: '400'
+    fontWeight: '400',
+    fontSize: 15
   }
 })

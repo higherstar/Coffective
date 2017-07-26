@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { Metrics, Colors } from '../../Themes'
+import { Metrics, Fonts } from '../../Themes'
 
 export default StyleSheet.create({
   scrollContainer: {
@@ -19,5 +19,8 @@ export default StyleSheet.create({
   },
   safeData: {
     marginTop: 'auto'
+  },
+  skipBtnText: {
+    fontSize: Fonts.size.small
   },
 })

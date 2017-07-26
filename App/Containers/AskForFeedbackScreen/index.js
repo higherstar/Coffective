@@ -1,24 +1,31 @@
 import React from 'react'
-import { ScrollView, Text, Image, View } from 'react-native'
+import { View } from 'react-native'
+import { Button, TextView, SafeDataInfo } from '../../Components'
 import s from './styles'
-import {Colors} from '../../Themes'
+import I18n from 'react-native-i18n'
 
 class AskForFeedbackScreen extends React.Component {
-  static navigationOptions = ({ navigation, screenProps }) => ({
-    title: 'Find Local Resources',
-    headerStyle: {
-      backgroundColor: Colors.primary
-    },
-    headerTitleStyle: {
-      color: Colors.white
-    },
-    headerTintColor: Colors.white
-  })
+  static navigationOptions = {}
 
   render () {
     return (
-      <ScrollView style={s.container}>
-      </ScrollView>
+      <View style={s.container}>
+        <TextView style={s.askForFeedback} textStyle={s.askForFeedbackText} textType='h1'>
+          {I18n.t('askForFeedback')}
+        </TextView>
+        <SafeDataInfo style={s.safeData} text={I18n.t('helpUsImproveApp')} />
+        <View style={s.actions}>
+          <Button style={s.cancelBtn} btnType='secondary' outline onPress={this.openAskForFeedbackScreen}>
+            {I18n.t('no')}
+          </Button>
+          <Button style={s.submitBtn} btnType='primary' onPress={this.openAskForFeedbackScreen}>
+            {I18n.t('yes')}
+          </Button>
+        </View>
+        <Button style={s.skipBtn} textStyle={s.skipBtnText} btnType='link' onPress={this.openAskForFeedbackScreen}>
+          {I18n.t('skipForNow')}
+        </Button>
+      </View>
     )
   }
 }

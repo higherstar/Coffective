@@ -53,4 +53,8 @@
   "cancel": "Cancel",
   "myEthnicity": "My race/ethnicity is...",
   "myAgeRange": "My age range is",
+  "askForFeedback": "Would you like to optin for feedback?",
+  "yes": "Yes",
+  "no": "No",
+  "helpUsImproveApp": "We might send you some surveys, this will help us improve Coffective and the App",
 }

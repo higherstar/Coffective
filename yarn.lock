@@ -4146,6 +4146,13 @@ react-native-i18n@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/react-native-i18n/-/react-native-i18n-1.0.0.tgz#0c407d9ebb846aae1aa5e05de6503008553f02fd"
 
+react-native-notifications@^1.1.13:
+  version "1.1.13"
+  resolved "https://registry.yarnpkg.com/react-native-notifications/-/react-native-notifications-1.1.13.tgz#28f63c2068af4c683e6a4fd9d1a96df59f0ab90b"
+  dependencies:
+    core-js "^1.0.0"
+    uuid "^2.0.3"
+
 react-native-radio-buttons@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/react-native-radio-buttons/-/react-native-radio-buttons-1.0.0.tgz#be828b85897f80ca66ad66ad7adedb6b1890ab9d"
@@ -5225,6 +5232,10 @@ utils-merge@1.0.0:
 uuid@3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.0.1.tgz#6544bba2dfda8c1cf17e629a3a305e2bb1fee6c1"
+
+uuid@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-2.0.3.tgz#67e2e863797215530dff318e5bf9dcebfd47b21a"
 
 uuid@^3.0.0, uuid@^3.0.1:
   version "3.1.0"

@@ -2,13 +2,13 @@ import React from 'react'
 import { DrawerNavigator } from 'react-navigation'
 import { TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
-import LaunchScreen from '../../Containers/LaunchScreen'
+import LaunchScreen from '../SelectAgeScreen'
 import PersonTypeScreen from '../../Containers/PersonTypeScreen'
 import CategoriesScreen from '../../Containers/CategoriesScreen'
 import CategoryScreen from '../../Containers/CategoryScreen'
 import HowItWorksScreen from '../../Containers/HowItWorksScreen'
 import ChecklistScreen from '../../Containers/ChecklistScreen'
-import BuildTeamScreen from '../../Containers/BuildTeamScreen'
+import BuildTeamScreen from '../SelectEthnicityScreen'
 
 export const getNavigationOptions = (title, backgroundColor, color) => ({
   title,

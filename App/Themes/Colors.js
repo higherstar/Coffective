@@ -27,6 +27,7 @@ const colors = {
   google: '#DF4930',
   mutedText: 'rgba(66, 66, 66, 0.14)',
   black: 'rgba(0.11, 0.14, 0.22, 1)',
+  green: '#47E606',
 }
 
 export default colors

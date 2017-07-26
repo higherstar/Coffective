@@ -1,12 +1,12 @@
 import React from 'react'
 import { DrawerNavigator, StackNavigator } from 'react-navigation'
-// import LaunchScreen from '../Containers/LaunchScreen'
+import SelectAgeScreen from '../Containers/SelectAgeScreen'
 import PersonTypeScreen from '../Containers/PersonTypeScreen'
 // import CategoriesScreen from '../Containers/CategoriesScreen'
 // import CategoryScreen from '../Containers/CategoryScreen'
 import HowItWorksScreen from '../Containers/HowItWorksScreen'
 // import ChecklistScreen from '../Containers/ChecklistScreen'
-// import BuildTeamScreen from '../Containers/BuildTeamScreen'
+import SelectEthnicityScreen from '../Containers/SelectEthnicityScreen'
 // import ArticleScreen from '../Containers/ArticleScreen'
 import LoginScreen from '../Containers/LoginScreen'
 import RegistrationScreen from '../Containers/RegistrationScreen'
@@ -32,12 +32,12 @@ const NavBarItem = ({iconName, onPress}) => (
 // Manifest of possible screens
 const MainNav = StackNavigator({
   HowItWorksScreen: {screen: HowItWorksScreen},
-  // LaunchScreen: {screen: LaunchScreen},
+  SelectAgeScreen: {screen: SelectAgeScreen},
   PersonTypeScreen: {screen: PersonTypeScreen},
   // CategoriesScreen: {screen: CategoriesScreen},
   // CategoryScreen: {screen: CategoryScreen},
   // ChecklistScreen: {screen: ChecklistScreen},
-  // BuildTeamScreen: {screen: BuildTeamScreen},
+  SelectEthnicityScreen: {screen: SelectEthnicityScreen},
   // ArticleScreen: {screen: ArticleScreen},
   LoginScreen: {screen: LoginScreen},
   RegistrationScreen: {screen: RegistrationScreen},
@@ -47,7 +47,7 @@ const MainNav = StackNavigator({
   // ProfileScreen: {screen: ProfileScreen},
   SelectDueDateScreen: {screen: SelectDueDateScreen},
 }, {
-  initialRouteName: 'SelectDueDateScreen',
+  initialRouteName: 'SelectAgeScreen',
   navigationOptions: ({navigation}) => ({
     headerStyle: {
       backgroundColor: Colors.primary
@@ -68,7 +68,7 @@ const DrawerNav = DrawerNavigator({
   // LoginScreen: {screen: LoginScreen, navigationOptions: {drawerLabel: 'Sign In'}},
   // ProfileScreen: {screen: ProfileScreen, navigationOptions: {drawerLabel: 'About me'}},
   // HowItWorksScreen: {screen: HowItWorksScreen, navigationOptions: {drawerLabel: 'Be Prepared'}},
-  // BuildTeamScreen: {screen: BuildTeamScreen, navigationOptions: {drawerLabel: 'Build My Team'}},
+  // SelectEthnicityScreen: {screen: SelectEthnicityScreen, navigationOptions: {drawerLabel: 'Build My Team'}},
   // FindLocalResourcesScreen: {
   //   screen: FindLocalResourcesScreen,
   //   navigationOptions: {drawerLabel: 'Find Local Resources'}

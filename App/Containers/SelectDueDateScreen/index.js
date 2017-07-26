@@ -1,7 +1,7 @@
 import React from 'react'
 import { View } from 'react-native'
 import { connect } from 'react-redux'
-import { Button, TextView, SafeDataInfo } from '../../Components'
+import { Button, SafeDataInfo, TextView } from '../../Components'
 import I18n from 'react-native-i18n'
 import s from './styles'
 import DatePicker from 'react-native-datepicker'
@@ -15,6 +15,10 @@ class SelectDueDateScreen extends React.Component {
 
   handleChangeDueDate = (dueDate) => {
     this.setState({dueDate})
+  }
+
+  openSelectAgeScreen = () => {
+    this.props.navigation.navigate('SelectAgeScreen')
   }
 
   render () {
@@ -45,10 +49,10 @@ class SelectDueDateScreen extends React.Component {
           onDateChange={this.handleChangeDueDate}
         />
         <SafeDataInfo style={s.safeData} />
-        <Button style={s.proceedBtn} btnType='primary'>
+        <Button style={s.proceedBtn} btnType='primary' onPress={this.openSelectAgeScreen}>
           {I18n.t('proceed')}
         </Button>
-        <Button style={s.skipBtn} textStyle={s.skipBtnText} btnType='link'>
+        <Button style={s.skipBtn} textStyle={s.skipBtnText} btnType='link' onPress={this.openSelectAgeScreen}>
           {I18n.t('skipForNow')}
         </Button>
       </View>

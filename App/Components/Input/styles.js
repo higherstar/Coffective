@@ -7,10 +7,11 @@ export default StyleSheet.create({
   },
   input: {
     paddingHorizontal: Metrics.baseMargin,
-    borderColor: Colors.grey,
+    borderColor: Colors.inputBorder,
     borderRadius: Metrics.inputRadius,
     borderWidth: Metrics.inputBorderWidth,
-    backgroundColor: Colors.white
+    backgroundColor: Colors.transparent,
+    color: Colors.inputText
   },
   sm: {
     height: Metrics.btnInputs.sm,

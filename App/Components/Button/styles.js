@@ -55,10 +55,10 @@ export default StyleSheet.create({
   secondaryOutline: {
     backgroundColor: Colors.transparent,
     borderWidth: Metrics.btnBorderWidth,
-    borderColor: Colors.secondary
+    borderColor: Colors.secondaryBtnBorder
   },
   secondaryOutlineText: {
-    color: Colors.secondary
+    color: Colors.secondaryBtnText
   },
   // Link
   link: {
@@ -81,6 +81,20 @@ export default StyleSheet.create({
     borderColor: Colors.white
   },
   whiteOutlineText: {
+    color: Colors.white
+  },
+  // Facebook
+  facebook: {
+    backgroundColor: Colors.facebook
+  },
+  facebookText: {
+    color: Colors.white
+  },
+  // Google
+  google: {
+    backgroundColor: Colors.google
+  },
+  googleText: {
     color: Colors.white
   },
 })

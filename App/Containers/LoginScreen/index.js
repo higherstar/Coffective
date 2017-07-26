@@ -1,14 +1,19 @@
 // @flow
 
 import React from 'react'
-import { View, ScrollView, Image } from 'react-native'
+import { ScrollView, View } from 'react-native'
 import { connect } from 'react-redux'
-import { reduxForm, Field } from 'redux-form'
-import { ButtonN, Input, Loader } from '../../Components'
+import { Field, reduxForm } from 'redux-form'
+import { Button, Input, Loader, TextView } from '../../Components'
 import { login } from '../../Redux/LoginRedux'
 import I18n from 'react-native-i18n'
 import s from './styles'
 import { TLogin } from './types'
+
+const Divider = ({style}) =>
+  <TextView style={[s.divider, style]} textStyle={s.dividerText}>
+    {I18n.t('or').toUpperCase()}
+  </TextView>
 
 class LoginScreen extends React.Component {
   openRegistrationScreen = () => {
@@ -20,64 +25,77 @@ class LoginScreen extends React.Component {
   }
 
   render () {
-    const { handleSubmit, loading }: TLogin = this.props
+    const {handleSubmit, loading}: TLogin = this.props
     return (
-      <Image style={s.backgroundImage} source={{uri: 'https://dummyimage.com/300x900'}}>
-        <ScrollView
-          style={s.scrollContainer}
-          contentContainerStyle={s.container}
+      <ScrollView
+        style={s.scrollContainer}
+        contentContainerStyle={s.container}
+      >
+        <TextView style={s.header} textStyle={s.headerText} textType='h1'>
+          {I18n.t('createAccount').toUpperCase()}
+        </TextView>
+        <TextView style={s.description} textStyle={s.descriptionText}>
+          {I18n.t('createAccountDescription')}
+        </TextView>
+        <Button
+          btnType='facebook'
+          onPress={() => {}}
         >
-          <Image style={s.logo} source={{uri: 'https://dummyimage.com/360x100'}}/>
-          <View style={s.form}>
-            <Field
-              style={s.emailInput}
-              withRef
-              name='email'
-              placeholder={I18n.t('email')}
-              size='lg'
-              component={Input}
-              blurOnSubmit={false}
-            />
-            <Field
-              style={s.passwordInput}
-              withRef
-              name='password'
-              placeholder={I18n.t('password')}
-              secureTextEntry
-              size='lg'
-              component={Input}
-              onSubmit={handleSubmit}
-            />
-            <ButtonN
-              style={s.loginBtn}
-              onPress={handleSubmit}
-              uppercase
-              size='lg'
-            >
-              {I18n.t('login')}
-            </ButtonN>
-            <ButtonN
-              style={s.forgotPasswordBtn}
-              textStyle={s.forgotPasswordText}
-              onPress={this.openForgotPasswordScreen}
-              btnType='link'
-            >
-              {I18n.t('forgotPassword')}
-            </ButtonN>
-          </View>
-          <ButtonN
+          {I18n.t('signUpWithFacebook')}
+        </Button>
+        <Divider />
+        <Button
+          btnType='google'
+          onPress={() => {}}
+        >
+          {I18n.t('signUpWithGoogle')}
+        </Button>
+        <Divider style={s.orDivider}/>
+        <Field
+          style={s.emailInput}
+          withRef
+          name='email'
+          placeholder={I18n.t('email')}
+          size='lg'
+          component={Input}
+          blurOnSubmit={false}
+        />
+        <Field
+          style={s.passwordInput}
+          withRef
+          name='password'
+          placeholder={I18n.t('password')}
+          secureTextEntry
+          size='lg'
+          component={Input}
+          onSubmit={handleSubmit}
+        />
+        <View style={s.actions}>
+          <Button
+            style={s.loginBtn}
+            onPress={handleSubmit}
+            outline
+            btnType='secondary'
+          >
+            {I18n.t('login')}
+          </Button>
+          <Button
             style={s.signUpBtn}
             onPress={this.openRegistrationScreen}
-            uppercase
-            btnType='white'
-            outline
-            size='lg'
+            btnType='primary'
           >
             {I18n.t('signUp')}
-          </ButtonN>
-          <Loader visible={loading}/>
-        </ScrollView>
-      </Image>
+          </Button>
+        </View>
+        <Button
+          onPress={() => {}}
+          btnType='link'
+          uppercase={false}
+        >
+          {I18n.t('termsAndConditions')}
+        </Button>
+        <Loader visible={loading}/>
+      </ScrollView>
     )
   }
 }

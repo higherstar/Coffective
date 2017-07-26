@@ -1,27 +1,27 @@
 import { StyleSheet } from 'react-native'
-import { Metrics, Fonts, Colors } from '../../Themes'
+import { Colors, Metrics } from '../../Themes'
 
 export default StyleSheet.create({
   scrollContainer: {
     flex: 1,
   },
   container: {
-    justifyContent: 'center',
-    minHeight: Metrics.screenHeight - Metrics.navBarHeight
+    minHeight: Metrics.screenHeight - Metrics.navBarHeight,
+    paddingHorizontal: Metrics.containerMarginX
   },
-  backgroundImage: {
-    resizeMode: 'cover',
-    flex: 1,
+  header: {
+    marginTop: Metrics.containerMarginX,
+    marginBottom: Metrics.smallMargin,
   },
-  logo: {
-    resizeMode: 'contain',
-    height: 100,
-    marginVertical: Metrics.baseMargin,
-    paddingHorizontal: Metrics.containerMarginX,
-    justifyContent: 'center',
+  headerText: {
+    textAlign: 'center',
+    color: Colors.header,
   },
-  form: {
-    paddingHorizontal: Metrics.containerMarginX,
+  description: {
+    marginBottom: Metrics.doubleBaseMargin,
+  },
+  descriptionText: {
+    textAlign: 'center',
   },
   emailInput: {
     marginBottom: Metrics.smallMargin,
@@ -29,18 +29,30 @@ export default StyleSheet.create({
   passwordInput: {
     marginBottom: Metrics.baseMargin,
   },
+  facebookBtn: {},
+  googleBtn: {},
   loginBtn: {
-    marginBottom: Metrics.baseMargin,
-  },
-  forgotPasswordBtn: {
-    alignSelf: 'flex-end',
-    marginBottom: Metrics.baseMargin,
-  },
-  forgotPasswordText: {
-    color: Colors.white
+    flex: 1,
+    marginRight: Metrics.baseMargin
   },
   signUpBtn: {
-    marginHorizontal: Metrics.containerMarginX,
-    marginVertical: Metrics.baseMargin,
+    flex: 1,
+    marginLeft: Metrics.baseMargin
+  },
+  actions: {
+    flex: 1,
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  divider: {
+    paddingVertical: Metrics.smallMargin
+  },
+  dividerText: {
+    textAlign: 'center',
+    color: Colors.mutedText
+  },
+  orDivider: {
+    paddingVertical: Metrics.baseMargin
   }
 })

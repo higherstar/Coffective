@@ -36,7 +36,7 @@ const metrics = {
     md: 50,
     lg: 50,
   },
-  inputRadius: 0,
+  inputRadius: base.radius,
   inputBorderWidth: base.borderWidth,
   inputPadding: 20,
   multilineInputHeight: 100,

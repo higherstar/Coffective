@@ -28,7 +28,8 @@ export default StyleSheet.create({
     paddingVertical: Metrics.baseMargin,
   },
   title: {
-    textAlign: 'center'
+    textAlign: 'center',
+    color: Colors.header
   },
   descriptionWrapper: {
     flex: 1,

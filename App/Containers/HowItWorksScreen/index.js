@@ -60,7 +60,7 @@ class HowItWorks extends React.Component {
       btnType='link'
       style={s.skipBtn}
       textStyle={s.skipBtnText}
-      onPress={() => navigation.navigate('RegistrationScreen')}
+      onPress={() => navigation.navigate('LoginScreen')}
       uppercase={false}
     >
       {I18n.t('skip')}
@@ -89,7 +89,7 @@ class HowItWorks extends React.Component {
         title: I18n.t('createAccount'),
         description: I18n.t('welcomeSlide4Desc'),
         nextBtnTitle: I18n.t('signUp'),
-        onPressNextBtn: () => this.props.navigation.navigate('RegistrationScreen')
+        onPressNextBtn: () => this.props.navigation.navigate('LoginScreen')
       }
     ]
   }

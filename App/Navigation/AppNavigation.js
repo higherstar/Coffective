@@ -8,7 +8,7 @@ import HowItWorksScreen from '../Containers/HowItWorksScreen'
 // import ChecklistScreen from '../Containers/ChecklistScreen'
 // import BuildTeamScreen from '../Containers/BuildTeamScreen'
 // import ArticleScreen from '../Containers/ArticleScreen'
-// import LoginScreen from '../Containers/LoginScreen'
+import LoginScreen from '../Containers/LoginScreen'
 import RegistrationScreen from '../Containers/RegistrationScreen'
 // import ForgotPasswordScreen from '../Containers/ForgotPasswordScreen'
 // import ResetPasswordScreen from '../Containers/ResetPasswordScreen'
@@ -39,7 +39,7 @@ const MainNav = StackNavigator({
   // ChecklistScreen: {screen: ChecklistScreen},
   // BuildTeamScreen: {screen: BuildTeamScreen},
   // ArticleScreen: {screen: ArticleScreen},
-  // LoginScreen: {screen: LoginScreen},
+  LoginScreen: {screen: LoginScreen},
   RegistrationScreen: {screen: RegistrationScreen},
   // ForgotPasswordScreen: {screen: ForgotPasswordScreen},
   // ResetPasswordScreen: {screen: ResetPasswordScreen},

@@ -3,6 +3,7 @@ import { Image, ScrollView, TouchableOpacity, View } from 'react-native'
 import { Button, TextView } from '../../Components'
 import I18n from 'react-native-i18n'
 import s from './styles'
+import { Images } from '../../Themes'
 
 class PersonTypeScreen extends React.Component {
   static navigationOptions = {}
@@ -13,32 +14,32 @@ class PersonTypeScreen extends React.Component {
       {
         id: 1,
         name: 'Pregnant Mother',
-        image: 'https://dummyimage.com/128x80',
+        image: Images.mother,
       },
       {
         id: 2,
         name: 'Doctor',
-        image: 'https://dummyimage.com/128x80',
+        image: Images.doctor,
       },
       {
         id: 3,
         name: 'Father',
-        image: 'https://dummyimage.com/128x80',
+        image: Images.father,
       },
       {
         id: 4,
-        name: 'Grandmother',
-        image: 'https://dummyimage.com/128x80',
+        name: 'Father',
+        image: Images.father,
       },
       {
         id: 5,
-        name: 'Health Educator',
-        image: 'https://dummyimage.com/128x80',
+        name: 'Father',
+        image: Images.father,
       },
       {
         id: 6,
-        name: 'Health Provider',
-        image: 'https://dummyimage.com/128x80',
+        name: 'Father',
+        image: Images.father,
       },
     ]
   }
@@ -68,7 +69,7 @@ class PersonTypeScreen extends React.Component {
                 style={[s.personType, selectedPersonType && selectedPersonType.id === personType.id && s.selectedPersonType]}
                 onPress={() => this.selectPersonType(personType)}
               >
-                <Image source={{uri: personType.image}} style={s.image}/>
+                <Image source={personType.image} style={s.image}/>
                 <TextView style={s.name} textStyle={s.nameText}>{personType.name}</TextView>
               </TouchableOpacity>
             )}

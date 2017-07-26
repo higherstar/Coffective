@@ -30,6 +30,16 @@ export default StyleSheet.create({
     fontSize: Fonts.size.inputMedium,
     fontFamily: Fonts.type.light
   },
+  dateIcon: {
+    position: 'absolute',
+    left: 0,
+    marginHorizontal: Metrics.smallMargin * 1.5,
+    marginVertical: Metrics.smallMargin * 1.5,
+    alignSelf: 'center',
+    height: 20,
+    resizeMode: 'contain',
+    width: 20,
+  },
   datePlaceholder: {
     fontSize: Fonts.size.inputMedium,
     fontFamily: Fonts.type.light,

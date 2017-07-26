@@ -1,9 +1,8 @@
 // @flow
 
 import React from 'react'
-import { TouchableHighlight, TouchableOpacity, View } from 'react-native'
-import Icon from 'react-native-vector-icons/FontAwesome'
-import { Colors, Metrics } from '../../Themes'
+import { TouchableHighlight, TouchableOpacity, View, Image } from 'react-native'
+import { Colors } from '../../Themes'
 import Color from 'color'
 import { Txt } from '../'
 import type { TButton } from './types'
@@ -34,12 +33,14 @@ const Button = ({
         <Txt textType={textType} style={[s.text, s[`${btnType}${outline ? 'Outline' : ''}Text`], textStyle]}>
           {uppercase ? children.toUpperCase() : children}
         </Txt>
-        {icon && <Icon
-          name={icon}
-          size={Metrics.icons.medium}
-          color={Colors[btnType]}
-          style={s.icon}
-        />}
+        {icon && (
+          <View style={s.iconWrapper}>
+            <Image
+              source={icon}
+              style={[s.icon, s[`${size}Icon`]]}
+            />
+          </View>
+        )}
       </View>
     </ComponentClass>
   )

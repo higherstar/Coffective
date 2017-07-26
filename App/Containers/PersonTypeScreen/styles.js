@@ -32,8 +32,10 @@ export default StyleSheet.create({
     borderColor: Colors.primary
   },
   image: {
-    resizeMode: 'cover',
+    resizeMode: 'contain',
+    alignSelf: 'center',
     flex: 1,
+    marginTop: Metrics.smallMargin
   },
   name: {
     padding: Metrics.smallMargin,

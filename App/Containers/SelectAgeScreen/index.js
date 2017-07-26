@@ -1,9 +1,10 @@
 import React from 'react'
-import { ScrollView, View, TouchableOpacity, Text } from 'react-native'
+import { ScrollView, View, TouchableOpacity, Image } from 'react-native'
 import { Button, SafeDataInfo, TextView } from '../../Components'
 import I18n from 'react-native-i18n'
 import s from './styles'
 import { RadioButtons } from 'react-native-radio-buttons'
+import { Images } from '../../Themes'
 
 class SelectAgeScreen extends React.Component {
   static navigationOptions = {}
@@ -31,7 +32,11 @@ class SelectAgeScreen extends React.Component {
   renderOption = (option, selected, onSelect, index) => {
     return (
       <TouchableOpacity style={s.option} activeOpacity={1} onPress={onSelect} key={index}>
-        <View style={[s.radioBtnIcon, selected && s.selectedRadioBtnIcon]}/>
+        {selected ? (
+          <Image source={Images.checkedRadioButton} style={s.selectedRadioBtnIcon}/>
+        ) : (
+          <View style={[s.radioBtnIcon]}/>
+        )}
         <TextView textType='h6'>{option}</TextView>
       </TouchableOpacity>
     )

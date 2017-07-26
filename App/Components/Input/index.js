@@ -1,10 +1,9 @@
 // @flow
 
 import React, { Component } from 'react'
-import { View, TextInput } from 'react-native'
-import Icon from 'react-native-vector-icons/MaterialIcons'
+import { View, TextInput, Image } from 'react-native'
 import type { TInput } from './types'
-import { Colors, Metrics } from '../../Themes'
+import { Colors } from '../../Themes'
 import s from './styles'
 
 /*
@@ -59,10 +58,8 @@ class Input extends Component {
         onFocus={this.handleFocus}
         smartScrollOptions={smartScroll}
       />
-      {icon && <Icon
-        name={icon}
-        color={Colors.placeholderColor}
-        size={Metrics.icons[size]}
+      {icon && <Image
+        source={icon}
         style={[s.icon, s[`${size}Icon`]]}
       />}
     </View>

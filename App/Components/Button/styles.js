@@ -7,7 +7,21 @@ export default StyleSheet.create({
     borderRadius: Metrics.btnRadius,
   },
   icon: {
-    marginRight: Metrics.baseMargin
+  },
+  mdIcon: {
+    alignSelf: 'center',
+    height: 28,
+    resizeMode: 'contain',
+    width: 28,
+  },
+  iconWrapper: {
+    borderRightWidth: 1,
+    borderRightColor: Colors.mutedText,
+    position: 'absolute',
+    backgroundColor: 'transparent',
+    left: 0,
+    paddingHorizontal: Metrics.smallMargin * 1.25,
+    marginVertical: Metrics.smallMargin * 1.5,
   },
   wrapper: {
     flexDirection: 'row',
@@ -18,7 +32,7 @@ export default StyleSheet.create({
     fontSize: Fonts.size.button,
     fontWeight: '700'
   },
-  //sizes
+  // sizes
   sm: {
     height: Metrics.btnSizes.sm,
   },

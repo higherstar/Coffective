@@ -1,10 +1,11 @@
 import React from 'react'
-import { View } from 'react-native'
+import { View, Image } from 'react-native'
 import { connect } from 'react-redux'
 import { Button, SafeDataInfo, TextView } from '../../Components'
 import I18n from 'react-native-i18n'
 import s from './styles'
 import DatePicker from 'react-native-datepicker'
+import { Images } from '../../Themes'
 
 class SelectDueDateScreen extends React.Component {
   static navigationOptions = {}
@@ -40,11 +41,11 @@ class SelectDueDateScreen extends React.Component {
           format='YYYY-MM-DD'
           confirmBtnText={I18n.t('confirm')}
           cancelBtnText={I18n.t('cancel')}
-          showIcon={false}
+          iconComponent={<Image source={Images.calendar} style={s.dateIcon}/>}
           customStyles={{
             dateInput: s.dateInput,
             dateText: s.dateText,
-            placeholderText: s.datePlaceholder
+            placeholderText: s.datePlaceholder,
           }}
           onDateChange={this.handleChangeDueDate}
         />

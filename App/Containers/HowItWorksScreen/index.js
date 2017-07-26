@@ -6,6 +6,7 @@ import { Button, TextView } from '../../Components'
 import I18n from 'react-native-i18n'
 import s from './styles'
 import SwipeableViews from 'react-swipeable-views-native'
+import { Images } from '../../Themes'
 
 type TSlide = {
   image: number,
@@ -24,7 +25,7 @@ const Slide = ({image, title, description, nextBtnTitle, onPressNextBtn}: TSlide
   <View style={s.slide}>
     <Image
       style={s.image}
-      source={{uri: 'https://dummyimage.com/240x240'}}
+      source={image}
     />
     <View style={s.slideBody}>
       <TextView textType='h3' style={s.titleWrapper} textStyle={s.title}>
@@ -56,6 +57,8 @@ const Dots = ({active, slides}: TDots) =>
 class HowItWorks extends React.Component {
 
   static navigationOptions = ({navigation}) => ({
+    // TODO https://github.com/react-community/react-navigation/pull/1999
+    headerLeft: null,
     headerRight: <Button
       btnType='link'
       style={s.skipBtn}
@@ -74,21 +77,25 @@ class HowItWorks extends React.Component {
         title: I18n.t('howToInformation'),
         description: I18n.t('welcomeSlide1Desc'),
         nextBtnTitle: I18n.t('next'),
+        image: Images.screen1,
       },
       {
         title: I18n.t('preparedChecklist'),
         description: I18n.t('welcomeSlide2Desc'),
         nextBtnTitle: I18n.t('next'),
+        image: Images.screen2,
       },
       {
         title: I18n.t('buildYourTeam'),
         description: I18n.t('welcomeSlide3Desc'),
         nextBtnTitle: I18n.t('next'),
+        image: Images.screen3,
       },
       {
         title: I18n.t('createAccount'),
         description: I18n.t('welcomeSlide4Desc'),
         nextBtnTitle: I18n.t('signUp'),
+        image: Images.screen4,
         onPressNextBtn: () => this.props.navigation.navigate('LoginScreen')
       }
     ]

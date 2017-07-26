@@ -50,6 +50,9 @@ export default StyleSheet.create({
     marginRight: Metrics.baseMargin
   },
   selectedRadioBtnIcon: {
-    backgroundColor: Colors.green
+    height: 27,
+    width: 27,
+    resizeMode: 'contain',
+    marginRight: Metrics.baseMargin
   }
 })

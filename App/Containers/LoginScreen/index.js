@@ -1,10 +1,11 @@
 // @flow
 
 import React from 'react'
-import { ScrollView, View } from 'react-native'
+import { ScrollView, View, Image } from 'react-native'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
 import { Button, Input, Loader, TextView } from '../../Components'
+import { Images } from '../../Themes'
 import { login } from '../../Redux/LoginRedux'
 import I18n from 'react-native-i18n'
 import s from './styles'
@@ -36,6 +37,7 @@ class LoginScreen extends React.Component {
         <Button
           btnType='facebook'
           onPress={() => {}}
+          icon={Images.facebook}
         >
           {I18n.t('signUpWithFacebook')}
         </Button>
@@ -43,6 +45,7 @@ class LoginScreen extends React.Component {
         <Button
           btnType='google'
           onPress={() => {}}
+          icon={Images.googlePlus}
         >
           {I18n.t('signUpWithGoogle')}
         </Button>
@@ -53,9 +56,9 @@ class LoginScreen extends React.Component {
           withRef
           name='email'
           placeholder={I18n.t('email')}
-          size='lg'
           component={Input}
           blurOnSubmit={false}
+          icon={Images.email}
         />
         <Field
           inputStyle={s.passwordInput}
@@ -64,9 +67,9 @@ class LoginScreen extends React.Component {
           name='password'
           placeholder={I18n.t('password')}
           secureTextEntry
-          size='lg'
           component={Input}
           onSubmit={handleSubmit}
+          icon={Images.pass}
         />
         <View style={s.actions}>
           <Button

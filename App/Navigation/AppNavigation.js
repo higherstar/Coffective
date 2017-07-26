@@ -9,17 +9,25 @@ import LoginScreen from '../Containers/LoginScreen'
 import RegistrationScreen from '../Containers/RegistrationScreen'
 import AskForFeedbackScreen from '../Containers/AskForFeedbackScreen'
 import SelectDueDateScreen from '../Containers/SelectDueDateScreen'
-import Icon from 'react-native-vector-icons/MaterialIcons'
-import { TouchableOpacity } from 'react-native'
-import { Colors } from '../Themes'
+import { TouchableOpacity, Image, View } from 'react-native'
+import { Colors, Images } from '../Themes'
 import { Drawer } from '../Components'
 
-const NavBarItem = ({iconName, onPress}) => (
+const Menu = ({iconName, onPress}) => (
   <TouchableOpacity
-    style={{paddingHorizontal: 20}}
+    style={{paddingHorizontal: 20 }}
     onPress={onPress}>
 
-    <Icon name={iconName} size={20} color={Colors.white}/>
+    <Image source={Images.hamburger} style={{width: 20, height: 20}} />
+  </TouchableOpacity>
+)
+
+const Left = ({ onPress }) => (
+  <TouchableOpacity onPress={onPress} style={{paddingHorizontal: 20 }}>
+    <Image
+      source={Images.backButton}
+      style={{width: 20, height: 20 }}
+    />
   </TouchableOpacity>
 )
 
@@ -35,7 +43,7 @@ const MainNav = StackNavigator({
   AskForFeedbackScreen: {screen: AskForFeedbackScreen},
   SelectDueDateScreen: {screen: SelectDueDateScreen},
 }, {
-  initialRouteName: 'HowItWorksScreen',
+  initialRouteName: 'LoginScreen',
   cardStyle: {
     backgroundColor: Colors.background
   },
@@ -47,10 +55,20 @@ const MainNav = StackNavigator({
       color: Colors.white
     },
     headerTintColor: Colors.white,
-    headerRight: <NavBarItem
-      iconName='menu'
+    // TODO https://github.com/react-community/react-navigation/pull/1999
+    headerLeft: <Left
+      onPress={() => navigation.goBack()}
+    />,
+    headerRight: <Menu
       onPress={() => navigation.navigate('DrawerOpen')}
     />,
+    headerTitle: (
+      <Image source={Images.logo} style={{
+        maxHeight: 20,
+        resizeMode: 'contain',
+        flex: 1,
+      }}/>
+    )
   }),
 })
 

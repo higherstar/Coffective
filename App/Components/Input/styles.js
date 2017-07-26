@@ -29,29 +29,21 @@ export default StyleSheet.create({
     fontFamily: Fonts.type.light
   },
   icon: {
-    paddingHorizontal: Metrics.baseMargin,
+    marginHorizontal: Metrics.smallMargin * 1.5,
+    marginVertical: Metrics.smallMargin * 1.5,
     position: 'absolute',
     backgroundColor: 'transparent',
     left: 0
   },
   // center icon in input
-  smallIcon: {
-    top: Metrics.inputSmall / 2,
-    transform: [{
-      translateY: -Metrics.icons.small / 2
-    }]
-  },
-  mediumIcon: {
-    top: Metrics.inputMedium / 2,
-    transform: [{
-      translateY: -Metrics.icons.medium / 2
-    }]
+  mdIcon: {
+    alignSelf: 'center',
+    height: 20,
+    resizeMode: 'contain',
+    width: 20
   },
   // add padding to input if icon exists
-  smallInputIcon: {
-    paddingLeft: Metrics.doubleBaseMargin + Metrics.icons.small
-  },
-  mediumInputIcon: {
-    paddingLeft: Metrics.doubleBaseMargin + Metrics.icons.medium
+  mdInputIcon: {
+    paddingLeft: Metrics.smallMargin * 2 + Metrics.icons.medium
   }
 })

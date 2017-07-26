@@ -43,7 +43,7 @@ const MainNav = StackNavigator({
   AskForFeedbackScreen: {screen: AskForFeedbackScreen},
   SelectDueDateScreen: {screen: SelectDueDateScreen},
 }, {
-  initialRouteName: 'LoginScreen',
+  initialRouteName: 'HowItWorksScreen',
   cardStyle: {
     backgroundColor: Colors.background
   },

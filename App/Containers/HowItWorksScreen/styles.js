@@ -8,7 +8,7 @@ export default StyleSheet.create({
   },
   slide: {
     flex: 1,
-    paddingBottom: Metrics.doubleBaseMargin,
+    paddingBottom: Metrics.baseMargin * 1.5,
   },
   slideBody: {
     flex: 1,
@@ -21,7 +21,7 @@ export default StyleSheet.create({
   image: {
     resizeMode: 'cover',
     width: null,
-    height: 240
+    height: Metrics.screenHeight * 0.4
   },
   titleWrapper: {
     paddingVertical: Metrics.baseMargin,
@@ -32,6 +32,7 @@ export default StyleSheet.create({
   },
   descriptionWrapper: {
     flex: 1,
+    marginBottom: Metrics.baseMargin
   },
   description: {
     textAlign: 'center',

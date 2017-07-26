@@ -8,11 +8,16 @@ export default StyleSheet.create({
   container: {
     minHeight: Metrics.screenHeight - Metrics.navBarHeight,
     paddingHorizontal: Metrics.containerMarginX,
+    paddingTop: Metrics.containerMarginX,
+    paddingBottom: Metrics.smallMargin
   },
   myEthnicity: {
-    paddingBottom: Metrics.doubleBaseMargin * 2
+    paddingBottom: Metrics.doubleBaseMargin
   },
   myEthnicityText: {
     textAlign: 'center'
-  }
+  },
+  safeData: {
+    marginTop: 'auto'
+  },
 })

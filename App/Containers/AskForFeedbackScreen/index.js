@@ -3,7 +3,7 @@ import { ScrollView, Text, Image, View } from 'react-native'
 import s from './styles'
 import {Colors} from '../../Themes'
 
-class FindLocalResourcesScreen extends React.Component {
+class AskForFeedbackScreen extends React.Component {
   static navigationOptions = ({ navigation, screenProps }) => ({
     title: 'Find Local Resources',
     headerStyle: {
@@ -23,4 +23,4 @@ class FindLocalResourcesScreen extends React.Component {
   }
 }
 
-export default FindLocalResourcesScreen
+export default AskForFeedbackScreen

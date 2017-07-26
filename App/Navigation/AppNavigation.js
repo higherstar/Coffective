@@ -12,7 +12,7 @@ import LoginScreen from '../Containers/LoginScreen'
 import RegistrationScreen from '../Containers/RegistrationScreen'
 // import ForgotPasswordScreen from '../Containers/ForgotPasswordScreen'
 // import ResetPasswordScreen from '../Containers/ResetPasswordScreen'
-// import FindLocalResourcesScreen from '../Containers/FindLocalResourcesScreen'
+import AskForFeedbackScreen from '../Containers/AskForFeedbackScreen'
 // import ProfileScreen from '../Containers/ProfileScreen'
 import SelectDueDateScreen from '../Containers/SelectDueDateScreen'
 import Icon from 'react-native-vector-icons/MaterialIcons'
@@ -43,11 +43,11 @@ const MainNav = StackNavigator({
   RegistrationScreen: {screen: RegistrationScreen},
   // ForgotPasswordScreen: {screen: ForgotPasswordScreen},
   // ResetPasswordScreen: {screen: ResetPasswordScreen},
-  // FindLocalResourcesScreen: {screen: FindLocalResourcesScreen},
+  AskForFeedbackScreen: {screen: AskForFeedbackScreen},
   // ProfileScreen: {screen: ProfileScreen},
   SelectDueDateScreen: {screen: SelectDueDateScreen},
 }, {
-  initialRouteName: 'SelectAgeScreen',
+  initialRouteName: 'SelectEthnicityScreen',
   navigationOptions: ({navigation}) => ({
     headerStyle: {
       backgroundColor: Colors.primary
@@ -69,8 +69,8 @@ const DrawerNav = DrawerNavigator({
   // ProfileScreen: {screen: ProfileScreen, navigationOptions: {drawerLabel: 'About me'}},
   // HowItWorksScreen: {screen: HowItWorksScreen, navigationOptions: {drawerLabel: 'Be Prepared'}},
   // SelectEthnicityScreen: {screen: SelectEthnicityScreen, navigationOptions: {drawerLabel: 'Build My Team'}},
-  // FindLocalResourcesScreen: {
-  //   screen: FindLocalResourcesScreen,
+  // AskForFeedbackScreen: {
+  //   screen: AskForFeedbackScreen,
   //   navigationOptions: {drawerLabel: 'Find Local Resources'}
   // },
 }, {

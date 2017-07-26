@@ -1,57 +1,63 @@
 import React from 'react'
-import { ScrollView, Text, Image, View, TouchableOpacity } from 'react-native'
+import { View } from 'react-native'
 import { connect } from 'react-redux'
-import { TextView, Button, Input } from '../../Components'
+import { Button, TextView, SafeDataInfo } from '../../Components'
+import I18n from 'react-native-i18n'
 import s from './styles'
-import { Colors } from '../../Themes'
+import DatePicker from 'react-native-datepicker'
 
 class SelectDueDateScreen extends React.Component {
-  static navigationOptions = {
-    headerRight: null,
-  }
+  static navigationOptions = {}
 
   state = {
-    zip: ''
+    dueDate: ''
   }
 
-  handleChangeZip = (zip) => {
-    this.setState({ zip })
+  handleChangeDueDate = (dueDate) => {
+    this.setState({dueDate})
   }
 
   render () {
-    const { zip } = this.state
+    const {dueDate} = this.state
     return (
       <View style={s.container}>
-        <TextView style={s.header} textStyle={s.headerText} textType='h3'>
-          We need to know where you are located
+        <TextView
+          style={s.header}
+          textStyle={s.headerText}
+          textType='h1'
+        >
+          {I18n.t('iExpectToBeDueOn')}
         </TextView>
-        <Button style={s.useLocationServiceBtn} btnType='white' size='lg'>
-          Use location service
-        </Button>
-        <Input
-          style={s.zip}
-          inputStyle={s.zipInput}
-          size='lg'
-          placeholderTextColor={Colors.white}
-          placeholder='Or enter your zip code'
-          onChangeText={this.handleChangeZip}
-          value={zip}
+        <DatePicker
+          style={s.date}
+          date={dueDate}
+          mode='date'
+          placeholder={I18n.t('selectDate')}
+          format='YYYY-MM-DD'
+          confirmBtnText={I18n.t('confirm')}
+          cancelBtnText={I18n.t('cancel')}
+          showIcon={false}
+          customStyles={{
+            dateInput: s.dateInput,
+            dateText: s.dateText,
+            placeholderText: s.datePlaceholder
+          }}
+          onDateChange={this.handleChangeDueDate}
         />
-        {!!zip && (
-          <Button style={s.useZipCodeBtn} btnType='white' size='lg'>
-            Use Zip Code
-          </Button>
-        )}
+        <SafeDataInfo style={s.safeData} />
+        <Button style={s.proceedBtn} btnType='primary'>
+          {I18n.t('proceed')}
+        </Button>
+        <Button style={s.skipBtn} textStyle={s.skipBtnText} btnType='link'>
+          {I18n.t('skipForNow')}
+        </Button>
       </View>
     )
   }
 }
 
-const mapStateToProps = state => ({
-  // ...state.SetZip
-})
+const mapStateToProps = state => ({})
 
-const mapDispatchToProps = {
-}
+const mapDispatchToProps = {}
 
 export default connect(mapStateToProps, mapDispatchToProps)(SelectDueDateScreen)

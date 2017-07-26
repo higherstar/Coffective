@@ -7,6 +7,7 @@ import Article from './Article'
 import ChecklistTab from './ChecklistTab'
 import Drawer from './Drawer'
 import Loader from './Loader'
+import SafeDataInfo from './SafeDataInfo'
 
 export {
   Button,
@@ -18,4 +19,5 @@ export {
   ChecklistTab,
   Drawer,
   Loader,
+  SafeDataInfo,
 }

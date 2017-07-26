@@ -1,36 +1,46 @@
 import { StyleSheet } from 'react-native'
-import { Metrics, Colors, Fonts } from '../../Themes'
+import { Fonts, Metrics, Colors } from '../../Themes'
 
 export default StyleSheet.create({
   container: {
-    backgroundColor: Colors.primary,
     flex: 1,
+    paddingHorizontal: Metrics.containerMarginX,
+    paddingBottom: Metrics.smallMargin
   },
   header: {
-    paddingHorizontal: Metrics.containerMarginX,
-    paddingVertical: Metrics.baseMargin
+    paddingTop: Metrics.containerMarginX,
+    paddingBottom: Metrics.doubleBaseMargin * 2,
   },
   headerText: {
-    color: Colors.white
+    textAlign: 'center'
   },
-  zip: {
-    marginHorizontal: Metrics.containerMarginX,
-    marginTop: Metrics.baseMargin,
+  date: {
+    width: '100%'
   },
-  zipInput: {
+  dateInput: {
+    paddingHorizontal: Metrics.baseMargin,
+    borderColor: Colors.inputBorder,
+    borderRadius: Metrics.inputRadius,
+    borderWidth: Metrics.inputBorderWidth,
     backgroundColor: Colors.transparent,
-    borderColor: Colors.white,
-    color: Colors.white,
-    textAlign: 'center',
+    height: Metrics.inputSizes.md,
   },
-  useLocationServiceBtn: {
-    borderRadius: 0,
-    marginHorizontal: Metrics.containerMarginX,
-    marginTop: Metrics.baseMargin,
+  dateText: {
+    color: Colors.inputText,
+    fontSize: Fonts.size.inputMedium,
+    fontFamily: Fonts.type.light
   },
-  useZipCodeBtn: {
-    borderRadius: 0,
-    marginHorizontal: Metrics.containerMarginX,
-    marginTop: Metrics.baseMargin,
+  datePlaceholder: {
+    fontSize: Fonts.size.inputMedium,
+    fontFamily: Fonts.type.light,
+    color: Colors.lightGrey
   },
+  proceedBtn: {},
+  skipBtn: {},
+  skipBtnText: {
+    fontSize: Fonts.size.small
+  },
+  safeData: {
+    marginTop: 'auto',
+  }
 })

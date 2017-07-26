@@ -23,12 +23,6 @@ export default StyleSheet.create({
   myZipCodeText: {
     textAlign: 'center',
   },
-  safeData: {
-    marginVertical: Metrics.smallMargin,
-  },
-  safeDataText: {
-    textAlign: 'center',
-  },
   firstName: {
     marginBottom: Metrics.baseMargin,
   },
@@ -45,7 +39,4 @@ export default StyleSheet.create({
     marginBottom: Metrics.containerMarginX,
     marginTop: 'auto'
   },
-  safeDataLabel: {
-    fontWeight: '500'
-  }
 })

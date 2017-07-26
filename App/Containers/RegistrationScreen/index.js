@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { register } from '../../Redux/RegistrationRedux'
 import { ScrollView } from 'react-native'
 import { Field, reduxForm } from 'redux-form'
-import { Button, Input, Loader, TextView, Txt } from '../../Components'
+import { Button, Input, Loader, TextView, SafeDataInfo } from '../../Components'
 import I18n from 'react-native-i18n'
 import s from './styles'
 import type { TRegistration } from './types'
@@ -49,10 +49,7 @@ class RegistrationScreen extends React.Component {
           component={Input}
           blurOnSubmit={false}
         />
-        <TextView style={s.safeData} textStyle={s.safeDataText}>
-          <Txt style={s.safeDataLabel}>{I18n.t('safeDataLabel')}</Txt>
-          {I18n.t('safeDataInfo')}
-        </TextView>
+        <SafeDataInfo/>
         <Button
           style={s.letsGoBtn}
           onPress={() => navigation.navigate('PersonTypeScreen')}

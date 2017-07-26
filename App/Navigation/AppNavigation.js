@@ -47,7 +47,7 @@ const MainNav = StackNavigator({
   // ProfileScreen: {screen: ProfileScreen},
   SelectDueDateScreen: {screen: SelectDueDateScreen},
 }, {
-  initialRouteName: 'PersonTypeScreen',
+  initialRouteName: 'SelectDueDateScreen',
   navigationOptions: ({navigation}) => ({
     headerStyle: {
       backgroundColor: Colors.primary

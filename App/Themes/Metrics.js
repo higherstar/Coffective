@@ -31,7 +31,7 @@ const metrics = {
   btnRadius: base.radius,
   btnBorderWidth: base.borderWidth,
   // Inputs
-  btnInputs: {
+  inputSizes: {
     sm: 36,
     md: 50,
     lg: 50,

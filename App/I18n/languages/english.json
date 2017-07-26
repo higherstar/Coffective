@@ -46,4 +46,9 @@
   "safeDataInfo": "Your data is safe, we just use this to personalize your experience and give you recommendations.",
   "iAm": "I am a...",
   "proceed": "Proceed",
+  "iExpectToBeDueOn": "I expect to be due on...",
+  "skipForNow": "Skip for now",
+  "selectDate": "select the date",
+  "confirm": "Confirm",
+  "cancel": "Cancel",
 }

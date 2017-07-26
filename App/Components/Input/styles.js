@@ -14,17 +14,17 @@ export default StyleSheet.create({
     color: Colors.inputText
   },
   sm: {
-    height: Metrics.btnInputs.sm,
+    height: Metrics.inputSizes.sm,
     fontSize: Fonts.size.inputSmall,
     fontFamily: Fonts.type.base
   },
   md: {
-    height: Metrics.btnInputs.md,
+    height: Metrics.inputSizes.md,
     fontSize: Fonts.size.inputMedium,
     fontFamily: Fonts.type.light
   },
   lg: {
-    height: Metrics.btnInputs.lg,
+    height: Metrics.inputSizes.lg,
     fontSize: Fonts.size.inputMedium,
     fontFamily: Fonts.type.light
   },

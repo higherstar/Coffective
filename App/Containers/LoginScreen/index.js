@@ -20,10 +20,6 @@ class LoginScreen extends React.Component {
     this.props.navigation.navigate('RegistrationScreen')
   }
 
-  openForgotPasswordScreen = () => {
-    this.props.navigation.navigate('ForgotPasswordScreen')
-  }
-
   render () {
     const {handleSubmit, loading}: TLogin = this.props
     return (

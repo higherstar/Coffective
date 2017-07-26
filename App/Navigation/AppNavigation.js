@@ -36,6 +36,9 @@ const MainNav = StackNavigator({
   SelectDueDateScreen: {screen: SelectDueDateScreen},
 }, {
   initialRouteName: 'HowItWorksScreen',
+  cardStyle: {
+    backgroundColor: Colors.background
+  },
   navigationOptions: ({navigation}) => ({
     headerStyle: {
       backgroundColor: Colors.primary

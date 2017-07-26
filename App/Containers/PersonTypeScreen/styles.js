@@ -1,29 +1,61 @@
 import { StyleSheet } from 'react-native'
-import { Metrics, Colors } from '../../Themes'
+import { Metrics, Colors, Fonts } from '../../Themes'
 
 export default StyleSheet.create({
   container: {
+    flex: 1,
+  },
+  scrollContainer: {
+    paddingHorizontal: Metrics.containerMarginX,
+  },
+  iAm: {
+    paddingVertical: Metrics.baseMargin
+  },
+  iAmText: {
+    textAlign: 'center'
+  },
+  personTypes: {
     flexDirection: 'row',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    paddingHorizontal: Metrics.smallMargin
   },
   personType: {
-    // TODO make it generic
-    width: Metrics.screenWidth / 2,
-    height: Metrics.screenHeight / 3
+    width: (Metrics.screenWidth - Metrics.doubleBaseMargin * 2) / 2,
+    height: 150,
+    borderColor: Colors.lightGrey,
+    borderWidth: 1,
+    marginBottom: Metrics.baseMargin,
+    borderRadius: 4
+  },
+  selectedPersonType: {
+    borderColor: Colors.primary
   },
   image: {
     resizeMode: 'cover',
     flex: 1,
-    justifyContent: 'flex-end'
-  },
-  nameWrapper: {
-    paddingHorizontal: Metrics.smallMargin,
-    paddingVertical: Metrics.baseMargin,
-    // TODO make it generic - two lines text
-    maxWidth: 120
   },
   name: {
-    color: Colors.white,
-    backgroundColor: 'transparent'
-  }
+    padding: Metrics.smallMargin,
+  },
+  nameText: {
+    color: Colors.black,
+    textAlign: 'center',
+    fontSize: Fonts.size.medium
+  },
+  // TODO
+  proceedBtn: {
+    marginHorizontal: Metrics.containerMarginX,
+    marginBottom: Metrics.containerMarginX,
+    // ios
+    shadowColor: '#424242',
+    shadowOffset: {
+      width: 0,
+      height: 3
+    },
+    shadowRadius: 10,
+    shadowOpacity: 0.8,
+    // android 5.0+
+    elevation: 2,
+  },
 })

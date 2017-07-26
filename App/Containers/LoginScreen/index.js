@@ -116,6 +116,7 @@ const LoginScreenWrapper = connect(mapStateToProps, mapDispatchToProps)(reduxFor
 })(LoginScreen))
 
 LoginScreenWrapper.navigationOptions = {
+  headerRight: null
 }
 
 export default LoginScreenWrapper

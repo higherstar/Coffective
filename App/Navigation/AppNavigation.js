@@ -14,7 +14,7 @@ import RegistrationScreen from '../Containers/RegistrationScreen'
 // import ResetPasswordScreen from '../Containers/ResetPasswordScreen'
 // import FindLocalResourcesScreen from '../Containers/FindLocalResourcesScreen'
 // import ProfileScreen from '../Containers/ProfileScreen'
-// import SetZipScreen from '../Containers/SetZipScreen'
+import SelectDueDateScreen from '../Containers/SelectDueDateScreen'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import { TouchableOpacity } from 'react-native'
 import { Colors } from '../Themes'
@@ -45,9 +45,9 @@ const MainNav = StackNavigator({
   // ResetPasswordScreen: {screen: ResetPasswordScreen},
   // FindLocalResourcesScreen: {screen: FindLocalResourcesScreen},
   // ProfileScreen: {screen: ProfileScreen},
-  // SetZipScreen: {screen: SetZipScreen},
+  SelectDueDateScreen: {screen: SelectDueDateScreen},
 }, {
-  initialRouteName: 'HowItWorksScreen',
+  initialRouteName: 'PersonTypeScreen',
   navigationOptions: ({navigation}) => ({
     headerStyle: {
       backgroundColor: Colors.primary

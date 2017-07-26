@@ -1,84 +1,82 @@
 import React from 'react'
-import { ScrollView, Text, Image, View, TouchableOpacity } from 'react-native'
-import { Txt } from '../../Components'
-import CategoriesScreen from '../../Containers/CategoriesScreen'
-import CategoryScreen from '../../Containers/CategoryScreen'
+import { Image, ScrollView, TouchableOpacity, View } from 'react-native'
+import { Button, TextView } from '../../Components'
+import I18n from 'react-native-i18n'
 import s from './styles'
-import {Colors} from '../../Themes'
 
 class PersonTypeScreen extends React.Component {
-  static navigationOptions = {
-    title: 'I am a ...',
-    headerRight: null,
-    headerStyle: {
-      backgroundColor: Colors.primary
-    },
-    headerTitleStyle: {
-      color: Colors.white
-    },
-    headerTintColor: Colors.white
-  }
+  static navigationOptions = {}
 
   state = {
+    selectedPersonType: null,
     personTypes: [
       {
+        id: 1,
         name: 'Pregnant Mother',
         image: 'https://dummyimage.com/128x80',
-        categories: [ 1, 2 ]
       },
       {
-        name: 'Breastfeeding Mother',
+        id: 2,
+        name: 'Doctor',
         image: 'https://dummyimage.com/128x80',
-        categories: [ 1, 2 ]
       },
       {
+        id: 3,
         name: 'Father',
         image: 'https://dummyimage.com/128x80',
-        categories: [ 1 ]
       },
       {
+        id: 4,
         name: 'Grandmother',
         image: 'https://dummyimage.com/128x80',
-        categories: [ 1 ]
       },
       {
+        id: 5,
         name: 'Health Educator',
         image: 'https://dummyimage.com/128x80',
-        categories: [ 1 ]
       },
       {
+        id: 6,
         name: 'Health Provider',
         image: 'https://dummyimage.com/128x80',
-        categories: [ 1 ]
       },
     ]
   }
 
-  openCategoriesScreen = (personType) => {
-    this.props.navigation.navigate('CategoriesScreen', { personType })
-  }
-
-  openCategoryScreen = (personType) => {
-    this.props.navigation.navigate('CategoryScreen', { personType })
+  selectPersonType = (selectedPersonType) => {
+    this.setState({selectedPersonType})
   }
 
   render () {
-    const { personTypes } = this.state
+    const {personTypes, selectedPersonType} = this.state
+    const {navigation} = this.props
     return (
       <View style={s.container}>
-        {personTypes.map((personType, i) =>
-          <TouchableOpacity
-            key={i}
-            style={s.personType}
-            onPress={() => personType.categories.length > 1 ? this.openCategoriesScreen(personType) : this.openCategoryScreen(personType)}
+        <ScrollView style={s.scrollContainer}>
+          <TextView
+            style={s.iAm}
+            textStyle={s.iAmText}
+            textType='h1'
           >
-            <Image source={{uri:personType.image}} style={s.image}>
-              <View style={s.nameWrapper}>
-                <Txt style={s.name}>{personType.name}</Txt>
-              </View>
-            </Image>
-          </TouchableOpacity>
-        )}
+            {I18n.t('iAm').toUpperCase()}
+          </TextView>
+          <View style={s.personTypes}>
+            {personTypes.map(personType =>
+              <TouchableOpacity
+                activeOpacity={1}
+                key={personType.id}
+                style={[s.personType, selectedPersonType && selectedPersonType.id === personType.id && s.selectedPersonType]}
+                onPress={() => this.selectPersonType(personType)}
+              >
+                <Image source={{uri: personType.image}} style={s.image}/>
+                <TextView style={s.name} textStyle={s.nameText}>{personType.name}</TextView>
+              </TouchableOpacity>
+            )}
+          </View>
+        </ScrollView>
+        <Button style={s.proceedBtn} onPress={() => navigation.navigate('SelectDueDateScreen')}>
+          {I18n.t('proceed')}
+        </Button>
       </View>
     )
   }

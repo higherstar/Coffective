@@ -12,7 +12,7 @@ import type { TRegistration } from './types'
 
 class RegistrationScreen extends React.Component {
   render () {
-    const {handleSubmit, loading, navigation}: TRegistration = this.props
+    const {loading, navigation}: TRegistration = this.props
     return (
       <ScrollView
         style={s.scrollContainer}

@@ -5,7 +5,6 @@ export default StyleSheet.create({
   scrollContainer: {
     flex: 1,
   },
-  form: {},
   container: {
     minHeight: Metrics.screenHeight - Metrics.navBarHeight,
     paddingHorizontal: Metrics.containerMarginX

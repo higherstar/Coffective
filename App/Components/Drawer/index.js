@@ -1,15 +1,17 @@
 // @flow
 
 import React from 'react'
-import { View, TouchableOpacity, Image, ScrollView } from 'react-native'
+import { ScrollView, TouchableOpacity, View } from 'react-native'
 import { Txt } from '../'
 import s from './styles'
-import type { Props, NavigationRoute } from './types'
+import type { NavigationRoute, Props } from './types'
+import { connect } from 'react-redux'
+import { clearUserData } from '../../Redux/UserRedux'
 
 class Drawer extends React.Component {
   render () {
     const {
-      navigation: { state, navigate },
+      navigation: {state, navigate},
       items,
       activeItemKey,
       activeTintColor,
@@ -25,39 +27,71 @@ class Drawer extends React.Component {
     return (
       <ScrollView>
         <View style={[s.container, style]}>
+          <View style={s.drawerHeader}/>
           {items.map((route: NavigationRoute, index: number) => {
               const focused = activeItemKey === route.key
               const color = focused ? activeTintColor : inactiveTintColor
               const backgroundColor = focused
                 ? activeBackgroundColor
                 : inactiveBackgroundColor
-              const scene = { route, index, focused, tintColor: color }
+              const scene = {route, index, focused, tintColor: color}
               const icon = renderIcon(scene)
               const label = getLabel(scene)
-              return index !== 0 ? (
-                <TouchableOpacity
-                  key={route.key}
-                  onPress={() => {
-                    onItemPress({ route, focused })
-                  }}
-                  delayPressIn={0}
-                >
-                  <View style={[s.item, { backgroundColor }]}>
-                    {icon
-                      ? <View
-                      style={[s.icon, focused ? null : s.inactiveIcon]}
-                    >
-                      {icon}
+            // TODO make it cleaner
+              if (index === 0) {
+                return null
+              } else if (index === 1) {
+                return (
+                  <TouchableOpacity
+                    key={route.key}
+                    onPress={() => {
+                      onItemPress({route, focused})
+                    }}
+                    delayPressIn={0}
+                  >
+                    <View style={[s.item, {backgroundColor}]}>
+                      {icon
+                        ? <View
+                          style={[s.icon, focused ? null : s.inactiveIcon]}
+                        >
+                          {icon}
+                        </View>
+                        : null}
+                      {typeof label === 'string'
+                        ? <Txt style={[s.label, {color}, labelStyle]}>
+                          {label}
+                        </Txt>
+                        : label}
                     </View>
-                      : null}
-                    {typeof label === 'string'
-                      ? <Txt style={[s.label, { color }, labelStyle]}>
-                      {label}
-                    </Txt>
-                      : label}
-                  </View>
-                </TouchableOpacity>
-              ) : null
+                  </TouchableOpacity>
+                )
+              } else if (index === 2) {
+                return (
+                  <TouchableOpacity
+                    key={route.key}
+                    onPress={() => {
+                      onItemPress({route, focused})
+                      this.props.clearUserData()
+                    }}
+                    delayPressIn={0}
+                  >
+                    <View style={[s.item, {backgroundColor}]}>
+                      {icon
+                        ? <View
+                          style={[s.icon, focused ? null : s.inactiveIcon]}
+                        >
+                          {icon}
+                        </View>
+                        : null}
+                      {typeof label === 'string'
+                        ? <Txt style={[s.label, {color}, labelStyle]}>
+                          {label}
+                        </Txt>
+                        : label}
+                    </View>
+                  </TouchableOpacity>
+                )
+              }
             }
           )}
         </View>
@@ -66,4 +100,10 @@ class Drawer extends React.Component {
   }
 }
 
-export default Drawer
+const mapStateToProps = state => ({})
+
+const mapDispatchToProps = {
+  clearUserData
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Drawer)

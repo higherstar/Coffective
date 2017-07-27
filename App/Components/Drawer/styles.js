@@ -1,10 +1,14 @@
-import { StyleSheet, Platform } from 'react-native'
-import { Metrics } from '../../Themes'
+import { StyleSheet } from 'react-native'
+import { Metrics, Colors } from '../../Themes'
 
 export default StyleSheet.create({
   container: {
-    marginTop: Platform.OS === 'ios' ? 20 : 0,
-    paddingVertical: 4,
+    // marginTop: Platform.OS === 'ios' ? 20 : 0,
+    // paddingVertical: 4,
+  },
+  drawerHeader: {
+    height: 120,
+    backgroundColor: Colors.primary
   },
   item: {
     flexDirection: 'row',
@@ -23,7 +27,7 @@ export default StyleSheet.create({
     opacity: 0.62,
   },
   label: {
-    margin: 16,
-    fontWeight: 'bold',
+    marginVertical: Metrics.smallMargin * 1.5,
+    marginHorizontal: Metrics.baseMargin,
   },
 })

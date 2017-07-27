@@ -77,8 +77,10 @@ const MainNav = StackNavigator({
 
 const DrawerNav = DrawerNavigator({
   Main: {screen: MainNav},
+  SummaryScreen: {screen: SummaryScreen, navigationOptions: {drawerLabel: 'See my information'}},
+  HowItWorksScreen: {screen: HowItWorksScreen, navigationOptions: {drawerLabel: 'Back to Start'}},
 }, {
-  drawerWidth: 300,
+  drawerWidth: 250,
   drawerPosition: 'right',
   contentComponent: Drawer
 })

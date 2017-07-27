@@ -19,13 +19,13 @@ const SummaryRow = ({label, value}) =>
 class SummaryScreen extends React.Component {
   static navigationOptions = {}
 
-  openLoginScreen = () => {
-    this.props.navigation.navigate('LoginScreen')
+  openFirstScreen = () => {
+    this.props.navigation.navigate('HowItWorksScreen')
   }
 
   restart = () => {
     this.props.clearUserData()
-    this.openLoginScreen()
+    this.openFirstScreen()
   }
 
   render () {
@@ -70,16 +70,31 @@ class SummaryScreen extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  ...state.form.Login.values,
-  ...state.form.Registration.values,
-  personType: state.User.personType,
-  ageRange: state.User.ageRange,
-  dueDate: state.User.dueDate,
-  ethnicity: state.User.ethnicity,
-  notifications: state.User.notifications,
-  feedback: state.User.feedback,
-})
+const mapStateToProps = state => {
+  // TODO make it cleaner
+  let formData = {}
+  if (state.form.Login && state.form.Login.values) {
+    formData = {
+      ...formData,
+      ...state.form.Login.values
+    }
+  }
+  if (state.form.Registration && state.form.Registration.values) {
+    formData = {
+      ...formData,
+      ...state.form.Registration.values
+    }
+  }
+  return ({
+    ...formData,
+    personType: state.User.personType,
+    ageRange: state.User.ageRange,
+    dueDate: state.User.dueDate,
+    ethnicity: state.User.ethnicity,
+    notifications: state.User.notifications,
+    feedback: state.User.feedback,
+  })
+}
 
 const mapDispatchToProps = {
   clearUserData

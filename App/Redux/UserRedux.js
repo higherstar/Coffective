@@ -1,7 +1,7 @@
 // @flow
 
 import createReducer from '../Services/ReduxEnhancer'
-
+import {reset} from 'redux-form'
 // ------------------------------------
 // Constants
 // ------------------------------------
@@ -29,7 +29,11 @@ export const setNotifications = (notifications) => ({ type: SET_NOTIFICATIONS, n
 
 export const setFeedback = (feedback) => ({ type: SET_FEEDBACK, feedback })
 
-export const clearUserData = () => ({ type: CLEAR })
+export const clearUserData = () => (dispatch, getState) => {
+  dispatch(reset('Login'))
+  dispatch(reset('Registration'))
+  dispatch({ type: CLEAR })
+}
 
 // ------------------------------------
 // Reducer

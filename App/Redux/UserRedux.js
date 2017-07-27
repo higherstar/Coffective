@@ -5,56 +5,70 @@ import createReducer from '../Services/ReduxEnhancer'
 // ------------------------------------
 // Constants
 // ------------------------------------
-export const GET_USER_REQUEST = 'User.GET_REQUEST'
-export const GET_USER_SUCCESS = 'User.GET_SUCCESS'
-export const GET_USER_FAILURE = 'User.GET_FAILURE'
-
-export const LOGOUT = 'User.LOGOUT'
+export const SET_PERSON_TYPE = 'User.SET_PERSON_TYPE'
+export const SET_AGE_RANGE = 'User.SET_AGE_RANGE'
+export const SET_DUE_DATE = 'User.SET_DUE_DATE'
+export const SET_ETHNICITY = 'User.SET_ETHNICITY'
+export const SET_NOTIFICATIONS = 'User.SET_NOTIFICATIONS'
+export const SET_FEEDBACK = 'User.SET_FEEDBACK'
+export const CLEAR = 'User.CLEAR'
 
 // ------------------------------------
 // Actions
 // ------------------------------------
-export const getUser = () => ({
-  type: GET_USER_REQUEST,
-  responseSuccess: getUserSuccess,
-  responseFailure: getUserFailure
-})
 
-export const getUserSuccess = (user: Object) => (dispatch: Function) => {
-  // NavigationActions.chooseCategory({ type: 'reset' })
-  dispatch({ type: GET_USER_SUCCESS, user })
-}
+export const setPersonType = (personType) => ({ type: SET_PERSON_TYPE, personType })
 
-export const getUserFailure = () => ({ type: GET_USER_FAILURE })
+export const setAgeRange = (ageRange) => ({ type: SET_AGE_RANGE, ageRange })
 
-export const logout = () => (dispatch: Function) => {
-  // NavigationActions.welcome({ type: 'reset' })
-  dispatch({ type: LOGOUT })
-}
+export const setDueDate = (dueDate) => ({ type: SET_DUE_DATE, dueDate })
+
+export const setEthnicity = (ethnicity) => ({ type: SET_ETHNICITY, ethnicity })
+
+export const setNotifications = (notifications) => ({ type: SET_NOTIFICATIONS, notifications })
+
+export const setFeedback = (feedback) => ({ type: SET_FEEDBACK, feedback })
+
+export const clearUserData = () => ({ type: CLEAR })
 
 // ------------------------------------
 // Reducer
 // ------------------------------------
 export const INITIAL_STATE = {
-  user: null,
-  loggedIn: false
+  personType: null,
+  ageRange: null,
+  dueDate: '',
+  ethnicity: '',
+  notifications: false,
+  feedback: false,
 }
 
 export default createReducer(INITIAL_STATE, {
-  [GET_USER_REQUEST]: (state, action) => ({
-    user: null,
-    loggedIn: false
+  [SET_PERSON_TYPE]: (state, { personType }) => ({
+    personType
   }),
-  [GET_USER_SUCCESS]: (state, { user }) => ({
-    user,
-    loggedIn: true
+  [SET_AGE_RANGE]: (state, { ageRange }) => ({
+    ageRange
   }),
-  [GET_USER_FAILURE]: (state, action) => ({
-    user: null,
-    loggedIn: false
+  [SET_DUE_DATE]: (state, { dueDate }) => ({
+    dueDate
   }),
-  [LOGOUT]: (state, action) => ({
-    user: null,
-    loggedIn: false
+  [SET_ETHNICITY]: (state, { ethnicity }) => ({
+    ethnicity
+  }),
+  [SET_NOTIFICATIONS]: (state, { notifications }) => ({
+    notifications
+  }),
+  [SET_FEEDBACK]: (state, { feedback }) => ({
+    feedback
+  }),
+  [CLEAR]: (state, action) => ({
+    // TODO improve
+    personType: null,
+    ageRange: null,
+    dueDate: '',
+    ethnicity: '',
+    notifications: false,
+    feedback: false,
   })
 })

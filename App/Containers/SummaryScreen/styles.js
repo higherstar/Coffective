@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { Metrics, Colors } from '../../Themes'
+import { Metrics, Colors, Fonts } from '../../Themes'
 
 export default StyleSheet.create({
   scrollContainer: {
@@ -34,7 +34,7 @@ export default StyleSheet.create({
     paddingRight: Metrics.smallMargin * 1.5,
   },
   labelText: {
-    fontWeight: '400'
+    fontWeight: '500'
   },
   value: {
     flex: 1,

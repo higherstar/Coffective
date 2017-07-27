@@ -32,13 +32,11 @@ class Select extends Component {
 
   constructor (props: Object) {
     super(props)
-    const {defaultOption, options} = props
-    const defOption = defaultOption ? getItemIndex(options, defaultOption) : 0
     this.state = {
       modalVisible: false,
       animatedHeight: new Animated.Value(0),
-      selectedOption: defOption,
-      confirmedOption: defOption
+      selectedOption: null,
+      confirmedOption: null
     }
   }
 
@@ -126,7 +124,7 @@ class Select extends Component {
 
   render () {
     const {animatedHeight, modalVisible, confirmedOption, selectedOption} = this.state
-    const {style, options, disabled} = this.props
+    const {style, options, disabled, placeholder = ''} = this.props
     return (
       <TouchableHighlight
         activeOpacity={disabled && 1 || 0.2}
@@ -139,7 +137,7 @@ class Select extends Component {
             <View>
               <View>
                 <Text style={s.selectedOptionText}>
-                  {options[confirmedOption]}
+                  {options[confirmedOption] || placeholder }
                 </Text>
               </View>
               <Modal

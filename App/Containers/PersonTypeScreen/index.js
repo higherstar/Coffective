@@ -1,15 +1,16 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { Image, ScrollView, TouchableOpacity, View } from 'react-native'
 import { Button, TextView } from '../../Components'
 import I18n from 'react-native-i18n'
 import s from './styles'
 import { Images } from '../../Themes'
+import { setPersonType } from '../../Redux/UserRedux'
 
 class PersonTypeScreen extends React.Component {
   static navigationOptions = {}
 
   state = {
-    selectedPersonType: null,
     personTypes: [
       {
         id: 1,
@@ -44,13 +45,9 @@ class PersonTypeScreen extends React.Component {
     ]
   }
 
-  selectPersonType = (selectedPersonType) => {
-    this.setState({selectedPersonType})
-  }
-
   render () {
-    const {personTypes, selectedPersonType} = this.state
-    const {navigation} = this.props
+    const {personTypes} = this.state
+    const {navigation, selectedPersonType} = this.props
     return (
       <View style={s.container}>
         <ScrollView style={s.scrollContainer}>
@@ -67,7 +64,7 @@ class PersonTypeScreen extends React.Component {
                 activeOpacity={1}
                 key={personType.id}
                 style={[s.personType, selectedPersonType && selectedPersonType.id === personType.id && s.selectedPersonType]}
-                onPress={() => this.selectPersonType(personType)}
+                onPress={() => this.props.setPersonType(personType)}
               >
                 <Image source={personType.image} style={s.image}/>
                 <TextView style={s.name} textStyle={s.nameText}>{personType.name}</TextView>
@@ -83,4 +80,12 @@ class PersonTypeScreen extends React.Component {
   }
 }
 
-export default PersonTypeScreen
+const mapStateToProps = state => ({
+  selectedPersonType: state.User.personType,
+})
+
+const mapDispatchToProps = {
+  setPersonType
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PersonTypeScreen)

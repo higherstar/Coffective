@@ -3,12 +3,13 @@ import { ScrollView, View, Platform } from 'react-native'
 import { Button, SafeDataInfo, TextView, Select } from '../../Components'
 import I18n from 'react-native-i18n'
 import s from './styles'
+import { setEthnicity } from '../../Redux/UserRedux'
+import { connect } from 'react-redux'
 
 class SelectEthnicityScreen extends React.Component {
   static navigationOptions = {}
 
   state = {
-    selectedEthnicity: '',
     ethnicityList: [
       'Afghan',
       'Albanian',
@@ -210,12 +211,9 @@ class SelectEthnicityScreen extends React.Component {
     this.props.navigation.navigate('AskForFeedbackScreen')
   }
 
-  selectEthnicity = (selectedEthnicity) => {
-    this.setState({selectedEthnicity})
-  }
-
   render () {
-    const {selectedEthnicity, ethnicityList} = this.state
+    const {ethnicityList} = this.state
+    const {selectedEthnicity} = this.props
     return (
       <ScrollView
         style={s.scrollContainer}
@@ -226,9 +224,10 @@ class SelectEthnicityScreen extends React.Component {
         </TextView>
         <View style={[s.selectWrapper, Platform.OS === 'android' && {paddingHorizontal: 0}]}>
           <Select
+            placeholder={I18n.t('selectEthnicity')}
             defaultOption={selectedEthnicity}
             options={ethnicityList}
-            onSelect={this.selectEthnicity}
+            onSelect={this.props.setEthnicity}
           />
         </View>
         <SafeDataInfo style={s.safeData}/>
@@ -243,4 +242,12 @@ class SelectEthnicityScreen extends React.Component {
   }
 }
 
-export default SelectEthnicityScreen
+const mapStateToProps = state => ({
+  selectedEthnicity: state.User.ethnicity
+})
+
+const mapDispatchToProps = {
+  setEthnicity
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SelectEthnicityScreen)

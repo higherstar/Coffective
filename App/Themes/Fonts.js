@@ -1,6 +1,6 @@
 const type = {
   base: 'Roboto-Regular',
-  bold: 'Avenir-Black',
+  bold: 'Roboto-Bold',
   emphasis: 'HelveticaNeue-Italic'
 }
 

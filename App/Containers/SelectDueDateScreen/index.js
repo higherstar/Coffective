@@ -6,24 +6,17 @@ import I18n from 'react-native-i18n'
 import s from './styles'
 import DatePicker from 'react-native-datepicker'
 import { Images } from '../../Themes'
+import { setDueDate } from '../../Redux/UserRedux'
 
 class SelectDueDateScreen extends React.Component {
   static navigationOptions = {}
-
-  state = {
-    dueDate: ''
-  }
-
-  handleChangeDueDate = (dueDate) => {
-    this.setState({dueDate})
-  }
 
   openSelectAgeScreen = () => {
     this.props.navigation.navigate('SelectAgeScreen')
   }
 
   render () {
-    const {dueDate} = this.state
+    const {dueDate} = this.props
     return (
       <View style={s.container}>
         <TextView
@@ -49,7 +42,7 @@ class SelectDueDateScreen extends React.Component {
             btnTextConfirm: s.btnTextConfirm,
             btnTextCancel: s.btnTextCancel,
           }}
-          onDateChange={this.handleChangeDueDate}
+          onDateChange={this.props.setDueDate}
         />
         <SafeDataInfo style={s.safeData} />
         <Button style={s.proceedBtn} btnType='primary' onPress={this.openSelectAgeScreen}>
@@ -63,8 +56,12 @@ class SelectDueDateScreen extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({})
+const mapStateToProps = state => ({
+  dueDate: state.User.dueDate
+})
 
-const mapDispatchToProps = {}
+const mapDispatchToProps = {
+  setDueDate
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(SelectDueDateScreen)

@@ -1,16 +1,17 @@
 import React from 'react'
-import { ScrollView, View, TouchableOpacity, Image } from 'react-native'
+import { Image, ScrollView, TouchableOpacity, View } from 'react-native'
 import { Button, SafeDataInfo, TextView } from '../../Components'
 import I18n from 'react-native-i18n'
 import s from './styles'
 import { RadioButtons } from 'react-native-radio-buttons'
 import { Images } from '../../Themes'
+import { setAgeRange } from '../../Redux/UserRedux'
+import { connect } from 'react-redux'
 
 class SelectAgeScreen extends React.Component {
   static navigationOptions = {}
 
   state = {
-    selectedOption: null,
     options: [
       'Between 15 and 19',
       'Between 20 and 24',
@@ -19,10 +20,6 @@ class SelectAgeScreen extends React.Component {
       'Between 35 and 39',
       'Between 40 and 44',
     ]
-  }
-
-  selectOption = (selectedOption) => {
-    this.setState({selectedOption})
   }
 
   openSelectEthnicityScreen = () => {
@@ -43,7 +40,8 @@ class SelectAgeScreen extends React.Component {
   }
 
   render () {
-    const {options, selectedOption} = this.state
+    const {options} = this.state
+    const {ageRange} = this.props
     return (
       <ScrollView
         style={s.scrollContainer}
@@ -55,8 +53,8 @@ class SelectAgeScreen extends React.Component {
         <View style={s.options}>
           <RadioButtons
             options={options}
-            onSelection={this.selectOption}
-            selectedOption={selectedOption}
+            onSelection={this.props.setAgeRange}
+            selectedOption={ageRange}
             renderContainer={(children) => <View>{children}</View>}
             renderOption={(...props) => this.renderOption(...props)}
           />
@@ -73,4 +71,12 @@ class SelectAgeScreen extends React.Component {
   }
 }
 
-export default SelectAgeScreen
+const mapStateToProps = state => ({
+  ageRange: state.User.ageRange,
+})
+
+const mapDispatchToProps = {
+  setAgeRange
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SelectAgeScreen)

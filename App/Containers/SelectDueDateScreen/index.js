@@ -46,6 +46,8 @@ class SelectDueDateScreen extends React.Component {
             dateInput: s.dateInput,
             dateText: s.dateText,
             placeholderText: s.datePlaceholder,
+            btnTextConfirm: s.btnTextConfirm,
+            btnTextCancel: s.btnTextCancel,
           }}
           onDateChange={this.handleChangeDueDate}
         />

@@ -1,6 +1,6 @@
 import React from 'react'
-import { ScrollView, Picker } from 'react-native'
-import { Button, SafeDataInfo, TextView } from '../../Components'
+import { ScrollView, View, Platform } from 'react-native'
+import { Button, SafeDataInfo, TextView, Select } from '../../Components'
 import I18n from 'react-native-i18n'
 import s from './styles'
 
@@ -224,14 +224,13 @@ class SelectEthnicityScreen extends React.Component {
         <TextView style={s.myEthnicity} textStyle={s.myEthnicityText} textType='h1'>
           {I18n.t('myEthnicity')}
         </TextView>
-        <Picker
-          selectedValue={selectedEthnicity}
-          onValueChange={this.selectEthnicity}
-        >
-          {ethnicityList.map((ethnicity, i) =>
-            <Picker.Item key={i} label={ethnicity} value={ethnicity}>{ethnicity}</Picker.Item>
-          )}
-        </Picker>
+        <View style={[s.selectWrapper, Platform.OS === 'android' && {paddingHorizontal: 0}]}>
+          <Select
+            defaultOption={selectedEthnicity}
+            options={ethnicityList}
+            onSelect={this.selectEthnicity}
+          />
+        </View>
         <SafeDataInfo style={s.safeData}/>
         <Button style={s.proceedBtn} btnType='primary' onPress={this.openAskForFeedbackScreen}>
           {I18n.t('proceed')}

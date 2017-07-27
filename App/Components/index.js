@@ -5,6 +5,7 @@ import Input from './Input'
 import Drawer from './Drawer'
 import Loader from './Loader'
 import SafeDataInfo from './SafeDataInfo'
+import Select from './Select'
 
 export {
   Button,
@@ -14,4 +15,5 @@ export {
   Drawer,
   Loader,
   SafeDataInfo,
+  Select,
 }

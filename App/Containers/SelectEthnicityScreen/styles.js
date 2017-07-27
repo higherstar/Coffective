@@ -1,12 +1,12 @@
 import { StyleSheet } from 'react-native'
-import { Metrics, Fonts } from '../../Themes'
+import { Fonts, Metrics, Colors } from '../../Themes'
 
 export default StyleSheet.create({
   scrollContainer: {
     flex: 1,
   },
   container: {
-    minHeight: Metrics.screenHeight - Metrics.navBarHeight,
+    minHeight: Metrics.screenHeight - Metrics.navBarHeight - 20,
     paddingHorizontal: Metrics.containerMarginX,
     paddingTop: Metrics.containerMarginX,
     paddingBottom: Metrics.smallMargin
@@ -23,4 +23,13 @@ export default StyleSheet.create({
   skipBtnText: {
     fontSize: Fonts.size.small
   },
+  selectWrapper: {
+    flex: 1,
+    maxHeight: 50,
+    paddingHorizontal: Metrics.baseMargin,
+    borderColor: Colors.inputBorder,
+    borderRadius: Metrics.inputRadius,
+    borderWidth: Metrics.inputBorderWidth,
+    backgroundColor: Colors.transparent,
+  }
 })

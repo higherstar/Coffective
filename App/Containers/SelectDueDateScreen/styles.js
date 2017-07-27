@@ -15,15 +15,17 @@ export default StyleSheet.create({
     textAlign: 'center'
   },
   date: {
-    width: '100%'
-  },
-  dateInput: {
-    paddingHorizontal: Metrics.baseMargin,
+    width: '100%',
     borderColor: Colors.inputBorder,
     borderRadius: Metrics.inputRadius,
     borderWidth: Metrics.inputBorderWidth,
+  },
+  dateInput: {
+    paddingHorizontal: Metrics.baseMargin,
     backgroundColor: Colors.transparent,
-    height: Metrics.inputSizes.md,
+    flex: 1,
+    minHeight: Metrics.inputSizes.md,
+    borderWidth: 0
   },
   dateText: {
     color: Colors.inputText,
@@ -39,6 +41,13 @@ export default StyleSheet.create({
     height: 20,
     resizeMode: 'contain',
     width: 20,
+  },
+  btnTextConfirm: {
+    ...Fonts.style.normal,
+    color: Colors.primary
+  },
+  btnTextCancel: {
+    ...Fonts.style.normal,
   },
   datePlaceholder: {
     fontSize: Fonts.size.inputMedium,

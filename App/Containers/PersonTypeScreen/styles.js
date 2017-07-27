@@ -53,11 +53,11 @@ export default StyleSheet.create({
     shadowColor: '#424242',
     shadowOffset: {
       width: 0,
-      height: 3
+      height: 2
     },
-    shadowRadius: 10,
-    shadowOpacity: 0.8,
+    shadowRadius: 5,
+    shadowOpacity: 0.7,
     // android 5.0+
-    elevation: 2,
+    elevation: 3,
   },
 })

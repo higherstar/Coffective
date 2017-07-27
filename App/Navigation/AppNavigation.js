@@ -67,6 +67,7 @@ const MainNav = StackNavigator({
         maxHeight: 20,
         resizeMode: 'contain',
         flex: 1,
+        alignSelf: 'center'
       }}/>
     )
   }),

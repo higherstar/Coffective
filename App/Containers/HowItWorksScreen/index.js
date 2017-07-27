@@ -58,7 +58,7 @@ class HowItWorks extends React.Component {
 
   static navigationOptions = ({navigation}) => ({
     // TODO https://github.com/react-community/react-navigation/pull/1999
-    headerLeft: null,
+    headerLeft: <View/>,
     headerRight: <Button
       btnType='link'
       style={s.skipBtn}

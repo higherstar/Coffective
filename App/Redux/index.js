@@ -11,9 +11,6 @@ export default () => {
     User: require('./UserRedux').default,
     Login: require('./LoginRedux').default,
     Registration: require('./RegistrationRedux').default,
-    ForgotPassword: require('./ForgotPasswordRedux').default,
-    ResetPassword: require('./ResetPasswordRedux').default,
-    Checklist: require('./ChecklistRedux').default,
   })
 
   return configureStore(rootReducer, rootSaga)

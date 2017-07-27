@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react'
-import { ScrollView, View, Image } from 'react-native'
+import { ScrollView, View } from 'react-native'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
 import { Button, Input, Loader, TextView } from '../../Components'

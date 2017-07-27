@@ -29,5 +29,6 @@ export default StyleSheet.create({
   label: {
     marginVertical: Metrics.smallMargin * 1.5,
     marginHorizontal: Metrics.baseMargin,
+    color: Colors.text
   },
 })

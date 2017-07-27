@@ -25,7 +25,7 @@ class Drawer extends React.Component {
       labelStyle,
     }: Props = this.props
     return (
-      <ScrollView>
+      <ScrollView style={{ backgroundColor: '#ECF4FF' }}>
         <View style={[s.container, style]}>
           <View style={s.drawerHeader}/>
           {items.map((route: NavigationRoute, index: number) => {

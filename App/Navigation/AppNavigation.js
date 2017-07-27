@@ -11,12 +11,12 @@ import AskForFeedbackScreen from '../Containers/AskForFeedbackScreen'
 import SelectDueDateScreen from '../Containers/SelectDueDateScreen'
 import SummaryScreen from '../Containers/SummaryScreen'
 import { Image, TouchableOpacity } from 'react-native'
-import { Colors, Images } from '../Themes'
+import { Colors, Images, Metrics } from '../Themes'
 import { Drawer } from '../Components'
 
 const Menu = ({iconName, onPress}) => (
   <TouchableOpacity
-    style={{paddingHorizontal: 20}}
+    style={{paddingHorizontal: Metrics.baseMargin, height: Metrics.navBarWithOutStatusBarHeight, justifyContent: 'center'}}
     onPress={onPress}>
 
     <Image source={Images.hamburger} style={{width: 20, height: 20}}/>
@@ -24,7 +24,10 @@ const Menu = ({iconName, onPress}) => (
 )
 
 const Left = ({onPress}) => (
-  <TouchableOpacity onPress={onPress} style={{paddingHorizontal: 20}}>
+  <TouchableOpacity
+    onPress={onPress}
+    style={{paddingHorizontal: Metrics.baseMargin, height: Metrics.navBarWithOutStatusBarHeight, justifyContent: 'center'}}
+  >
     <Image
       source={Images.backButton}
       style={{width: 20, height: 20}}

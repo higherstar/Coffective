@@ -26,6 +26,11 @@ class SelectAgeScreen extends React.Component {
     this.props.navigation.navigate('SelectEthnicityScreen')
   }
 
+  skip = () => {
+    this.openSelectEthnicityScreen()
+    this.props.setAgeRange(null)
+  }
+
   renderOption = (option, selected, onSelect, index) => {
     return (
       <TouchableOpacity style={s.option} activeOpacity={1} onPress={onSelect} key={index}>
@@ -60,10 +65,10 @@ class SelectAgeScreen extends React.Component {
           />
         </View>
         <SafeDataInfo style={s.safeData} />
-        <Button style={s.proceedBtn} btnType='primary' onPress={this.openSelectEthnicityScreen}>
+        <Button style={s.proceedBtn} btnType='primary' onPress={this.openSelectEthnicityScreen} disabled={!ageRange}>
           {I18n.t('proceed')}
         </Button>
-        <Button style={s.skipBtn} textStyle={s.skipBtnText} btnType='link' onPress={this.openSelectEthnicityScreen}>
+        <Button style={s.skipBtn} textStyle={s.skipBtnText} btnType='link' onPress={this.skip}>
           {I18n.t('skipForNow')}
         </Button>
       </ScrollView>

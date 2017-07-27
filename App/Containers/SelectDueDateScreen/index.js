@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Image } from 'react-native'
+import { Image, View } from 'react-native'
 import { connect } from 'react-redux'
 import { Button, SafeDataInfo, TextView } from '../../Components'
 import I18n from 'react-native-i18n'
@@ -13,6 +13,11 @@ class SelectDueDateScreen extends React.Component {
 
   openSelectAgeScreen = () => {
     this.props.navigation.navigate('SelectAgeScreen')
+  }
+
+  skip = () => {
+    this.openSelectAgeScreen()
+    this.props.setDueDate('')
   }
 
   render () {
@@ -31,7 +36,7 @@ class SelectDueDateScreen extends React.Component {
           date={dueDate}
           mode='date'
           placeholder={I18n.t('selectDate')}
-          format='YYYY-MM-DD'
+          format='DD MMM YYYY'
           confirmBtnText={I18n.t('confirm')}
           cancelBtnText={I18n.t('cancel')}
           iconComponent={<Image source={Images.calendar} style={s.dateIcon}/>}
@@ -44,11 +49,16 @@ class SelectDueDateScreen extends React.Component {
           }}
           onDateChange={this.props.setDueDate}
         />
-        <SafeDataInfo style={s.safeData} />
-        <Button style={s.proceedBtn} btnType='primary' onPress={this.openSelectAgeScreen}>
+        <SafeDataInfo style={s.safeData}/>
+        <Button style={s.proceedBtn} btnType='primary' onPress={this.openSelectAgeScreen} disabled={!dueDate}>
           {I18n.t('proceed')}
         </Button>
-        <Button style={s.skipBtn} textStyle={s.skipBtnText} btnType='link' onPress={this.openSelectAgeScreen}>
+        <Button
+          style={s.skipBtn}
+          textStyle={s.skipBtnText}
+          btnType='link'
+          onPress={this.skip}
+        >
           {I18n.t('skipForNow')}
         </Button>
       </View>

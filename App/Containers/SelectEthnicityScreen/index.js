@@ -1,6 +1,6 @@
 import React from 'react'
-import { ScrollView, View, Platform } from 'react-native'
-import { Button, SafeDataInfo, TextView, Select } from '../../Components'
+import { Platform, ScrollView, View } from 'react-native'
+import { Button, SafeDataInfo, Select, TextView } from '../../Components'
 import I18n from 'react-native-i18n'
 import s from './styles'
 import { setEthnicity } from '../../Redux/UserRedux'
@@ -211,6 +211,11 @@ class SelectEthnicityScreen extends React.Component {
     this.props.navigation.navigate('AskForFeedbackScreen')
   }
 
+  skip = () => {
+    this.openAskForFeedbackScreen()
+    this.props.setEthnicity('')
+  }
+
   render () {
     const {ethnicityList} = this.state
     const {selectedEthnicity} = this.props
@@ -231,10 +236,15 @@ class SelectEthnicityScreen extends React.Component {
           />
         </View>
         <SafeDataInfo style={s.safeData}/>
-        <Button style={s.proceedBtn} btnType='primary' onPress={this.openAskForFeedbackScreen}>
+        <Button
+          style={s.proceedBtn}
+          btnType='primary'
+          onPress={this.openAskForFeedbackScreen}
+          disabled={!selectedEthnicity}
+        >
           {I18n.t('proceed')}
         </Button>
-        <Button style={s.skipBtn} textStyle={s.skipBtnText} btnType='link' onPress={this.openAskForFeedbackScreen}>
+        <Button style={s.skipBtn} textStyle={s.skipBtnText} btnType='link' onPress={this.skip}>
           {I18n.t('skipForNow')}
         </Button>
       </ScrollView>

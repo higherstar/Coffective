@@ -12,10 +12,13 @@ class PushNotificationsScreen extends React.Component {
 
   requestPermissionsForNotifications = () => {
     if (Platform.OS === 'ios') {
-      NotificationsIOS.requestPermissions()
+      NotificationsIOS.requestPermissions(() => {
+        this.openSummaryScreen()
+      })
+    } else {
+      // TODO checkPermissions
+      this.openSummaryScreen()
     }
-    // TODO checkPermissions
-    this.openSummaryScreen()
   }
 
   openSummaryScreen = () => {

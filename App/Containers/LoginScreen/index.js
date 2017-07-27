@@ -16,13 +16,15 @@ const Divider = ({style}) =>
     {I18n.t('or').toUpperCase()}
   </TextView>
 
+const required = value => value ? undefined : 'Required'
+
 class LoginScreen extends React.Component {
   openRegistrationScreen = () => {
     this.props.navigation.navigate('RegistrationScreen')
   }
 
   render () {
-    const {handleSubmit, loading}: TLogin = this.props
+    const {handleSubmit, loading, valid }: TLogin = this.props
     return (
       <ScrollView
         style={s.scrollContainer}
@@ -59,6 +61,7 @@ class LoginScreen extends React.Component {
           component={Input}
           blurOnSubmit={false}
           icon={Images.email}
+          validate={[ required ]}
         />
         <Field
           inputStyle={s.passwordInput}
@@ -70,6 +73,7 @@ class LoginScreen extends React.Component {
           component={Input}
           onSubmit={handleSubmit}
           icon={Images.pass}
+          validate={[ required ]}
         />
         <View style={s.actions}>
           <Button
@@ -77,6 +81,7 @@ class LoginScreen extends React.Component {
             onPress={handleSubmit}
             outline
             btnType='secondary'
+            disabled={!valid}
           >
             {I18n.t('login')}
           </Button>
@@ -84,6 +89,7 @@ class LoginScreen extends React.Component {
             style={s.signUpBtn}
             onPress={this.openRegistrationScreen}
             btnType='primary'
+            disabled={!valid}
           >
             {I18n.t('signUp')}
           </Button>

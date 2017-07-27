@@ -72,7 +72,11 @@ class PersonTypeScreen extends React.Component {
             )}
           </View>
         </ScrollView>
-        <Button style={s.proceedBtn} onPress={() => navigation.navigate('SelectDueDateScreen')}>
+        <Button
+          style={s.proceedBtn}
+          onPress={() => navigation.navigate('SelectDueDateScreen')}
+          disabled={!selectedPersonType}
+        >
           {I18n.t('proceed')}
         </Button>
       </View>

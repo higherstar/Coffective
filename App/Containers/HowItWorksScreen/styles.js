@@ -58,7 +58,8 @@ export default StyleSheet.create({
     backgroundColor: Colors.primary
   },
   skipBtn: {
-    paddingHorizontal: Metrics.smallMargin
+    paddingHorizontal: Metrics.baseMargin,
+    height: Metrics.navBarWithOutStatusBarHeight
   },
   skipBtnText: {
     color: Colors.white

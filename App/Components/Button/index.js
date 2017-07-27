@@ -19,15 +19,17 @@ const Button = ({
   underlayColor,
   uppercase = true,
   icon,
-  size = 'md'
+  size = 'md',
+  disabled,
 }: TButton) => {
-  const ComponentClass = (btnType === 'link' || outline) ? TouchableOpacity : TouchableHighlight
+  const isLinkBtn = (btnType === 'link')
+  const ComponentClass = isLinkBtn ? TouchableOpacity : TouchableHighlight
   return (
     <ComponentClass
-      activeOpacity={0.4}
-      style={[s.btn, s[`${btnType}${outline ? 'Outline' : ''}`], s[size], style]}
-      underlayColor={underlayColor || Color(Colors[btnType]).darken(0.1)}
-      onPress={onPress}
+      activeOpacity={!disabled ? 0.4 : 1}
+      style={[s.btn, s[`${btnType}${outline ? 'Outline' : ''}`], s[size], disabled && { opacity: 0.4 }, style]}
+      underlayColor={!disabled ? (outline ? Colors.transparent : Color(Colors[btnType]).darken(0.1)) : (outline ? Colors.transparent : Color(Colors[btnType]))}
+      onPress={() => !disabled ? onPress() : () => {}}
     >
       <View style={s.wrapper}>
         <Txt textType={textType} style={[s.text, s[`${btnType}${outline ? 'Outline' : ''}Text`], textStyle]}>

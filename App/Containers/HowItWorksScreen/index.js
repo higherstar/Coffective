@@ -5,8 +5,9 @@ import { Image, View } from 'react-native'
 import { Button, TextView } from '../../Components'
 import I18n from 'react-native-i18n'
 import s from './styles'
-import SwipeableViews from 'react-swipeable-views-native'
+import SwipeableViews from 'react-swipeable-views-native/lib/SwipeableViews.scroll'
 import { Images } from '../../Themes'
+import { connect } from 'react-redux'
 
 type TSlide = {
   image: number,
@@ -56,19 +57,21 @@ const Dots = ({active, slides}: TDots) =>
 
 class HowItWorks extends React.Component {
 
-  static navigationOptions = ({navigation}) => ({
-    // TODO https://github.com/react-community/react-navigation/pull/1999
-    headerLeft: <View/>,
-    headerRight: <Button
-      btnType='link'
-      style={s.skipBtn}
-      textStyle={s.skipBtnText}
-      onPress={() => navigation.navigate('LoginScreen')}
-      uppercase={false}
-    >
-      {I18n.t('skip')}
-    </Button>
-  })
+  static navigationOptions = ({navigation, ...props}) => {
+    return ({
+      // TODO https://github.com/react-community/react-navigation/pull/1999
+      headerLeft: <View/>,
+      headerRight: <Button
+        btnType='link'
+        style={s.skipBtn}
+        textStyle={s.skipBtnText}
+        onPress={() => navigation.navigate('LoginScreen')}
+        uppercase={false}
+      >
+        {I18n.t('skip')}
+      </Button>
+    })
+  }
 
   state = {
     slideIndex: 0,
@@ -101,6 +104,16 @@ class HowItWorks extends React.Component {
     ]
   }
 
+  componentWillReceiveProps (nextProps) {
+    // if (nextProps.navigation.state.routeName !== this.props.navigation.state.routeName) {
+    //   this.resetCurrentSlideIndex()
+    // }
+  }
+
+  resetCurrentSlideIndex () {
+    this.setState({ slideIndex: 0 })
+  }
+
   onSlideChange = (slideIndex: number) => {
     this.setState({slideIndex})
   }
@@ -131,4 +144,11 @@ class HowItWorks extends React.Component {
   }
 }
 
-export default HowItWorks
+const mapStateToProps = state => ({
+  ...state.nav,
+})
+
+const mapDispatchToProps = {
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(HowItWorks)

@@ -10,9 +10,11 @@ import I18n from 'react-native-i18n'
 import s from './styles'
 import type { TRegistration } from './types'
 
+const required = value => value ? undefined : 'Required'
+
 class RegistrationScreen extends React.Component {
   render () {
-    const {loading, navigation}: TRegistration = this.props
+    const {loading, navigation, valid}: TRegistration = this.props
     return (
       <ScrollView
         style={s.scrollContainer}
@@ -29,6 +31,7 @@ class RegistrationScreen extends React.Component {
           placeholder={I18n.t('firstName')}
           component={Input}
           blurOnSubmit={false}
+          validate={[ required ]}
         />
         <Field
           inputStyle={s.lastNameInput}
@@ -37,6 +40,7 @@ class RegistrationScreen extends React.Component {
           placeholder={I18n.t('lastName')}
           component={Input}
           blurOnSubmit={false}
+          validate={[ required ]}
         />
         <TextView style={s.myZipCode} textStyle={s.myZipCodeText} textType='h1'>
           {I18n.t('myZipCode')}
@@ -48,12 +52,14 @@ class RegistrationScreen extends React.Component {
           placeholder={I18n.t('zipCode')}
           component={Input}
           blurOnSubmit={false}
+          validate={[ required ]}
         />
         <SafeDataInfo/>
         <Button
           style={s.letsGoBtn}
           onPress={() => navigation.navigate('PersonTypeScreen')}
           uppercase
+          disabled={!valid}
         >
           {I18n.t('letsGo')}
         </Button>

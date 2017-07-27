@@ -12,6 +12,7 @@ export const SET_ETHNICITY = 'User.SET_ETHNICITY'
 export const SET_NOTIFICATIONS = 'User.SET_NOTIFICATIONS'
 export const SET_FEEDBACK = 'User.SET_FEEDBACK'
 export const CLEAR = 'User.CLEAR'
+export const SET_SLIDE_INDEX = 'User.SET_SLIDE_INDEX'
 
 // ------------------------------------
 // Actions
@@ -35,6 +36,7 @@ export const clearUserData = () => (dispatch, getState) => {
   dispatch({ type: CLEAR })
 }
 
+export const changeSlide = (slideIndex) => ({ type: SET_SLIDE_INDEX, slideIndex })
 // ------------------------------------
 // Reducer
 // ------------------------------------
@@ -45,6 +47,7 @@ export const INITIAL_STATE = {
   ethnicity: '',
   notifications: false,
   feedback: false,
+  slideIndex: 0,
 }
 
 export default createReducer(INITIAL_STATE, {
@@ -65,6 +68,9 @@ export default createReducer(INITIAL_STATE, {
   }),
   [SET_FEEDBACK]: (state, { feedback }) => ({
     feedback
+  }),
+  [SET_SLIDE_INDEX]: (state, { slideIndex }) => ({
+    slideIndex
   }),
   [CLEAR]: (state, action) => ({
     // TODO improve

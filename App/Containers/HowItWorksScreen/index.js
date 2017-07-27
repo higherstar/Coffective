@@ -8,6 +8,7 @@ import s from './styles'
 import SwipeableViews from 'react-swipeable-views-native/lib/SwipeableViews.scroll'
 import { Images } from '../../Themes'
 import { connect } from 'react-redux'
+import { changeSlide } from '../../Redux/UserRedux'
 
 type TSlide = {
   image: number,
@@ -57,7 +58,7 @@ const Dots = ({active, slides}: TDots) =>
 
 class HowItWorks extends React.Component {
 
-  static navigationOptions = ({navigation, ...props}) => {
+  static navigationOptions = ({navigation}) => {
     return ({
       // TODO https://github.com/react-community/react-navigation/pull/1999
       headerLeft: <View/>,
@@ -65,7 +66,13 @@ class HowItWorks extends React.Component {
         btnType='link'
         style={s.skipBtn}
         textStyle={s.skipBtnText}
-        onPress={() => navigation.navigate('LoginScreen')}
+        onPress={() => {
+          navigation.navigate('LoginScreen')
+          // TODO improve it
+          setTimeout(() => {
+            navigation.dispatch(changeSlide(0))
+          }, 300)
+        }}
         uppercase={false}
       >
         {I18n.t('skip')}
@@ -74,7 +81,6 @@ class HowItWorks extends React.Component {
   }
 
   state = {
-    slideIndex: 0,
     slides: [
       {
         title: I18n.t('howToInformation'),
@@ -99,37 +105,30 @@ class HowItWorks extends React.Component {
         description: I18n.t('welcomeSlide4Desc'),
         nextBtnTitle: I18n.t('signUp'),
         image: Images.screen4,
-        onPressNextBtn: () => this.props.navigation.navigate('LoginScreen')
+        onPressNextBtn: () => {
+          this.props.navigation.navigate('LoginScreen')
+          // TODO improve it
+          setTimeout(() => {
+            this.props.changeSlide(0)
+          }, 300)
+        }
       }
     ]
   }
 
-  componentWillReceiveProps (nextProps) {
-    // if (nextProps.navigation.state.routeName !== this.props.navigation.state.routeName) {
-    //   this.resetCurrentSlideIndex()
-    // }
-  }
-
-  resetCurrentSlideIndex () {
-    this.setState({ slideIndex: 0 })
-  }
-
-  onSlideChange = (slideIndex: number) => {
-    this.setState({slideIndex})
-  }
-
   render () {
-    const {slideIndex, slides} = this.state
+    const {slides} = this.state
+    const {slideIndex} = this.props
     return <View style={s.container}>
       <SwipeableViews
         index={slideIndex}
-        onChangeIndex={this.onSlideChange}
+        onChangeIndex={this.props.changeSlide}
       >
         {slides.map((slide, i) =>
           <Slide
             key={i}
             {...slide}
-            onPressNextBtn={() => slide.onPressNextBtn ? slide.onPressNextBtn() : this.onSlideChange(i + 1)}
+            onPressNextBtn={() => slide.onPressNextBtn ? slide.onPressNextBtn() : this.props.changeSlide(i + 1)}
           />
         )}
       </SwipeableViews>
@@ -145,10 +144,11 @@ class HowItWorks extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  ...state.nav,
+  slideIndex: state.User.slideIndex
 })
 
 const mapDispatchToProps = {
+  changeSlide
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(HowItWorks)

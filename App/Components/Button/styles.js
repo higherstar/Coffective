@@ -30,7 +30,6 @@ export default StyleSheet.create({
   },
   text: {
     fontSize: Fonts.size.button,
-    fontWeight: '700'
   },
   // sizes
   sm: {

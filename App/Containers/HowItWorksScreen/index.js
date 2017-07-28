@@ -71,7 +71,7 @@ class HowItWorks extends React.Component {
           // TODO improve it
           setTimeout(() => {
             navigation.dispatch(changeSlide(0))
-          }, 300)
+          }, 900)
         }}
         uppercase={false}
       >
@@ -110,7 +110,7 @@ class HowItWorks extends React.Component {
           // TODO improve it
           setTimeout(() => {
             this.props.changeSlide(0)
-          }, 300)
+          }, 900)
         }
       }
     ]

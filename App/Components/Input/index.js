@@ -23,7 +23,7 @@ class Input extends Component {
   }
 
   render () {
-    const { style, inputStyle, input, refField, smartScroll = {}, size = 'md', icon, ...props } = this.props
+    const { style, inputStyle, input, refField, size = 'md', icon, ...props } = this.props
     const ComponentClass = TextInput
     return <View
       style={[s.wrapper, style]}
@@ -36,7 +36,6 @@ class Input extends Component {
         placeholderTextColor={Colors.placeholderColor}
         autoCorrect={false}
         style={[s.input, icon ? s[`${size}InputIcon`] : {}, s[size], inputStyle]}
-        smartScrollOptions={smartScroll}
         {...props}
         ref={refField}
       />

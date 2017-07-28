@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react'
-import { KeyboardAvoidingView, ScrollView, View } from 'react-native'
+import { KeyboardAvoidingView, Platform, ScrollView, View } from 'react-native'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
 import { Button, Input, Loader, TextView } from '../../Components'
@@ -31,10 +31,9 @@ class LoginScreen extends React.Component {
     const {handleSubmit, loading, valid}: TLogin = this.props
     return (
       <KeyboardAvoidingView
-        behavior='position'
-        style={{flex: 1}}
+        behavior={'position'}
       >
-        <ScrollView contentContainerStyle={[s.container]} keyboardShouldPersistTaps='never'>
+        <ScrollView contentContainerStyle={s.container} keyboardShouldPersistTaps='never'>
           <TextView style={s.header} textStyle={s.headerText} textType='h1'>
             {I18n.t('createAccount').toUpperCase()}
           </TextView>
@@ -86,7 +85,7 @@ class LoginScreen extends React.Component {
             placeholder={I18n.t('password')}
             secureTextEntry
             component={Input}
-            onSubmitEditing={this.openRegistrationScreen}
+            onSubmitEditing={handleSubmit(this.openRegistrationScreen)}
             icon={Images.pass}
             validate={[required]}
           />

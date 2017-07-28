@@ -4146,6 +4146,12 @@ react-native-i18n@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/react-native-i18n/-/react-native-i18n-1.0.0.tgz#0c407d9ebb846aae1aa5e05de6503008553f02fd"
 
+react-native-keyboard-aware-scroll-view@^0.2.9:
+  version "0.2.9"
+  resolved "https://registry.yarnpkg.com/react-native-keyboard-aware-scroll-view/-/react-native-keyboard-aware-scroll-view-0.2.9.tgz#2a1ae49cfae90a9665b21763c1f8bd03ed5fb92c"
+  dependencies:
+    react-timer-mixin "^0.13.3"
+
 react-native-notifications@^1.1.13:
   version "1.1.13"
   resolved "https://registry.yarnpkg.com/react-native-notifications/-/react-native-notifications-1.1.13.tgz#28f63c2068af4c683e6a4fd9d1a96df59f0ab90b"

@@ -86,7 +86,7 @@ class LoginScreen extends React.Component {
             placeholder={I18n.t('password')}
             secureTextEntry
             component={Input}
-            onSubmitEditing={handleSubmit}
+            onSubmitEditing={this.openRegistrationScreen}
             icon={Images.pass}
             validate={[required]}
           />

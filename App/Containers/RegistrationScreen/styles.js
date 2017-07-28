@@ -3,7 +3,6 @@ import { Metrics } from '../../Themes'
 
 export default StyleSheet.create({
   scrollContainer: {
-    flex: 1,
   },
   container: {
     minHeight: Metrics.screenHeight - Metrics.navBarHeight,
@@ -11,7 +10,7 @@ export default StyleSheet.create({
   },
   myName: {
     marginTop: Metrics.containerMarginX,
-    marginBottom: Metrics.doubleBaseMargin,
+    marginBottom: Metrics.baseMargin,
   },
   myNameText: {
     textAlign: 'center',

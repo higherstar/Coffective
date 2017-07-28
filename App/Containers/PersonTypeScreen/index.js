@@ -60,15 +60,17 @@ class PersonTypeScreen extends React.Component {
           </TextView>
           <View style={s.personTypes}>
             {personTypes.map(personType =>
-              <TouchableOpacity
-                activeOpacity={1}
-                key={personType.id}
-                style={[s.personType, selectedPersonType && selectedPersonType.id === personType.id && s.selectedPersonType]}
-                onPress={() => this.props.setPersonType(personType)}
-              >
-                <Image source={personType.image} style={s.image}/>
-                <TextView style={s.name} textStyle={s.nameText}>{personType.name}</TextView>
-              </TouchableOpacity>
+              <View key={personType.id} style={s.personTypeWrapper}>
+                <TouchableOpacity
+                  activeOpacity={1}
+                  style={[s.personType, selectedPersonType && selectedPersonType.id === personType.id && s.selectedPersonType]}
+                  onPress={() => this.props.setPersonType(personType)}
+                >
+                  <Image source={personType.image} style={s.image}/>
+                  <TextView style={s.name} textStyle={s.nameText}>{personType.name}</TextView>
+                </TouchableOpacity>
+                {selectedPersonType && selectedPersonType.id === personType.id && <Image source={Images.check} style={s.checkMark}/>}
+              </View>
             )}
           </View>
         </ScrollView>

@@ -20,13 +20,15 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: Metrics.smallMargin
   },
+  personTypeWrapper: {
+  },
   personType: {
     width: (Metrics.screenWidth - Metrics.doubleBaseMargin * 2) / 2,
     height: 150,
     borderColor: Colors.lightGrey,
     borderWidth: 1,
     marginBottom: Metrics.baseMargin,
-    borderRadius: 4
+    borderRadius: 4,
   },
   selectedPersonType: {
     borderColor: Colors.primary
@@ -60,4 +62,11 @@ export default StyleSheet.create({
     // android 5.0+
     elevation: 3,
   },
+  checkMark: {
+    position: 'absolute',
+    width: 20,
+    height: 20,
+    right: -10,
+    bottom: 10,
+  }
 })

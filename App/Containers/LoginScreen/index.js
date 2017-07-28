@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react'
-import { ScrollView, View } from 'react-native'
+import { KeyboardAvoidingView, ScrollView, View } from 'react-native'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
 import { Button, Input, Loader, TextView } from '../../Components'
@@ -19,90 +19,106 @@ const Divider = ({style}) =>
 const required = value => value ? undefined : 'Required'
 
 class LoginScreen extends React.Component {
+
+  email = null
+  password = null
+
   openRegistrationScreen = () => {
     this.props.navigation.navigate('RegistrationScreen')
   }
 
   render () {
-    const {handleSubmit, loading, valid }: TLogin = this.props
+    const {handleSubmit, loading, valid}: TLogin = this.props
     return (
-      <ScrollView
-        style={s.scrollContainer}
-        contentContainerStyle={s.container}
+      <KeyboardAvoidingView
+        behavior='position'
+        style={{flex: 1}}
       >
-        <TextView style={s.header} textStyle={s.headerText} textType='h1'>
-          {I18n.t('createAccount').toUpperCase()}
-        </TextView>
-        <TextView style={s.description} textStyle={s.descriptionText}>
-          {I18n.t('createAccountDescription')}
-        </TextView>
-        <Button
-          btnType='facebook'
-          onPress={() => {}}
-          icon={Images.facebook}
-        >
-          {I18n.t('signUpWithFacebook')}
-        </Button>
-        <Divider />
-        <Button
-          btnType='google'
-          onPress={() => {}}
-          icon={Images.googlePlus}
-        >
-          {I18n.t('signUpWithGoogle')}
-        </Button>
-        <Divider style={s.orDivider}/>
-        <Field
-          style={s.email}
-          inputStyle={s.emailInput}
-          withRef
-          name='email'
-          placeholder={I18n.t('email')}
-          component={Input}
-          blurOnSubmit={false}
-          icon={Images.email}
-          validate={[ required ]}
-        />
-        <Field
-          inputStyle={s.passwordInput}
-          style={s.password}
-          withRef
-          name='password'
-          placeholder={I18n.t('password')}
-          secureTextEntry
-          component={Input}
-          onSubmit={handleSubmit}
-          icon={Images.pass}
-          validate={[ required ]}
-        />
-        <View style={s.actions}>
+        <ScrollView contentContainerStyle={[s.container]} keyboardShouldPersistTaps='never'>
+          <TextView style={s.header} textStyle={s.headerText} textType='h1'>
+            {I18n.t('createAccount').toUpperCase()}
+          </TextView>
+          <TextView style={s.description} textStyle={s.descriptionText}>
+            {I18n.t('createAccountDescription')}
+          </TextView>
           <Button
-            style={s.loginBtn}
-            onPress={handleSubmit}
-            outline
-            btnType='secondary'
-            disabled={!valid}
+            btnType='facebook'
+            onPress={() => {}}
+            icon={Images.facebook}
           >
-            {I18n.t('login')}
+            {I18n.t('signUpWithFacebook')}
           </Button>
+          <Divider />
           <Button
-            style={s.signUpBtn}
-            onPress={this.openRegistrationScreen}
-            btnType='primary'
-            disabled={!valid}
+            btnType='google'
+            onPress={() => {}}
+            icon={Images.googlePlus}
           >
-            {I18n.t('signUp')}
+            {I18n.t('signUpWithGoogle')}
           </Button>
-        </View>
-        <Button
-          onPress={() => {}}
-          btnType='link'
-          uppercase={false}
-        >
-          {I18n.t('termsAndConditions')}
-        </Button>
-        <Loader visible={loading}/>
-      </ScrollView>
+          <Divider/>
+          <Field
+            ref={(componentRef) => this.email = componentRef}
+            refField='email'
+            style={s.email}
+            inputStyle={s.emailInput}
+            focus
+            withRef
+            name='email'
+            placeholder={I18n.t('email')}
+            component={Input}
+            blurOnSubmit={false}
+            keyboardType='email-address'
+            icon={Images.email}
+            validate={[required]}
+            returnKeyType='next'
+            onSubmitEditing={() => this.password.getRenderedComponent().refs.password.focus()}
+          />
+          <Field
+            ref={(componentRef) => this.password = componentRef}
+            refField='password'
+            inputStyle={s.passwordInput}
+            style={s.password}
+            focus
+            withRef
+            name='password'
+            returnKeyType='go'
+            placeholder={I18n.t('password')}
+            secureTextEntry
+            component={Input}
+            onSubmitEditing={handleSubmit}
+            icon={Images.pass}
+            validate={[required]}
+          />
+          <View style={s.actions}>
+            <Button
+              style={s.loginBtn}
+              onPress={handleSubmit}
+              outline
+              btnType='secondary'
+              disabled={!valid}
+            >
+              {I18n.t('login')}
+            </Button>
+            <Button
+              style={s.signUpBtn}
+              onPress={this.openRegistrationScreen}
+              btnType='primary'
+              disabled={!valid}
+            >
+              {I18n.t('signUp')}
+            </Button>
+          </View>
+          <Button
+            onPress={() => {}}
+            btnType='link'
+            uppercase={false}
+          >
+            {I18n.t('termsAndConditions')}
+          </Button>
+          <Loader visible={loading}/>
+        </ScrollView>
+      </KeyboardAvoidingView>
     )
   }
 }

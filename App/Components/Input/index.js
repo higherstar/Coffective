@@ -22,41 +22,23 @@ class Input extends Component {
     scrollTo: 0
   }
 
-  handleLayout = (event: Object) => {
-    this.setState({ scrollTo: event.nativeEvent.layout.y })
-  }
-
-  handleFocus = () => {
-    const { onFocus } = this.props
-    onFocus && onFocus(this.state.scrollTo)
-  }
-
-  handleSubmitEditing = () => {
-    const { nextInput, onNextInputFocus } = this.props
-    onNextInputFocus && onNextInputFocus(nextInput, this)
-  }
-
   render () {
-    const { style, inputStyle, input, nextInput, smartScroll = {}, size = 'md', icon, ...props } = this.props
+    const { style, inputStyle, input, refField, smartScroll = {}, size = 'md', icon, ...props } = this.props
     const ComponentClass = TextInput
     return <View
       style={[s.wrapper, style]}
-      onLayout={this.handleLayout}
     >
       <ComponentClass
         {...input}
-        ref='input'
         underlineColorAndroid='transparent'
         textAlignVertical='top'
         autoCapitalize='none'
         placeholderTextColor={Colors.placeholderColor}
         autoCorrect={false}
-        returnKeyType={nextInput ? 'next' : 'done'}
-        {...props}
         style={[s.input, icon ? s[`${size}InputIcon`] : {}, s[size], inputStyle]}
-        onSubmitEditing={this.handleSubmitEditing}
-        onFocus={this.handleFocus}
         smartScrollOptions={smartScroll}
+        {...props}
+        ref={refField}
       />
       {icon && <Image
         source={icon}

@@ -45,8 +45,8 @@ export const INITIAL_STATE = {
   ageRange: null,
   dueDate: '',
   ethnicity: '',
-  notifications: false,
-  feedback: false,
+  notifications: null,
+  feedback: null,
   slideIndex: 0,
 }
 
@@ -78,7 +78,7 @@ export default createReducer(INITIAL_STATE, {
     ageRange: null,
     dueDate: '',
     ethnicity: '',
-    notifications: false,
-    feedback: false,
+    notifications: null,
+    feedback: null,
   })
 })

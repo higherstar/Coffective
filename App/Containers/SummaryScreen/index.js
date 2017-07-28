@@ -59,8 +59,7 @@ class SummaryScreen extends React.Component {
           <SummaryRow label={I18n.t('summaryZipCode')} value={zip}/>
           <SummaryRow label={I18n.t('summaryExpectedDue')} value={dueDate}/>
           <SummaryRow label={I18n.t('summaryRace')} value={ethnicity}/>
-          <SummaryRow label={I18n.t('summaryNotifications')} value={notifications ? I18n.t('yes') : I18n.t('no')}/>
-          <SummaryRow label={I18n.t('summaryFeedback')} value={feedback ? I18n.t('yes') : I18n.t('no')}/>
+          <SummaryRow label={I18n.t('summaryFeedback')} value={feedback === true ? I18n.t('yes') ? feedback === false : I18n.t('no') : null}/>
         </View>
         <Button style={s.restartBtn} btnType='primary' onPress={this.restart}>
           {I18n.t('restart')}

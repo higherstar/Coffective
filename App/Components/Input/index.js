@@ -23,7 +23,7 @@ class Input extends Component {
   }
 
   render () {
-    const { style, inputStyle, input, refField, size = 'md', icon, ...props } = this.props
+    const { style, inputStyle, onBlurField, input, refField, size = 'md', icon, ...props } = this.props
     const ComponentClass = TextInput
     return <View
       style={[s.wrapper, style]}
@@ -37,6 +37,10 @@ class Input extends Component {
         autoCorrect={false}
         style={[s.input, icon ? s[`${size}InputIcon`] : {}, s[size], inputStyle]}
         {...props}
+        onBlur={(e) => {
+          input.onBlur(e)
+          onBlurField && onBlurField()
+        }}
         ref={refField}
       />
       {icon && <Image

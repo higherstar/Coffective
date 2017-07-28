@@ -38,4 +38,13 @@ export default StyleSheet.create({
     marginBottom: Metrics.containerMarginX,
     marginTop: 'auto'
   },
+  errorZipCodeInput: {
+    borderColor: 'red',
+    textAlign: 'center'
+  },
+  zipError: {
+    fontSize: 12,
+    color: 'red',
+    textAlign: 'center'
+  },
 })

@@ -1,7 +1,7 @@
 // @flow
 
 import createReducer from '../Services/ReduxEnhancer'
-import {reset} from 'redux-form'
+import { reset } from 'redux-form'
 // ------------------------------------
 // Constants
 // ------------------------------------
@@ -14,29 +14,52 @@ export const SET_FEEDBACK = 'User.SET_FEEDBACK'
 export const CLEAR = 'User.CLEAR'
 export const SET_SLIDE_INDEX = 'User.SET_SLIDE_INDEX'
 
+export const GET_CITY_REQUEST = 'User.GET_CITY_REQUEST'
+export const GET_CITY_SUCCESS = 'User.GET_CITY_SUCCESS'
+export const GET_CITY_FAILURE = 'User.GET_CITY_FAILURE'
+
 // ------------------------------------
 // Actions
 // ------------------------------------
 
-export const setPersonType = (personType) => ({ type: SET_PERSON_TYPE, personType })
+export const setPersonType = (personType) => ({type: SET_PERSON_TYPE, personType})
 
-export const setAgeRange = (ageRange) => ({ type: SET_AGE_RANGE, ageRange })
+export const setAgeRange = (ageRange) => ({type: SET_AGE_RANGE, ageRange})
 
-export const setDueDate = (dueDate) => ({ type: SET_DUE_DATE, dueDate })
+export const setDueDate = (dueDate) => ({type: SET_DUE_DATE, dueDate})
 
-export const setEthnicity = (ethnicity) => ({ type: SET_ETHNICITY, ethnicity })
+export const setEthnicity = (ethnicity) => ({type: SET_ETHNICITY, ethnicity})
 
-export const setNotifications = (notifications) => ({ type: SET_NOTIFICATIONS, notifications })
+export const setNotifications = (notifications) => ({type: SET_NOTIFICATIONS, notifications})
 
-export const setFeedback = (feedback) => ({ type: SET_FEEDBACK, feedback })
+export const setFeedback = (feedback) => ({type: SET_FEEDBACK, feedback})
 
 export const clearUserData = () => (dispatch, getState) => {
   dispatch(reset('Login'))
   dispatch(reset('Registration'))
-  dispatch({ type: CLEAR })
+  dispatch({type: CLEAR})
 }
 
-export const changeSlide = (slideIndex) => ({ type: SET_SLIDE_INDEX, slideIndex })
+export const changeSlide = (slideIndex) => ({type: SET_SLIDE_INDEX, slideIndex})
+
+export const getCity = () => (dispatch, getState) => {
+  const { zip } = getState().form.Registration.values
+  console.log('dsad', zip)
+  dispatch({
+    type: GET_CITY_REQUEST,
+    zip,
+    responseSuccess: getCitySuccess,
+    responseFailure: getCityFailure,
+  })
+}
+
+export const getCitySuccess = (zipDetails) => {
+  return ({type: GET_CITY_SUCCESS, zipDetails})
+}
+
+export const getCityFailure = (zipError) => {
+  return ({type: GET_CITY_FAILURE, zipError: 'Invalid zip code'})
+}
 // ------------------------------------
 // Reducer
 // ------------------------------------
@@ -48,28 +71,30 @@ export const INITIAL_STATE = {
   notifications: null,
   feedback: null,
   slideIndex: 0,
+  zipError: null,
+  zipDetails: null,
 }
 
 export default createReducer(INITIAL_STATE, {
-  [SET_PERSON_TYPE]: (state, { personType }) => ({
+  [SET_PERSON_TYPE]: (state, {personType}) => ({
     personType
   }),
-  [SET_AGE_RANGE]: (state, { ageRange }) => ({
+  [SET_AGE_RANGE]: (state, {ageRange}) => ({
     ageRange
   }),
-  [SET_DUE_DATE]: (state, { dueDate }) => ({
+  [SET_DUE_DATE]: (state, {dueDate}) => ({
     dueDate
   }),
-  [SET_ETHNICITY]: (state, { ethnicity }) => ({
+  [SET_ETHNICITY]: (state, {ethnicity}) => ({
     ethnicity
   }),
-  [SET_NOTIFICATIONS]: (state, { notifications }) => ({
+  [SET_NOTIFICATIONS]: (state, {notifications}) => ({
     notifications
   }),
-  [SET_FEEDBACK]: (state, { feedback }) => ({
+  [SET_FEEDBACK]: (state, {feedback}) => ({
     feedback
   }),
-  [SET_SLIDE_INDEX]: (state, { slideIndex }) => ({
+  [SET_SLIDE_INDEX]: (state, {slideIndex}) => ({
     slideIndex
   }),
   [CLEAR]: (state, action) => ({
@@ -80,5 +105,13 @@ export default createReducer(INITIAL_STATE, {
     ethnicity: '',
     notifications: null,
     feedback: null,
-  })
+  }),
+  [GET_CITY_SUCCESS]: (state, {zipDetails}) => ({
+    zipDetails,
+    zipError: null
+  }),
+  [GET_CITY_FAILURE]: (state, {zipError}) => ({
+    zipDetails: null,
+    zipError
+  }),
 })

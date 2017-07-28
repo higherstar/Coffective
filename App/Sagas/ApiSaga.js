@@ -5,12 +5,11 @@ import ApiConfig from '../Config/AppConfig'
 const prepareRequestBody = (body: Object): string => JSON.stringify(body)
 
 const prepareRequestHeaders = (headers = {}): Object => ({
-  'Content-Type': 'application/json',
   ...headers
 })
 
 export default function * (method: string, url: string, data: ?Object): Generator<Object, Object, Object> {
-  const composeUrl: string = ApiConfig.apiUrl + url
+  const composeUrl: string = (url.startsWith('http') ? '' : ApiConfig.apiUrl) + url
   const requestData = {}
 
   if (data) {

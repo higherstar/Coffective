@@ -3,6 +3,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { register } from '../../Redux/RegistrationRedux'
+import { getCity } from '../../Redux/UserRedux'
 import { Field, reduxForm } from 'redux-form'
 import { Button, Input, Loader, SafeDataInfo, TextView } from '../../Components'
 import I18n from 'react-native-i18n'
@@ -23,7 +24,7 @@ class RegistrationScreen extends React.Component {
   }
 
   render () {
-    const {loading, valid, handleSubmit}: TRegistration = this.props
+    const {loading, valid, handleSubmit, zipError}: TRegistration = this.props
     return (
       <KeyboardAwareScrollView>
         <ScrollView contentContainerStyle={s.container} keyboardShouldPersistTaps='never'>
@@ -67,17 +68,18 @@ class RegistrationScreen extends React.Component {
           <Field
             ref={(componentRef) => this.zip = componentRef}
             refField='zip'
-            inputStyle={s.zipCodeInput}
+            inputStyle={zipError ? s.errorZipCodeInput : s.zipCodeInput }
             withRef
             focus
             name='zip'
             placeholder={I18n.t('zipCode')}
             returnKeyType='go'
-            secureTextEntry
             component={Input}
-            onSubmitEditing={handleSubmit(this.openPersonTypeScreen)}
+            blurOnSubmit
+            onBlurField={this.props.getCity}
             validate={[required]}
           />
+          {zipError && <TextView textStyle={s.zipError}>{zipError}</TextView>}
           <SafeDataInfo/>
           <Button
             style={s.letsGoBtn}
@@ -95,11 +97,13 @@ class RegistrationScreen extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  ...state.Registration
+  ...state.Registration,
+  zipError: state.User.zipError
 })
 
 const mapDispatchToProps = {
-  onSubmit: register
+  onSubmit: register,
+  getCity
 }
 
 // TODO https://github.com/react-community/react-navigation/issues/332

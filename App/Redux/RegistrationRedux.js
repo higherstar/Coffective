@@ -41,6 +41,7 @@ export const handleChangeZip = (zip) => (dispatch) => {
   if (!validZip(zip)) {
     dispatch(getCity(zip))
   }
+  dispatch(validateZip())
   dispatch(validate())
 }
 

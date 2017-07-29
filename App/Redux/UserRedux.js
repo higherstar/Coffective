@@ -105,6 +105,8 @@ export default createReducer(INITIAL_STATE, {
     ethnicity: '',
     notifications: null,
     feedback: null,
+    zipError: null,
+    zipDetails: null,
   }),
   [GET_CITY_SUCCESS]: (state, {zipDetails}) => ({
     zipDetails,

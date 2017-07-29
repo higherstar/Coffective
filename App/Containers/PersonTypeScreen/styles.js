@@ -64,9 +64,9 @@ export default StyleSheet.create({
   },
   checkMark: {
     position: 'absolute',
-    width: 20,
-    height: 20,
-    right: -10,
-    bottom: 10,
+    width: 30,
+    height: 30,
+    right: -11,
+    bottom: 8,
   }
 })

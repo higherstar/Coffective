@@ -7,6 +7,7 @@ import createStore from '../Redux'
 import EStyleSheet from 'react-native-extended-stylesheet'
 import NotificationsIOS from 'react-native-notifications'
 import { Platform } from 'react-native'
+import SplashScreen from 'react-native-splash-screen'
 
 EStyleSheet.build({})
 
@@ -46,6 +47,10 @@ class App extends Component {
     //   localizedDescription: 'remote notifications are not supported in the simulator'
     // }
     console.error(error)
+  }
+
+  componentDidMount () {
+    SplashScreen.hide()
   }
 
   componentWillUnmount () {

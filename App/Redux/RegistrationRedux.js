@@ -9,12 +9,14 @@ import createReducer from '../Services/ReduxEnhancer'
 export const CHANGE_FIRST_NAME = 'Register.CHANGE_FIRST_NAME'
 export const CHANGE_LAST_NAME = 'Register.CHANGE_LAST_NAME'
 export const CHANGE_ZIP = 'Register.CHANGE_ZIP'
-export const VALIDATE = 'Login.VALIDATE'
-export const VALIDATE_ZIP = 'Login.VALIDATE_ZIP'
+export const VALIDATE = 'Register.VALIDATE'
+export const VALIDATE_ZIP = 'Register.VALIDATE_ZIP'
 
-export const GET_CITY_REQUEST = 'User.GET_CITY_REQUEST'
-export const GET_CITY_SUCCESS = 'User.GET_CITY_SUCCESS'
-export const GET_CITY_FAILURE = 'User.GET_CITY_FAILURE'
+export const GET_CITY_REQUEST = 'Register.GET_CITY_REQUEST'
+export const GET_CITY_SUCCESS = 'Register.GET_CITY_SUCCESS'
+export const GET_CITY_FAILURE = 'Register.GET_CITY_FAILURE'
+
+export const CLEAR = 'Register.CLEAR'
 
 const required = value => value ? undefined : 'Required'
 const validZip = value =>
@@ -71,6 +73,8 @@ export const validateZip = () => (dispatch, getState) => {
   dispatch({ type: VALIDATE_ZIP, zipError: validZip(zip) })
 }
 
+export const clearRegisterData = () => ({ type: CLEAR })
+
 // ------------------------------------
 // Reducer
 // ------------------------------------
@@ -107,5 +111,15 @@ export default createReducer(INITIAL_STATE, {
   [GET_CITY_FAILURE]: (state, {zipError}) => ({
     zipDetails: null,
     zipError
+  }),
+  [CLEAR]: (state, action) => ({
+    // TODO
+    loading: false,
+    firstName: '',
+    lastName: '',
+    zip: '',
+    valid: false,
+    zipError: false,
+    zipDetails: null,
   }),
 })

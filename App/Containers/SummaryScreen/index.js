@@ -71,29 +71,17 @@ class SummaryScreen extends React.Component {
 }
 
 const mapStateToProps = state => {
-  // TODO make it cleaner
-  let formData = {}
-  if (state.form.Login && state.form.Login.values) {
-    formData = {
-      ...formData,
-      ...state.form.Login.values
-    }
-  }
-  if (state.form.Registration && state.form.Registration.values) {
-    formData = {
-      ...formData,
-      ...state.form.Registration.values
-    }
-  }
   return ({
-    ...formData,
+    email: state.Login.email,
+    firstName: state.Registration.firstName,
+    lastName: state.Registration.lastName,
+    zip: state.Registration.zip,
+    zipDetails: state.Registration.zipDetails,
     personType: state.User.personType,
     ageRange: state.User.ageRange,
     dueDate: state.User.dueDate,
     ethnicity: state.User.ethnicity,
-    notifications: state.User.notifications,
     feedback: state.User.feedback,
-    zipDetails: state.User.zipDetails,
   })
 }
 

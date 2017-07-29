@@ -14,6 +14,8 @@ export const CHANGE_PASSWORD = 'Login.CHANGE_PASSWORD'
 export const VALIDATE = 'Login.VALIDATE'
 export const VALIDATE_EMAIL = 'Login.VALIDATE_EMAIL'
 
+export const CLEAR = 'Login.CLEAR'
+
 const required = value => value ? undefined : 'Required'
 const validEmail = value =>
   value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value) ?
@@ -61,6 +63,8 @@ export const validateEmail = () => (dispatch, getState) => {
   dispatch({ type: VALIDATE_EMAIL, emailError: validEmail(email) })
 }
 
+export const clearLoginData = () => ({ type: CLEAR })
+
 // ------------------------------------
 // Reducer
 // ------------------------------------
@@ -93,5 +97,14 @@ export default createReducer(INITIAL_STATE, {
   }),
   [VALIDATE_EMAIL]: (state, { emailError }) => ({
     emailError
-  })
+  }),
+
+  [CLEAR]: (state, action) => ({
+    // TODO
+    loading: false,
+    email: '',
+    password: '',
+    valid: false,
+    emailError: false
+  }),
 })

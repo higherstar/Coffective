@@ -1,7 +1,8 @@
 // @flow
 
 import createReducer from '../Services/ReduxEnhancer'
-import { reset } from 'redux-form'
+import { clearRegisterData } from './RegistrationRedux'
+import { clearLoginData } from './LoginRedux'
 // ------------------------------------
 // Constants
 // ------------------------------------
@@ -30,10 +31,10 @@ export const setNotifications = (notifications) => ({type: SET_NOTIFICATIONS, no
 
 export const setFeedback = (feedback) => ({type: SET_FEEDBACK, feedback})
 
-export const clearUserData = () => (dispatch, getState) => {
-  dispatch(reset('Login'))
-  dispatch(reset('Registration'))
+export const clearUserData = () => (dispatch) => {
   dispatch({type: CLEAR})
+  dispatch(clearRegisterData())
+  dispatch(clearLoginData())
 }
 
 export const changeSlide = (slideIndex) => ({type: SET_SLIDE_INDEX, slideIndex})
@@ -81,7 +82,5 @@ export default createReducer(INITIAL_STATE, {
     ethnicity: '',
     notifications: null,
     feedback: null,
-    zipError: null,
-    zipDetails: null,
   }),
 })

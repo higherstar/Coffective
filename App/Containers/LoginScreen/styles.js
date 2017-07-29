@@ -29,6 +29,9 @@ export default StyleSheet.create({
   emailInput: {
     borderColor: 'rgba(151, 151, 151, 1)'
   },
+  emailErrorInput: {
+    borderColor: 'red'
+  },
   password: {
     marginBottom: Metrics.baseMargin,
   },
@@ -60,5 +63,13 @@ export default StyleSheet.create({
   },
   orDivider: {
     paddingVertical: Metrics.baseMargin
+  },
+  error: {
+    marginBottom: Metrics.smallMargin,
+  },
+  errorText: {
+    fontSize: 12,
+    color: 'red',
+    textAlign: 'center',
   }
 })

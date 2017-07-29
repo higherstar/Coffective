@@ -1,9 +1,6 @@
 // @flow
 
 import createReducer from '../Services/ReduxEnhancer'
-import { Alert } from 'react-native'
-import { getUserSuccess } from './UserRedux'
-import I18n from 'react-native-i18n'
 
 // ------------------------------------
 // Constants
@@ -11,6 +8,16 @@ import I18n from 'react-native-i18n'
 export const LOGIN_REQUEST = 'Login.REQUEST'
 export const LOGIN_SUCCESS = 'Login.SUCCESS'
 export const LOGIN_FAILURE = 'Login.FAILURE'
+
+export const CHANGE_EMAIL = 'Login.CHANGE_EMAIL'
+export const CHANGE_PASSWORD = 'Login.CHANGE_PASSWORD'
+export const VALIDATE = 'Login.VALIDATE'
+export const VALIDATE_EMAIL = 'Login.VALIDATE_EMAIL'
+
+const required = value => value ? undefined : 'Required'
+const validEmail = value =>
+  value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value) ?
+    'Invalid email address' : undefined
 
 // ------------------------------------
 // Actions
@@ -27,32 +34,42 @@ export const login = (authData: Object) => (dispatch: Function) => new Promise((
 })
 
 export const loginSuccess = (user: Object) => (dispatch: Function) => {
-  dispatch(getUserSuccess(user))
   dispatch({ type: LOGIN_SUCCESS })
 }
 
-export const loginFailure = (errors: Object) => {
-  // Backend returns Object of fields with error
-  // so we get the first key in this object
-  const fieldName = Object.keys(errors)[ 0 ]
-  // TODO
-  // Alert.alert(
-  //   I18n.t('loginErrorTitle'),
-  //   // Backend returns an array of errors as value to selected key
-  //   // so we get the first item in this array
-  //   `${I18n.t(fieldName)}: ${errors[ fieldName ][ 0 ]}`,
-  //   [
-  //     { text: I18n.t('ok') }
-  //   ]
-  // )
+export const loginFailure = () => {
   return { type: LOGIN_FAILURE }
+}
+
+export const handleChangeEmail = (email) => (dispatch) => {
+  dispatch({ type: CHANGE_EMAIL, email })
+  dispatch(validate())
+}
+
+export const handleChangePassword = (password) => (dispatch) => {
+  dispatch({ type: CHANGE_PASSWORD, password })
+  dispatch(validate())
+}
+
+export const validate = () => (dispatch, getState) => {
+  const { email, password } = getState().Login
+  dispatch({ type: VALIDATE, valid: !required(email) && !required(password) && !validEmail(email) })
+}
+
+export const validateEmail = () => (dispatch, getState) => {
+  const { email } = getState().Login
+  dispatch({ type: VALIDATE_EMAIL, emailError: validEmail(email) })
 }
 
 // ------------------------------------
 // Reducer
 // ------------------------------------
 export const INITIAL_STATE = {
-  loading: false
+  loading: false,
+  email: '',
+  password: '',
+  valid: false,
+  emailError: false
 }
 
 export default createReducer(INITIAL_STATE, {
@@ -64,5 +81,17 @@ export default createReducer(INITIAL_STATE, {
   }),
   [LOGIN_FAILURE]: (state, { error }) => ({
     loading: false
+  }),
+  [CHANGE_EMAIL]: (state, { email }) => ({
+    email
+  }),
+  [CHANGE_PASSWORD]: (state, { password }) => ({
+    password
+  }),
+  [VALIDATE]: (state, { valid }) => ({
+    valid
+  }),
+  [VALIDATE_EMAIL]: (state, { emailError }) => ({
+    emailError
   })
 })

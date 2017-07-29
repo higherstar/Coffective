@@ -1,22 +1,18 @@
 // @flow
 
 import React from 'react'
-import { KeyboardAvoidingView, Platform, ScrollView, View } from 'react-native'
+import { KeyboardAvoidingView, ScrollView, View } from 'react-native'
 import { connect } from 'react-redux'
-import { Field, reduxForm } from 'redux-form'
 import { Button, Input, Loader, TextView } from '../../Components'
 import { Images } from '../../Themes'
-import { login } from '../../Redux/LoginRedux'
+import { handleChangeEmail, handleChangePassword, login, validate, validateEmail } from '../../Redux/LoginRedux'
 import I18n from 'react-native-i18n'
 import s from './styles'
-import { TLogin } from './types'
 
 const Divider = ({style}) =>
   <TextView style={[s.divider, style]} textStyle={s.dividerText}>
     {I18n.t('or').toUpperCase()}
   </TextView>
-
-const required = value => value ? undefined : 'Required'
 
 class LoginScreen extends React.Component {
 
@@ -27,13 +23,19 @@ class LoginScreen extends React.Component {
     this.props.navigation.navigate('RegistrationScreen')
   }
 
+  handleSubmit = () => {
+    if (this.props.valid) {
+      this.openRegistrationScreen()
+    }
+  }
+
   render () {
-    const {handleSubmit, loading, valid}: TLogin = this.props
+    const {loading, valid, emailError} = this.props
     return (
       <KeyboardAvoidingView
         behavior={'position'}
       >
-        <ScrollView contentContainerStyle={s.container} keyboardShouldPersistTaps='never'>
+        <ScrollView contentContainerStyle={s.container} keyboardShouldPersistTaps='handled'>
           <TextView style={s.header} textStyle={s.headerText} textType='h1'>
             {I18n.t('createAccount').toUpperCase()}
           </TextView>
@@ -56,24 +58,27 @@ class LoginScreen extends React.Component {
             {I18n.t('signUpWithGoogle')}
           </Button>
           <Divider/>
-          <Field
+          <Input
             ref={(componentRef) => this.email = componentRef}
             refField='email'
             style={s.email}
-            inputStyle={s.emailInput}
+            inputStyle={emailError ? s.emailErrorInput : s.emailInput}
             focus
             withRef
             name='email'
             placeholder={I18n.t('email')}
-            component={Input}
-            blurOnSubmit={false}
             keyboardType='email-address'
             icon={Images.email}
-            validate={[required]}
             returnKeyType='next'
-            onSubmitEditing={() => this.password.getRenderedComponent().refs.password.focus()}
+            onSubmitEditing={() => this.password.refs.password.focus()}
+            onChangeText={this.props.handleChangeEmail}
+            onBlur={() => {
+              this.props.validate()
+              this.props.validateEmail()
+            }}
           />
-          <Field
+          {emailError && <TextView style={s.error} textStyle={s.errorText}>Invalid email address</TextView>}
+          <Input
             ref={(componentRef) => this.password = componentRef}
             refField='password'
             inputStyle={s.passwordInput}
@@ -84,15 +89,16 @@ class LoginScreen extends React.Component {
             returnKeyType='go'
             placeholder={I18n.t('password')}
             secureTextEntry
-            component={Input}
-            onSubmitEditing={handleSubmit(this.openRegistrationScreen)}
+            onSubmitEditing={this.props.handleSubmit}
             icon={Images.pass}
-            validate={[required]}
+            onChangeText={this.props.handleChangePassword}
+            onBlur={this.props.validate}
+            blurOnSubmit
           />
           <View style={s.actions}>
             <Button
               style={s.loginBtn}
-              onPress={handleSubmit}
+              onPress={this.props.login}
               outline
               btnType='secondary'
               disabled={!valid}
@@ -127,13 +133,15 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = {
-  onSubmit: login
+  login,
+  validate,
+  validateEmail,
+  handleChangeEmail,
+  handleChangePassword,
 }
 
 // TODO https://github.com/react-community/react-navigation/issues/332
-const LoginScreenWrapper = connect(mapStateToProps, mapDispatchToProps)(reduxForm({
-  form: 'Login'
-})(LoginScreen))
+const LoginScreenWrapper = connect(mapStateToProps, mapDispatchToProps)(LoginScreen)
 
 LoginScreenWrapper.navigationOptions = {
   headerRight: <View/>

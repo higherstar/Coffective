@@ -14,10 +14,6 @@ export const SET_FEEDBACK = 'User.SET_FEEDBACK'
 export const CLEAR = 'User.CLEAR'
 export const SET_SLIDE_INDEX = 'User.SET_SLIDE_INDEX'
 
-export const GET_CITY_REQUEST = 'User.GET_CITY_REQUEST'
-export const GET_CITY_SUCCESS = 'User.GET_CITY_SUCCESS'
-export const GET_CITY_FAILURE = 'User.GET_CITY_FAILURE'
-
 // ------------------------------------
 // Actions
 // ------------------------------------
@@ -42,24 +38,6 @@ export const clearUserData = () => (dispatch, getState) => {
 
 export const changeSlide = (slideIndex) => ({type: SET_SLIDE_INDEX, slideIndex})
 
-export const getCity = () => (dispatch, getState) => {
-  const { zip } = getState().form.Registration.values
-  console.log('dsad', zip)
-  dispatch({
-    type: GET_CITY_REQUEST,
-    zip,
-    responseSuccess: getCitySuccess,
-    responseFailure: getCityFailure,
-  })
-}
-
-export const getCitySuccess = (zipDetails) => {
-  return ({type: GET_CITY_SUCCESS, zipDetails})
-}
-
-export const getCityFailure = (zipError) => {
-  return ({type: GET_CITY_FAILURE, zipError: 'Invalid zip code'})
-}
 // ------------------------------------
 // Reducer
 // ------------------------------------
@@ -71,8 +49,6 @@ export const INITIAL_STATE = {
   notifications: null,
   feedback: null,
   slideIndex: 0,
-  zipError: null,
-  zipDetails: null,
 }
 
 export default createReducer(INITIAL_STATE, {
@@ -107,13 +83,5 @@ export default createReducer(INITIAL_STATE, {
     feedback: null,
     zipError: null,
     zipDetails: null,
-  }),
-  [GET_CITY_SUCCESS]: (state, {zipDetails}) => ({
-    zipDetails,
-    zipError: null
-  }),
-  [GET_CITY_FAILURE]: (state, {zipError}) => ({
-    zipDetails: null,
-    zipError
   }),
 })

@@ -2,16 +2,20 @@
 
 import React from 'react'
 import { connect } from 'react-redux'
-import { register } from '../../Redux/RegistrationRedux'
-import { getCity } from '../../Redux/UserRedux'
-import { Field, reduxForm } from 'redux-form'
+import {
+  getCity,
+  handleChangeFirstName,
+  handleChangeLastName,
+  handleChangeZip,
+  validate,
+  validateZip
+} from '../../Redux/RegistrationRedux'
 import { Button, Input, Loader, SafeDataInfo, TextView } from '../../Components'
 import I18n from 'react-native-i18n'
 import s from './styles'
 import type { TRegistration } from './types'
 import { ScrollView } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-const required = value => value ? undefined : 'Required'
 
 class RegistrationScreen extends React.Component {
 
@@ -23,15 +27,22 @@ class RegistrationScreen extends React.Component {
     this.props.navigation.navigate('PersonTypeScreen')
   }
 
+  handleSubmit = () => {
+    if (this.props.valid) {
+      this.openPersonTypeScreen()
+    }
+  }
+
   render () {
-    const {loading, valid, handleSubmit, zipError}: TRegistration = this.props
+    const {loading, valid, firstName, lastName, zip, zipError}: TRegistration = this.props
     return (
       <KeyboardAwareScrollView>
-        <ScrollView contentContainerStyle={s.container} keyboardShouldPersistTaps='never'>
+        <ScrollView contentContainerStyle={s.container} keyboardShouldPersistTaps='handled'>
           <TextView style={s.myName} textStyle={s.myNameText} textType='h1'>
             {I18n.t('myName')}
           </TextView>
-          <Field
+          <Input
+            value={firstName}
             ref={(componentRef) => this.firstName = componentRef}
             refField='firstName'
             focus
@@ -40,15 +51,13 @@ class RegistrationScreen extends React.Component {
             withRef
             name='firstName'
             placeholder={I18n.t('firstName')}
-            component={Input}
-            blurOnSubmit={false}
-            validate={[required]}
             returnKeyType='next'
-            onSubmitEditing={() => {
-              this.lastName.getRenderedComponent().refs.lastName.focus()
-            }}
+            onChangeText={this.props.handleChangeFirstName}
+            onSubmitEditing={() => this.lastName.refs.lastName.focus()}
+            onBlur={this.props.validate}
           />
-          <Field
+          <Input
+            value={lastName}
             ref={(componentRef) => this.lastName = componentRef}
             refField='lastName'
             inputStyle={s.lastNameInput}
@@ -56,16 +65,16 @@ class RegistrationScreen extends React.Component {
             focus
             name='lastName'
             placeholder={I18n.t('lastName')}
-            component={Input}
-            blurOnSubmit={false}
-            validate={[required]}
             returnKeyType='next'
-            onSubmitEditing={() => this.zip.getRenderedComponent().refs.zip.focus()}
+            onChangeText={this.props.handleChangeLastName}
+            onSubmitEditing={() => this.zip.refs.zip.focus()}
+            onBlur={this.props.validate}
           />
           <TextView style={s.myZipCode} textStyle={s.myZipCodeText} textType='h1'>
             {I18n.t('myZipCode')}
           </TextView>
-          <Field
+          <Input
+            value={zip}
             ref={(componentRef) => this.zip = componentRef}
             refField='zip'
             inputStyle={zipError ? s.errorZipCodeInput : s.zipCodeInput }
@@ -74,16 +83,18 @@ class RegistrationScreen extends React.Component {
             name='zip'
             placeholder={I18n.t('zipCode')}
             returnKeyType='go'
-            component={Input}
             blurOnSubmit
-            onBlurField={this.props.getCity}
-            validate={[required]}
+            onChangeText={this.props.handleChangeZip}
+            onBlur={() => {
+              this.props.validate()
+              this.props.validateZip()
+            }}
           />
-          {zipError && <TextView textStyle={s.zipError}>{zipError}</TextView>}
+          {zipError && <TextView textStyle={s.zipError}>Invalid zip code</TextView>}
           <SafeDataInfo/>
           <Button
             style={s.letsGoBtn}
-            onPress={handleSubmit(this.openPersonTypeScreen)}
+            onPress={this.handleSubmit}
             uppercase
             disabled={!valid}
           >
@@ -98,18 +109,19 @@ class RegistrationScreen extends React.Component {
 
 const mapStateToProps = state => ({
   ...state.Registration,
-  zipError: state.User.zipError
 })
 
 const mapDispatchToProps = {
-  onSubmit: register,
-  getCity
+  getCity,
+  handleChangeFirstName,
+  handleChangeLastName,
+  handleChangeZip,
+  validate,
+  validateZip,
 }
 
 // TODO https://github.com/react-community/react-navigation/issues/332
-const RegistrationScreenWrapper = connect(mapStateToProps, mapDispatchToProps)(reduxForm({
-  form: 'Registration'
-})(RegistrationScreen))
+const RegistrationScreenWrapper = connect(mapStateToProps, mapDispatchToProps)(RegistrationScreen)
 
 RegistrationScreenWrapper.navigationOptions = {}
 

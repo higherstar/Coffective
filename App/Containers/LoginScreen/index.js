@@ -30,7 +30,7 @@ class LoginScreen extends React.Component {
   }
 
   render () {
-    const {loading, valid, emailError} = this.props
+    const {loading, valid, emailError, email, password} = this.props
     return (
       <KeyboardAvoidingView
         behavior={'position'}
@@ -59,6 +59,7 @@ class LoginScreen extends React.Component {
           </Button>
           <Divider/>
           <Input
+            value={email}
             ref={(componentRef) => this.email = componentRef}
             refField='email'
             style={s.email}
@@ -79,6 +80,7 @@ class LoginScreen extends React.Component {
           />
           {emailError && <TextView style={s.error} textStyle={s.errorText}>Invalid email address</TextView>}
           <Input
+            value={password}
             ref={(componentRef) => this.password = componentRef}
             refField='password'
             inputStyle={s.passwordInput}

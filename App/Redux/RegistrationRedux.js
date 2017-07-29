@@ -1,71 +1,111 @@
 // @flow
 
 import createReducer from '../Services/ReduxEnhancer'
-import { Alert } from 'react-native'
-import { getUserSuccess } from './UserRedux'
-import I18n from 'react-native-i18n'
 
 // ------------------------------------
 // Constants
 // ------------------------------------
-export const REGISTER_REQUEST = 'Register.REQUEST'
-export const REGISTER_SUCCESS = 'Register.SUCCESS'
-export const REGISTER_FAILURE = 'Register.FAILURE'
+
+export const CHANGE_FIRST_NAME = 'Register.CHANGE_FIRST_NAME'
+export const CHANGE_LAST_NAME = 'Register.CHANGE_LAST_NAME'
+export const CHANGE_ZIP = 'Register.CHANGE_ZIP'
+export const VALIDATE = 'Login.VALIDATE'
+export const VALIDATE_ZIP = 'Login.VALIDATE_ZIP'
+
+export const GET_CITY_REQUEST = 'User.GET_CITY_REQUEST'
+export const GET_CITY_SUCCESS = 'User.GET_CITY_SUCCESS'
+export const GET_CITY_FAILURE = 'User.GET_CITY_FAILURE'
+
+const required = value => value ? undefined : 'Required'
+const validZip = value =>
+  value && value.length === 5 && /^[0-9]+$/.test(value) ? undefined : 'Invalid zip code'
 
 // ------------------------------------
 // Actions
 // ------------------------------------
-export const register = (authData: Object) => (dispatch: Function) => new Promise((resolve, reject) => {
-  dispatch({
-    type: REGISTER_REQUEST,
-    authData: {
-      ...authData,
-      source: 'mobile-app'
-    },
-    responseSuccess: registerSuccess,
-    responseFailure: registerFailure,
-    resolve,
-    reject
-  })
-})
 
-export const registerSuccess = (user: Object) => (dispatch: Function) => {
-  // dispatch(getUserSuccess(user))
-  dispatch({ type: REGISTER_SUCCESS })
+export const handleChangeFirstName = (firstName) => (dispatch) => {
+  dispatch({ type: CHANGE_FIRST_NAME, firstName })
+  dispatch(validate())
 }
 
-export const registerFailure = (errors: Object) => {
-  // Backend returns Object of fields with error
-  // so we get the first key in this object
-  const fieldName = Object.keys(errors)[ 0 ]
-  // TODO
-  // Alert.alert(
-  //   I18n.t('registerErrorTitle'),
-  //   // Backend returns an array of errors as value to selected key
-  //   // so we get the first item in this array
-  //   `${I18n.t(fieldName)}: ${errors[ fieldName ][ 0 ]}`,
-  //   [
-  //     { text: I18n.t('ok') }
-  //   ]
-  // )
-  return { type: REGISTER_FAILURE }
+export const handleChangeLastName = (lastName) => (dispatch) => {
+  dispatch({ type: CHANGE_LAST_NAME, lastName })
+  dispatch(validate())
+}
+
+export const handleChangeZip = (zip) => (dispatch) => {
+  dispatch({ type: CHANGE_ZIP, zip })
+  if (!validZip(zip)) {
+    dispatch(getCity(zip))
+  }
+  dispatch(validate())
+}
+
+export const validate = () => (dispatch, getState) => {
+  const { firstName, lastName, zip, zipError, zipDetails } = getState().Registration
+  dispatch({ type: VALIDATE, valid: !required(firstName) && !required(lastName) && !required(zip) && !validZip(zip) && !zipError && zipDetails})
+}
+
+export const getCity = (zip) => (dispatch, getState) => {
+  dispatch({
+    type: GET_CITY_REQUEST,
+    zip,
+    responseSuccess: getCitySuccess,
+    responseFailure: getCityFailure,
+  })
+}
+
+export const getCitySuccess = (zipDetails) => (dispatch) => {
+  dispatch({type: GET_CITY_SUCCESS, zipDetails})
+  dispatch(validate())
+}
+
+export const getCityFailure = (zipError) => (dispatch) => {
+  dispatch({type: GET_CITY_FAILURE, zipError: true})
+  dispatch(validate())
+}
+
+export const validateZip = () => (dispatch, getState) => {
+  const { zip } = getState().Registration
+  dispatch({ type: VALIDATE_ZIP, zipError: validZip(zip) })
 }
 
 // ------------------------------------
 // Reducer
 // ------------------------------------
 export const INITIAL_STATE = {
-  loading: false
+  loading: false,
+  firstName: '',
+  lastName: '',
+  zip: '',
+  valid: false,
+  zipError: false,
+  zipDetails: null,
 }
 
 export default createReducer(INITIAL_STATE, {
-  [REGISTER_REQUEST]: (state, action) => ({
-    loading: true
+  [CHANGE_FIRST_NAME]: (state, { firstName }) => ({
+    firstName
   }),
-  [REGISTER_SUCCESS]: (state, action) => ({
-    loading: false
+  [CHANGE_LAST_NAME]: (state, { lastName }) => ({
+    lastName
   }),
-  [REGISTER_FAILURE]: (state, { error }) => ({
-    loading: false
-  })
+  [CHANGE_ZIP]: (state, { zip }) => ({
+    zip
+  }),
+  [VALIDATE]: (state, { valid }) => ({
+    valid
+  }),
+  [VALIDATE_ZIP]: (state, { zipError }) => ({
+    zipError
+  }),
+  [GET_CITY_SUCCESS]: (state, {zipDetails}) => ({
+    zipDetails,
+    zipError: false
+  }),
+  [GET_CITY_FAILURE]: (state, {zipError}) => ({
+    zipDetails: null,
+    zipError
+  }),
 })

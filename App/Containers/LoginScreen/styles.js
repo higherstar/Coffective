@@ -6,7 +6,6 @@ export default StyleSheet.create({
     flex: 1,
   },
   container: {
-    minHeight: Metrics.screenHeight - Metrics.navBarHeight,
     paddingHorizontal: Metrics.containerMarginX
   },
   header: {

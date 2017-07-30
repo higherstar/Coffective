@@ -1,10 +1,10 @@
 // @flow
 
 import React from 'react'
-import { View } from 'react-native'
+import { View, Keyboard, LayoutAnimation } from 'react-native'
 import { connect } from 'react-redux'
 import { Button, Input, Loader, TextView } from '../../Components'
-import { Images } from '../../Themes'
+import { Images, Metrics } from '../../Themes'
 import { handleChangeEmail, handleChangePassword, login, validate, validateEmail } from '../../Redux/LoginRedux'
 import I18n from 'react-native-i18n'
 import s from './styles'
@@ -20,6 +20,41 @@ class LoginScreen extends React.Component {
 
   email = null
   password = null
+  keyboardDidShowListener = {}
+  keyboardDidHideListener = {}
+
+  state = {
+    visibleHeight: Metrics.screenHeight,
+  }
+
+  componentWillMount () {
+    // Using keyboardWillShow/Hide looks 1,000 times better, but doesn't work on Android
+    // TODO: Revisit this if Android begins to support - https://github.com/facebook/react-native/issues/3468
+    this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this.keyboardDidShow)
+    this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this.keyboardDidHide)
+  }
+
+  componentWillUnmount () {
+    this.keyboardDidShowListener.remove()
+    this.keyboardDidHideListener.remove()
+  }
+
+  keyboardDidShow = (e) => {
+    // Animation types easeInEaseOut/linear/spring
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
+    let newSize = Metrics.screenHeight - e.endCoordinates.height
+    this.setState({
+      visibleHeight: newSize,
+    })
+  }
+
+  keyboardDidHide = (e) => {
+    // Animation types easeInEaseOut/linear/spring
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
+    this.setState({
+      visibleHeight: Metrics.screenHeight,
+    })
+  }
 
   openRegistrationScreen = () => {
     this.props.navigation.navigate('RegistrationScreen')
@@ -42,7 +77,7 @@ class LoginScreen extends React.Component {
         resetScrollToCoords={{ x: 0, y: 0 }}
         style={s.scrollContainer}
         keyboardShouldPersistTaps='handled'
-        contentContainerStyle={s.container}
+        contentContainerStyle={[s.container, { minHeight: this.state.visibleHeight - Metrics.navBarHeight }]}
         ref='scroll'
       >
         <TextView style={s.header} textStyle={s.headerText} textType='h1'>

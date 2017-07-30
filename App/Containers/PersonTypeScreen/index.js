@@ -45,9 +45,17 @@ class PersonTypeScreen extends React.Component {
     ]
   }
 
+  proceed = () => {
+    if (this.props.selectedPersonType.id === 1) {
+      this.props.navigation.navigate('SelectDueDateScreen')
+    } else {
+      this.props.navigation.navigate('SelectAgeScreen')
+    }
+  }
+
   render () {
     const {personTypes} = this.state
-    const {navigation, selectedPersonType} = this.props
+    const { selectedPersonType} = this.props
     return (
       <View style={s.container}>
         <ScrollView style={s.scrollContainer}>
@@ -76,7 +84,7 @@ class PersonTypeScreen extends React.Component {
         </ScrollView>
         <Button
           style={s.proceedBtn}
-          onPress={() => navigation.navigate('SelectDueDateScreen')}
+          onPress={() => this.proceed()}
           disabled={!selectedPersonType}
         >
           {I18n.t('proceed')}

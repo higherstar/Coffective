@@ -15,6 +15,7 @@ import I18n from 'react-native-i18n'
 import s from './styles'
 import type { TRegistration } from './types'
 import { ScrollView, Keyboard, LayoutAnimation, KeyboardAvoidingView, Platform } from 'react-native'
+import dismissKeyboard from 'react-native/Libraries/Utilities/dismissKeyboard'
 
 class RegistrationScreen extends React.Component {
 
@@ -32,6 +33,7 @@ class RegistrationScreen extends React.Component {
 
   handleSubmit = () => {
     if (this.props.valid) {
+      dismissKeyboard()
       this.openPersonTypeScreen()
     }
   }
@@ -69,9 +71,9 @@ class RegistrationScreen extends React.Component {
     return (
       <KeyboardAvoidingView
         behavior={'padding'}
-        keyboardVerticalOffset={Platform.select({ios: 0, android: 25})}
+        keyboardVerticalOffset={Platform.select({ios: 0, android: this.state.keyboardHeight})}
       >
-        <ScrollView contentContainerStyle={s.container} keyboardShouldPersistTaps='handled' ref='scroll'>
+        <ScrollView contentContainerStyle={s.container} keyboardShouldPersistTaps='always' ref='scroll'>
           <TextView style={s.myName} textStyle={s.myNameText} textType='h1'>
             {I18n.t('myName')}
           </TextView>
@@ -89,6 +91,7 @@ class RegistrationScreen extends React.Component {
             onChangeText={this.props.handleChangeFirstName}
             onSubmitEditing={() => this.lastName.refs.lastName.focus()}
             onBlur={this.props.validate}
+            blurOnSubmit={false}
           />
           <Input
             value={lastName}
@@ -103,6 +106,7 @@ class RegistrationScreen extends React.Component {
             onChangeText={this.props.handleChangeLastName}
             onSubmitEditing={() => this.zip.refs.zip.focus()}
             onBlur={this.props.validate}
+            blurOnSubmit={false}
           />
           <TextView style={s.myZipCode} textStyle={s.myZipCodeText} textType='h1'>
             {I18n.t('myZipCode')}
@@ -127,6 +131,7 @@ class RegistrationScreen extends React.Component {
               this.refs.scroll.scrollTo({ y: 0 })
             }}
             onSubmitEditing={() => this.handleSubmit()}
+            blurOnSubmit
           />
           {zipError && <TextView textStyle={s.zipError}>Invalid zip code</TextView>}
           <SafeDataInfo/>

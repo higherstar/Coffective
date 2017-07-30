@@ -79,6 +79,7 @@ class LoginScreen extends React.Component {
         keyboardShouldPersistTaps='handled'
         contentContainerStyle={[s.container, { minHeight: this.state.visibleHeight - Metrics.navBarHeight }]}
         ref='scroll'
+        enableOnAndroid
       >
         <TextView style={s.header} textStyle={s.headerText} textType='h1'>
           {I18n.t('createAccount').toUpperCase()}

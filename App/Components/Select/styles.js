@@ -51,7 +51,6 @@ export default StyleSheet.create({
     right: 0,
     top: -4,
     bottom: 0,
-    marginHorizontal: Metrics.baseMargin,
   },
   iosField: {
     position: 'relative'

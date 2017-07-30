@@ -14,7 +14,7 @@ import { Button, Input, Loader, SafeDataInfo, TextView } from '../../Components'
 import I18n from 'react-native-i18n'
 import s from './styles'
 import type { TRegistration } from './types'
-import { ScrollView } from 'react-native'
+import { ScrollView, Keyboard, LayoutAnimation } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 class RegistrationScreen extends React.Component {
@@ -22,6 +22,10 @@ class RegistrationScreen extends React.Component {
   firstName = null
   lastName = null
   zip = null
+
+  state = {
+    keyboardHeight: 0
+  }
 
   openPersonTypeScreen = () => {
     this.props.navigation.navigate('PersonTypeScreen')
@@ -33,11 +37,39 @@ class RegistrationScreen extends React.Component {
     }
   }
 
+  componentWillMount () {
+    // Using keyboardWillShow/Hide looks 1,000 times better, but doesn't work on Android
+    // TODO: Revisit this if Android begins to support - https://github.com/facebook/react-native/issues/3468
+    this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this.keyboardDidShow)
+    this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this.keyboardDidHide)
+  }
+
+  componentWillUnmount () {
+    this.keyboardDidShowListener.remove()
+    this.keyboardDidHideListener.remove()
+  }
+
+  keyboardDidShow = (e) => {
+    // Animation types easeInEaseOut/linear/spring
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
+    this.setState({
+      keyboardHeight: e.endCoordinates.height
+    })
+  }
+
+  keyboardDidHide = (e) => {
+    // Animation types easeInEaseOut/linear/spring
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
+    this.setState({
+      keyboardHeight: 0
+    })
+  }
+
   render () {
     const {loading, valid, firstName, lastName, zip, zipError}: TRegistration = this.props
     return (
       <KeyboardAwareScrollView>
-        <ScrollView contentContainerStyle={s.container} keyboardShouldPersistTaps='handled'>
+        <ScrollView contentContainerStyle={s.container} keyboardShouldPersistTaps='handled' ref='scroll'>
           <TextView style={s.myName} textStyle={s.myNameText} textType='h1'>
             {I18n.t('myName')}
           </TextView>
@@ -85,9 +117,13 @@ class RegistrationScreen extends React.Component {
             returnKeyType='go'
             blurOnSubmit
             onChangeText={this.props.handleChangeZip}
+            onFocus={() => {
+              this.refs.scroll.scrollTo(this.state.keyboardHeight)
+            }}
             onBlur={() => {
               this.props.validate()
               this.props.validateZip()
+              this.refs.scroll.scrollTo(0)
             }}
           />
           {zipError && <TextView textStyle={s.zipError}>Invalid zip code</TextView>}

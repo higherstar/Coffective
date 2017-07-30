@@ -71,7 +71,7 @@ export const getCityFailure = (zipError) => (dispatch) => {
 
 export const validateZip = () => (dispatch, getState) => {
   const { zip } = getState().Registration
-  dispatch({ type: VALIDATE_ZIP, zipError: validZip(zip) })
+  dispatch({ type: VALIDATE_ZIP, zipError: !!validZip(zip) })
 }
 
 export const clearRegisterData = () => ({ type: CLEAR })

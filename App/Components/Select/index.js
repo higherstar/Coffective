@@ -18,7 +18,7 @@ class Select extends Component {
     super(props)
 
     const {defaultOption, options} = props
-    const newOption = getItemIndex(options, defaultOption)
+    const newOption = getItemIndex(options, defaultOption || options[0])
 
     this.state = {
       modalVisible: false,
@@ -30,7 +30,7 @@ class Select extends Component {
 
   componentWillReceiveProps (nextProps: Object) {
     const {defaultOption, options} = nextProps
-    const newOption = getItemIndex(options, defaultOption)
+    const newOption = getItemIndex(options, defaultOption || options[0])
     if (defaultOption) {
       this.setState({
         confirmedOption: newOption,
@@ -105,7 +105,8 @@ class Select extends Component {
   }
 
   shouldValueChange = (value: number) => {
-    if (this.state.confirmedOption !== value) {
+    console.log('value', value)
+    if (this.state.selectedOption !== value) {
       this.onValueChange(value)
     }
   }

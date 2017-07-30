@@ -83,6 +83,7 @@ class RegistrationScreen extends React.Component {
         keyboardShouldPersistTaps='handled'
         contentContainerStyle={[s.container, { minHeight: this.state.visibleHeight - Metrics.navBarHeight }]}
         ref='scroll'
+        enableOnAndroid
       >
         <TextView style={s.myName} textStyle={s.myNameText} textType='h1'>
           {I18n.t('myName')}

@@ -17,6 +17,7 @@ const images = {
   facebook: require('../Images/facebook.png'),
   googlePlus: require('../Images/google_plus.png'),
   check: require('../Images/check.png'),
+  arrowDown: require('../Images/arrow.png'),
 }
 
 export default images

@@ -43,5 +43,17 @@ export default StyleSheet.create({
     height: 'auto'
   },
   cancelText: {
+  },
+  iosArrowDown: {
+    width: 22,
+    height: 20,
+    position: 'absolute',
+    right: 0,
+    top: -4,
+    bottom: 0,
+    marginHorizontal: Metrics.baseMargin,
+  },
+  iosField: {
+    position: 'relative'
   }
 })

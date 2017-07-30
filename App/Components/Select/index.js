@@ -1,11 +1,12 @@
 // @flow
 
 import React, { Component } from 'react'
-import { Animated, Modal, Picker, Platform, Text, TouchableHighlight, View } from 'react-native'
+import { Animated, Modal, Picker, Platform, Text, TouchableHighlight, View, Image } from 'react-native'
 import dismissKeyboard from 'react-native/Libraries/Utilities/dismissKeyboard'
 import I18n from 'react-native-i18n'
 import { Button } from '../'
 import s from './styles'
+import { Images } from '../../Themes'
 
 function getItemIndex (array: Array<string>, item: string) {
   return array.indexOf(item)
@@ -122,10 +123,11 @@ class Select extends Component {
         <View>
           {Platform.OS === 'ios' ? (
             <View>
-              <View>
+              <View style={s.iosField}>
                 <Text style={s.selectedOptionText}>
                   {options[confirmedOption] || placeholder }
                 </Text>
+                <Image source={Images.arrowDown} style={s.iosArrowDown}/>
               </View>
               <Modal
                 transparent

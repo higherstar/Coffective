@@ -10,32 +10,25 @@ import {
   validate,
   validateZip
 } from '../../Redux/RegistrationRedux'
-import { Button, Input, Loader, SafeDataInfo, TextView } from '../../Components'
+import { Button, Input, SafeDataInfo, TextView } from '../../Components'
+import { Metrics } from '../../Themes'
 import I18n from 'react-native-i18n'
 import s from './styles'
 import type { TRegistration } from './types'
-import { ScrollView, Keyboard, LayoutAnimation, KeyboardAvoidingView, Platform } from 'react-native'
 import dismissKeyboard from 'react-native/Libraries/Utilities/dismissKeyboard'
+import { Keyboard, LayoutAnimation } from 'react-native'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 class RegistrationScreen extends React.Component {
 
   firstName = null
   lastName = null
   zip = null
+  keyboardDidShowListener = {}
+  keyboardDidHideListener = {}
 
   state = {
-    keyboardHeight: 0
-  }
-
-  openPersonTypeScreen = () => {
-    this.props.navigation.navigate('PersonTypeScreen')
-  }
-
-  handleSubmit = () => {
-    if (this.props.valid) {
-      dismissKeyboard()
-      this.openPersonTypeScreen()
-    }
+    visibleHeight: Metrics.screenHeight,
   }
 
   componentWillMount () {
@@ -53,8 +46,9 @@ class RegistrationScreen extends React.Component {
   keyboardDidShow = (e) => {
     // Animation types easeInEaseOut/linear/spring
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
+    let newSize = Metrics.screenHeight - e.endCoordinates.height
     this.setState({
-      keyboardHeight: e.endCoordinates.height
+      visibleHeight: newSize,
     })
   }
 
@@ -62,90 +56,100 @@ class RegistrationScreen extends React.Component {
     // Animation types easeInEaseOut/linear/spring
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
     this.setState({
-      keyboardHeight: 0
+      visibleHeight: Metrics.screenHeight,
     })
   }
 
+  openPersonTypeScreen = () => {
+    this.props.navigation.navigate('PersonTypeScreen')
+  }
+
+  handleSubmit = () => {
+    if (this.props.valid) {
+      dismissKeyboard()
+      this.openPersonTypeScreen()
+    }
+  }
+
   render () {
-    const {loading, valid, firstName, lastName, zip, zipError}: TRegistration = this.props
+    const {valid, firstName, lastName, zip, zipError}: TRegistration = this.props
     return (
-      <KeyboardAvoidingView
-        behavior={'padding'}
-        keyboardVerticalOffset={Platform.select({ios: 0, android: this.state.keyboardHeight})}
+      <KeyboardAwareScrollView
+        enableAutoAutomaticScroll
+        enableResetScrollToCoords
+        extraHeight={215}
+        resetScrollToCoords={{x: 0, y: 0}}
+        style={s.scrollContainer}
+        keyboardShouldPersistTaps='handled'
+        contentContainerStyle={[s.container, { minHeight: this.state.visibleHeight - Metrics.navBarHeight }]}
+        ref='scroll'
       >
-        <ScrollView contentContainerStyle={s.container} keyboardShouldPersistTaps='always' ref='scroll'>
-          <TextView style={s.myName} textStyle={s.myNameText} textType='h1'>
-            {I18n.t('myName')}
-          </TextView>
-          <Input
-            value={firstName}
-            ref={(componentRef) => this.firstName = componentRef}
-            refField='firstName'
-            focus
-            style={s.firstName}
-            inputStyle={s.firstNameInput}
-            withRef
-            name='firstName'
-            placeholder={I18n.t('firstName')}
-            returnKeyType='next'
-            onChangeText={this.props.handleChangeFirstName}
-            onSubmitEditing={() => this.lastName.refs.lastName.focus()}
-            onBlur={this.props.validate}
-            blurOnSubmit={false}
-          />
-          <Input
-            value={lastName}
-            ref={(componentRef) => this.lastName = componentRef}
-            refField='lastName'
-            inputStyle={s.lastNameInput}
-            withRef
-            focus
-            name='lastName'
-            placeholder={I18n.t('lastName')}
-            returnKeyType='next'
-            onChangeText={this.props.handleChangeLastName}
-            onSubmitEditing={() => this.zip.refs.zip.focus()}
-            onBlur={this.props.validate}
-            blurOnSubmit={false}
-          />
-          <TextView style={s.myZipCode} textStyle={s.myZipCodeText} textType='h1'>
-            {I18n.t('myZipCode')}
-          </TextView>
-          <Input
-            value={zip}
-            ref={(componentRef) => this.zip = componentRef}
-            refField='zip'
-            inputStyle={zipError ? s.errorZipCodeInput : s.zipCodeInput }
-            withRef
-            focus
-            name='zip'
-            placeholder={I18n.t('zipCode')}
-            returnKeyType='go'
-            onChangeText={this.props.handleChangeZip}
-            onFocus={() => {
-              this.refs.scroll.scrollTo({ y: this.state.keyboardHeight })
-            }}
-            onBlur={() => {
-              this.props.validate()
-              this.props.validateZip()
-              this.refs.scroll.scrollTo({ y: 0 })
-            }}
-            onSubmitEditing={() => this.handleSubmit()}
-            blurOnSubmit
-          />
-          {zipError && <TextView textStyle={s.zipError}>Invalid zip code</TextView>}
-          <SafeDataInfo/>
-          <Button
-            style={s.letsGoBtn}
-            onPress={this.handleSubmit}
-            uppercase
-            disabled={!valid}
-          >
-            {I18n.t('letsGo')}
-          </Button>
-          <Loader visible={loading}/>
-        </ScrollView>
-      </KeyboardAvoidingView>
+        <TextView style={s.myName} textStyle={s.myNameText} textType='h1'>
+          {I18n.t('myName')}
+        </TextView>
+        <Input
+          value={firstName}
+          ref={(componentRef) => this.firstName = componentRef}
+          refField='firstName'
+          focus
+          style={s.firstName}
+          inputStyle={s.firstNameInput}
+          withRef
+          name='firstName'
+          placeholder={I18n.t('firstName')}
+          returnKeyType='next'
+          onChangeText={this.props.handleChangeFirstName}
+          onSubmitEditing={() => this.lastName.refs.lastName.focus()}
+          onBlur={this.props.validate}
+          blurOnSubmit={false}
+        />
+        <Input
+          value={lastName}
+          ref={(componentRef) => this.lastName = componentRef}
+          refField='lastName'
+          inputStyle={s.lastNameInput}
+          withRef
+          focus
+          name='lastName'
+          placeholder={I18n.t('lastName')}
+          returnKeyType='next'
+          onChangeText={this.props.handleChangeLastName}
+          onSubmitEditing={() => this.zip.refs.zip.focus()}
+          onBlur={this.props.validate}
+          blurOnSubmit={false}
+        />
+        <TextView style={s.myZipCode} textStyle={s.myZipCodeText} textType='h1'>
+          {I18n.t('myZipCode')}
+        </TextView>
+        <Input
+          value={zip}
+          ref={(componentRef) => this.zip = componentRef}
+          refField='zip'
+          inputStyle={zipError ? s.errorZipCodeInput : s.zipCodeInput}
+          withRef
+          focus
+          name='zip'
+          placeholder={I18n.t('zipCode')}
+          returnKeyType='go'
+          onChangeText={this.props.handleChangeZip}
+          onBlur={() => {
+            this.props.validate()
+            this.props.validateZip()
+          }}
+          onSubmitEditing={() => this.handleSubmit()}
+          blurOnSubmit
+        />
+        {zipError && <TextView textStyle={s.zipError}>Invalid zip code</TextView>}
+        <SafeDataInfo/>
+        <Button
+          style={s.letsGoBtn}
+          onPress={this.handleSubmit}
+          uppercase
+          disabled={!valid}
+        >
+          {I18n.t('letsGo')}
+        </Button>
+      </KeyboardAwareScrollView>
     )
   }
 }

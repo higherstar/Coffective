@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react'
-import { Keyboard, LayoutAnimation, View } from 'react-native'
+import { View } from 'react-native'
 import { connect } from 'react-redux'
 import { Button, Input, Loader, TextView } from '../../Components'
 import { Images } from '../../Themes'
@@ -32,19 +32,17 @@ class LoginScreen extends React.Component {
     }
   }
 
-  textInputOnFocus = () => {
-  }
-
   render () {
     const {loading, valid, emailError, email, password} = this.props
     return (
       <KeyboardAwareScrollView
-        enableAutoAutomaticScroll={true}
-        enableResetScrollToCoords={true}
-        extraHeight={200}
+        enableAutoAutomaticScroll
+        enableResetScrollToCoords
+        extraHeight={215}
+        resetScrollToCoords={{ x: 0, y: 0 }}
         style={s.scrollContainer}
-        contentContainerStyle={s.container}
         keyboardShouldPersistTaps='handled'
+        contentContainerStyle={s.container}
         ref='scroll'
       >
         <TextView style={s.header} textStyle={s.headerText} textType='h1'>
@@ -88,9 +86,6 @@ class LoginScreen extends React.Component {
             this.props.validate()
             this.props.validateEmail()
           }}
-          onFocus={() => {
-            this.textInputOnFocus()
-          }}
         />
         {emailError && <TextView style={s.error} textStyle={s.errorText}>Invalid email address</TextView>}
         <Input
@@ -112,9 +107,6 @@ class LoginScreen extends React.Component {
             this.props.validate()
           }}
           blurOnSubmit
-          onFocus={() => {
-            this.textInputOnFocus()
-          }}
         />
         <View style={s.actions}>
           <Button

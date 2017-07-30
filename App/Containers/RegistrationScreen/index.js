@@ -118,13 +118,14 @@ class RegistrationScreen extends React.Component {
             blurOnSubmit
             onChangeText={this.props.handleChangeZip}
             onFocus={() => {
-              this.refs.scroll.scrollTo(this.state.keyboardHeight)
+              this.refs.scroll.scrollTo({ y: this.state.keyboardHeight })
             }}
             onBlur={() => {
               this.props.validate()
               this.props.validateZip()
-              this.refs.scroll.scrollTo(0)
+              this.refs.scroll.scrollTo({ y: 0 })
             }}
+            onSubmitEditing={() => this.handleSubmit()}
           />
           {zipError && <TextView textStyle={s.zipError}>Invalid zip code</TextView>}
           <SafeDataInfo/>

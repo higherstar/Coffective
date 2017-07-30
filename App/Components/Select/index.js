@@ -11,38 +11,25 @@ function getItemIndex (array: Array<string>, item: string) {
   return array.indexOf(item)
 }
 
-type Props = {
-  options: Array<string>,
-  defaultOption: string,
-  disabled: boolean,
-  onSelect: Function,
-  style: Object
-}
-
-type State = {
-  modalVisible: boolean,
-  animatedHeight: Function,
-  selectedOption: number,
-  confirmedOption: number
-}
-
 class Select extends Component {
-  state: State
-  props: Props
 
   constructor (props: Object) {
     super(props)
+
+    const {defaultOption, options} = props
+    const newOption = getItemIndex(options, defaultOption || options[0])
+
     this.state = {
       modalVisible: false,
       animatedHeight: new Animated.Value(0),
-      selectedOption: null,
-      confirmedOption: null
+      selectedOption: newOption,
+      confirmedOption: null,
     }
   }
 
   componentWillReceiveProps (nextProps: Object) {
     const {defaultOption, options} = nextProps
-    const newOption = getItemIndex(options, defaultOption)
+    const newOption = getItemIndex(options, defaultOption || options[0])
     if (defaultOption) {
       this.setState({
         confirmedOption: newOption,
@@ -79,7 +66,7 @@ class Select extends Component {
       selectedOption
     }, () => {
       if (Platform.OS === 'android') {
-        this.optionSelected()
+        this.confirmOption()
       }
     })
   }
@@ -105,7 +92,7 @@ class Select extends Component {
     }
   }
 
-  optionSelected = () => {
+  confirmOption = () => {
     const {onSelect, options} = this.props
     this.setState(prevState => {
       return {confirmedOption: prevState.selectedOption}
@@ -127,13 +114,13 @@ class Select extends Component {
     const {style, options, disabled, placeholder = ''} = this.props
     return (
       <TouchableHighlight
-        activeOpacity={disabled && 1 || 0.2}
+        activeOpacity={disabled ? 1 : 0.4}
         style={[s.selectContainer, style]}
         underlayColor={'transparent'}
         onPress={this.onPressSelectField}
       >
         <View>
-          {Platform.OS === 'ios' && (
+          {Platform.OS === 'ios' ? (
             <View>
               <View>
                 <Text style={s.selectedOptionText}>
@@ -167,7 +154,7 @@ class Select extends Component {
                           style={s.confirmBtn}
                           textStyle={s.confirmText}
                           btnType='link'
-                          onPress={this.optionSelected}
+                          onPress={this.confirmOption}
                           uppercase={false}
                         >
                           {I18n.t('confirm')}
@@ -177,13 +164,12 @@ class Select extends Component {
                         selectedValue={selectedOption}
                         onValueChange={this.shouldValueChange}
                         enabled={!disabled}>
-                        {options.map((option) => (
-                            <Picker.Item
-                              label={option.toString()}
-                              value={getItemIndex(options, option)}
-                              key={getItemIndex(options, option)}
-                            />
-                          )
+                        {options.map((option) =>
+                          <Picker.Item
+                            label={option.toString()}
+                            value={getItemIndex(options, option)}
+                            key={getItemIndex(options, option)}
+                          />
                         )}
                       </Picker>
                     </Animated.View>
@@ -191,13 +177,14 @@ class Select extends Component {
                 </TouchableHighlight>
               </Modal>
             </View>
-          ) || (
+          ) : (
             <Picker
               selectedValue={selectedOption}
               onValueChange={this.shouldValueChange}
               style={s.picker}
               enabled={!disabled}
-              mode='dropdown'>
+              mode='dropdown'
+            >
               {options.map((option, index) =>
                 <Picker.Item
                   label={option.toString()}

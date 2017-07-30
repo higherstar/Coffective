@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import { Animated, Modal, Picker, Platform, Text, TouchableHighlight, View } from 'react-native'
 import dismissKeyboard from 'react-native/Libraries/Utilities/dismissKeyboard'
 import I18n from 'react-native-i18n'
-import { Button } from '../'
+import { Button, Txt } from '../'
 import s from './styles'
 
 function getItemIndex (array: Array<string>, item: string) {
@@ -17,19 +17,19 @@ class Select extends Component {
     super(props)
 
     const {defaultOption, options} = props
-    const newOption = getItemIndex(options, defaultOption || options[0])
+    const newOption = getItemIndex(options, defaultOption)
 
     this.state = {
       modalVisible: false,
       animatedHeight: new Animated.Value(0),
-      selectedOption: newOption,
+      selectedOption: null,
       confirmedOption: null,
     }
   }
 
   componentWillReceiveProps (nextProps: Object) {
     const {defaultOption, options} = nextProps
-    const newOption = getItemIndex(options, defaultOption || options[0])
+    const newOption = getItemIndex(options, defaultOption)
     if (defaultOption) {
       this.setState({
         confirmedOption: newOption,
@@ -104,7 +104,7 @@ class Select extends Component {
   }
 
   shouldValueChange = (value: number) => {
-    if (this.state.selectedOption !== value) {
+    if (this.state.confirmedOption !== value) {
       this.onValueChange(value)
     }
   }
@@ -178,22 +178,27 @@ class Select extends Component {
               </Modal>
             </View>
           ) : (
-            <Picker
-              selectedValue={selectedOption}
-              onValueChange={this.shouldValueChange}
-              style={s.picker}
-              enabled={!disabled}
-              mode='dropdown'
-            >
-              {options.map((option, index) =>
-                <Picker.Item
-                  label={option.toString()}
-                  value={getItemIndex(options, option)}
-                  key={index}
-                />
-              )}
-            </Picker>)
-          }
+            <View style={s.androidPickerWrapper}>
+              {!options[confirmedOption] && <Txt style={s.androidPlaceholder}>
+                {placeholder}
+              </Txt>}
+              <Picker
+                selectedValue={null}
+                onValueChange={this.shouldValueChange}
+                style={options[confirmedOption] ? s.androidPicker : s.androidTransparentPicker}
+                enabled={!disabled}
+                mode='dropdown'
+              >
+                {options.map((option, index) =>
+                  <Picker.Item
+                    label={option.toString()}
+                    value={getItemIndex(options, option)}
+                    key={index}
+                  />
+                )}
+              </Picker>
+            </View>
+          )}
         </View>
       </TouchableHighlight>
     )

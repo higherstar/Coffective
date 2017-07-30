@@ -28,8 +28,21 @@ export default StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: Colors.lightGrey,
   },
-  picker: {
-    color: Colors.inputText
+  androidPickerWrapper: {
+    position: 'relative'
+  },
+  androidPicker: {
+    color: Colors.inputText,
+  },
+  androidTransparentPicker: {
+    color: Colors.transparent,
+  },
+  androidPlaceholder: {
+    position: 'absolute',
+    top: 12,
+    bottom: 12,
+    left: 10,
+    right: 0,
   },
   confirmBtn: {
     paddingHorizontal: Metrics.baseMargin,

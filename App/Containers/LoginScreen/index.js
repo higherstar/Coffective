@@ -1,13 +1,14 @@
 // @flow
 
 import React from 'react'
-import { KeyboardAvoidingView, ScrollView, View } from 'react-native'
+import { KeyboardAvoidingView, ScrollView, View, Platform } from 'react-native'
 import { connect } from 'react-redux'
 import { Button, Input, Loader, TextView } from '../../Components'
 import { Images } from '../../Themes'
 import { handleChangeEmail, handleChangePassword, login, validate, validateEmail } from '../../Redux/LoginRedux'
 import I18n from 'react-native-i18n'
 import s from './styles'
+import dismissKeyboard from 'react-native/Libraries/Utilities/dismissKeyboard'
 
 const Divider = ({style}) =>
   <TextView style={[s.divider, style]} textStyle={s.dividerText}>
@@ -25,6 +26,7 @@ class LoginScreen extends React.Component {
 
   handleSubmit = () => {
     if (this.props.valid) {
+      dismissKeyboard()
       this.openRegistrationScreen()
     }
   }
@@ -34,6 +36,7 @@ class LoginScreen extends React.Component {
     return (
       <KeyboardAvoidingView
         behavior={'position'}
+        keyboardVerticalOffset={Platform.select({ios: 0, android: 25})}
       >
         <ScrollView contentContainerStyle={s.container} keyboardShouldPersistTaps='handled'>
           <TextView style={s.header} textStyle={s.headerText} textType='h1'>
@@ -91,7 +94,7 @@ class LoginScreen extends React.Component {
             returnKeyType='go'
             placeholder={I18n.t('password')}
             secureTextEntry
-            onSubmitEditing={this.props.handleSubmit}
+            onSubmitEditing={() => this.handleSubmit()}
             icon={Images.pass}
             onChangeText={this.props.handleChangePassword}
             onBlur={this.props.validate}
@@ -109,7 +112,7 @@ class LoginScreen extends React.Component {
             </Button>
             <Button
               style={s.signUpBtn}
-              onPress={this.openRegistrationScreen}
+              onPress={() => this.handleSubmit()}
               btnType='primary'
               disabled={!valid}
             >

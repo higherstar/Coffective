@@ -14,8 +14,7 @@ import { Button, Input, Loader, SafeDataInfo, TextView } from '../../Components'
 import I18n from 'react-native-i18n'
 import s from './styles'
 import type { TRegistration } from './types'
-import { ScrollView, Keyboard, LayoutAnimation } from 'react-native'
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import { ScrollView, Keyboard, LayoutAnimation, KeyboardAvoidingView, Platform } from 'react-native'
 
 class RegistrationScreen extends React.Component {
 
@@ -68,7 +67,10 @@ class RegistrationScreen extends React.Component {
   render () {
     const {loading, valid, firstName, lastName, zip, zipError}: TRegistration = this.props
     return (
-      <KeyboardAwareScrollView>
+      <KeyboardAvoidingView
+        behavior={'padding'}
+        keyboardVerticalOffset={Platform.select({ios: 0, android: 25})}
+      >
         <ScrollView contentContainerStyle={s.container} keyboardShouldPersistTaps='handled' ref='scroll'>
           <TextView style={s.myName} textStyle={s.myNameText} textType='h1'>
             {I18n.t('myName')}
@@ -115,7 +117,6 @@ class RegistrationScreen extends React.Component {
             name='zip'
             placeholder={I18n.t('zipCode')}
             returnKeyType='go'
-            blurOnSubmit
             onChangeText={this.props.handleChangeZip}
             onFocus={() => {
               this.refs.scroll.scrollTo({ y: this.state.keyboardHeight })
@@ -139,7 +140,7 @@ class RegistrationScreen extends React.Component {
           </Button>
           <Loader visible={loading}/>
         </ScrollView>
-      </KeyboardAwareScrollView>
+      </KeyboardAvoidingView>
     )
   }
 }

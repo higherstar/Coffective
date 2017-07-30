@@ -25,6 +25,11 @@ class SelectEthnicityScreen extends React.Component {
     this.props.navigation.navigate('AskForFeedbackScreen')
   }
 
+  proceed = () => {
+    this.openAskForFeedbackScreen()
+    this.props.setEthnicity(this.props.selectedEthnicity || this.state.ethnicityList[0])
+  }
+
   skip = () => {
     this.openAskForFeedbackScreen()
     this.props.setEthnicity('')
@@ -33,6 +38,7 @@ class SelectEthnicityScreen extends React.Component {
   render () {
     const {ethnicityList} = this.state
     const {selectedEthnicity} = this.props
+
     return (
       <ScrollView
         style={s.scrollContainer}
@@ -44,7 +50,7 @@ class SelectEthnicityScreen extends React.Component {
         <View style={[s.selectWrapper, Platform.OS === 'android' && {paddingHorizontal: 0}]}>
           <Select
             placeholder={I18n.t('selectEthnicity')}
-            defaultOption={selectedEthnicity}
+            defaultOption={Platform.OS === 'android' ? (selectedEthnicity || this.state.ethnicityList[0]) : selectedEthnicity}
             options={ethnicityList}
             onSelect={this.props.setEthnicity}
           />
@@ -53,8 +59,8 @@ class SelectEthnicityScreen extends React.Component {
         <Button
           style={s.proceedBtn}
           btnType='primary'
-          onPress={this.openAskForFeedbackScreen}
-          disabled={!selectedEthnicity}
+          onPress={this.proceed}
+          disabled={!selectedEthnicity && Platform.OS !== 'android'}
         >
           {I18n.t('proceed')}
         </Button>

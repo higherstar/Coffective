@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import { Animated, Modal, Picker, Platform, Text, TouchableHighlight, View } from 'react-native'
 import dismissKeyboard from 'react-native/Libraries/Utilities/dismissKeyboard'
 import I18n from 'react-native-i18n'
-import { Button, Txt } from '../'
+import { Button } from '../'
 import s from './styles'
 
 function getItemIndex (array: Array<string>, item: string) {
@@ -22,7 +22,7 @@ class Select extends Component {
     this.state = {
       modalVisible: false,
       animatedHeight: new Animated.Value(0),
-      selectedOption: null,
+      selectedOption: newOption,
       confirmedOption: null,
     }
   }
@@ -178,26 +178,21 @@ class Select extends Component {
               </Modal>
             </View>
           ) : (
-            <View style={s.androidPickerWrapper}>
-              {!options[confirmedOption] && <Txt style={s.androidPlaceholder}>
-                {placeholder}
-              </Txt>}
-              <Picker
-                selectedValue={null}
-                onValueChange={this.shouldValueChange}
-                style={options[confirmedOption] ? s.androidPicker : s.androidTransparentPicker}
-                enabled={!disabled}
-                mode='dropdown'
-              >
-                {options.map((option, index) =>
-                  <Picker.Item
-                    label={option.toString()}
-                    value={getItemIndex(options, option)}
-                    key={index}
-                  />
-                )}
-              </Picker>
-            </View>
+            <Picker
+              selectedValue={selectedOption}
+              onValueChange={this.shouldValueChange}
+              style={s.androidPicker}
+              enabled={!disabled}
+              mode='dropdown'
+            >
+              {options.map((option, index) =>
+                <Picker.Item
+                  label={option.toString()}
+                  value={getItemIndex(options, option)}
+                  key={index}
+                />
+              )}
+            </Picker>
           )}
         </View>
       </TouchableHighlight>

@@ -3,7 +3,7 @@ import { Colors, Metrics } from '../../Themes'
 
 export default StyleSheet.create({
   scrollContainer: {
-
+    flex: 1,
   },
   container: {
     minHeight: Metrics.screenHeight - Metrics.navBarHeight,

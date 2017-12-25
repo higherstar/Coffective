@@ -1,4 +1,8 @@
 {
+  "getStarted": "Get Started",
+  "welcomeHeader": "Welcome",
+  "welcomeDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur quis magna finibus, iaculis diam sed, dignissim urna.",
+  //
   "login": "Login",
   "howToInformation": "How to information",
   "preparedChecklist": "Prepared Checklist",

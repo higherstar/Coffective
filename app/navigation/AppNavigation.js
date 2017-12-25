@@ -1,18 +1,19 @@
 import React from 'react'
 import { DrawerNavigator, StackNavigator } from 'react-navigation'
-import SelectAgeScreen from '../containers/SelectAgeScreen'
-import PersonTypeScreen from '../containers/PersonTypeScreen'
-import HowItWorksScreen from '../containers/HowItWorksScreen'
-import SelectEthnicityScreen from '../containers/SelectEthnicityScreen'
-import PushNotificationsScreen from '../containers/PushNotificationsScreen'
+// import SelectAgeScreen from '../containers/SelectAgeScreen'
+// import PersonTypeScreen from '../containers/PersonTypeScreen'
+// import HowItWorksScreen from '../containers/HowItWorksScreen'
+// import SelectEthnicityScreen from '../containers/SelectEthnicityScreen'
+// import PushNotificationsScreen from '../containers/PushNotificationsScreen'
 import LoginScreen from '../containers/LoginScreen'
-import RegistrationScreen from '../containers/RegistrationScreen'
-import AskForFeedbackScreen from '../containers/AskForFeedbackScreen'
-import SelectDueDateScreen from '../containers/SelectDueDateScreen'
-import SummaryScreen from '../containers/SummaryScreen'
+// import RegistrationScreen from '../containers/RegistrationScreen'
+// import AskForFeedbackScreen from '../containers/AskForFeedbackScreen'
+// import SelectDueDateScreen from '../containers/SelectDueDateScreen'
+// import SummaryScreen from '../containers/SummaryScreen'
 import { Image, TouchableOpacity } from 'react-native'
 import { Colors, Images, Metrics } from '../themes'
 import { Drawer } from '../components'
+import Welcome from '../containers/Welcome/Welcome'
 
 const Menu = ({iconName, onPress}) => (
   <TouchableOpacity
@@ -37,18 +38,19 @@ const Left = ({onPress}) => (
 
 // Manifest of possible screens
 const MainNav = StackNavigator({
-  HowItWorksScreen: {screen: HowItWorksScreen},
+  Welcome: {screen: Welcome},
+  // HowItWorksScreen: {screen: HowItWorksScreen},
   LoginScreen: {screen: LoginScreen},
-  RegistrationScreen: {screen: RegistrationScreen},
-  PersonTypeScreen: {screen: PersonTypeScreen},
-  SelectAgeScreen: {screen: SelectAgeScreen},
-  SelectEthnicityScreen: {screen: SelectEthnicityScreen},
-  AskForFeedbackScreen: {screen: AskForFeedbackScreen},
-  PushNotificationsScreen: {screen: PushNotificationsScreen},
-  SelectDueDateScreen: {screen: SelectDueDateScreen},
-  SummaryScreen: {screen: SummaryScreen},
+  // RegistrationScreen: {screen: RegistrationScreen},
+  // PersonTypeScreen: {screen: PersonTypeScreen},
+  // SelectAgeScreen: {screen: SelectAgeScreen},
+  // SelectEthnicityScreen: {screen: SelectEthnicityScreen},
+  // AskForFeedbackScreen: {screen: AskForFeedbackScreen},
+  // PushNotificationsScreen: {screen: PushNotificationsScreen},
+  // SelectDueDateScreen: {screen: SelectDueDateScreen},
+  // SummaryScreen: {screen: SummaryScreen},
 }, {
-  initialRouteName: 'HowItWorksScreen',
+  initialRouteName: 'Welcome',
   cardStyle: {
     backgroundColor: Colors.background
   },
@@ -80,8 +82,8 @@ const MainNav = StackNavigator({
 
 const DrawerNav = DrawerNavigator({
   Main: {screen: MainNav},
-  SummaryScreen: {screen: SummaryScreen, navigationOptions: {drawerLabel: 'See my information'}},
-  HowItWorksScreen: {screen: HowItWorksScreen, navigationOptions: {drawerLabel: 'Back to Start'}},
+  // SummaryScreen: {screen: SummaryScreen, navigationOptions: {drawerLabel: 'See my information'}},
+  // HowItWorksScreen: {screen: HowItWorksScreen, navigationOptions: {drawerLabel: 'Back to Start'}},
 }, {
   drawerWidth: 250,
   drawerPosition: 'right',

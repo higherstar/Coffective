@@ -1,5 +1,7 @@
 // leave off @2x/@3x
 const images = {
+  backgroundVideo: require('../static/background.mp4'),
+  //
   logo: require('../static/logo_coffective.png'),
   screen1: require('../static/screen1.png'),
   screen2: require('../static/screen2.png'),

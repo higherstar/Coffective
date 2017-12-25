@@ -15,11 +15,14 @@ const margins = {
   smallMargin: 10,
   baseMargin: 20,
   doubleBaseMargin: 40,
-  containerMarginX: 20
+  containerMarginX: 20,
+  marginX: 20,
 }
 
 // Used via Metrics.baseMargin
 const metrics = {
+  footerBtnHeight: 65,
+  // TODO update
   tabBorderRadius: base.radius,
   // Buttons
   btnSizes: {

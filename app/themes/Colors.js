@@ -1,5 +1,9 @@
 const colors = {
   white: '#fff',
+  primary: '#00BCFF',
+  // TODO change color text
+  text: 'rgba(66, 66, 66, 0.55)',
+  //
   whiteMuted: 'rgba(255, 255, 255, 0.9)',
   navBar: '#1f4c70',
   lightGreen: '#a5dcb6',
@@ -10,11 +14,8 @@ const colors = {
   placeholderColor: '#abacac',
   brightBlue: '#0076ff',
   grey: '#878585',
-  //
   header: '#606060',
-  text: 'rgba(66, 66, 66, 0.55)',
   description: 'rgba(66, 66, 66, 0.55)',
-  primary: '#00A4D9',
   lightBlue: '#BBE7FC',
   secondary: 'rgba(59, 59, 59, 1)',
   secondaryBtnText: 'rgba(135, 133, 133, 1)',

@@ -1,4 +1,5 @@
 const type = {
+  // TODO change font
   base: 'Roboto-Regular',
   bold: 'Roboto-Bold',
   emphasis: 'HelveticaNeue-Italic'
@@ -23,17 +24,17 @@ const size = {
 const style = {
   h1: {
     fontFamily: type.base,
-    fontWeight: '500',
+    fontWeight: '300',
     fontSize: size.h1
   },
   h2: {
     fontFamily: type.base,
-    fontWeight: '500',
+    fontWeight: '300',
     fontSize: size.h2
   },
   h3: {
     fontFamily: type.base,
-    fontWeight: '500',
+    fontWeight: '300',
     fontSize: size.h3
   },
   h4: {
@@ -61,5 +62,5 @@ const style = {
 export default {
   type,
   size,
-  style
+  style,
 }

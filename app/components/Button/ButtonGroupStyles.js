@@ -5,7 +5,13 @@ export default StyleSheet.create({
   group: {
     flexDirection: 'row',
   },
-  btn: {
+  item: {
     flex: 1,
+    flexDirection: 'row'
   },
+  divider: {
+    backgroundColor: Colors.whiteMuted,
+    width: 1,
+    marginVertical: Metrics.smallMargin * 1.5,
+  }
 })

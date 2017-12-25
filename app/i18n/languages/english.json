@@ -2,8 +2,9 @@
   "getStarted": "Get Started",
   "welcomeHeader": "Welcome",
   "welcomeDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur quis magna finibus, iaculis diam sed, dignissim urna.",
-  //
   "login": "Login",
+  "signUp": "Sign Up",
+  //
   "howToInformation": "How to information",
   "preparedChecklist": "Prepared Checklist",
   "buildYourTeam": "Build your team",
@@ -12,7 +13,6 @@
   "welcomeSlide2Desc": "Personalised to do lists at your fingertips to make sure you are well prepared for giving birth",
   "welcomeSlide3Desc": "Connect with your pear counsellor and build a support team around you to be able to go through.",
   "welcomeSlide4Desc": "Creating an account enables us to offer you a personalised experience tailored to your needs.",
-  "signUp": "SignUp",
   "next": "Next",
   "skip": "Skip",
   "createAccountDescription": "Please choose how you’d like to create your account or click login if you already have one.",

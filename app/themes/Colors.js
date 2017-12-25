@@ -1,10 +1,10 @@
 const colors = {
   white: '#fff',
+  whiteMuted: 'rgba(255, 255, 255, 0.7)',
   primary: '#00BCFF',
   // TODO change color text
   text: 'rgba(66, 66, 66, 0.55)',
   //
-  whiteMuted: 'rgba(255, 255, 255, 0.9)',
   navBar: '#1f4c70',
   lightGreen: '#a5dcb6',
   lightRed: '#f77d79',

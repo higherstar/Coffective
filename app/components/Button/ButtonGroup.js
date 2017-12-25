@@ -9,10 +9,15 @@ class ButtonGroup extends React.Component<ButtonGroupProps, any> {
     const {style, children} = this.props
     return (
       <View style={[s.group, style]}>
-        {React.Children.map(children, child => {
-          return React.cloneElement(child, {
-            style: [child.style, s.btn]
-          })
+        {React.Children.map(children, (child, i) => {
+          return [
+            i > 0 ? <View key={`divider${i}`} style={s.divider}/> : null,
+            React.cloneElement(child, {
+              ...child.props,
+              key: i,
+              style: [s.item, child.props.style],
+            }),
+          ]
         })}
       </View>
     )

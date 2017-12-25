@@ -1,16 +1,21 @@
 import '../Config'
 import DebugConfig from '../Config/DebugConfig'
-import React, { Component } from 'react'
+import React from 'react'
 import { Provider } from 'react-redux'
 import RootContainer from './RootContainer'
 import createStore from '../Redux'
 import EStyleSheet from 'react-native-extended-stylesheet'
 import SplashScreen from 'react-native-splash-screen'
+import createFetch from '../createFetch'
 
 EStyleSheet.build({})
 
+const customFetch = createFetch(fetch, {
+  apiUrl: 'http://127.0.0.1:8081',
+})
+
 // create our store
-const store = createStore()
+const store = createStore({fetch: customFetch})
 
 /**
  * Provides an entry point into our application.  Both index.ios.js and index.android.js
@@ -21,7 +26,7 @@ const store = createStore()
  *
  * We separate like this to play nice with React Native's hot reloading.
  */
-class App extends Component {
+class App extends React.Component {
   componentDidMount () {
     SplashScreen.hide()
   }

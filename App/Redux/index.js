@@ -14,7 +14,7 @@ export const reducers = combineReducers({
   Registration: require('./RegistrationRedux').default,
 })
 
-export default () => {
+export default (helpersConfig) => {
   let finalReducers = reducers
   // If rehydration is on use persistReducer otherwise default combineReducers
   if (ReduxPersist.active) {
@@ -22,7 +22,7 @@ export default () => {
     finalReducers = persistReducer(persistConfig, reducers)
   }
 
-  let {store, sagasManager, sagaMiddleware} = configureStore(finalReducers, rootSaga)
+  let {store, sagasManager, sagaMiddleware} = configureStore(finalReducers, rootSaga, helpersConfig)
 
   if (module.hot) {
     module.hot.accept(() => {

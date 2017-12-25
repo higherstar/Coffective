@@ -5,7 +5,7 @@ import { View, Keyboard, LayoutAnimation } from 'react-native'
 import { connect } from 'react-redux'
 import { Button, Input, Loader, TextView } from '../../Components'
 import { Images, Metrics } from '../../Themes'
-import { handleChangeEmail, handleChangePassword, login, validate, validateEmail } from '../../Redux/LoginRedux'
+import { handleChangeEmail, handleChangePassword, login, validate, validateEmail, getData } from '../../Redux/LoginRedux'
 import I18n from 'react-native-i18n'
 import s from './styles'
 import dismissKeyboard from 'react-native/Libraries/Utilities/dismissKeyboard'
@@ -37,6 +37,10 @@ class LoginScreen extends React.Component {
   componentWillUnmount () {
     this.keyboardDidShowListener.remove()
     this.keyboardDidHideListener.remove()
+  }
+
+  componentDidMount () {
+    this.props.getData()
   }
 
   keyboardDidShow = (e) => {
@@ -186,6 +190,7 @@ const mapDispatchToProps = {
   validateEmail,
   handleChangeEmail,
   handleChangePassword,
+  getData,
 }
 
 // TODO https://github.com/react-community/react-navigation/issues/332

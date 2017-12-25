@@ -28,7 +28,7 @@ class RootContainer extends Component {
 
 // wraps dispatch to create nicer functions to call within our component
 const mapDispatchToProps = {
-  startup
+  startup,
 }
 
 export default connect(null, mapDispatchToProps)(RootContainer)

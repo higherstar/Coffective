@@ -35,6 +35,18 @@ export const login = (authData: Object) => (dispatch: Function) => new Promise((
   })
 })
 
+export const getData = () => (dispatch, getState, {fetch}) => {
+  return fetch(`http://freegeoip.net/json/`, {
+    method: 'GET',
+    success: (res) => {
+      console.log(res)
+    },
+    failure: (err) => {
+      console.log(err)
+    }
+  })
+}
+
 export const loginSuccess = (user: Object) => (dispatch: Function) => {
   dispatch({ type: LOGIN_SUCCESS })
 }

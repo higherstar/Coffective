@@ -7,7 +7,7 @@ import createStore from '../Redux'
 import EStyleSheet from 'react-native-extended-stylesheet'
 import NotificationsIOS from 'react-native-notifications'
 import { Platform } from 'react-native'
-// import SplashScreen from 'react-native-splash-screen'
+import SplashScreen from 'react-native-splash-screen'
 
 EStyleSheet.build({})
 
@@ -50,7 +50,7 @@ class App extends Component {
   }
 
   componentDidMount () {
-    // SplashScreen.hide()
+    SplashScreen.hide()
   }
 
   componentWillUnmount () {

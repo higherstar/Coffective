@@ -14,3 +14,4 @@ export {
 
 export {default as Button} from './Button'
 export {default as Txt} from './Txt'
+export {default as Carousel} from './Carousel'

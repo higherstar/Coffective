@@ -1,13 +1,13 @@
 // @flow
 import React from 'react'
 import { View } from 'react-native'
-import { Button } from '../../components'
+import { Button, Carousel } from '../../components'
 import I18n from 'react-native-i18n'
 import s from './GuideStyles'
 import { connect } from 'react-redux'
-import {getCarousel} from '../../reducers/carousel'
+import { getCarousel } from '../../reducers/carousel'
 
-class HowItWorks extends React.Component {
+class Guide extends React.Component {
   static navigationOptions = {
     header: null,
   }
@@ -20,19 +20,16 @@ class HowItWorks extends React.Component {
     const {carousel} = this.props
     return (
       <View style={s.container}>
-        <View style={{flex: 1}}/>
-        {/*<Carousel*/}
-          {/*style={s.carousel}*/}
-        {/*>*/}
-          {/*{carousel.map((item, i) =>*/}
-            {/*<Carousel.Item*/}
-              {/*key={i}*/}
-              {/*header={item.header}*/}
-              {/*description={item.description}*/}
-              {/*image={item.image}*/}
-            {/*/>*/}
-          {/*)}*/}
-        {/*</Carousel>*/}
+        <Carousel
+          style={s.carousel}
+        >
+          {carousel.map((item, i) =>
+            <Carousel.Item
+              key={i}
+              {...item}
+            />
+          )}
+        </Carousel>
         <Button.Group style={s.actions}>
           <Button type='primary' style={s.signUpBtn}>
             {I18n.t('signUp')}
@@ -54,4 +51,4 @@ const mapDispatchToProps = {
   getCarousel,
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(HowItWorks)
+export default connect(mapStateToProps, mapDispatchToProps)(Guide)

@@ -8,6 +8,7 @@ import ReduxPersist from '../config/ReduxPersist'
 export const reducers = combineReducers({
   form,
   nav: require('./nav').default,
+  carousel: require('./carousel').default,
   user: require('./user').default,
   login: require('./login').default,
   register: require('./register').default,

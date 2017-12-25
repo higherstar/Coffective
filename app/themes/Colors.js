@@ -1,6 +1,6 @@
 const colors = {
   white: '#fff',
-  whiteMuted: 'rgba(255, 255, 255, 0.7)',
+  whiteMuted: 'rgba(255, 255, 255, 0.5)',
   primary: '#00BCFF',
   // TODO change color text
   text: 'rgba(66, 66, 66, 0.55)',

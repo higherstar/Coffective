@@ -4,11 +4,10 @@ import android.app.Application;
 
 import com.facebook.react.ReactApplication;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
-import com.cboy.rn.splashscreen.SplashScreenReactPackage;
+import com.AlexanderZaytsev.RNI18n.RNI18nPackage;
 import com.wix.reactnativenotifications.RNNotificationsPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
-import com.i18n.reactnativei18n.ReactNativeI18n;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -31,10 +30,10 @@ public class MainApplication extends Application implements ReactApplication {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
             new SplashScreenReactPackage(),
+            new RNI18nPackage(),
             new RNNotificationsPackage(MainApplication.this),
             new RNDeviceInfo(),
             new ReactNativeConfigPackage(),
-            new ReactNativeI18n(),
             new VectorIconsPackage()
       );
     }

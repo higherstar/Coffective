@@ -6,9 +6,6 @@ import LaunchScreen from '../SelectAgeScreen'
 import PersonTypeScreen from '../../Containers/PersonTypeScreen'
 import CategoriesScreen from '../../Containers/CategoriesScreen'
 import CategoryScreen from '../../Containers/CategoryScreen'
-import HowItWorksScreen from '../../Containers/HowItWorksScreen'
-import ChecklistScreen from '../../Containers/ChecklistScreen'
-import BuildTeamScreen from '../SelectEthnicityScreen'
 
 export const getNavigationOptions = (title, backgroundColor, color) => ({
   title,
@@ -19,7 +16,7 @@ export const getNavigationOptions = (title, backgroundColor, color) => ({
     color,
   },
   headerTintColor: color,
-});
+})
 
 export const getNavigationOptionsWithAction = (title, backgroundColor, color, headerRight) => ({
   title,
@@ -31,7 +28,7 @@ export const getNavigationOptionsWithAction = (title, backgroundColor, color, he
   },
   headerTintColor: color,
   headerRight,
-});
+})
 
 export const getDrawerNavigationOptions = (title, backgroundColor, titleColor, drawerIcon) => ({
   title,
@@ -44,12 +41,15 @@ export const getDrawerNavigationOptions = (title, backgroundColor, titleColor, d
   headerTintColor: titleColor,
   drawerLabel: title,
   drawerIcon,
-});
+})
 
 export const getDrawerConfig = (drawerWidth, drawerPosition) => ({
   drawerWidth,
   drawerPosition,
-});
+  drawerOpenRoute: 'DrawerOpen',
+  drawerCloseRoute: 'DrawerClose',
+  drawerToggleRoute: 'DrawerToggle',
+})
 
 // class NavBarItem extends React.Component {
 //   render () {
@@ -113,73 +113,73 @@ export const getDrawerConfig = (drawerWidth, drawerPosition) => ({
 // export default Drawer
 
 class NavBarItem extends React.Component {
-  render() {
-    const { iconName, onPress } = this.props;
+  render () {
+    const {iconName, onPress} = this.props
     return (
-    <TouchableOpacity
-      style={{ paddingHorizontal: 20 }}
-      onPress={() => onPress()}>
+      <TouchableOpacity
+        style={{paddingHorizontal: 20}}
+        onPress={() => onPress()}>
 
-    <Icon name={iconName} size={20} color="#fff" />
+        <Icon name={iconName} size={20} color="#fff"/>
       </TouchableOpacity>
 
-  );
+    )
   }
 }
 
 // this is a method to retrieve icon element to show beside your title in the drawer
-const homeDrawerIcon = ({ tintColor }) => <Icon name="home" size={20} color={tintColor} />;
+const homeDrawerIcon = ({tintColor}) => <Icon name="home" size={20} color={tintColor}/>
 
 // this is a method to retrieve nav header of your home screen
 const homeNavOptions = () => ({
   title: 'Home',
   headerStyle: {
-  backgroundColor: 'blue',
+    backgroundColor: 'blue',
   },
   headerTitleStyle: {
-  color: 'white',
+    color: 'white',
   },
   headerTintColor: 'white',
   drawerLabel: 'Home',
   drawerIcon: homeDrawerIcon,
-});
+})
 
 // this is the Drawer including HomeScreen
 const Drawer = DrawerNavigator({
-  LaunchScreen: { screen: LaunchScreen, navigationOptions: homeNavOptions },
-  PersonTypeScreen: { screen: PersonTypeScreen, navigationOptions: homeNavOptions },
-  CategoriesScreen: { screen: CategoriesScreen, navigationOptions: homeNavOptions },
-  CategoryScreen: { screen: CategoryScreen, navigationOptions: homeNavOptions },
-}, getDrawerConfig(300, 'right'));
+  LaunchScreen: {screen: LaunchScreen, navigationOptions: homeNavOptions},
+  PersonTypeScreen: {screen: PersonTypeScreen, navigationOptions: homeNavOptions},
+  CategoriesScreen: {screen: CategoriesScreen, navigationOptions: homeNavOptions},
+  CategoryScreen: {screen: CategoryScreen, navigationOptions: homeNavOptions},
+}, getDrawerConfig(300, 'right'))
 
 // this is a method to retrieve the menu bar item for the drawer
 const getDrawerItem = (navigation) => (
-<NavBarItem
-  iconName="menu"
-  onPress={() => {
+  <NavBarItem
+    iconName="menu"
+    onPress={() => {
       if (navigation.state.index === 0) {
         // check if drawer is not open, then only open it
-        navigation.navigate('DrawerOpen');
+        navigation.navigate('DrawerOpen')
       } else {
         // else close the drawer
-        navigation.navigate('DrawerClose');
+        navigation.navigate('DrawerClose')
       }
     }}
-/>
-  );
+  />
+)
 
-  // here’s the key point, you have to retrieve navigation object because navigationOptions can be a dynamic method or static object
-  Drawer.navigationOptions = ({ navigation }) => ({
+// here’s the key point, you have to retrieve navigation object because navigationOptions can be a dynamic method or static object
+Drawer.navigationOptions = ({navigation}) => ({
   title: 'AppName',
   headerStyle: {
-  backgroundColor: 'blue',
+    backgroundColor: 'blue',
   },
   headerTitleStyle: {
-  color: 'white',
+    color: 'white',
   },
   headerTintColor: 'white',
   headerRight: getDrawerItem(navigation),
-});
+})
 
 // after assign navigationOptions only export it
-export default Drawer;
+export default Drawer

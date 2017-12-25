@@ -85,7 +85,10 @@ const DrawerNav = DrawerNavigator({
 }, {
   drawerWidth: 250,
   drawerPosition: 'right',
-  contentComponent: Drawer
+  contentComponent: Drawer,
+  drawerOpenRoute: 'DrawerOpen',
+  drawerCloseRoute: 'DrawerClose',
+  drawerToggleRoute: 'DrawerToggle',
 })
 
 export default DrawerNav

@@ -14,6 +14,7 @@ export default StyleSheet.create({
     resizeMode: 'contain',
     width: 28,
   },
+  // TODO
   iconWrapper: {
     borderRightWidth: 1,
     borderRightColor: Colors.mutedText,

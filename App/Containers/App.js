@@ -5,8 +5,6 @@ import { Provider } from 'react-redux'
 import RootContainer from './RootContainer'
 import createStore from '../Redux'
 import EStyleSheet from 'react-native-extended-stylesheet'
-import NotificationsIOS from 'react-native-notifications'
-import { Platform } from 'react-native'
 import SplashScreen from 'react-native-splash-screen'
 
 EStyleSheet.build({})
@@ -24,41 +22,8 @@ const store = createStore()
  * We separate like this to play nice with React Native's hot reloading.
  */
 class App extends Component {
-  // TODO add listeners for android
-  constructor () {
-    super()
-
-    if (Platform.OS === 'ios') {
-      NotificationsIOS.addEventListener('remoteNotificationsRegistered', this.onPushRegistered.bind(this))
-      NotificationsIOS.addEventListener('remoteNotificationsRegistrationFailed', this.onPushRegistrationFailed.bind(this))
-    }
-  }
-
-  onPushRegistered (deviceToken) {
-    console.log('Device Token Received', deviceToken)
-  }
-
-  onPushRegistrationFailed (error) {
-    // For example:
-    //
-    // error={
-    //   domain: 'NSCocoaErroDomain',
-    //   code: 3010,
-    //   localizedDescription: 'remote notifications are not supported in the simulator'
-    // }
-    console.error(error)
-  }
-
   componentDidMount () {
     SplashScreen.hide()
-  }
-
-  componentWillUnmount () {
-    if (Platform.OS === 'ios') {
-      // prevent memory leaks!
-      NotificationsIOS.removeEventListener('remoteNotificationsRegistered', this.onPushRegistered.bind(this))
-      NotificationsIOS.removeEventListener('remoteNotificationsRegistrationFailed', this.onPushRegistrationFailed.bind(this))
-    }
   }
 
   render () {

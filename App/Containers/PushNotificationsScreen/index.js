@@ -3,21 +3,11 @@ import { Platform, View } from 'react-native'
 import { Button, TextView } from '../../Components'
 import s from './styles'
 import I18n from 'react-native-i18n'
-import NotificationsIOS from 'react-native-notifications'
 import { setNotifications } from '../../Redux/UserRedux'
 import { connect } from 'react-redux'
 
 class PushNotificationsScreen extends React.Component {
   static navigationOptions = {}
-
-  requestPermissionsForNotifications = () => {
-    if (Platform.OS === 'ios') {
-      NotificationsIOS.requestPermissions()
-      this.openSummaryScreen()
-    } else {
-      this.openSummaryScreen()
-    }
-  }
 
   openSummaryScreen = () => {
     this.props.navigation.navigate('SummaryScreen')
@@ -37,7 +27,7 @@ class PushNotificationsScreen extends React.Component {
         <TextView style={s.description} textStyle={s.descriptionText}>
           {I18n.t('pushNotificationsDescription')}
         </TextView>
-        <Button style={s.submitBtn} btnType='primary' onPress={this.requestPermissionsForNotifications}>
+        <Button style={s.submitBtn} btnType='primary'>
           {I18n.t('enableNotifications')}
         </Button>
         <Button style={s.skipBtn} textStyle={s.skipBtnText} btnType='link' onPress={this.skip}>

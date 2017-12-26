@@ -2,18 +2,33 @@ import { StyleSheet } from 'react-native'
 import { Colors, Metrics } from '../../themes'
 
 export default StyleSheet.create({
-  carousel: {
+  carouselWrapper: {
     flex: 1,
   },
+  carousel: {
+    flex: 1,
+    // paddingHorizontal: 40,
+  },
   item: {
-    // TODO
-    // margin: Metrics.baseMargin,
-    // width: Metrics.screenWidth * 0.8,
+    // paddingHorizontal: 20,
+    // flexShrink: 0,
+    // width: Metrics.screenWidth,
+    // overflow: 'visible',
+    // paddingHorizontal: 20,
+    // flex: 1,
+    paddingHorizontal: Metrics.baseMargin,
+    paddingTop: Metrics.doubleBaseMargin,
+    paddingBottom: Metrics.baseMargin * 1.5,
+    // width: Metrics.screenWidth - Metrics.doubleBaseMargin
+  },
+  notActive: {
+    // marginHorizontal: -Metrics.doubleBaseMargin * 1.5,
+    // marginVertical: Metrics.doubleBaseMargin,
   },
   dots: {
     flexDirection: 'row',
     justifyContent: 'center',
-    marginBottom: Metrics.marginX * 2,
+    marginBottom: Metrics.baseMargin * 1.5,
     paddingHorizontal: Metrics.marginX,
   },
   dot: {

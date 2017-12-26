@@ -1,6 +1,6 @@
 // @flow
 import React from 'react'
-import { View } from 'react-native'
+import { Image, View } from 'react-native'
 import { Button, Carousel } from '../../components'
 import I18n from 'react-native-i18n'
 import s from './GuideStyles'
@@ -17,9 +17,14 @@ class Guide extends React.Component {
   }
 
   render () {
+    // TODO add background blurred image
     const {carousel} = this.props
     return (
       <View style={s.container}>
+        {/*<Image*/}
+          {/*source={{uri: 'https://dummyimage.com/320x240'}}*/}
+          {/*style={s.backgroundImage}*/}
+        {/*/>*/}
         <Carousel
           style={s.carousel}
         >

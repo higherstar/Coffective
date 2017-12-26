@@ -3,7 +3,7 @@ const colors = {
   whiteMuted: 'rgba(255, 255, 255, 0.5)',
   primary: '#00BCFF',
   // TODO change color text
-  text: 'rgba(66, 66, 66, 0.55)',
+  text: '#000',
   //
   navBar: '#1f4c70',
   lightGreen: '#a5dcb6',

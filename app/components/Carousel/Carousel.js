@@ -33,13 +33,20 @@ class Carousel extends React.Component<CarouselProps, any> {
     const {index} = this.state
     const {children} = this.props
     return (
-      <View style={s.carousel}>
+      <View style={s.carouselWrapper}>
         <SwipeableViews
+          style={s.carousel}
           slideStyle={s.item}
           index={index}
           onChangeIndex={this.changeIndex}
         >
-          {children}
+          {React.Children.map(children, (child, i) =>
+            React.cloneElement(child, {
+              ...child.props,
+              key: i,
+              style: [child.props.style, i !== index && s.notActive],
+            }),
+          )}
         </SwipeableViews>
         <Dots
           index={index}

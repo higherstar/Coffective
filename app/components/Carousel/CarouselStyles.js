@@ -10,6 +10,8 @@ export default StyleSheet.create({
     // paddingHorizontal: 40,
   },
   item: {
+    // TODO https://github.com/oliviertassinari/react-swipeable-views/pull/151
+    // TODO https://react-swipeable-views.com/demos/demos/
     // paddingHorizontal: 20,
     // flexShrink: 0,
     // width: Metrics.screenWidth,

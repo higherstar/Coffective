@@ -1,8 +1,9 @@
 const type = {
-  // TODO change font
-  base: 'Roboto-Regular',
-  bold: 'Roboto-Bold',
-  emphasis: 'HelveticaNeue-Italic'
+  regular: 'SanFranciscoDisplay-Regular',
+  light: 'SanFranciscoDisplay-Light',
+  semiBold: 'SanFranciscoDisplay-Semibold',
+  regularText: 'SanFranciscoText-Regular',
+  mediumText: 'SanFranciscoText-Medium',
 }
 
 const size = {

@@ -24,7 +24,7 @@ class Welcome extends React.Component {
           repeat
         />
         <View style={s.content}>
-          <Txt.View type='h3' style={s.header} textStyle={s.headerText}>
+          <Txt.View style={s.header} textStyle={s.headerText}>
             {I18n.t('welcomeHeader')}
           </Txt.View>
           <Txt.View style={s.description} textStyle={s.descriptionText}>

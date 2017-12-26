@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { Colors, Metrics } from '../../themes'
+import { Colors, Metrics, Fonts } from '../../themes'
 
 export default StyleSheet.create({
   item: {
@@ -20,14 +20,21 @@ export default StyleSheet.create({
     marginBottom: Metrics.smallMargin,
   },
   subHeaderText: {
+    fontWeight: '500',
+    fontFamily: Fonts.type.secondary,
+    fontSize: Fonts.size.medium,
   },
   header: {
     marginBottom: Metrics.smallMargin,
   },
   headerText: {
+    fontWeight: '300',
+    fontSize: Fonts.size.h1,
   },
   description: {
   },
   descriptionText: {
+    fontFamily: Fonts.type.secondary,
+    fontSize: Fonts.size.medium,
   },
 })

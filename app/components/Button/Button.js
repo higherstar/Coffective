@@ -21,6 +21,8 @@ class Button extends React.Component<ButtonProps, any> {
       type,
       style,
       textType,
+      textSize,
+      textWeight,
       textStyle,
       outline,
       onClick,
@@ -46,7 +48,7 @@ class Button extends React.Component<ButtonProps, any> {
       >
         <View style={s.wrapper}>
           {iconNode}
-          <Txt textType={textType} style={[s.text, s[`${type}${outline ? 'Outline' : ''}Text`], textStyle]}>
+          <Txt type={textType} size={textSize} weight={textWeight} style={[s.text, s[`${type}${outline ? 'Outline' : ''}Text`], textStyle]}>
             {uppercase && typeof children === 'string' ? children.toUpperCase() : children}
           </Txt>
         </View>

@@ -3,16 +3,24 @@ import React from 'react'
 import { Text } from 'react-native'
 import type { TxtProps } from './TxtProps'
 import s from './TxtStyles'
+import { Fonts } from '../../themes'
 
 class Txt extends React.Component<TxtProps, any> {
   static defaultProps = {
-    type: 'normal',
+    type: 'regular',
+    size: 'normal',
   }
 
   render () {
-    const {children, type, style} = this.props
+    const {children, size, type, weight, style} = this.props
     return (
-      <Text style={[s.text, type && s[type], style]}>
+      <Text style={[
+        s.text,
+        type && {fontFamily: Fonts.type[type]},
+        size && {fontSize: Fonts.size[size]},
+        weight && {fontWeight: weight},
+        style,
+      ]}>
         {children}
       </Text>
     )

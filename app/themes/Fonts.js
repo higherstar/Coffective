@@ -1,67 +1,28 @@
 const type = {
   regular: 'SanFranciscoDisplay-Regular',
-  light: 'SanFranciscoDisplay-Light',
-  semiBold: 'SanFranciscoDisplay-Semibold',
-  regularText: 'SanFranciscoText-Regular',
-  mediumText: 'SanFranciscoText-Medium',
+  secondary: 'SanFranciscoText-Regular',
 }
 
 const size = {
-  h1: 26,
-  h2: 24,
-  h3: 22,
-  h4: 20,
-  h5: 19,
+  h1: 28,
+  h2: 26,
+  h3: 24,
+  h4: 21,
+  h5: 20,
   h6: 18,
+  // TODO
+  input: 16,
   inputSmall: 15,
-  inputMedium: 18,
+  inputMedium: 16,
+
   button: 16,
-  regular: 16,
+  normal: 16,
   medium: 14,
   small: 12,
-  tiny: 8.5
-}
-
-const style = {
-  h1: {
-    fontFamily: type.base,
-    fontWeight: '300',
-    fontSize: size.h1
-  },
-  h2: {
-    fontFamily: type.base,
-    fontWeight: '300',
-    fontSize: size.h2
-  },
-  h3: {
-    fontFamily: type.base,
-    fontWeight: '300',
-    fontSize: size.h3
-  },
-  h4: {
-    fontFamily: type.base,
-    fontSize: size.h4
-  },
-  h5: {
-    fontFamily: type.base,
-    fontSize: size.h5
-  },
-  h6: {
-    fontFamily: type.base,
-    fontSize: size.h6
-  },
-  normal: {
-    fontFamily: type.base,
-    fontSize: size.regular
-  },
-  description: {
-    fontFamily: type.base,
-    fontSize: size.medium
-  }
+  // tiny: 10,
 }
 
 export default {
   type,
   size,
-  style,
 }

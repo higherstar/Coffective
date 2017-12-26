@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { Colors, Metrics } from '../../themes'
+import { Colors, Metrics, Fonts } from '../../themes'
 
 export default StyleSheet.create({
   container: {
@@ -24,6 +24,8 @@ export default StyleSheet.create({
   headerText: {
     color: Colors.white,
     textAlign: 'center',
+    fontSize: Fonts.size.h1,
+    fontWeight: '300',
   },
   description: {
     paddingHorizontal: Metrics.marginX,
@@ -31,6 +33,7 @@ export default StyleSheet.create({
   descriptionText: {
     color: Colors.white,
     textAlign: 'center',
+    fontFamily: Fonts.type.secondary
   },
   getStartedBtn: {
     marginTop: Metrics.doubleBaseMargin,

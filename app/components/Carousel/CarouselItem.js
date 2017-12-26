@@ -19,10 +19,10 @@ class CarouselItem extends React.Component<CarouselItemProps, any> {
           <Txt.View style={s.subHeader} textStyle={s.subHeaderText}>
             {subHeader.toUpperCase()}
           </Txt.View>
-          <Txt.View type='h2' style={s.header} textStyle={s.headerText}>
+          <Txt.View type='light' size='h1' style={s.header} textStyle={s.headerText}>
             {header}
           </Txt.View>
-          <Txt.View style={s.description} textStyle={s.descriptionText}>
+          <Txt.View type='mediumText' size='medium' style={s.description} textStyle={s.descriptionText}>
             {description}
           </Txt.View>
         </View>

@@ -8,7 +8,7 @@ export default StyleSheet.create({
   },
   selectedOptionText: {
     color: Colors.inputText,
-    fontSize: Fonts.size.regular
+    fontSize: Fonts.size.normal
   },
   selectMask: {
     flex: 1,

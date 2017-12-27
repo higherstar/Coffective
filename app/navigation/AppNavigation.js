@@ -4,7 +4,6 @@ import { DrawerNavigator, StackNavigator } from 'react-navigation'
 // import PersonTypeScreen from '../containers/PersonTypeScreen'
 // import SelectEthnicityScreen from '../containers/SelectEthnicityScreen'
 // import PushNotificationsScreen from '../containers/PushNotificationsScreen'
-// import RegistrationScreen from '../containers/RegistrationScreen'
 // import AskForFeedbackScreen from '../containers/AskForFeedbackScreen'
 // import SelectDueDateScreen from '../containers/SelectDueDateScreen'
 // import SummaryScreen from '../containers/SummaryScreen'
@@ -15,6 +14,7 @@ import Welcome from '../containers/Welcome/Welcome'
 import Guide from '../containers/Guide/Guide'
 import Login from '../containers/Login/Login'
 import ForgotPassword from '../containers/ForgotPassword/ForgotPassword'
+import Register from '../containers/Register/Register'
 
 const Menu = ({iconName, onPress}) => (
   <TouchableOpacity
@@ -43,6 +43,7 @@ const MainNav = StackNavigator({
   Guide: {screen: Guide},
   Login: {screen: Login},
   ForgotPassword: {screen: ForgotPassword},
+  Register: {screen: Register},
   // RegistrationScreen: {screen: RegistrationScreen},
   // PersonTypeScreen: {screen: PersonTypeScreen},
   // SelectAgeScreen: {screen: SelectAgeScreen},

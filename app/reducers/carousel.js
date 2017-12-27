@@ -1,4 +1,5 @@
 import createReducer from '../createReducer'
+import { getToken } from './user'
 
 // ------------------------------------
 // Constants
@@ -12,8 +13,10 @@ export const GET_CAROUSEL_FAILURE = 'Carousel.GET_CAROUSEL_FAILURE'
 // ------------------------------------
 export const getCarousel = () => (dispatch, getState, {fetch}) => {
   dispatch({type: GET_CAROUSEL_REQUEST})
+  const {token} = dispatch(getToken())
   return fetch(`/carousel/`, {
     method: 'GET',
+    token,
     success: (carousel) => dispatch({type: GET_CAROUSEL_SUCCESS, carousel}),
     failure: (err) => {
       // TODO backend

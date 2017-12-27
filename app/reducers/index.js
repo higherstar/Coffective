@@ -12,6 +12,7 @@ export const reducers = combineReducers({
   user: require('./user').default,
   login: require('./login').default,
   register: require('./register').default,
+  forgotPassword: require('./forgotPassword').default,
 })
 
 export default (helpersConfig) => {

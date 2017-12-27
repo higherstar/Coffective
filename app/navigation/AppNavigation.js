@@ -2,10 +2,8 @@ import React from 'react'
 import { DrawerNavigator, StackNavigator } from 'react-navigation'
 // import SelectAgeScreen from '../containers/SelectAgeScreen'
 // import PersonTypeScreen from '../containers/PersonTypeScreen'
-// import HowItWorksScreen from '../containers/HowItWorksScreen'
 // import SelectEthnicityScreen from '../containers/SelectEthnicityScreen'
 // import PushNotificationsScreen from '../containers/PushNotificationsScreen'
-import LoginScreen from '../containers/LoginScreen'
 // import RegistrationScreen from '../containers/RegistrationScreen'
 // import AskForFeedbackScreen from '../containers/AskForFeedbackScreen'
 // import SelectDueDateScreen from '../containers/SelectDueDateScreen'
@@ -14,6 +12,9 @@ import { Image, TouchableOpacity } from 'react-native'
 import { Colors, Images, Metrics } from '../themes'
 import { Drawer } from '../components'
 import Welcome from '../containers/Welcome/Welcome'
+import Guide from '../containers/Guide/Guide'
+import Login from '../containers/Login/Login'
+import ForgotPassword from '../containers/ForgotPassword/ForgotPassword'
 
 const Menu = ({iconName, onPress}) => (
   <TouchableOpacity
@@ -39,8 +40,9 @@ const Left = ({onPress}) => (
 // Manifest of possible screens
 const MainNav = StackNavigator({
   Welcome: {screen: Welcome},
-  // HowItWorksScreen: {screen: HowItWorksScreen},
-  LoginScreen: {screen: LoginScreen},
+  Guide: {screen: Guide},
+  Login: {screen: Login},
+  ForgotPassword: {screen: ForgotPassword},
   // RegistrationScreen: {screen: RegistrationScreen},
   // PersonTypeScreen: {screen: PersonTypeScreen},
   // SelectAgeScreen: {screen: SelectAgeScreen},
@@ -50,7 +52,7 @@ const MainNav = StackNavigator({
   // SelectDueDateScreen: {screen: SelectDueDateScreen},
   // SummaryScreen: {screen: SummaryScreen},
 }, {
-  initialRouteName: 'Welcome',
+  initialRouteName: 'Guide',
   cardStyle: {
     backgroundColor: Colors.background
   },
@@ -69,14 +71,7 @@ const MainNav = StackNavigator({
     headerRight: <Menu
       onPress={() => navigation.navigate('DrawerOpen')}
     />,
-    headerTitle: (
-      <Image source={Images.logo} style={{
-        maxHeight: 20,
-        resizeMode: 'contain',
-        flex: 1,
-        alignSelf: 'center'
-      }}/>
-    )
+    headerTitle: null
   }),
 })
 

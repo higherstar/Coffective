@@ -1,86 +1,87 @@
-// @flow
-
 import createReducer from '../createReducer'
-import { clearRegisterData } from './register'
-import { clearLoginData } from './login'
+
 // ------------------------------------
 // Constants
 // ------------------------------------
-export const SET_PERSON_TYPE = 'User.SET_PERSON_TYPE'
-export const SET_AGE_RANGE = 'User.SET_AGE_RANGE'
-export const SET_DUE_DATE = 'User.SET_DUE_DATE'
-export const SET_ETHNICITY = 'User.SET_ETHNICITY'
-export const SET_NOTIFICATIONS = 'User.SET_NOTIFICATIONS'
-export const SET_FEEDBACK = 'User.SET_FEEDBACK'
-export const CLEAR = 'User.CLEAR'
-export const SET_SLIDE_INDEX = 'User.SET_SLIDE_INDEX'
+export const LOGOUT_REQUEST = 'User.LOGOUT_REQUEST'
+export const LOGOUT_SUCCESS = 'User.LOGOUT_SUCCESS'
+export const LOGOUT_FAILURE = 'User.LOGOUT_FAILURE'
+
+export const GET_USER_REQUEST = 'User.GET_USER_REQUEST'
+export const GET_USER_SUCCESS = 'User.GET_USER_SUCCESS'
+export const GET_USER_FAILURE = 'User.GET_USER_FAILURE'
 
 // ------------------------------------
 // Actions
 // ------------------------------------
-
-export const setPersonType = (personType) => ({type: SET_PERSON_TYPE, personType})
-
-export const setAgeRange = (ageRange) => ({type: SET_AGE_RANGE, ageRange})
-
-export const setDueDate = (dueDate) => ({type: SET_DUE_DATE, dueDate})
-
-export const setEthnicity = (ethnicity) => ({type: SET_ETHNICITY, ethnicity})
-
-export const setNotifications = (notifications) => ({type: SET_NOTIFICATIONS, notifications})
-
-export const setFeedback = (feedback) => ({type: SET_FEEDBACK, feedback})
-
-export const clearUserData = () => (dispatch) => {
-  dispatch({type: CLEAR})
-  dispatch(clearRegisterData())
-  dispatch(clearLoginData())
+export const getToken = () => (dispatch, getState) => {
+  // TODO backend
+  return {token: 'temp'}
 }
 
-export const changeSlide = (slideIndex) => ({type: SET_SLIDE_INDEX, slideIndex})
+export const logoutSuccess = () => (dispatch, getState) => {
+  dispatch({type: LOGOUT_SUCCESS})
+}
+
+export const logout = () => (dispatch, getState, {fetch}) => {
+  const {token} = dispatch(getToken())
+  dispatch({type: LOGOUT_REQUEST})
+  return fetch(`/auth/revoke-token/`, {
+    method: 'POST',
+    token,
+    body: {
+      token,
+    },
+    success: (res) => dispatch(logoutSuccess(res)),
+    failure: (err) => dispatch({type: LOGOUT_FAILURE, err})
+  })
+}
+
+export const getUser = () => (dispatch, getState, {fetch}) => {
+  const {token} = dispatch(getToken())
+  const {user} = getState().user
+  if (!user && token) {
+    dispatch({type: GET_USER_REQUEST})
+    return fetch(`/user/me/`, {
+      method: 'GET',
+      token,
+      success: (user) => dispatch({type: GET_USER_SUCCESS, user}),
+      failure: (err) => {
+        // TODO backend
+        // dispatch({type: GET_USER_FAILURE, error: err})
+        dispatch({type: GET_USER_SUCCESS, user: {
+          first_name: 'John',
+          last_name: 'Doe',
+        }})
+      }
+    })
+  } else {
+    return user
+  }
+}
 
 // ------------------------------------
 // Reducer
 // ------------------------------------
-export const INITIAL_STATE = {
-  personType: null,
-  ageRange: null,
-  dueDate: '',
-  ethnicity: '',
-  notifications: null,
-  feedback: null,
-  slideIndex: 0,
+const initialState = {
+  loading: false,
+  loggedIn: false,
+  error: null,
+  user: null,
 }
 
-export default createReducer(INITIAL_STATE, {
-  [SET_PERSON_TYPE]: (state, {personType}) => ({
-    personType
+export default createReducer(initialState, {
+  [LOGOUT_SUCCESS]: (state, action) => ({
+    loading: false,
+    loggedIn: false,
+    error: null,
+    user: null,
   }),
-  [SET_AGE_RANGE]: (state, {ageRange}) => ({
-    ageRange
+  [LOGOUT_FAILURE]: (state, {error}) => ({
+    error,
   }),
-  [SET_DUE_DATE]: (state, {dueDate}) => ({
-    dueDate
-  }),
-  [SET_ETHNICITY]: (state, {ethnicity}) => ({
-    ethnicity
-  }),
-  [SET_NOTIFICATIONS]: (state, {notifications}) => ({
-    notifications
-  }),
-  [SET_FEEDBACK]: (state, {feedback}) => ({
-    feedback
-  }),
-  [SET_SLIDE_INDEX]: (state, {slideIndex}) => ({
-    slideIndex
-  }),
-  [CLEAR]: (state, action) => ({
-    // TODO improve
-    personType: null,
-    ageRange: null,
-    dueDate: '',
-    ethnicity: '',
-    notifications: null,
-    feedback: null,
+  [GET_USER_SUCCESS]: (state, {user}) => ({
+    user,
+    loggedIn: true,
   }),
 })

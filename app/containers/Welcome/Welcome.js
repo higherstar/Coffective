@@ -32,6 +32,7 @@ class Welcome extends React.Component {
           </Txt.View>
           <Button
             type='primary'
+            size='lg'
             style={s.getStartedBtn}
             onClick={() => this.props.navigation.navigate('Guide')}
           >

@@ -37,7 +37,6 @@ export default StyleSheet.create({
   },
   getStartedBtn: {
     marginTop: Metrics.doubleBaseMargin,
-    height: Metrics.footerBtnHeight,
     borderRadius: 0,
   },
 })

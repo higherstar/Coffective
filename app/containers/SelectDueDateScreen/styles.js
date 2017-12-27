@@ -17,7 +17,7 @@ export default StyleSheet.create({
   date: {
     width: '100%',
     borderColor: Colors.inputBorder,
-    borderRadius: Metrics.inputRadius,
+    borderRadius: Metrics.inputBorderRadius,
     borderWidth: Metrics.inputBorderWidth,
   },
   dateInput: {

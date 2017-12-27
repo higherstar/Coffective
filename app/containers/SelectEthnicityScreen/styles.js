@@ -28,7 +28,7 @@ export default StyleSheet.create({
     maxHeight: 50,
     paddingHorizontal: Metrics.baseMargin,
     borderColor: Colors.inputBorder,
-    borderRadius: Metrics.inputRadius,
+    borderRadius: Metrics.inputBorderRadius,
     borderWidth: Metrics.inputBorderWidth,
     backgroundColor: Colors.transparent,
   }

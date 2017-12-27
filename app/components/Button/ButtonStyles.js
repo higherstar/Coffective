@@ -4,34 +4,16 @@ import { Colors, Metrics, Fonts } from '../../themes'
 export default StyleSheet.create({
   btn: {
     justifyContent: 'center',
-    borderRadius: Metrics.btnRadius,
   },
-  icon: {
-  },
-  mdIcon: {
-    alignSelf: 'center',
-    height: 28,
-    resizeMode: 'contain',
-    width: 28,
-  },
-  // TODO
-  iconWrapper: {
-    borderRightWidth: 1,
-    borderRightColor: Colors.mutedText,
-    position: 'absolute',
-    backgroundColor: 'transparent',
-    left: 0,
-    paddingHorizontal: Metrics.smallMargin * 1.25,
-    marginVertical: Metrics.smallMargin * 1.5,
-  },
-  wrapper: {
+  textWrapper: {
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   text: {
     fontSize: Fonts.size.button,
     fontWeight: '600',
+    textAlign: 'center',
   },
   // sizes
   sm: {
@@ -43,9 +25,22 @@ export default StyleSheet.create({
   lg: {
     height: Metrics.btnSizes.lg,
   },
+  xl: {
+    height: Metrics.btnSizes.xl,
+    minWidth: Metrics.btnSizes.xl,
+    borderRadius: 36.5,
+  },
+  // Default
+  default: {
+    backgroundColor: Colors.white,
+  },
+  defaultText: {
+    color: Colors.primary,
+  },
   // Primary
   primary: {
-    backgroundColor: Colors.primary
+    backgroundColor: Colors.primary,
+    borderRadius: Metrics.btnBorderRadius,
   },
   primaryText: {
     color: Colors.white
@@ -59,57 +54,11 @@ export default StyleSheet.create({
   primaryOutlineText: {
     color: Colors.primary
   },
-  // Secondary
-  secondary: {
-    backgroundColor: Colors.white
-  },
-  secondaryText: {
-    color: Colors.primary
-  },
-  // Secondary Outline
-  secondaryOutline: {
-    backgroundColor: Colors.transparent,
-    borderWidth: Metrics.btnBorderWidth,
-    borderColor: Colors.secondaryBtnBorder
-  },
-  secondaryOutlineText: {
-    color: Colors.secondaryBtnText
-  },
   // Link
   link: {
     backgroundColor: Colors.transparent
   },
   linkText: {
-    fontWeight: '400'
-  },
-  // White
-  white: {
-    backgroundColor: Colors.white,
-  },
-  whiteText: {
-    color: Colors.primary
-  },
-  // White Outline
-  whiteOutline: {
-    backgroundColor: Colors.transparent,
-    borderWidth: Metrics.btnBorderWidth,
-    borderColor: Colors.white
-  },
-  whiteOutlineText: {
-    color: Colors.white
-  },
-  // Facebook
-  facebook: {
-    backgroundColor: Colors.facebook
-  },
-  facebookText: {
-    color: Colors.white
-  },
-  // Google
-  google: {
-    backgroundColor: Colors.google
-  },
-  googleText: {
-    color: Colors.white
+    color: Colors.primary,
   },
 })

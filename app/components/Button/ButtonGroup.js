@@ -15,7 +15,7 @@ class ButtonGroup extends React.Component<ButtonGroupProps, any> {
             React.cloneElement(child, {
               ...child.props,
               key: i,
-              style: [s.item, child.props.style],
+              style: [child.props.style, s.item],
             }),
           ]
         })}

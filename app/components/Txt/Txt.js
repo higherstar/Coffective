@@ -16,8 +16,8 @@ class Txt extends React.Component<TxtProps, any> {
     return (
       <Text style={[
         s.text,
-        type && {fontFamily: Fonts.type[type]},
-        size && {fontSize: Fonts.size[size]},
+        {fontFamily: Fonts.type[type]},
+        {fontSize: Fonts.size[size]},
         weight && {fontWeight: weight},
         style,
       ]}>

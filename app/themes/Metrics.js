@@ -2,14 +2,6 @@ import { Dimensions, Platform, StatusBar } from 'react-native'
 
 const { width, height } = Dimensions.get('window')
 
-const base = {
-  radius: 4,
-  small: 22,
-  medium: 36,
-  large: 50,
-  borderWidth: 1
-}
-
 const margins = {
   exSmallMargin: 5,
   smallMargin: 10,
@@ -22,54 +14,51 @@ const margins = {
 // Used via Metrics.baseMargin
 const metrics = {
   footerBtnHeight: 65,
-  // TODO update
-  tabBorderRadius: base.radius,
   // Buttons
   btnSizes: {
-    sm: 36,
+    sm: 45,
     md: 50,
-    lg: 50,
+    lg: 65,
+    xl: 73,
   },
-  btnHeight: base.medium,
-  btnRadius: base.radius,
-  btnBorderWidth: base.borderWidth,
+  btnBorderRadius: 7,
+  btnBorderWidth: 2,
   // Inputs
   inputSizes: {
-    sm: 36,
     md: 50,
-    lg: 50,
   },
-  inputRadius: base.radius,
-  inputBorderWidth: base.borderWidth,
-  inputPadding: 20,
-  multilineInputHeight: 100,
-  // Loader
-  loaderBgRadius: base.radius,
-  // Progress bar
-  progressBorderRadius: base.radius,
-  progressHeight: 20,
+  inputBorderRadius: 7,
+  inputBorderWidth: 1,
   // Margins (also are used as paddings)
   ...margins,
-  ratingStar: {
-    width: 40,
-    height: 40
-  },
   screenWidth: width < height ? width : height,
   screenHeight: width < height ? height : width,
   navBarHeight: (Platform.OS === 'ios') ? 64 : (56 + StatusBar.currentHeight),
   navBarWithOutStatusBarHeight: (Platform.OS === 'ios') ? 44 : 56,
   icons: {
-    tiny: 15,
-    small: 20,
-    medium: 30,
-    large: 45,
-    xl: 60
+    // tiny: 15,
+    // small: 20,
+    md: 20,
+    lg: 30,
+    // xl: 60
   },
   images: {
-    small: 20,
-    medium: 40,
-    large: 60,
-    logo: 300
+    // small: 20,
+    // medium: 40,
+    // large: 60,
+    // logo: 300
+  },
+  boxShadow: {
+    // ios
+    shadowColor: '#000000',
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowRadius: 3,
+    shadowOpacity: 0.2,
+    // android 5.0+
+    elevation: 2,
   },
 }
 

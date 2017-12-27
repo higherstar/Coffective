@@ -36,10 +36,20 @@ class Guide extends React.Component {
           )}
         </Carousel>
         <Button.Group style={s.actions}>
-          <Button type='primary' style={s.signUpBtn} onClick={() => this.props.navigation.navigate('Register')}>
+          <Button 
+            type='primary' 
+            style={s.signUpBtn}
+            size='lg'
+            onClick={() => this.props.navigation.navigate('Register')}
+          >
             {I18n.t('signUp')}
           </Button>
-          <Button type='primary' style={s.loginBtn} onClick={() => this.props.navigation.navigate('Login')}>
+          <Button 
+            type='primary' 
+            style={s.loginBtn}
+            size='lg'
+            onClick={() => this.props.navigation.navigate('Login')}
+          >
             {I18n.t('login')}
           </Button>
         </Button.Group>

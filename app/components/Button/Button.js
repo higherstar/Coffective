@@ -7,12 +7,12 @@ import Color from 'color'
 import { Txt } from '../'
 import typeof { ButtonProps } from './ButtonProps'
 import s from './ButtonStyles'
+import { noop } from '../../utils/utils'
 
 class Button extends React.Component<ButtonProps, any> {
   static defaultProps = {
     uppercase: true,
     type: 'default',
-    size: 'default',
   }
 
   render () {
@@ -20,37 +20,31 @@ class Button extends React.Component<ButtonProps, any> {
       children,
       type,
       style,
-      textType,
-      textSize,
-      textWeight,
       textStyle,
       outline,
       onClick,
-      // underlayColor,
       uppercase,
       icon,
       size,
       disabled,
-      loading,
     } = this.props
 
     const ComponentProp = type === 'link' ? TouchableOpacity : TouchableHighlight
 
-    const iconType = loading ? 'loading' : icon
-    const iconNode = iconType ? <Icon name={iconType} style={[s.icon, s[`${size}Icon`]]}/> : null
-
     return (
       <ComponentProp
         activeOpacity={!disabled ? 0.4 : 1}
-        style={[s.btn, s[`${type}${outline ? 'Outline' : ''}`], s[size], disabled && {opacity: 0.4}, style]}
+        style={[s.btn, s[`${type}${outline ? 'Outline' : ''}`], size && s[size], disabled && {opacity: 0.4}, style]}
         underlayColor={!disabled ? (outline ? Colors.transparent : Color(Colors[type]).darken(0.1)) : (outline ? Colors.transparent : Color(Colors[type]))}
-        onPress={() => !disabled ? onClick() : () => {}}
+        onPress={() => !disabled ? onClick() : noop}
       >
-        <View style={s.wrapper}>
-          {iconNode}
-          <Txt type={textType} size={textSize} weight={textWeight} style={[s.text, s[`${type}${outline ? 'Outline' : ''}Text`], textStyle]}>
-            {uppercase && typeof children === 'string' ? children.toUpperCase() : children}
-          </Txt>
+        <View style={s.textWrapper}>
+          {icon}
+          {children && (
+            <Txt style={[s.text, s[`${type}${outline ? 'Outline' : ''}Text`], textStyle]}>
+              {uppercase && typeof children === 'string' ? children.toUpperCase() : children}
+            </Txt>
+          )}
         </View>
       </ComponentProp>
     )

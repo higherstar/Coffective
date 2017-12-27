@@ -6,11 +6,9 @@ export default StyleSheet.create({
     flex: 1,
   },
   signUpBtn: {
-    minHeight: Metrics.footerBtnHeight,
     borderRadius: 0,
   },
   loginBtn: {
-    minHeight: Metrics.footerBtnHeight,
     borderRadius: 0,
   },
   actions: {

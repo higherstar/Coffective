@@ -1,43 +1,108 @@
 import { StyleSheet } from 'react-native'
-import { Colors, Metrics } from '../../themes'
+import { Colors, Fonts, Metrics } from '../../themes'
 
 export default StyleSheet.create({
-  scrollContainer: {
-    // flex: 1,
-  },
   container: {
-    // paddingHorizontal: Metrics.marginX
+    flex: 1,
+  },
+  contentWrapper: {
+    flex: 1,
+    position: 'relative',
+    // TODO replace with image
+    backgroundColor: Colors.primary,
+  },
+  content: {
+    flex: 1,
+    paddingHorizontal: Metrics.marginX,
+  },
+  logoWrapper: {
+    flex: 1,
+    justifyContent: 'center',
   },
   logo: {
-    maxHeight: 30,
+    maxHeight: 50,
     resizeMode: 'contain',
     flex: 1,
     alignSelf: 'center'
   },
+  actions: {
+    position: 'absolute',
+    bottom: -36.5,
+    left: 0,
+    right: 0,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  footerWrapper: {
+    minHeight: 100,
+  },
+  footer: {
+    minHeight: 80,
+    marginTop: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   header: {
-    // marginTop: Metrics.marginX,
-    // marginBottom: Metrics.smallMargin,
+    marginBottom: Metrics.smallMargin,
   },
   headerText: {
-    // textAlign: 'center',
-    // color: Colors.header,
+    color: Colors.white,
+    fontSize: Fonts.size.h1,
+    fontWeight: '300',
   },
   description: {
-    // marginBottom: Metrics.doubleBaseMargin,
+    marginBottom: Metrics.smallMargin,
   },
   descriptionText: {
-    // textAlign: 'center',
+    color: Colors.white,
+    fontFamily: Fonts.type.secondary,
+    fontSize: Fonts.size.medium,
+    fontWeight: '500',
   },
-  email: {
-    // marginBottom: Metrics.smallMargin,
+  email: {},
+  emailIcon: {
+    alignSelf: 'center',
+    fontSize: Metrics.icons.md,
+    color: Colors.inputIcon,
   },
-  password: {
-    // marginBottom: Metrics.baseMargin,
+  password: {},
+  passwordIcon: {
+    alignSelf: 'center',
+    fontSize: Metrics.icons.md,
+    color: Colors.inputIcon,
   },
   forgotPasswordBtn: {
+    paddingVertical: Metrics.smallMargin,
+    marginTop: Metrics.exSmallMargin,
+    alignSelf: 'flex-end',
+  },
+  forgotPasswordBtnText: {
+    color: Colors.white,
+    fontWeight: '400',
   },
   signUpBtn: {
+    marginLeft: Metrics.exSmallMargin
+  },
+  facebookBtn: {
+    marginRight: Metrics.baseMargin,
+    ...Metrics.boxShadow,
+  },
+  facebookIcon: {
+    alignSelf: 'center',
+    fontSize: Metrics.icons.lg,
+    color: Colors.primary,
   },
   submitBtn: {
+    ...Metrics.boxShadow,
   },
+  submitIcon: {
+    alignSelf: 'center',
+    fontSize: Metrics.icons.lg,
+    color: Colors.primary,
+  },
+  newUserText: {
+   color: Colors.muted,
+  }
 })

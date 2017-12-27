@@ -1,43 +1,71 @@
 import { StyleSheet } from 'react-native'
-import { Colors, Metrics } from '../../themes'
+import { Colors, Fonts, Metrics } from '../../themes'
 
 export default StyleSheet.create({
-  scrollContainer: {
-    // flex: 1,
-  },
   container: {
-    // paddingHorizontal: Metrics.marginX
-  },
-  logo: {
-    maxHeight: 30,
-    resizeMode: 'contain',
+    paddingHorizontal: Metrics.marginX,
+    // TODO replace with image
+    backgroundColor: Colors.primary,
     flex: 1,
-    alignSelf: 'center'
+  },
+  content: {
+    flex: 2,
   },
   header: {
-    // marginTop: Metrics.marginX,
-    // marginBottom: Metrics.smallMargin,
+    marginBottom: Metrics.smallMargin,
   },
   headerText: {
-    // textAlign: 'center',
-    // color: Colors.header,
+    color: Colors.white,
+    fontSize: Fonts.size.h1,
+    fontWeight: '300',
   },
   description: {
-    // marginBottom: Metrics.doubleBaseMargin,
+    marginBottom: Metrics.doubleBaseMargin,
   },
   descriptionText: {
-    // textAlign: 'center',
+    color: Colors.white,
+    fontFamily: Fonts.type.secondary,
   },
   email: {
-    // marginBottom: Metrics.smallMargin,
   },
-  password: {
-    // marginBottom: Metrics.baseMargin,
+  emailIcon: {
+    alignSelf: 'center',
+    fontSize: Metrics.icons.md,
+    color: Colors.inputIcon,
   },
-  forgotPasswordBtn: {
+  password: {},
+  passwordIcon: {
+    alignSelf: 'center',
+    fontSize: Metrics.icons.md,
+    color: Colors.inputIcon,
   },
-  signUpBtn: {
+  footer: {
+  },
+  actions: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  facebookBtn: {
+    marginRight: Metrics.baseMargin,
+  },
+  facebookBtnText: {
+    textAlign: 'left',
+    // TODO fix it - make it flexible
+    maxWidth: 150,
+  },
+  facebookIcon: {
+    alignSelf: 'center',
+    fontSize: Metrics.icons.lg,
+    color: Colors.primary,
+    paddingHorizontal: Metrics.baseMargin,
   },
   submitBtn: {
+  },
+  submitIcon: {
+    alignSelf: 'center',
+    fontSize: Metrics.icons.lg,
+    color: Colors.primary,
   },
 })

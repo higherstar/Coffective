@@ -9,7 +9,6 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: Metrics.baseMargin,
   },
   text: {
     fontSize: Fonts.size.button,

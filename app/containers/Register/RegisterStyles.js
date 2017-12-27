@@ -49,6 +49,7 @@ export default StyleSheet.create({
   },
   facebookBtn: {
     marginRight: Metrics.baseMargin,
+    paddingHorizontal: Metrics.baseMargin,
   },
   facebookBtnText: {
     textAlign: 'left',
@@ -59,7 +60,8 @@ export default StyleSheet.create({
     alignSelf: 'center',
     fontSize: Metrics.icons.lg,
     color: Colors.primary,
-    paddingHorizontal: Metrics.baseMargin,
+    paddingRight: Metrics.baseMargin,
+    paddingLeft: Metrics.smallMargin,
   },
   submitBtn: {
   },

@@ -12,7 +12,8 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome'
 
 class Login extends React.Component {
   static navigationOptions = {
-    header: null,
+    headerLeft: null,
+    headerRight: null,
   }
 
   render () {

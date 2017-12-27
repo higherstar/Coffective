@@ -53,13 +53,14 @@ const MainNav = StackNavigator({
   // SelectDueDateScreen: {screen: SelectDueDateScreen},
   // SummaryScreen: {screen: SummaryScreen},
 }, {
-  initialRouteName: 'Register',
+  initialRouteName: 'Welcome',
   cardStyle: {
     backgroundColor: Colors.background
   },
   navigationOptions: ({navigation}) => ({
     headerStyle: {
-      backgroundColor: Colors.primary
+      backgroundColor: Colors.primary,
+      borderBottomWidth: 0,
     },
     headerTitleStyle: {
       color: Colors.white

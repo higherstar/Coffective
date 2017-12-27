@@ -10,6 +10,7 @@ export default StyleSheet.create({
   },
   input: {
     color: Colors.inputText,
+    flex: 1,
   },
   md: {
     height: Metrics.inputSizes.md,

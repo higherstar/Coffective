@@ -7,6 +7,7 @@ import { Field, reduxForm } from 'redux-form'
 import { Button, Txt, Input } from '../../components'
 import s from './ForgotPasswordStyles'
 import { forgotPassword } from '../../reducers/forgotPassword'
+import Icon from 'react-native-vector-icons/dist/FontAwesome'
 
 class ForgotPassword extends React.Component {
   static navigationOptions = {
@@ -28,19 +29,27 @@ class ForgotPassword extends React.Component {
           style={s.email}
           focus
           name='email'
+          prefix={
+            <Icon
+              style={s.emailIcon}
+              name='envelope'
+            />
+          }
+          suffix={
+            <Button
+              type='link'
+              style={s.submitBtn}
+              onClick={handleSubmit}
+            >
+              {I18n.t('submit')}
+            </Button>
+          }
           placeholder={I18n.t('forgotPasswordEmail')}
           keyboardType='email-address'
           returnKeyType='go'
           onSubmitEditing={handleSubmit}
           blurOnSubmit
         />
-        <Button
-          type='link'
-          style={s.submitBtn}
-          onClick={handleSubmit}
-        >
-          {I18n.t('submit')}
-        </Button>
       </View>
     )
   }

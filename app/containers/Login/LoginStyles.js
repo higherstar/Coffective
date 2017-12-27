@@ -27,7 +27,7 @@ export default StyleSheet.create({
   },
   actions: {
     position: 'absolute',
-    bottom: -36.5,
+    bottom: -Metrics.btnSizes.lg / 2,
     left: 0,
     right: 0,
     flexDirection: 'row',

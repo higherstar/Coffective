@@ -1,26 +1,34 @@
 import { StyleSheet } from 'react-native'
-import { Colors, Metrics } from '../../themes'
+import { Colors, Metrics, Fonts } from '../../themes'
 
 export default StyleSheet.create({
   container: {
-    // paddingHorizontal: Metrics.marginX
+    paddingHorizontal: Metrics.marginX,
+    // TODO replace with image
+    backgroundColor: Colors.primary,
+    flex: 1,
   },
   header: {
-    // marginTop: Metrics.marginX,
-    // marginBottom: Metrics.smallMargin,
+    marginBottom: Metrics.smallMargin,
   },
   headerText: {
-    // textAlign: 'center',
-    // color: Colors.header,
+    color: Colors.white,
+    fontSize: Fonts.size.h1,
+    fontWeight: '300',
   },
   description: {
-    // marginBottom: Metrics.doubleBaseMargin,
+    marginBottom: Metrics.doubleBaseMargin,
   },
   descriptionText: {
-    // textAlign: 'center',
+    color: Colors.white,
+    fontFamily: Fonts.type.secondary,
   },
   email: {
-    // marginBottom: Metrics.smallMargin,
+  },
+  emailIcon: {
+    alignSelf: 'center',
+    fontSize: Metrics.icons.md,
+    color: Colors.inputIcon,
   },
   submitBtn: {
   },

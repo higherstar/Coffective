@@ -53,10 +53,10 @@ const metrics = {
     shadowColor: '#000000',
     shadowOffset: {
       width: 0,
-      height: 2
+      height: 1
     },
-    shadowRadius: 3,
-    shadowOpacity: 0.2,
+    shadowRadius: 2,
+    shadowOpacity: 0.1,
     // android 5.0+
     elevation: 2,
   },

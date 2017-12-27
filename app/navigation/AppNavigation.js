@@ -1,12 +1,8 @@
 import React from 'react'
 import { DrawerNavigator, StackNavigator } from 'react-navigation'
 // import SelectAgeScreen from '../containers/SelectAgeScreen'
-// import PersonTypeScreen from '../containers/PersonTypeScreen'
-// import SelectEthnicityScreen from '../containers/SelectEthnicityScreen'
-// import PushNotificationsScreen from '../containers/PushNotificationsScreen'
 // import AskForFeedbackScreen from '../containers/AskForFeedbackScreen'
 // import SelectDueDateScreen from '../containers/SelectDueDateScreen'
-// import SummaryScreen from '../containers/SummaryScreen'
 import { Image, TouchableOpacity } from 'react-native'
 import { Colors, Images, Metrics } from '../themes'
 import { Drawer } from '../components'
@@ -15,6 +11,7 @@ import Guide from '../containers/Guide/Guide'
 import Login from '../containers/Login/Login'
 import ForgotPassword from '../containers/ForgotPassword/ForgotPassword'
 import Register from '../containers/Register/Register'
+import PersonType from '../containers/PersonType/PersonType'
 
 const Menu = ({iconName, onPress}) => (
   <TouchableOpacity
@@ -44,7 +41,7 @@ const MainNav = StackNavigator({
   Login: {screen: Login},
   ForgotPassword: {screen: ForgotPassword},
   Register: {screen: Register},
-  // RegistrationScreen: {screen: RegistrationScreen},
+  PersonType: {screen: PersonType},
   // PersonTypeScreen: {screen: PersonTypeScreen},
   // SelectAgeScreen: {screen: SelectAgeScreen},
   // SelectEthnicityScreen: {screen: SelectEthnicityScreen},
@@ -53,7 +50,7 @@ const MainNav = StackNavigator({
   // SelectDueDateScreen: {screen: SelectDueDateScreen},
   // SummaryScreen: {screen: SummaryScreen},
 }, {
-  initialRouteName: 'Welcome',
+  initialRouteName: 'PersonType',
   cardStyle: {
     backgroundColor: Colors.background
   },

@@ -8,6 +8,7 @@ export const REGISTER_SUCCESS = 'Register.SUCCESS'
 export const REGISTER_FAILURE = 'Register.FAILURE'
 
 export const SET_PERSON_TYPE = 'Register.SET_PERSON_TYPE'
+export const SET_NAME = 'Register.SET_NAME'
 
 export const CLEAR = 'Register.CLEAR'
 
@@ -29,6 +30,8 @@ export const register = (values) => (dispatch, getState, {fetch}) => {
 
 export const setPersonType = (personType) => ({type: SET_PERSON_TYPE, personType})
 
+export const setName = (name) => ({type: SET_NAME, name})
+
 export const clear = () => ({type: CLEAR})
 
 
@@ -40,6 +43,7 @@ const initialState = {
   error: null,
   success: null,
   personType: null,
+  name: '',
 }
 
 export default createReducer(initialState, {
@@ -58,6 +62,9 @@ export default createReducer(initialState, {
   }),
   [SET_PERSON_TYPE]: (state, {personType}) => ({
     personType,
+  }),
+  [SET_NAME]: (state, {name}) => ({
+    name,
   }),
   [CLEAR]: (state, action) => ({
     loading: false,

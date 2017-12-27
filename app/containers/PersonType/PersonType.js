@@ -44,6 +44,7 @@ const personTypes = [
 ]
 
 class PersonTypeScreen extends React.Component {
+  // TODO add Skip button
   static navigationOptions = {}
 
   render () {

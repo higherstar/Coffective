@@ -31,6 +31,8 @@
   "search": "Search",
   "ageHeader": "Your age",
   "ageDescription": "WE KNOW IT AIN’T POLITE TO ASK,\nBUT WHAT IS YOUR AGE?",
+  "expectationHeader": "Last question for you",
+  "expectationDescription": "WHEN ARE YOU EXPECTING?",
   //
   "howToInformation": "How to information",
   "preparedChecklist": "Prepared Checklist",

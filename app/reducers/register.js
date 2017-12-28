@@ -11,6 +11,7 @@ export const SET_PERSON_TYPE = 'Register.SET_PERSON_TYPE'
 export const SET_NAME = 'Register.SET_NAME'
 export const SELECT_STATE = 'Register.SELECT_STATE'
 export const SET_AGE = 'Register.SET_AGE'
+export const SET_EXPECTATION = 'Register.SET_EXPECTATION'
 
 export const CLEAR = 'Register.CLEAR'
 
@@ -38,6 +39,8 @@ export const selectState = (selectedState) => ({type: SELECT_STATE, selectedStat
 
 export const setAge = (age) => ({type: SET_AGE, age})
 
+export const setExpectation = (expectation) => ({type: SET_EXPECTATION, expectation})
+
 export const clear = () => ({type: CLEAR})
 
 
@@ -52,6 +55,7 @@ const initialState = {
   name: '',
   selectedState: null,
   age: null,
+  expectation: null,
 }
 
 export default createReducer(initialState, {
@@ -79,6 +83,9 @@ export default createReducer(initialState, {
   }),
   [SET_AGE]: (state, {age}) => ({
     age
+  }),
+  [SET_EXPECTATION]: (state, {expectation}) => ({
+    expectation
   }),
   [CLEAR]: (state, action) => ({
     loading: false,

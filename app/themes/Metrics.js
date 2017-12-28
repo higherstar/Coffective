@@ -48,6 +48,7 @@ const metrics = {
     // large: 60,
     // logo: 300
   },
+  // TODO create method to manage properties for ios/android
   boxShadow: {
     // ios
     shadowColor: '#000000',

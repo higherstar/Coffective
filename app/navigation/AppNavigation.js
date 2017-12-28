@@ -13,6 +13,7 @@ import ForgotPassword from '../containers/ForgotPassword/ForgotPassword'
 import Register from '../containers/Register/Register'
 import PersonType from '../containers/PersonType/PersonType'
 import Name from '../containers/Name/Name'
+import State from '../containers/State/State'
 
 const Menu = ({iconName, onPress}) => (
   <TouchableOpacity
@@ -44,6 +45,7 @@ const MainNav = StackNavigator({
   Register: {screen: Register},
   PersonType: {screen: PersonType},
   Name: {screen: Name},
+  State: {screen: State},
   // PersonTypeScreen: {screen: PersonTypeScreen},
   // SelectAgeScreen: {screen: SelectAgeScreen},
   // SelectEthnicityScreen: {screen: SelectEthnicityScreen},
@@ -52,7 +54,7 @@ const MainNav = StackNavigator({
   // SelectDueDateScreen: {screen: SelectDueDateScreen},
   // SummaryScreen: {screen: SummaryScreen},
 }, {
-  initialRouteName: 'PersonType',
+  initialRouteName: 'State',
   cardStyle: {
     backgroundColor: Colors.background
   },

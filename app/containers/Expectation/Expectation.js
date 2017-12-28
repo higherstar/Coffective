@@ -8,11 +8,16 @@ import s from './ExpectationStyles'
 import { setExpectation } from '../../reducers/register'
 import Icon from 'react-native-vector-icons/dist/FontAwesome'
 import { Images } from '../../themes'
+// import HorizontalPicker from 'react-native-hpicker'
 
 class Expectation extends React.Component {
   static navigationOptions = {
     // TODO add Skip button
   }
+
+  // state = {
+  //   pickerValue: 1,
+  // }
 
   render () {
     const {setExpectation, navigation} = this.props
@@ -30,7 +35,17 @@ class Expectation extends React.Component {
           </View>
         </View>
         <View style={s.footer}>
-          <View style={s.picker}/>
+          <View style={s.picker}>
+            {/*<HorizontalPicker*/}
+              {/*itemWidth={70}*/}
+              {/*selectedValue={this.state.pickerValue}*/}
+              {/*onChange={(pickerValue) => this.setState({pickerValue})}*/}
+            {/*>*/}
+              {/*<HorizontalPicker.Item label={1} value={1} />*/}
+              {/*<HorizontalPicker.Item label={2} value={2} />*/}
+              {/*<HorizontalPicker.Item label={3} value={3} />*/}
+            {/*</HorizontalPicker>*/}
+          </View>
           <View style={s.actions}>
             <Button
               type='default'

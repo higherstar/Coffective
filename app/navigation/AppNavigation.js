@@ -1,7 +1,5 @@
 import React from 'react'
 import { DrawerNavigator, StackNavigator } from 'react-navigation'
-// import AskForFeedbackScreen from '../containers/AskForFeedbackScreen'
-// import SelectDueDateScreen from '../containers/SelectDueDateScreen'
 import { Image, TouchableOpacity } from 'react-native'
 import { Colors, Images, Metrics } from '../themes'
 import { Drawer } from '../components'
@@ -49,8 +47,6 @@ const MainNav = StackNavigator({
   State: {screen: State},
   Age: {screen: Age},
   Expectation: {screen: Expectation},
-  // AskForFeedbackScreen: {screen: AskForFeedbackScreen},
-  // SelectDueDateScreen: {screen: SelectDueDateScreen},
 }, {
   initialRouteName: 'Expectation',
   cardStyle: {

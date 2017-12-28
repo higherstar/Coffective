@@ -14,12 +14,8 @@ class Expectation extends React.Component {
     // TODO add Skip button
   }
 
-  submit = () => {
-    this.props.navigation.navigate('State')
-  }
-
   render () {
-    const {setExpectation} = this.props
+    const {setExpectation, navigation} = this.props
     return (
       <View style={s.container}>
         <View style={s.content}>
@@ -40,7 +36,7 @@ class Expectation extends React.Component {
               type='default'
               size='xl'
               style={s.submitBtn}
-              onClick={this.submit}
+              onClick={() => navigation.navigate('Register')}
               icon={
                 <Icon
                   style={s.submitIcon}

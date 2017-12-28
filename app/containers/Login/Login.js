@@ -117,7 +117,7 @@ class Login extends React.Component {
             <Button
               type='link'
               style={s.signUpBtn}
-              onClick={() => this.props.navigation.navigate('Register')}
+              onClick={() => this.props.navigation.navigate('Name')}
             >
               {I18n.t('signUp')}
             </Button>

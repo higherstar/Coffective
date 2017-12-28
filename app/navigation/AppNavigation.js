@@ -1,6 +1,5 @@
 import React from 'react'
 import { DrawerNavigator, StackNavigator } from 'react-navigation'
-// import SelectAgeScreen from '../containers/SelectAgeScreen'
 // import AskForFeedbackScreen from '../containers/AskForFeedbackScreen'
 // import SelectDueDateScreen from '../containers/SelectDueDateScreen'
 import { Image, TouchableOpacity } from 'react-native'
@@ -14,6 +13,7 @@ import Register from '../containers/Register/Register'
 import PersonType from '../containers/PersonType/PersonType'
 import Name from '../containers/Name/Name'
 import State from '../containers/State/State'
+import Age from '../containers/Age/Age'
 
 const Menu = ({iconName, onPress}) => (
   <TouchableOpacity
@@ -46,15 +46,11 @@ const MainNav = StackNavigator({
   PersonType: {screen: PersonType},
   Name: {screen: Name},
   State: {screen: State},
-  // PersonTypeScreen: {screen: PersonTypeScreen},
-  // SelectAgeScreen: {screen: SelectAgeScreen},
-  // SelectEthnicityScreen: {screen: SelectEthnicityScreen},
+  Age: {screen: Age},
   // AskForFeedbackScreen: {screen: AskForFeedbackScreen},
-  // PushNotificationsScreen: {screen: PushNotificationsScreen},
   // SelectDueDateScreen: {screen: SelectDueDateScreen},
-  // SummaryScreen: {screen: SummaryScreen},
 }, {
-  initialRouteName: 'State',
+  initialRouteName: 'Age',
   cardStyle: {
     backgroundColor: Colors.background,
   },

@@ -29,6 +29,8 @@
   "stateHeader": "Your State",
   "whatState": "WHAT STATE ARE YOU IN?",
   "search": "Search",
+  "ageHeader": "Your age",
+  "ageDescription": "WE KNOW IT AIN’T POLITE TO ASK,\nBUT WHAT IS YOUR AGE?",
   //
   "howToInformation": "How to information",
   "preparedChecklist": "Prepared Checklist",

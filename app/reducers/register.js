@@ -10,6 +10,7 @@ export const REGISTER_FAILURE = 'Register.FAILURE'
 export const SET_PERSON_TYPE = 'Register.SET_PERSON_TYPE'
 export const SET_NAME = 'Register.SET_NAME'
 export const SELECT_STATE = 'Register.SELECT_STATE'
+export const SET_AGE = 'Register.SET_AGE'
 
 export const CLEAR = 'Register.CLEAR'
 
@@ -35,6 +36,8 @@ export const setName = (name) => ({type: SET_NAME, name})
 
 export const selectState = (selectedState) => ({type: SELECT_STATE, selectedState})
 
+export const setAge = (age) => ({type: SET_AGE, age})
+
 export const clear = () => ({type: CLEAR})
 
 
@@ -48,6 +51,7 @@ const initialState = {
   personType: null,
   name: '',
   selectedState: null,
+  age: null,
 }
 
 export default createReducer(initialState, {
@@ -72,6 +76,9 @@ export default createReducer(initialState, {
   }),
   [SELECT_STATE]: (state, {selectedState}) => ({
     selectedState
+  }),
+  [SET_AGE]: (state, {age}) => ({
+    age
   }),
   [CLEAR]: (state, action) => ({
     loading: false,

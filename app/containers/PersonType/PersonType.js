@@ -43,7 +43,7 @@ const personTypes = [
   },
 ]
 
-class PersonTypeScreen extends React.Component {
+class PersonType extends React.Component {
   // TODO add Skip button
   static navigationOptions = {}
 
@@ -103,4 +103,4 @@ const mapDispatchToProps = {
   setPersonType,
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PersonTypeScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(PersonType)

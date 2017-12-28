@@ -2,10 +2,10 @@ import React from 'react'
 import { DrawerNavigator } from 'react-navigation'
 import { TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
-import LaunchScreen from '../SelectAgeScreen'
-import PersonTypeScreen from '..//PersonTypeScreen'
-import CategoriesScreen from '..//CategoriesScreen'
-import CategoryScreen from '..//CategoryScreen'
+// import LaunchScreen from '../SelectAgeScreen'
+// import PersonTypeScreen from '..//PersonTypeScreen'
+// import CategoriesScreen from '..//CategoriesScreen'
+// import CategoryScreen from '..//CategoryScreen'
 
 export const getNavigationOptions = (title, backgroundColor, color) => ({
   title,
@@ -146,10 +146,10 @@ const homeNavOptions = () => ({
 
 // this is the Drawer including HomeScreen
 const Drawer = DrawerNavigator({
-  LaunchScreen: {screen: LaunchScreen, navigationOptions: homeNavOptions},
-  PersonTypeScreen: {screen: PersonTypeScreen, navigationOptions: homeNavOptions},
-  CategoriesScreen: {screen: CategoriesScreen, navigationOptions: homeNavOptions},
-  CategoryScreen: {screen: CategoryScreen, navigationOptions: homeNavOptions},
+  // LaunchScreen: {screen: LaunchScreen, navigationOptions: homeNavOptions},
+  // PersonTypeScreen: {screen: PersonTypeScreen, navigationOptions: homeNavOptions},
+  // CategoriesScreen: {screen: CategoriesScreen, navigationOptions: homeNavOptions},
+  // CategoryScreen: {screen: CategoryScreen, navigationOptions: homeNavOptions},
 }, getDrawerConfig(300, 'right'))
 
 // this is a method to retrieve the menu bar item for the drawer

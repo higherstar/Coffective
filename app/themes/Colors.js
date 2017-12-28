@@ -9,7 +9,8 @@ const colors = {
   border: '#E5E5EA',
   inputText: '#000',
   muted: '#A1B0C2',
-  background: '#fff',
+  background: '#FAFAFA',
+  whiteBackground: '#fff',
   // TODO change color text
   text: '#000',
   //

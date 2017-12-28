@@ -4,7 +4,7 @@ import { Image, ScrollView, TouchableOpacity, View } from 'react-native'
 import { Button, Txt } from '../../components'
 import I18n from 'react-native-i18n'
 import s from './PersonTypeStyles'
-import { Images } from '../../themes'
+import { Images, Metrics } from '../../themes'
 import { setPersonType } from '../../reducers/register'
 
 // TODO move it
@@ -51,20 +51,20 @@ class PersonTypeScreen extends React.Component {
     const {setPersonType, navigation} = this.props
     return (
       <View style={s.container}>
-        <View style={s.head}>
+        <View style={s.head}/>
+        <ScrollView style={s.content}>
           <Txt.View style={s.header} textStyle={s.headerText}>
             {I18n.t('welcome')}
           </Txt.View>
           <Txt.View style={s.description} textStyle={s.descriptionText}>
             {I18n.t('howWeCanDefineYou')}
           </Txt.View>
-        </View>
-        <View style={s.content}>
           <View style={s.personTypes}>
             {personTypes.map(personType =>
               <TouchableOpacity
                 key={personType.id}
-                style={s.personType}
+                activeOpacity={0.7}
+                style={[s.personType, {height: (Metrics.screenHeight - 230) / (personTypes.length / 2)}]}
                 onPress={() => {
                   setPersonType(personType)
                   navigation.navigate('Name')
@@ -77,7 +77,7 @@ class PersonTypeScreen extends React.Component {
               </TouchableOpacity>
             )}
           </View>
-        </View>
+        </ScrollView>
         <View style={s.footer}>
           <Txt.View textStyle={s.haveAccountText}>
             {I18n.t('haveAccount')}

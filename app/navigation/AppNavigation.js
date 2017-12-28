@@ -56,7 +56,7 @@ const MainNav = StackNavigator({
 }, {
   initialRouteName: 'State',
   cardStyle: {
-    backgroundColor: Colors.background
+    backgroundColor: Colors.background,
   },
   navigationOptions: ({navigation}) => ({
     headerStyle: {

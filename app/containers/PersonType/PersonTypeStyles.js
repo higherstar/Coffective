@@ -1,18 +1,26 @@
 import { StyleSheet } from 'react-native'
 import { Metrics, Colors, Fonts } from '../../themes'
 
+const tileSize = (Metrics.screenWidth - (Metrics.marginX * 2) - Metrics.smallMargin) / 2
+
 export default StyleSheet.create({
   container: {
     flex: 1,
   },
   head: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    left: 0,
     paddingHorizontal: Metrics.marginX,
-    minHeight: 150,
+    height: 150,
     // TODO replace with image
     backgroundColor: Colors.primary,
+    borderBottomRightRadius: 100,
   },
   header: {
     marginBottom: Metrics.smallMargin,
+    paddingHorizontal: Metrics.marginX,
   },
   headerText: {
     color: Colors.white,
@@ -20,7 +28,8 @@ export default StyleSheet.create({
     fontWeight: '300',
   },
   description: {
-    marginBottom: Metrics.doubleBaseMargin,
+    marginBottom: Metrics.baseMargin,
+    paddingHorizontal: Metrics.marginX,
   },
   descriptionText: {
     color: Colors.white,
@@ -32,7 +41,6 @@ export default StyleSheet.create({
     color: Colors.muted,
   },
   content: {
-    position: 'relative',
     flex: 1,
   },
   footer: {
@@ -41,15 +49,16 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: Colors.background,
+    position: 'absolute',
+    bottom: 0,
+    right: 0,
+    left: 0,
   },
   loginBtn: {
     marginLeft: Metrics.exSmallMargin
   },
   personTypes: {
-    position: 'absolute',
-    top: -75,
-    left: 0,
-    right: 0,
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
@@ -58,9 +67,8 @@ export default StyleSheet.create({
   personType: {
     borderRadius: 7,
     backgroundColor: Colors.white,
-    // TODO make it flexible for smaller screens
-    height: 150,
-    width: (Metrics.screenWidth - (Metrics.marginX * 2) - Metrics.smallMargin) / 2,
+    minHeight: 120,
+    width: tileSize,
     marginBottom: Metrics.smallMargin,
     ...Metrics.boxShadow,
   },

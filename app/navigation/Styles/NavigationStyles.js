@@ -3,6 +3,7 @@ import { Colors } from '../../themes'
 
 export default StyleSheet.create({
   header: {
-    backgroundColor: Colors.background
+    // TODO make sure it's needed
+    // backgroundColor: Colors.background
   }
 })

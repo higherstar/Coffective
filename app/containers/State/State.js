@@ -124,7 +124,7 @@ class State extends React.Component {
             options={filteredStates}
             onSelection={(...props) => {
               selectState(...props)
-              navigation.navigate('Login')
+              navigation.navigate('Age')
             }}
             selectedOption={selectedState}
             renderContainer={(children) => <View>{children}</View>}

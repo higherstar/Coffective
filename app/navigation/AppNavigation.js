@@ -13,6 +13,7 @@ import Name from '../containers/Name/Name'
 import State from '../containers/State/State'
 import Age from '../containers/Age/Age'
 import Expectation from '../containers/Expectation/Expectation'
+import Home from '../containers/Home/Home'
 
 const Menu = ({iconName, onPress}) => (
   <TouchableOpacity
@@ -47,8 +48,9 @@ const MainNav = StackNavigator({
   State: {screen: State},
   Age: {screen: Age},
   Expectation: {screen: Expectation},
+  Home: {screen: Home},
 }, {
-  initialRouteName: 'Expectation',
+  initialRouteName: 'Home',
   cardStyle: {
     backgroundColor: Colors.background,
   },

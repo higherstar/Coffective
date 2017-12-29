@@ -5,7 +5,6 @@ import {Txt} from '../'
 import type { CarouselItemProps } from './CarouselItemProps'
 import s from './CarouselItemStyles'
 
-
 class CarouselItem extends React.Component<CarouselItemProps, any> {
   render () {
     const {style, image, header, subHeader, description} = this.props

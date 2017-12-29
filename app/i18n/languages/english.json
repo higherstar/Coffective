@@ -33,6 +33,10 @@
   "ageDescription": "WE KNOW IT AIN’T POLITE TO ASK,\nBUT WHAT IS YOUR AGE?",
   "expectationHeader": "Last question for you",
   "expectationDescription": "WHEN ARE YOU EXPECTING?",
+  "wicHeader": "WIC Eligible",
+  "wicDescription": "GETTING LESS THEN 10K/mo?",
+  "buildTeamHeader": "Build My Team",
+  "buildTeamDescription": "Your care team can help your each your goals.",
   //
   "howToInformation": "How to information",
   "preparedChecklist": "Prepared Checklist",

@@ -60,7 +60,7 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
   },
   checkIcon: {
-    fontSize: Metrics.icons.medium,
+    fontSize: Metrics.icons.md,
     color: Colors.primary,
     paddingHorizontal: Metrics.baseMargin,
   },

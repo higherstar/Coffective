@@ -14,6 +14,7 @@ export const reducers = combineReducers({
   register: require('./register').default,
   forgotPassword: require('./forgotPassword').default,
   buildTeam: require('./buildTeam').default,
+  faq: require('./faq').default,
   // global: require('./global').default,
 })
 

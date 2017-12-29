@@ -1,7 +1,7 @@
 import React from 'react'
 import { DrawerNavigator, StackNavigator } from 'react-navigation'
 import { Image, TouchableOpacity } from 'react-native'
-import { Colors, Images, Metrics } from '../themes'
+import { Colors, Images, Metrics, Fonts } from '../themes'
 import { Drawer } from '../components'
 import Welcome from '../containers/Welcome/Welcome'
 import Guide from '../containers/Guide/Guide'
@@ -14,6 +14,7 @@ import State from '../containers/State/State'
 import Age from '../containers/Age/Age'
 import Expectation from '../containers/Expectation/Expectation'
 import Home from '../containers/Home/Home'
+import BuildTeam from '../containers/BuildTeam/BuildTeam'
 
 const Menu = ({iconName, onPress}) => (
   <TouchableOpacity
@@ -49,8 +50,9 @@ const MainNav = StackNavigator({
   Age: {screen: Age},
   Expectation: {screen: Expectation},
   Home: {screen: Home},
+  BuildTeam: {screen: BuildTeam},
 }, {
-  initialRouteName: 'Home',
+  initialRouteName: 'BuildTeam',
   cardStyle: {
     backgroundColor: Colors.background,
   },
@@ -60,7 +62,9 @@ const MainNav = StackNavigator({
       borderBottomWidth: 0,
     },
     headerTitleStyle: {
-      color: Colors.white
+      color: Colors.white,
+      fontSize: Fonts.size.h4,
+      fontWeight: '300'
     },
     headerTintColor: Colors.white,
     // TODO https://github.com/react-community/react-navigation/pull/1999

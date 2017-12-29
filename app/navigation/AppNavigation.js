@@ -17,25 +17,33 @@ import Home from '../containers/Home/Home'
 import BuildTeam from '../containers/BuildTeam/BuildTeam'
 import Faq from '../containers/Faq/Faq'
 import Checklist from '../containers/Checklist/Checklist'
+import s from './AppNavigationStyles'
+import Icon from 'react-native-vector-icons/dist/MaterialIcons'
 
-const Menu = ({iconName, onPress}) => (
+const BackButton = ({navigation}) => (
   <TouchableOpacity
-    style={{paddingHorizontal: Metrics.baseMargin, height: Metrics.navBarWithOutStatusBarHeight, justifyContent: 'center'}}
-    onPress={onPress}>
+    onPress={() => navigation.goBack()}
+    style={s.iconWrapper}
+  >
+    <Icon style={s.icon} name='chevron-left'/>
+  </TouchableOpacity>
+)
 
-    <Image source={Images.hamburger} style={{width: 20, height: 20}}/>
+const MenuButton = ({navigation}) => (
+  <TouchableOpacity
+    style={s.iconWrapper}
+    onPress={() => navigation.navigate('DrawerOpen')}>
+
+    <Icon style={s.icon} name='menu'/>
   </TouchableOpacity>
 )
 
 const Left = ({onPress}) => (
   <TouchableOpacity
     onPress={onPress}
-    style={{paddingHorizontal: Metrics.baseMargin, height: Metrics.navBarWithOutStatusBarHeight, justifyContent: 'center'}}
+    style={s.iconWrapper}
   >
-    <Image
-      source={Images.backButton}
-      style={{width: 20, height: 20}}
-    />
+    <Icon style={s.icon} name='chevron-left'/>
   </TouchableOpacity>
 )
 
@@ -56,7 +64,7 @@ const MainNav = StackNavigator({
   Faq: {screen: Faq},
   Checklist: {screen: Checklist},
 }, {
-  initialRouteName: 'Checklist',
+  initialRouteName: 'Login',
   cardStyle: {
     backgroundColor: Colors.background,
   },
@@ -72,12 +80,8 @@ const MainNav = StackNavigator({
     },
     headerTintColor: Colors.white,
     // TODO https://github.com/react-community/react-navigation/pull/1999
-    headerLeft: <Left
-      onPress={() => navigation.goBack()}
-    />,
-    headerRight: <Menu
-      onPress={() => navigation.navigate('DrawerOpen')}
-    />,
+    headerLeft: <BackButton navigation={navigation}/>,
+    headerRight: <MenuButton navigation={navigation}/>,
     headerTitle: null
   }),
 })
@@ -87,8 +91,8 @@ const DrawerNav = DrawerNavigator({
   // SummaryScreen: {screen: SummaryScreen, navigationOptions: {drawerLabel: 'See my information'}},
   // HowItWorksScreen: {screen: HowItWorksScreen, navigationOptions: {drawerLabel: 'Back to Start'}},
 }, {
-  drawerWidth: 250,
-  drawerPosition: 'right',
+  drawerWidth: Metrics.screenWidth,
+  drawerPosition: 'left',
   contentComponent: Drawer,
   drawerOpenRoute: 'DrawerOpen',
   drawerCloseRoute: 'DrawerClose',

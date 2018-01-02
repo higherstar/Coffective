@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
 import { View, StatusBar } from 'react-native'
-import ReduxNavigation from '../navigation/ReduxNavigation'
+import ReduxNavigation from '../../navigation/ReduxNavigation'
 import { connect } from 'react-redux'
-import { startup } from '../reducers/global'
-import ReduxPersist from '../config/ReduxPersist'
-
-// Styles
-import styles from './Styles/RootContainerStyles'
+import { startup } from '../../reducers/global'
+import ReduxPersist from '../../config/ReduxPersist'
+import s from './RootStyles'
 
 class RootContainer extends Component {
   componentDidMount () {
@@ -18,7 +16,7 @@ class RootContainer extends Component {
 
   render () {
     return (
-      <View style={styles.applicationView}>
+      <View style={s.applicationView}>
         <StatusBar barStyle='light-content' />
         <ReduxNavigation />
       </View>
@@ -26,7 +24,6 @@ class RootContainer extends Component {
   }
 }
 
-// wraps dispatch to create nicer functions to call within our component
 const mapDispatchToProps = {
   startup,
 }

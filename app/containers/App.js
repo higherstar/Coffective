@@ -2,7 +2,7 @@ import '../config'
 import DebugConfig from '../config/DebugConfig'
 import React from 'react'
 import { Provider } from 'react-redux'
-import RootContainer from './RootContainer'
+import Root from './Root/Root'
 import createStore from '../reducers'
 import EStyleSheet from 'react-native-extended-stylesheet'
 import SplashScreen from 'react-native-splash-screen'
@@ -34,7 +34,7 @@ class App extends React.Component {
   render () {
     return (
       <Provider store={store}>
-        <RootContainer />
+        <Root/>
       </Provider>
     )
   }

@@ -9,9 +9,8 @@ import s from './RegisterStyles'
 import { register } from '../../reducers/register'
 import Icon from 'react-native-vector-icons/dist/FontAwesome'
 
-class Login extends React.Component {
+class Register extends React.Component {
   static navigationOptions = {
-    headerRight: null,
   }
 
   render () {
@@ -131,5 +130,5 @@ const mapDispatchToProps = {
 export default connect(mapStateToProps, mapDispatchToProps)(
   reduxForm({
     form: 'register'
-  })(Login)
+  })(Register)
 )

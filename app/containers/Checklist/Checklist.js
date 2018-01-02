@@ -7,6 +7,7 @@ import { Txt } from '../../components'
 import Icon from 'react-native-vector-icons/dist/FontAwesome'
 import s from './ChecklistStyles'
 import Checkbox from 'react-native-check-box'
+import {ImageHeader} from '../../navigation/AppNavigation'
 
 // TODO move to constants
 const colors = [
@@ -30,6 +31,7 @@ const colors2 = [
 class Checklist extends React.Component {
   static navigationOptions = {
     title: I18n.t('checklistTitle'),
+    header: props => <ImageHeader {...props} />
   }
 
   componentWillMount () {

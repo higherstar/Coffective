@@ -6,6 +6,7 @@ import I18n from 'react-native-i18n'
 import s from './PersonTypeStyles'
 import { Images, Metrics } from '../../themes'
 import { setPersonType } from '../../reducers/register'
+import { SkipButton } from '../../navigation/AppNavigation'
 
 // TODO move it
 const personTypes = [
@@ -44,8 +45,11 @@ const personTypes = [
 ]
 
 class PersonType extends React.Component {
-  // TODO add Skip button
-  static navigationOptions = {}
+  static navigationOptions = ({navigation}) => ({
+    headerRight: (
+      <SkipButton navigation={navigation} routeName='Name'/>
+    )
+  })
 
   render () {
     const {setPersonType, navigation} = this.props

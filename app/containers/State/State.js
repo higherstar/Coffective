@@ -8,6 +8,7 @@ import s from './StateStyles'
 import { selectState } from '../../reducers/register'
 import { RadioButtons } from 'react-native-radio-buttons'
 import Icon from 'react-native-vector-icons/dist/FontAwesome'
+import { SkipButton } from '../../navigation/AppNavigation'
 
 // TODO move it
 const states = [
@@ -80,9 +81,11 @@ const StateItem = ({option, selected, onSelect, index}) =>
   </TouchableOpacity>
 
 class State extends React.Component {
-  static navigationOptions = {
-    // TODO add Skip button
-  }
+  static navigationOptions = ({navigation}) => ({
+    headerRight: (
+      <SkipButton navigation={navigation} routeName='Age'/>
+    )
+  })
 
   state = {
     filteredStates: states

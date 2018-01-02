@@ -6,6 +6,7 @@ import I18n from 'react-native-i18n'
 import s from './AgeStyles'
 import { Images, Metrics } from '../../themes'
 import { setAge } from '../../reducers/register'
+import { SkipButton } from '../../navigation/AppNavigation'
 
 // TODO move it
 const ages = [
@@ -42,8 +43,11 @@ const ages = [
 ]
 
 class Age extends React.Component {
-  // TODO add Skip button
-  static navigationOptions = {}
+  static navigationOptions = ({navigation}) => ({
+    headerRight: (
+      <SkipButton navigation={navigation} routeName='Expectation'/>
+    )
+  })
 
   render () {
     const {setAge, navigation} = this.props

@@ -2,6 +2,7 @@ import React from 'react'
 import { DrawerNavigator, StackNavigator, Header } from 'react-navigation'
 import { Image, TouchableOpacity, View } from 'react-native'
 import { Colors, Images, Metrics, Fonts } from '../themes'
+import { Txt } from '../components'
 import { Drawer } from '../components'
 import Welcome from '../containers/Welcome/Welcome'
 import Guide from '../containers/Guide/Guide'
@@ -52,6 +53,15 @@ const DrawerButton = ({navigation}) => (
   </TouchableOpacity>
 )
 
+export const SkipButton = ({navigation, routeName}) => (
+  <TouchableOpacity
+    style={s.skipBtn}
+    onPress={() => navigation.navigate(routeName)}>
+
+    <Txt style={s.skipBtnText}>Skip</Txt>
+  </TouchableOpacity>
+)
+
 // Manifest of possible screens
 const MainNav = StackNavigator({
   Welcome: {screen: Welcome},
@@ -69,13 +79,13 @@ const MainNav = StackNavigator({
   Faq: {screen: Faq},
   Checklist: {screen: Checklist},
 }, {
-  initialRouteName: 'Guide',
+  initialRouteName: 'Login',
   cardStyle: {
     backgroundColor: Colors.background,
   },
   navigationOptions: ({navigation}) => ({
     headerStyle: {
-      backgroundColor: Colors.transparent,
+      backgroundColor: Colors.primary,
       borderBottomWidth: 0,
     },
     headerTitleStyle: {
@@ -83,12 +93,9 @@ const MainNav = StackNavigator({
       fontSize: Fonts.size.h4,
       fontWeight: '300',
     },
-    // header: null,
     headerTintColor: Colors.white,
-    // TODO https://github.com/react-community/react-navigation/pull/1999
-    // headerLeft: <BackButton navigation={navigation}/>,
-    // headerRight: <DrawerButton navigation={navigation}/>,
-    // headerTitle: null
+    headerLeft: <BackButton navigation={navigation}/>,
+    headerRight: <DrawerButton navigation={navigation}/>,
   }),
 })
 

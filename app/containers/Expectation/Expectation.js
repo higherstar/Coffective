@@ -8,12 +8,15 @@ import s from './ExpectationStyles'
 import { setExpectation } from '../../reducers/register'
 import Icon from 'react-native-vector-icons/dist/FontAwesome'
 import { Images } from '../../themes'
+import { SkipButton } from '../../navigation/AppNavigation'
 // import HorizontalPicker from 'react-native-hpicker'
 
 class Expectation extends React.Component {
-  static navigationOptions = {
-    // TODO add Skip button
-  }
+  static navigationOptions = ({navigation}) => ({
+    headerRight: (
+      <SkipButton navigation={navigation} routeName='Register'/>
+    )
+  })
 
   // state = {
   //   pickerValue: 1,

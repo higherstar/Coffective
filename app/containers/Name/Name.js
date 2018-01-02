@@ -7,11 +7,14 @@ import { Button, Txt, Input } from '../../components'
 import s from './NameStyles'
 import { setName } from '../../reducers/register'
 import Icon from 'react-native-vector-icons/dist/FontAwesome'
+import {SkipButton} from '../../navigation/AppNavigation'
 
 class Name extends React.Component {
-  static navigationOptions = {
-    // TODO add Skip button
-  }
+  static navigationOptions = ({navigation}) => ({
+    headerRight: (
+      <SkipButton navigation={navigation} routeName='State'/>
+    )
+  })
 
   submit = () => {
     this.props.navigation.navigate('State')

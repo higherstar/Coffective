@@ -12,7 +12,7 @@ class CarouselItem extends React.Component<CarouselItemProps, any> {
       <View style={[s.item, style]}>
         <Image
           style={s.image}
-          source={{uri: image}}
+          source={image}
         />
         <View style={s.content}>
           <Txt.View style={s.subHeader} textStyle={s.subHeaderText}>

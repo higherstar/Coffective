@@ -46,7 +46,7 @@ export default StyleSheet.create({
     paddingVertical: Metrics.smallMargin,
   },
   commonQuestionsHeaderText: {
-    color: '#A1B0C2',
+    color: Colors.muted,
     fontSize: Fonts.size.medium,
     fontFamily: Fonts.type.secondary,
     fontWeight: '500',

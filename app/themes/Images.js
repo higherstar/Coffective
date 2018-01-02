@@ -2,6 +2,10 @@
 const images = {
   backgroundVideo: require('../static/background.mp4'),
   logo: require('../static/logo_coffective.png'),
+  guideBackground: require('../static/guide_background.png'),
+  guide1: require('../static/guide1.png'),
+  guide2: require('../static/guide2.png'),
+  guide3: require('../static/guide3.png'),
   //
   screen1: require('../static/screen1.png'),
   screen2: require('../static/screen2.png'),

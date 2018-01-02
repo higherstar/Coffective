@@ -13,8 +13,9 @@ export default StyleSheet.create({
     paddingVertical: Metrics.baseMargin * 1.5,
   },
   image: {
-    flex: 1,
     resizeMode: 'cover',
+    flex: 1,
+    width: null,
   },
   subHeader: {
     marginBottom: Metrics.smallMargin,
@@ -23,6 +24,7 @@ export default StyleSheet.create({
     fontWeight: '500',
     fontFamily: Fonts.type.secondary,
     fontSize: Fonts.size.medium,
+    color: Colors.muted,
   },
   header: {
     marginBottom: Metrics.smallMargin,

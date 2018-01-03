@@ -12,12 +12,20 @@ export default StyleSheet.create({
     marginTop: headMargin + Metrics.baseMargin
   },
   head: {
+    paddingTop: Metrics.navBarHeight,
     paddingHorizontal: Metrics.marginX,
-    height: 120,
-    // TODO replace with image
-    backgroundColor: Colors.primary,
+    height: 210,
     position: 'relative',
     justifyContent: 'flex-end',
+  },
+  background: {
+    ...StyleSheet.absoluteFillObject,
+  },
+  backgroundImage: {
+    resizeMode: 'cover',
+    width: null,
+    height: null,
+    flex: 1,
   },
   search: {
     position: 'absolute',

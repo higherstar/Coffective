@@ -15,7 +15,8 @@ export default StyleSheet.create({
   },
   content: {
     backgroundColor: Colors.transparent,
-    marginTop: 'auto',
+    justifyContent: 'flex-end',
+    flex: 1,
   },
   header: {
     paddingHorizontal: Metrics.marginX,

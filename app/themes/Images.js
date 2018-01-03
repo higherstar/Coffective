@@ -13,10 +13,11 @@ const images = {
   stateBackground: require('../static/state_background.png'),
   ageBackground: require('../static/age_background.png'),
   expectationBackground: require('../static/expectation_background.png'),
+  woman: require('../static/woman.png'),
   registerBackground: require('../static/register_background.png'),
   homeBackground: require('../static/home_background.png'),
   buildTeamBackground: require('../static/build-team-background.png'),
-  woman: require('../static/woman.png'),
+  faqBackground: require('../static/faq_background.png'),
   //
   screen1: require('../static/screen1.png'),
   screen2: require('../static/screen2.png'),

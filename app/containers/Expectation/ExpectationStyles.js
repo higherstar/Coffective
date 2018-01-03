@@ -4,12 +4,15 @@ import Color from 'color'
 
 export default StyleSheet.create({
   container: {
-    // TODO replace with image
-    backgroundColor: Colors.primary,
     flex: 1,
+    paddingTop: Metrics.navBarHeight,
+  },
+  backgroundImage: {
+    ...StyleSheet.absoluteFillObject,
+    resizeMode: 'cover',
   },
   content: {
-    flexBasis: '60%',
+    flexBasis: '55%',
     paddingHorizontal: Metrics.marginX,
   },
   header: {
@@ -38,8 +41,7 @@ export default StyleSheet.create({
     width: Metrics.screenWidth * 0.5
   },
   footer: {
-    flexBasis: '40%',
-    backgroundColor: Color(Colors.primary).darken(0.1),
+    flexBasis: '45%',
     paddingHorizontal: Metrics.marginX,
   },
   picker: {

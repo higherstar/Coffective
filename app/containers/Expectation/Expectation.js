@@ -13,6 +13,7 @@ import { SkipButton } from '../../navigation/AppNavigation'
 
 class Expectation extends React.Component {
   static navigationOptions = ({navigation}) => ({
+    headerLeft: null,
     headerRight: (
       <SkipButton navigation={navigation} routeName='Register'/>
     )
@@ -26,6 +27,10 @@ class Expectation extends React.Component {
     const {setExpectation, navigation} = this.props
     return (
       <View style={s.container}>
+        <Image
+          style={s.backgroundImage}
+          source={Images.expectationBackground}
+        />
         <View style={s.content}>
           <Txt.View style={s.header} textStyle={s.headerText}>
             {I18n.t('expectationHeader')}
@@ -34,7 +39,7 @@ class Expectation extends React.Component {
             {I18n.t('expectationDescription')}
           </Txt.View>
           <View style={s.imageWrapper}>
-            <Image source={Images.mother} style={s.image}/>
+            <Image source={Images.woman} style={s.image}/>
           </View>
         </View>
         <View style={s.footer}>

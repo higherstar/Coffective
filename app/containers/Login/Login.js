@@ -5,7 +5,7 @@ import I18n from 'react-native-i18n'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
 import { Button, Txt, Input } from '../../components'
-import { Images } from '../../themes'
+import { Images, ApplicationStyles } from '../../themes'
 import s from './LoginStyles'
 import { login } from '../../reducers/login'
 import Icon from 'react-native-vector-icons/dist/FontAwesome'
@@ -14,6 +14,7 @@ class Login extends React.Component {
   static navigationOptions = {
     headerLeft: null,
     headerRight: null,
+    headerStyle: ApplicationStyles.transparentHeader,
   }
 
   render () {
@@ -21,6 +22,12 @@ class Login extends React.Component {
     return (
       <KeyboardAvoidingView style={s.container} behavior='padding'>
         <View style={s.contentWrapper}>
+          <View style={s.background}>
+            <Image
+              source={Images.loginBackground}
+              style={s.backgroundImage}
+            />
+          </View>
           <View style={s.logoWrapper}>
             <Image source={Images.logo} style={s.logo}/>
           </View>

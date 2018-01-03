@@ -6,6 +6,7 @@ const images = {
   guide1: require('../static/guide1.png'),
   guide2: require('../static/guide2.png'),
   guide3: require('../static/guide3.png'),
+  loginBackground: require('../static/login_background.png'),
   //
   screen1: require('../static/screen1.png'),
   screen2: require('../static/screen2.png'),

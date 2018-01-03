@@ -2,7 +2,15 @@
 // Similar to an XML fragment layout in Android
 
 const ApplicationStyles = {
-  screen: {}
+  screen: {},
+  transparentHeader: {
+    backgroundColor: 'transparent',
+    borderBottomWidth: 0,
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    left: 0,
+  }
 }
 
 export default ApplicationStyles

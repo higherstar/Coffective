@@ -8,8 +8,17 @@ export default StyleSheet.create({
   contentWrapper: {
     flex: 1,
     position: 'relative',
-    // TODO replace with image
-    backgroundColor: Colors.primary,
+  },
+  background: {
+    ...StyleSheet.absoluteFillObject,
+    borderBottomRightRadius: 100,
+    overflow: 'hidden',
+  },
+  backgroundImage: {
+    resizeMode: 'cover',
+    width: null,
+    height: null,
+    flex: 1,
   },
   content: {
     flex: 1,

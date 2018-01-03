@@ -1,6 +1,6 @@
 // @flow
 import React from 'react'
-import { View, KeyboardAvoidingView } from 'react-native'
+import { View, KeyboardAvoidingView, Image } from 'react-native'
 import I18n from 'react-native-i18n'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
@@ -8,15 +8,21 @@ import { Button, Txt, Input } from '../../components'
 import s from './RegisterStyles'
 import { register } from '../../reducers/register'
 import Icon from 'react-native-vector-icons/dist/FontAwesome'
+import {Images} from '../../themes'
 
 class Register extends React.Component {
   static navigationOptions = {
+    header: null,
   }
 
   render () {
     const {handleSubmit} = this.props
     return (
       <KeyboardAvoidingView style={s.container} behavior='padding'>
+        <Image
+          style={s.backgroundImage}
+          source={Images.registerBackground}
+        />
         <View style={s.content}>
           <Txt.View style={s.header} textStyle={s.headerText}>
             {I18n.t('registerHeader')}

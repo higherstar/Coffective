@@ -3,6 +3,23 @@ import { Colors, Metrics, Fonts } from '../../themes'
 
 export default StyleSheet.create({
   container: {
+    flex: 1,
+  },
+  head: {
+    height: 100,
+  },
+  backgroundImage: {
+    resizeMode: 'cover',
+    width: null,
+    height: null,
+    flex: 1,
+  },
+  title: {
+    fontSize: Fonts.size.h1,
+    fontWeight: '300',
+    marginHorizontal: 0,
+  },
+  content: {
     paddingHorizontal: Metrics.marginX,
     marginBottom: Metrics.baseMargin,
     flex: 1,

@@ -65,9 +65,13 @@ export const getUser = () => (dispatch, getState, {fetch}) => {
 // ------------------------------------
 const initialState = {
   loading: false,
-  loggedIn: false,
+  // TODO
+  loggedIn: true,
   error: null,
-  user: null,
+  user: {
+    first_name: 'John',
+    last_name: 'Doe',
+  },
 }
 
 export default createReducer(initialState, {

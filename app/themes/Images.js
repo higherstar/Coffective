@@ -14,6 +14,7 @@ const images = {
   ageBackground: require('../static/age_background.png'),
   expectationBackground: require('../static/expectation_background.png'),
   registerBackground: require('../static/register_background.png'),
+  homeBackground: require('../static/home_background.png'),
   woman: require('../static/woman.png'),
   //
   screen1: require('../static/screen1.png'),

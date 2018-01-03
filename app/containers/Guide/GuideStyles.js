@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { Colors, Metrics } from '../../themes'
+import { Colors } from '../../themes'
 
 export default StyleSheet.create({
   container: {
@@ -15,10 +15,6 @@ export default StyleSheet.create({
     backgroundColor: Colors.primary,
   },
   backgroundImage: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    bottom: 0,
-    right: 0,
+    ...StyleSheet.absoluteFillObject,
   },
 })

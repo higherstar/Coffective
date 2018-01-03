@@ -1,7 +1,7 @@
 import React from 'react'
 import { DrawerNavigator, StackNavigator, Header } from 'react-navigation'
 import { Image, TouchableOpacity, View } from 'react-native'
-import { Colors, Images, Metrics, Fonts } from '../themes'
+import { Colors, Metrics, Fonts, ApplicationStyles } from '../themes'
 import { Txt } from '../components'
 import { Drawer } from '../components'
 import Welcome from '../containers/Welcome/Welcome'
@@ -35,12 +35,13 @@ export const ImageHeader = props => (
   </View>
 )
 
-const BackButton = ({navigation}) => (
+export const BackButton = ({navigation, text}) => (
   <TouchableOpacity
     onPress={() => navigation.goBack()}
     style={s.iconWrapper}
   >
     <Icon style={s.icon} name='chevron-left'/>
+    {text && <Txt style={s.backBtnText}>{text}</Txt>}
   </TouchableOpacity>
 )
 
@@ -84,10 +85,7 @@ const MainNav = StackNavigator({
     backgroundColor: Colors.background,
   },
   navigationOptions: ({navigation}) => ({
-    headerStyle: {
-      backgroundColor: Colors.primary,
-      borderBottomWidth: 0,
-    },
+    headerStyle: ApplicationStyles.transparentHeader,
     headerTitleStyle: {
       color: Colors.white,
       fontSize: Fonts.size.h4,

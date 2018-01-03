@@ -1,11 +1,11 @@
 // @flow
 import React from 'react'
-import { View, KeyboardAvoidingView, Image } from 'react-native'
+import { Image, KeyboardAvoidingView, View } from 'react-native'
 import I18n from 'react-native-i18n'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
-import { Button, Txt, Input } from '../../components'
-import { Images, ApplicationStyles } from '../../themes'
+import { Button, Input, Txt } from '../../components'
+import { Images } from '../../themes'
 import s from './LoginStyles'
 import { login } from '../../reducers/login'
 import Icon from 'react-native-vector-icons/dist/FontAwesome'
@@ -14,7 +14,6 @@ class Login extends React.Component {
   static navigationOptions = {
     headerLeft: null,
     headerRight: null,
-    headerStyle: ApplicationStyles.transparentHeader,
   }
 
   render () {

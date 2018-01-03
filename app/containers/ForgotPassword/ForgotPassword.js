@@ -1,20 +1,23 @@
 // @flow
 import React from 'react'
-import { View, Image } from 'react-native'
+import { Image, View } from 'react-native'
 import I18n from 'react-native-i18n'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
-import { Button, Txt, Input } from '../../components'
+import { Button, Input, Txt } from '../../components'
 import s from './ForgotPasswordStyles'
 import { forgotPassword } from '../../reducers/forgotPassword'
 import Icon from 'react-native-vector-icons/dist/FontAwesome'
-import {ApplicationStyles, Images} from '../../themes'
+import { Images } from '../../themes'
+import { BackButton } from '../../navigation/AppNavigation'
 
 class ForgotPassword extends React.Component {
-  static navigationOptions = {
+  static navigationOptions = ({navigation}) => ({
     headerRight: null,
-    headerStyle: ApplicationStyles.transparentHeader,
-  }
+    headerLeft: (
+      <BackButton navigation={navigation} text={I18n.t('back')}/>
+    )
+  })
 
   render () {
     const {handleSubmit} = this.props

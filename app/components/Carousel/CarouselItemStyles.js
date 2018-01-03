@@ -14,8 +14,9 @@ export default StyleSheet.create({
   },
   image: {
     resizeMode: 'cover',
-    flex: 1,
     width: null,
+    height: null,
+    flex: 1,
   },
   subHeader: {
     marginBottom: Metrics.smallMargin,

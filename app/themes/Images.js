@@ -8,6 +8,7 @@ const images = {
   guide3: require('../static/guide3.png'),
   loginBackground: require('../static/login_background.png'),
   forgotPasswordBackground: require('../static/forgot_password_background.png'),
+  personTypeBackground: require('../static/person_type_background.png'),
   //
   screen1: require('../static/screen1.png'),
   screen2: require('../static/screen2.png'),

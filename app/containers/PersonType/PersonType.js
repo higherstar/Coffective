@@ -46,6 +46,7 @@ const personTypes = [
 
 class PersonType extends React.Component {
   static navigationOptions = ({navigation}) => ({
+    headerLeft: null,
     headerRight: (
       <SkipButton navigation={navigation} routeName='Name'/>
     )
@@ -55,7 +56,12 @@ class PersonType extends React.Component {
     const {setPersonType, navigation} = this.props
     return (
       <View style={s.container}>
-        <View style={s.head}/>
+        <View style={s.head}>
+          <Image
+            style={s.backgroundImage}
+            source={Images.personTypeBackground}
+          />
+        </View>
         <ScrollView style={s.content}>
           <Txt.View style={s.header} textStyle={s.headerText}>
             {I18n.t('welcome')}

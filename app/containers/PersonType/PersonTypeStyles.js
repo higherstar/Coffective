@@ -6,17 +6,22 @@ const tileSize = (Metrics.screenWidth - (Metrics.marginX * 2) - Metrics.smallMar
 export default StyleSheet.create({
   container: {
     flex: 1,
+    paddingTop: Metrics.navBarHeight,
   },
   head: {
     position: 'absolute',
     top: 0,
     right: 0,
     left: 0,
-    paddingHorizontal: Metrics.marginX,
-    height: 150,
-    // TODO replace with image
-    backgroundColor: Colors.primary,
+    height: 200,
+    overflow: 'hidden',
     borderBottomRightRadius: 100,
+  },
+  backgroundImage: {
+    resizeMode: 'cover',
+    width: null,
+    height: null,
+    flex: 1,
   },
   header: {
     marginBottom: Metrics.smallMargin,

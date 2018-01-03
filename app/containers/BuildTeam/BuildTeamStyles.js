@@ -6,6 +6,18 @@ export default StyleSheet.create({
     marginBottom: Metrics.baseMargin,
     flex: 1,
   },
+  content: {
+    flex: 1,
+  },
+  head: {
+    height: Metrics.navBarHeight,
+  },
+  backgroundImage: {
+    resizeMode: 'cover',
+    width: null,
+    height: null,
+    flex: 1,
+  },
   item: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -19,7 +31,7 @@ export default StyleSheet.create({
     resizeMode: 'contain',
     flex: 1,
   },
-  content: {
+  row: {
     flex: 1,
     position: 'relative',
     paddingVertical: Metrics.baseMargin,

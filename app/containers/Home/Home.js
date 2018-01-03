@@ -9,17 +9,15 @@ import { Images } from '../../themes'
 import { DrawerButton } from '../../navigation/AppNavigation'
 
 class Home extends React.Component {
-  static navigationOptions = ({navigation}) => {
-    return ({
-      headerRight: null,
-      // TODO https://github.com/react-navigation/react-navigation/issues/313
-      headerTitle: `Welcome, Monika`,
-      headerTitleStyle: s.title,
-      headerLeft: (
-        <DrawerButton navigation={navigation} text={I18n.t('back')}/>
-      )
-    })
-  }
+  static navigationOptions = ({navigation}) => ({
+    headerRight: null,
+    // TODO https://github.com/react-navigation/react-navigation/issues/313
+    headerTitle: `Welcome, Monika`,
+    headerTitleStyle: s.title,
+    headerLeft: (
+      <DrawerButton navigation={navigation}/>
+    )
+  })
 
   render () {
     const {navigation} = this.props

@@ -7,17 +7,22 @@ export default StyleSheet.create({
   container: {
     flex: 1,
   },
-  content: {
-    flex: 1,
-    marginTop: headMargin
-  },
   head: {
+    paddingTop: Metrics.navBarHeight,
     paddingHorizontal: Metrics.marginX,
-    height: 100,
-    // TODO replace with image
-    backgroundColor: Colors.primary,
+    height: 170,
     position: 'relative',
+  },
+  background: {
+    ...StyleSheet.absoluteFillObject,
     borderBottomRightRadius: 100,
+    overflow: 'hidden',
+  },
+  backgroundImage: {
+    resizeMode: 'cover',
+    width: null,
+    height: null,
+    flex: 1,
   },
   search: {
     position: 'absolute',
@@ -30,6 +35,10 @@ export default StyleSheet.create({
     alignSelf: 'center',
     fontSize: Metrics.icons.md,
     color: Colors.inputIcon,
+  },
+  content: {
+    flex: 1,
+    marginTop: headMargin
   },
   header: {
     marginBottom: Metrics.smallMargin,

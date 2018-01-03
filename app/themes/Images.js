@@ -10,6 +10,7 @@ const images = {
   forgotPasswordBackground: require('../static/forgot_password_background.png'),
   personTypeBackground: require('../static/person_type_background.png'),
   nameBackground: require('../static/name_background.png'),
+  stateBackground: require('../static/state_background.png'),
   //
   screen1: require('../static/screen1.png'),
   screen2: require('../static/screen2.png'),

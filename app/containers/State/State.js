@@ -1,6 +1,6 @@
 // @flow
 import React from 'react'
-import { ScrollView, TouchableOpacity, View } from 'react-native'
+import { Image, ScrollView, TouchableOpacity, View } from 'react-native'
 import I18n from 'react-native-i18n'
 import { connect } from 'react-redux'
 import { Input, Txt } from '../../components'
@@ -9,6 +9,7 @@ import { selectState } from '../../reducers/register'
 import { RadioButtons } from 'react-native-radio-buttons'
 import Icon from 'react-native-vector-icons/dist/FontAwesome'
 import { SkipButton } from '../../navigation/AppNavigation'
+import { Images } from '../../themes'
 
 // TODO move it
 const states = [
@@ -82,6 +83,7 @@ const StateItem = ({option, selected, onSelect, index}) =>
 
 class State extends React.Component {
   static navigationOptions = ({navigation}) => ({
+    headerLeft: null,
     headerRight: (
       <SkipButton navigation={navigation} routeName='Age'/>
     )
@@ -101,6 +103,12 @@ class State extends React.Component {
     return (
       <View style={s.container}>
         <View style={s.head}>
+          <View style={s.background}>
+            <Image
+              source={Images.stateBackground}
+              style={s.backgroundImage}
+            />
+          </View>
           <Txt.View style={s.header} textStyle={s.headerText}>
             {I18n.t('stateHeader')}
           </Txt.View>

@@ -80,7 +80,7 @@ const MainNav = StackNavigator({
   Faq: {screen: Faq},
   Checklist: {screen: Checklist},
 }, {
-  initialRouteName: 'Login',
+  initialRouteName: 'State',
   cardStyle: {
     backgroundColor: Colors.background,
   },

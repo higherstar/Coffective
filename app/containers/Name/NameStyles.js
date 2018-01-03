@@ -3,10 +3,13 @@ import { Colors, Metrics, Fonts } from '../../themes'
 
 export default StyleSheet.create({
   container: {
+    paddingTop: Metrics.navBarHeight,
     paddingHorizontal: Metrics.marginX,
-    // TODO replace with image
-    backgroundColor: Colors.primary,
     flex: 1,
+  },
+  backgroundImage: {
+    ...StyleSheet.absoluteFillObject,
+    resizeMode: 'cover',
   },
   content: {
     flex: 1,

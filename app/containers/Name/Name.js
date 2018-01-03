@@ -1,6 +1,6 @@
 // @flow
 import React from 'react'
-import { View } from 'react-native'
+import { View, Image } from 'react-native'
 import I18n from 'react-native-i18n'
 import { connect } from 'react-redux'
 import { Button, Txt, Input } from '../../components'
@@ -8,9 +8,11 @@ import s from './NameStyles'
 import { setName } from '../../reducers/register'
 import Icon from 'react-native-vector-icons/dist/FontAwesome'
 import {SkipButton} from '../../navigation/AppNavigation'
+import {Images} from '../../themes'
 
 class Name extends React.Component {
   static navigationOptions = ({navigation}) => ({
+    headerLeft: null,
     headerRight: (
       <SkipButton navigation={navigation} routeName='State'/>
     )
@@ -24,6 +26,10 @@ class Name extends React.Component {
     const {setName} = this.props
     return (
       <View style={s.container}>
+        <Image
+          source={Images.nameBackground}
+          style={s.backgroundImage}
+        />
         <View style={s.content}>
           <Txt.View style={s.header} textStyle={s.headerText}>
             {I18n.t('nameHeader')}

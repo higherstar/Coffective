@@ -16,5 +16,6 @@ export default StyleSheet.create({
   },
   backgroundImage: {
     ...StyleSheet.absoluteFillObject,
+    resizeMode: 'cover',
   },
 })

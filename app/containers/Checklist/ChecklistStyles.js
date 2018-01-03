@@ -5,6 +5,19 @@ const headHeight = 50
 
 export default StyleSheet.create({
   container: {
+    flex: 1,
+  },
+  head: {
+    height: Metrics.navBarHeight,
+  },
+  backgroundImage: {
+    resizeMode: 'cover',
+    width: null,
+    height: null,
+    flex: 1,
+  },
+  content: {
+    flex: 1,
     paddingHorizontal: Metrics.marginX / 2,
     marginBottom: Metrics.marginX / 2,
   },

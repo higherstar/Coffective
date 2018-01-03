@@ -44,6 +44,7 @@ const ages = [
 
 class Age extends React.Component {
   static navigationOptions = ({navigation}) => ({
+    headerLeft: null,
     headerRight: (
       <SkipButton navigation={navigation} routeName='Expectation'/>
     )
@@ -53,7 +54,12 @@ class Age extends React.Component {
     const {setAge, navigation} = this.props
     return (
       <View style={s.container}>
-        <View style={s.head}/>
+        <View style={s.head}>
+          <Image
+            source={Images.ageBackground}
+            style={s.backgroundImage}
+          />
+        </View>
         <ScrollView style={s.content}>
           <Txt.View style={s.header} textStyle={s.headerText}>
             {I18n.t('ageHeader')}

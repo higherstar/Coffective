@@ -11,6 +11,8 @@ import {Images} from '../../themes'
 class Guide extends React.Component {
   static navigationOptions = {
     header: null,
+    headerLeft: null,
+    headerRight: null,
   }
 
   componentWillMount () {

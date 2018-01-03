@@ -10,7 +10,9 @@ import s from './WelcomeStyles'
 
 class Welcome extends React.Component {
   static navigationOptions = {
-    header: null
+    header: null,
+    headerLeft: null,
+    headerRight: null,
   }
 
   render () {

@@ -1,9 +1,8 @@
 import React from 'react'
-import { DrawerNavigator, StackNavigator, Header } from 'react-navigation'
-import { Image, TouchableOpacity, View } from 'react-native'
-import { Colors, Metrics, Fonts, ApplicationStyles } from '../themes'
-import { Txt } from '../components'
-import { Drawer } from '../components'
+import { DrawerNavigator, StackNavigator } from 'react-navigation'
+import { TouchableOpacity } from 'react-native'
+import { ApplicationStyles, Colors, Fonts, Metrics } from '../themes'
+import { Drawer, Txt } from '../components'
 import Welcome from '../containers/Welcome/Welcome'
 import Guide from '../containers/Guide/Guide'
 import Login from '../containers/Login/Login'
@@ -20,20 +19,6 @@ import Faq from '../containers/Faq/Faq'
 import Checklist from '../containers/Checklist/Checklist'
 import s from './AppNavigationStyles'
 import Icon from 'react-native-vector-icons/dist/MaterialIcons'
-import {StyleSheet} from 'react-native'
-
-// TODO replace all absolute styles with StyleSheet.absoluteFill
-export const ImageHeader = props => (
-  // TODO change color
-  <View style={{ backgroundColor: 'rgba(0,164,217,0)' }}>
-    <Image
-      style={StyleSheet.absoluteFill}
-      // TODO add ability to change image
-      source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/3/36/Hopetoun_falls.jpg' }}
-    />
-    <Header {...props} style={{ backgroundColor: 'transparent' }}/>
-  </View>
-)
 
 export const BackButton = ({navigation, text}) => (
   <TouchableOpacity
@@ -45,7 +30,7 @@ export const BackButton = ({navigation, text}) => (
   </TouchableOpacity>
 )
 
-const DrawerButton = ({navigation}) => (
+export const DrawerButton = ({navigation}) => (
   <TouchableOpacity
     style={s.iconWrapper}
     onPress={() => navigation.navigate('DrawerOpen')}>
@@ -80,7 +65,7 @@ const MainNav = StackNavigator({
   Faq: {screen: Faq},
   Checklist: {screen: Checklist},
 }, {
-  initialRouteName: 'State',
+  initialRouteName: 'Welcome',
   cardStyle: {
     backgroundColor: Colors.background,
   },
@@ -99,8 +84,10 @@ const MainNav = StackNavigator({
 
 const DrawerNav = DrawerNavigator({
   Main: {screen: MainNav},
-  // SummaryScreen: {screen: SummaryScreen, navigationOptions: {drawerLabel: 'See my information'}},
-  // HowItWorksScreen: {screen: HowItWorksScreen, navigationOptions: {drawerLabel: 'Back to Start'}},
+  Home: {screen: Home, navigationOptions: {drawerLabel: 'Home'}},
+  Faq: {screen: Faq, navigationOptions: {drawerLabel: 'Faq'}},
+  Checklist: {screen: Checklist, navigationOptions: {drawerLabel: 'Checklist'}},
+  BuildTeam: {screen: BuildTeam, navigationOptions: {drawerLabel: 'BuildTeam'}},
 }, {
   drawerWidth: Metrics.screenWidth,
   drawerPosition: 'left',

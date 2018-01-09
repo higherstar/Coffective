@@ -1,104 +1,62 @@
 // @flow
 import React from 'react'
-import { ScrollView, TouchableOpacity, View } from 'react-native'
+import { Image, ScrollView, TouchableOpacity, View } from 'react-native'
 import { Txt } from '../'
 import s from './DrawerStyles'
 import { connect } from 'react-redux'
+import Icon from 'react-native-vector-icons/dist/FontAwesome'
+
+const Divider = () =>
+  <View style={s.divider}/>
+
+const DrawerItem = ({label, icon, onClick}) =>
+  <TouchableOpacity activeOpacity={0.5} style={s.item} onPress={onClick}>
+    <Icon
+      name='user'
+      style={s.icon}
+    />
+    <Txt.View style={s.label} textStyle={s.labelText}>
+      {label}
+    </Txt.View>
+  </TouchableOpacity>
 
 class Drawer extends React.Component {
+  navigate = (screen) => {
+    this.props.navigation.navigate(screen)
+  }
+
   render () {
-    const {
-      navigation: {state, navigate},
-      items,
-      activeItemKey,
-      activeTintColor,
-      activeBackgroundColor,
-      inactiveTintColor,
-      inactiveBackgroundColor,
-      getLabel,
-      renderIcon,
-      onItemPress,
-      style,
-      labelStyle,
-    }: Props = this.props
+    const {user} = this.props
     return (
-      <ScrollView style={{ backgroundColor: '#ECF4FF' }}>
-        <View style={[s.container, style]}>
-          <View style={s.drawerHeader}/>
-          {items.map((route, index) => {
-              const focused = activeItemKey === route.key
-              const color = focused ? activeTintColor : inactiveTintColor
-              const backgroundColor = focused
-                ? activeBackgroundColor
-                : inactiveBackgroundColor
-              const scene = {route, index, focused, tintColor: color}
-              const icon = renderIcon(scene)
-              const label = getLabel(scene)
-            // TODO make it cleaner
-              if (index === 0) {
-                return null
-              } else if (index === 1) {
-                return (
-                  <TouchableOpacity
-                    key={route.key}
-                    onPress={() => {
-                      onItemPress({route, focused})
-                    }}
-                    delayPressIn={0}
-                  >
-                    <View style={[s.item, {backgroundColor}]}>
-                      {icon
-                        ? <View
-                          style={[s.icon, focused ? null : s.inactiveIcon]}
-                        >
-                          {icon}
-                        </View>
-                        : null}
-                      {typeof label === 'string'
-                        ? <Txt style={[s.label, {color}, labelStyle]}>
-                          {label}
-                        </Txt>
-                        : label}
-                    </View>
-                  </TouchableOpacity>
-                )
-              } else if (index === 2) {
-                return (
-                  <TouchableOpacity
-                    key={route.key}
-                    onPress={() => {
-                      onItemPress({route, focused})
-                    }}
-                    delayPressIn={0}
-                  >
-                    <View style={[s.item, {backgroundColor}]}>
-                      {icon
-                        ? <View
-                          style={[s.icon, focused ? null : s.inactiveIcon]}
-                        >
-                          {icon}
-                        </View>
-                        : null}
-                      {typeof label === 'string'
-                        ? <Txt style={[s.label, {color}, labelStyle]}>
-                          {label}
-                        </Txt>
-                        : label}
-                    </View>
-                  </TouchableOpacity>
-                )
-              }
-            }
-          )}
+      <ScrollView style={s.container}>
+        <View style={s.head}>
+          <Image
+            style={s.avatar}
+            source={{uri: user.image}}
+          />
+          <View style={s.headerWrapper}>
+            <Txt.View style={s.header} textStyle={s.headerText}>Hello Monika!</Txt.View>
+            <Txt.View style={s.subHeader} textStyle={s.subHeaderText}>40 Weeks to Go!</Txt.View>
+          </View>
+        </View>
+        <View style={s.content}>
+          <DrawerItem label={'Start Here'} onClick={() => this.navigate('HowItWorks')}/>
+          <DrawerItem label={'Checklist'} onClick={() => this.navigate('Checklist')}/>
+          <DrawerItem label={'Ask Questions'} onClick={() => this.navigate('Faq')}/>
+          <DrawerItem label={'Build Your Team'} onClick={() => this.navigate('BuildTeam')}/>
+          <DrawerItem label={'Find Support'} onClick={() => this.navigate('FindSupport')}/>
+          <Divider/>
+          <DrawerItem label={'Settings'} onClick={() => this.navigate('Settings')}/>
         </View>
       </ScrollView>
     )
   }
 }
 
-const mapStateToProps = state => ({})
+const mapStateToProps = state => ({
+  user: state.user.user,
+})
 
-const mapDispatchToProps = {
-}
+const mapDispatchToProps = {}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Drawer)

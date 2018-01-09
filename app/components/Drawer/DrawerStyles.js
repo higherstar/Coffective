@@ -1,34 +1,62 @@
-import { StyleSheet } from 'react-native'
-import { Metrics, Colors } from '../../themes'
+import { Platform, StyleSheet } from 'react-native'
+import { Colors, Fonts, Metrics } from '../../themes'
 
 export default StyleSheet.create({
-  container: {
-    // marginTop: Platform.OS === 'ios' ? 20 : 0,
-    // paddingVertical: 4,
+  container: {},
+  head: {
+    paddingTop: Metrics.doubleBaseMargin,
+    height: 170,
+    backgroundColor: Colors.primary,
+    borderBottomRightRadius: 100,
+    flexDirection: 'row',
+    paddingHorizontal: Metrics.smallMargin,
   },
-  drawerHeader: {
-    height: 120,
-    backgroundColor: Colors.primary
+  content: {
+    flex: 1,
+  },
+  avatar: {
+    width: 66,
+    height: 66,
+    resizeMode: 'cover',
+    borderRadius: 33,
+  },
+  headerWrapper: {
+    marginLeft: Metrics.smallMargin
+  },
+  header: {
+    marginBottom: Metrics.smallMargin,
+  },
+  headerText: {
+    color: Colors.white,
+    fontSize: Fonts.size.h1,
+    fontWeight: '300',
+  },
+  subHeader: {
+  },
+  subHeaderText: {
+    color: Colors.white,
   },
   item: {
+    height: 65,
+    alignItems: 'center',
+    paddingLeft: Metrics.baseMargin,
     flexDirection: 'row',
-    alignItems: 'center',
-  },
-  icon: {
-    marginHorizontal: 16,
-    width: 24,
-    alignItems: 'center',
-  },
-  inactiveIcon: {
-    /*
-     * Icons have 0.54 opacity according to guidelines
-     * 100/87 * 54 ~= 62
-     */
-    opacity: 0.62,
   },
   label: {
-    marginVertical: Metrics.smallMargin * 1.5,
-    marginHorizontal: Metrics.baseMargin,
-    color: Colors.text
+    marginLeft: Metrics.baseMargin,
+  },
+  labelText: {
+    color: Colors.drawerLabel,
+    fontSize: Fonts.size.h6,
+  },
+  icon: {
+    color: Colors.primary,
+    fontSize: Metrics.icons.md,
+  },
+  divider: {
+    height: 1,
+    backgroundColor: Colors.border,
+    marginLeft: Metrics.baseMargin,
+    marginVertical: Metrics.smallMargin,
   },
 })

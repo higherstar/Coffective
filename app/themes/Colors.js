@@ -9,6 +9,7 @@ const colors = {
   border: '#E5E5EA',
   inputText: '#000',
   muted: '#A1B0C2',
+  drawerLabel: '#A1B0C2',
   background: '#FAFAFA',
   text: '#000',
   transparent: 'rgba(0, 0, 0, 0)',

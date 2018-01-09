@@ -1,7 +1,6 @@
 // @flow
 import React from 'react'
 import { TouchableHighlight, TouchableOpacity, View } from 'react-native'
-import Icon from 'react-native-vector-icons/dist/FontAwesome'
 import { Colors } from '../../themes'
 import Color from 'color'
 import { Txt } from '../'

@@ -52,6 +52,7 @@ export const getUser = () => (dispatch, getState, {fetch}) => {
         dispatch({type: GET_USER_SUCCESS, user: {
           first_name: 'John',
           last_name: 'Doe',
+          image: 'https://dummyimage.com/60x60'
         }})
       }
     })
@@ -71,6 +72,7 @@ const initialState = {
   user: {
     first_name: 'John',
     last_name: 'Doe',
+    image: 'https://dummyimage.com/60x60'
   },
 }
 

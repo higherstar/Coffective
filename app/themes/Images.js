@@ -19,6 +19,7 @@ const images = {
   buildTeamBackground: require('../static/build-team-background.png'),
   faqBackground: require('../static/faq_background.png'),
   checklistBackground: require('../static/checklist_background.png'),
+  howItWorksBackground: require('../static/how_it_works_background.png'),
   //
   screen1: require('../static/screen1.png'),
   screen2: require('../static/screen2.png'),

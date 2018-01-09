@@ -16,6 +16,7 @@ export const reducers = combineReducers({
   buildTeam: require('./buildTeam').default,
   faq: require('./faq').default,
   checklist: require('./checklist').default,
+  howItWorks: require('./howItWorks').default,
   // global: require('./global').default,
 })
 

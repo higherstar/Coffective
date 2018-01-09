@@ -17,6 +17,7 @@ import Home from '../containers/Home/Home'
 import BuildTeam from '../containers/BuildTeam/BuildTeam'
 import Faq from '../containers/Faq/Faq'
 import Checklist from '../containers/Checklist/Checklist'
+import HowItWorks from '../containers/HowItWorks/HowItWorks'
 import s from './AppNavigationStyles'
 import Icon from 'react-native-vector-icons/dist/MaterialIcons'
 
@@ -64,6 +65,7 @@ const MainNav = StackNavigator({
   BuildTeam: {screen: BuildTeam},
   Faq: {screen: Faq},
   Checklist: {screen: Checklist},
+  HowItWorks: {screen: HowItWorks},
 }, {
   initialRouteName: 'Welcome',
   cardStyle: {

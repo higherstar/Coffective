@@ -4,9 +4,9 @@ import { getToken } from './user'
 // ------------------------------------
 // Constants
 // ------------------------------------
-export const GET_COMMON_QUESTIONS_REQUEST = 'BuildTeam.GET_COMMON_QUESTIONS_REQUEST'
-export const GET_COMMON_QUESTIONS_SUCCESS = 'BuildTeam.GET_COMMON_QUESTIONS_SUCCESS'
-export const GET_COMMON_QUESTIONS_FAILURE = 'BuildTeam.GET_COMMON_QUESTIONS_FAILURE'
+export const GET_COMMON_QUESTIONS_REQUEST = 'Faq.GET_COMMON_QUESTIONS_REQUEST'
+export const GET_COMMON_QUESTIONS_SUCCESS = 'Faq.GET_COMMON_QUESTIONS_SUCCESS'
+export const GET_COMMON_QUESTIONS_FAILURE = 'Faq.GET_COMMON_QUESTIONS_FAILURE'
 
 // ------------------------------------
 // Actions

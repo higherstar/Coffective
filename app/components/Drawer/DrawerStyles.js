@@ -21,7 +21,8 @@ export default StyleSheet.create({
     borderRadius: 33,
   },
   headerWrapper: {
-    marginLeft: Metrics.smallMargin
+    marginLeft: Metrics.smallMargin,
+    flex: 1,
   },
   header: {
     marginBottom: Metrics.smallMargin,
@@ -58,5 +59,22 @@ export default StyleSheet.create({
     backgroundColor: Colors.border,
     marginLeft: Metrics.baseMargin,
     marginVertical: Metrics.smallMargin,
+  },
+  progress: {
+    marginRight: Metrics.baseMargin,
+  },
+  progressText: {},
+  progressNumber: {
+    color: Colors.white,
+    fontWeight: '300',
+    fontSize: Fonts.size.h3,
+    textAlign: 'center',
+  },
+  progressUnit: {
+    fontFamily: Fonts.type.secondary,
+    color: Colors.white,
+    fontWeight: '500',
+    fontSize: 8,
+    textAlign: 'center',
   },
 })

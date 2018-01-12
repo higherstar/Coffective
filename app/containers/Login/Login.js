@@ -17,7 +17,9 @@ class Login extends React.Component {
   }
 
   render () {
-    const {handleSubmit} = this.props
+    // const {handleSubmit} = this.props
+    // TODO change when backend is done
+    const handleSubmit = () => this.props.navigation.navigate('Home')
     return (
       <KeyboardAvoidingView style={s.container} behavior='padding'>
         <View style={s.contentWrapper}>

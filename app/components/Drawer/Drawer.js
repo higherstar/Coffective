@@ -30,7 +30,7 @@ class Drawer extends React.Component {
   render () {
     const {user} = this.props
     return (
-      <ScrollView style={s.container}>
+      <View style={s.container}>
         <View style={s.head}>
           <Image
             style={s.avatar}
@@ -61,7 +61,7 @@ class Drawer extends React.Component {
             direction='counter-clockwise'
           />
         </View>
-        <View style={s.content}>
+        <ScrollView style={s.content}>
           <DrawerItem label={'Start Here'} onClick={() => this.navigate('HowItWorks')}/>
           <DrawerItem label={'Checklist'} onClick={() => this.navigate('Checklist')}/>
           <DrawerItem label={'Ask Questions'} onClick={() => this.navigate('Faq')}/>
@@ -69,8 +69,8 @@ class Drawer extends React.Component {
           <DrawerItem label={'Find Support'} onClick={() => this.navigate('FindSupport')}/>
           <Divider/>
           <DrawerItem label={'Settings'} onClick={() => this.navigate('Settings')}/>
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </View>
     )
   }
 }

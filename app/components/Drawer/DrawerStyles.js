@@ -2,7 +2,9 @@ import { Platform, StyleSheet } from 'react-native'
 import { Colors, Fonts, Metrics } from '../../themes'
 
 export default StyleSheet.create({
-  container: {},
+  container: {
+    flex: 1,
+  },
   head: {
     paddingTop: Metrics.doubleBaseMargin,
     height: 170,

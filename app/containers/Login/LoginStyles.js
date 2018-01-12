@@ -23,6 +23,8 @@ export default StyleSheet.create({
   content: {
     flex: 1,
     paddingHorizontal: Metrics.marginX,
+    // TODO
+    paddingBottom: Metrics.doubleBaseMargin + Metrics.btnSizes.lg / 2,
   },
   logoWrapper: {
     flex: 1,

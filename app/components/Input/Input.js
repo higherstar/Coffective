@@ -16,7 +16,7 @@ class Input extends React.Component {
         {prefix}
         <TextInput
           underlineColorAndroid='transparent'
-          textAlignVertical='top'
+          textAlignVertical='center'
           autoCapitalize='none'
           placeholderTextColor={Colors.inputPlaceholder}
           autoCorrect={false}

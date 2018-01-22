@@ -8,7 +8,7 @@ import s from './FindSupportStyles'
 import Icon from 'react-native-vector-icons/dist/FontAwesome'
 import { Images } from '../../themes'
 import { DrawerButton } from '../../navigation/AppNavigation'
-import MapView from 'react-native-maps'
+// import MapView from 'react-native-maps'
 
 class FindSupport extends React.Component {
   static navigationOptions = ({navigation}) => ({
@@ -29,23 +29,23 @@ class FindSupport extends React.Component {
           />
         </View>
         <View style={s.content}>
-          <View>
-            <Input/>
-          </View>
-          <View>
-            <Input/>
-            <Button type='primary'>{I18n.t('go')}</Button>
-          </View>
+          {/*<View>*/}
+            {/*<Input/>*/}
+          {/*</View>*/}
+          {/*<View>*/}
+            {/*<Input/>*/}
+            {/*<Button type='primary'>{I18n.t('go')}</Button>*/}
+          {/*</View>*/}
           <View style={s.mapWrapper}>
-            <MapView
-              style={s.map}
-              initialRegion={{
-                latitude: 37.78825,
-                longitude: -122.4324,
-                latitudeDelta: 0.0922,
-                longitudeDelta: 0.0421,
-              }}
-            />
+            {/*<MapView*/}
+              {/*style={s.map}*/}
+              {/*initialRegion={{*/}
+                {/*latitude: 37.78825,*/}
+                {/*longitude: -122.4324,*/}
+                {/*latitudeDelta: 0.0922,*/}
+                {/*longitudeDelta: 0.0421,*/}
+              {/*}}*/}
+            {/*/>*/}
           </View>
         </View>
       </View>

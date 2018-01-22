@@ -69,7 +69,7 @@ const MainNav = StackNavigator({
   HowItWorks: {screen: HowItWorks},
   FindSupport: {screen: FindSupport},
 }, {
-  initialRouteName: 'Welcome',
+  initialRouteName: 'FindSupport',
   cardStyle: {
     backgroundColor: Colors.background,
   },

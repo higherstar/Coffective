@@ -20,6 +20,7 @@ const images = {
   faqBackground: require('../static/faq_background.png'),
   checklistBackground: require('../static/checklist_background.png'),
   howItWorksBackground: require('../static/how_it_works_background.png'),
+  findSupportBackground: require('../static/find_support_background.png'),
   //
   screen1: require('../static/screen1.png'),
   screen2: require('../static/screen2.png'),

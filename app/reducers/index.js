@@ -17,6 +17,7 @@ export const reducers = combineReducers({
   faq: require('./faq').default,
   checklist: require('./checklist').default,
   howItWorks: require('./howItWorks').default,
+  findSupport: require('./findSupport').default,
   // global: require('./global').default,
 })
 

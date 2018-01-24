@@ -3,13 +3,12 @@ import React from 'react'
 import { Image, View } from 'react-native'
 import I18n from 'react-native-i18n'
 import { connect } from 'react-redux'
-import { Button, Txt } from '../../components'
+import { Button, Txt, HorizontalPicker } from '../../components'
 import s from './ExpectationStyles'
 import { setExpectation } from '../../reducers/register'
 import Icon from 'react-native-vector-icons/dist/FontAwesome'
 import { Images } from '../../themes'
 import { SkipButton } from '../../navigation/AppNavigation'
-// import HorizontalPicker from 'react-native-hpicker'
 
 class Expectation extends React.Component {
   static navigationOptions = ({navigation}) => ({
@@ -19,12 +18,14 @@ class Expectation extends React.Component {
     )
   })
 
-  // state = {
-  //   pickerValue: 1,
-  // }
+  state = {
+    pickerValue: 1,
+  }
 
   render () {
     const {setExpectation, navigation} = this.props
+    const {pickerValue} = this.state
+
     return (
       <View style={s.container}>
         <Image
@@ -39,20 +40,22 @@ class Expectation extends React.Component {
             {I18n.t('expectationDescription')}
           </Txt.View>
           <View style={s.imageWrapper}>
-            <Image source={Images.woman} style={s.image}/>
+            <Image source={Images.expectation[pickerValue]} style={s.image}/>
           </View>
         </View>
         <View style={s.footer}>
           <View style={s.picker}>
-            {/*<HorizontalPicker*/}
-              {/*itemWidth={70}*/}
-              {/*selectedValue={this.state.pickerValue}*/}
-              {/*onChange={(pickerValue) => this.setState({pickerValue})}*/}
-            {/*>*/}
-              {/*<HorizontalPicker.Item label={1} value={1} />*/}
-              {/*<HorizontalPicker.Item label={2} value={2} />*/}
-              {/*<HorizontalPicker.Item label={3} value={3} />*/}
-            {/*</HorizontalPicker>*/}
+            <HorizontalPicker
+              itemWidth={70}
+              selectedValue={pickerValue}
+              onChange={(pickerValue) => {
+                this.setState({pickerValue})
+              }}
+            >
+              {[...Array(10).keys()].map(week =>
+                <HorizontalPicker.Item key={week} label={`${week + 1} week`} value={week + 1} />
+              )}
+            </HorizontalPicker>
           </View>
           <View style={s.actions}>
             <Button

@@ -25,6 +25,8 @@ const images = {
   hospitalBackground: require('../static/hospital_background.png'),
   hospital: require('../static/hospital.png'),
   wic: require('../static/wic.png'),
+  championBackground: require('../static/champion_background.png'),
+  champion: require('../static/champion.png'),
   expectation: {
     1: require('../static/expectation/1.png'),
     2: require('../static/expectation/2.png'),

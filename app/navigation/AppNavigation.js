@@ -19,6 +19,7 @@ import Faq from '../containers/Faq/Faq'
 import Checklist from '../containers/Checklist/Checklist'
 import HowItWorks from '../containers/HowItWorks/HowItWorks'
 import FindSupport from '../containers/FindSupport/FindSupport'
+import Wic from '../containers/Wic/Wic'
 import s from './AppNavigationStyles'
 import Icon from 'react-native-vector-icons/dist/MaterialIcons'
 
@@ -68,8 +69,9 @@ const MainNav = StackNavigator({
   Checklist: {screen: Checklist},
   HowItWorks: {screen: HowItWorks},
   FindSupport: {screen: FindSupport},
+  Wic: {screen: Wic},
 }, {
-  initialRouteName: 'Welcome',
+  initialRouteName: 'Wic',
   cardStyle: {
     backgroundColor: Colors.background,
   },

@@ -5,7 +5,7 @@ import { Platform, ScrollView, StyleSheet, Text, TouchableWithoutFeedback, View,
 
 const defaultForegroundColor = '#000'
 const defaultItemWidth = 30
-const loggingEnabled = true
+const loggingEnabled = false
 
 // const itemPropTypes = {
 //   label: PropTypes.string.isRequired,

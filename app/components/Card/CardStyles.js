@@ -21,7 +21,8 @@ export default StyleSheet.create({
   },
   body: {
     paddingHorizontal: Metrics.smallMargin,
-    paddingVertical: Metrics.baseMargin,
+    paddingTop: Metrics.baseMargin,
+    paddingBottom: Metrics.baseMargin * 1.5,
   },
   actions: {
     marginTop: Metrics.baseMargin,

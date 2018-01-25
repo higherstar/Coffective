@@ -24,6 +24,7 @@ const images = {
   wicBackground: require('../static/wic_background.png'),
   hospitalBackground: require('../static/hospital_background.png'),
   hospital: require('../static/hospital.png'),
+  wic: require('../static/wic.png'),
   expectation: {
     1: require('../static/expectation/1.png'),
     2: require('../static/expectation/2.png'),

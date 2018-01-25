@@ -7,8 +7,9 @@ export default StyleSheet.create({
   },
   content: {
     flex: 1,
-    paddingVertical: Metrics.baseMargin,
-    paddingHorizontal: Metrics.smallMargin,
+  },
+  scrollContent: {
+    padding: Metrics.smallMargin,
   },
   head: {
     height: Metrics.navBarHeight,
@@ -22,8 +23,21 @@ export default StyleSheet.create({
   card: {
     marginBottom: Metrics.smallMargin,
   },
-  cardText: {
+  cardTitleText: {
+    fontSize: Fonts.size.h1,
+    fontWeight: '300',
+  },
+  cardDescriptionText: {
     color: Colors.grey,
     fontFamily: Fonts.type.secondary
-  }
+  },
+  cardTitle: {
+    marginBottom: Metrics.smallMargin,
+  },
+  cardDescription: {
+    marginBottom: Metrics.smallMargin,
+  },
+  list: {
+    marginTop: Metrics.smallMargin,
+  },
 })

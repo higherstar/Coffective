@@ -9,8 +9,7 @@ export default StyleSheet.create({
     flex: 1,
   },
   scrollContent: {
-    paddingHorizontal: Metrics.smallMargin,
-    paddingVertical: Metrics.baseMargin,
+    padding: Metrics.smallMargin,
   },
   head: {
     height: Metrics.navBarHeight,
@@ -36,23 +35,5 @@ export default StyleSheet.create({
   },
   cardDescription: {
     marginBottom: Metrics.baseMargin,
-  },
-  list: {
-  },
-  item: {
-    flexDirection: 'row',
-    paddingVertical: Metrics.smallMargin / 2,
-  },
-  itemTitle: {
-    flex: 1,
-  },
-  itemTitleText: {
-    color: Colors.grey,
-    fontFamily: Fonts.type.secondary,
-  },
-  itemIcon: {
-    fontSize: Metrics.icons.md,
-    color: Colors.primary,
-    marginRight: Metrics.smallMargin,
   },
 })

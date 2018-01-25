@@ -12,6 +12,7 @@ class Button extends React.Component<ButtonProps, any> {
   static defaultProps = {
     uppercase: true,
     type: 'default',
+    onClick: noop
   }
 
   render () {

@@ -49,7 +49,8 @@ export default StyleSheet.create({
   primaryOutline: {
     backgroundColor: Colors.transparent,
     borderWidth: Metrics.btnBorderWidth,
-    borderColor: Colors.primary
+    borderColor: Colors.primary,
+    borderRadius: Metrics.btnBorderRadius,
   },
   primaryOutlineText: {
     color: Colors.primary

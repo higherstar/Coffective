@@ -20,6 +20,7 @@ import Checklist from '../containers/Checklist/Checklist'
 import HowItWorks from '../containers/HowItWorks/HowItWorks'
 import FindSupport from '../containers/FindSupport/FindSupport'
 import Wic from '../containers/Wic/Wic'
+import Hospital from '../containers/Hospital/Hospital'
 import s from './AppNavigationStyles'
 import Icon from 'react-native-vector-icons/dist/MaterialIcons'
 
@@ -70,8 +71,9 @@ const MainNav = StackNavigator({
   HowItWorks: {screen: HowItWorks},
   FindSupport: {screen: FindSupport},
   Wic: {screen: Wic},
+  Hospital: {screen: Hospital},
 }, {
-  initialRouteName: 'Wic',
+  initialRouteName: 'Hospital',
   cardStyle: {
     backgroundColor: Colors.background,
   },

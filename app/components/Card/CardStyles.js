@@ -23,4 +23,7 @@ export default StyleSheet.create({
     paddingHorizontal: Metrics.smallMargin,
     paddingVertical: Metrics.baseMargin,
   },
+  actions: {
+    marginTop: Metrics.baseMargin,
+  },
 })

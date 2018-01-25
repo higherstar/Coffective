@@ -43,7 +43,6 @@ class Wic extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  ...state.faq,
 })
 
 const mapDispatchToProps = {

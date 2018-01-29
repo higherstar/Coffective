@@ -23,16 +23,9 @@ export default StyleSheet.create({
   card: {
     marginBottom: Metrics.smallMargin,
   },
-  cardTitleText: {
-    fontSize: Fonts.size.h1,
-    fontWeight: '300',
-  },
   cardDescriptionText: {
     color: Colors.grey,
     fontFamily: Fonts.type.secondary
-  },
-  cardTitle: {
-    marginBottom: Metrics.smallMargin,
   },
   cardDescription: {
     marginBottom: Metrics.baseMargin,
@@ -52,5 +45,46 @@ export default StyleSheet.create({
   },
   selectedRoleText: {
     color: Colors.inputText,
+  },
+  championInvitedCard: {
+    flexDirection: 'row',
+    paddingHorizontal: Metrics.baseMargin,
+    ...Metrics.boxShadow,
+    backgroundColor: Colors.white,
+    borderRadius: 7,
+    marginBottom: Metrics.smallMargin,
+  },
+  championInvited: {
+    flex: 1,
+    height: 50,
+    justifyContent: 'center',
+    marginLeft: Metrics.baseMargin,
+  },
+  championInvitedText: {
+    fontWeight: '600',
+    color: Colors.primary,
+  },
+  imageWrapper: {
+    position: 'relative',
+  },
+  checkIconWrapper: {
+    width: 50,
+    height: 50,
+    position: 'absolute',
+    bottom: -25,
+    borderRadius: 25,
+    backgroundColor: Colors.green,
+    borderColor: Colors.white,
+    borderWidth: 3,
+    alignSelf: 'center',
+    justifyContent: 'center',
+  },
+  checkIcon: {
+    fontSize: Metrics.icons.md,
+    color: Colors.white,
+    alignSelf: 'center',
+  },
+  cardTitle: {
+    marginTop: Metrics.baseMargin,
   },
 })

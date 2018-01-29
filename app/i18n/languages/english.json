@@ -55,5 +55,6 @@
   "email": "Email",
   "championRole": "Your Champion's Role",
   "championRoleTitle": "Your Champion's Role",
-  "inviteChampion": "Invite Champion"
+  "inviteChampion": "Invite Champion",
+  "championInvited": "CHAMPION INVITED"
 }

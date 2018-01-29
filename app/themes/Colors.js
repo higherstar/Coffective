@@ -16,6 +16,7 @@ const colors = {
   background: '#FAFAFA',
   text: '#000',
   transparent: 'rgba(0, 0, 0, 0)',
+  green: '#84CD95'
 }
 
 export default colors

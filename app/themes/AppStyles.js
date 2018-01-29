@@ -15,10 +15,16 @@ const AppStyles = {
     elevation: 0,
     shadowOpacity: 0,
   },
+  // TODO make it better
   inputIcon: {
     alignSelf: 'center',
     fontSize: Metrics.icons.md,
     color: Colors.inputIcon,
+  },
+  primaryIcon: {
+    alignSelf: 'center',
+    fontSize: Metrics.icons.md,
+    color: Colors.primary,
   },
   radioOptionIcon: {
     fontSize: Metrics.icons.md,

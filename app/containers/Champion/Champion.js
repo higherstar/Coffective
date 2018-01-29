@@ -1,6 +1,6 @@
 // @flow
 import React from 'react'
-import { Image, ScrollView, View } from 'react-native'
+import { Image, ScrollView, View, TouchableOpacity } from 'react-native'
 import I18n from 'react-native-i18n'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
@@ -9,6 +9,7 @@ import s from './ChampionStyles'
 import { AppStyles, Images } from '../../themes'
 import { BackButton } from '../../navigation/AppNavigation'
 import Icon from 'react-native-vector-icons/dist/FontAwesome'
+import { setInvited } from '../../reducers/champion'
 
 class Champion extends React.Component {
   static navigationOptions = ({navigation}) => ({
@@ -23,7 +24,7 @@ class Champion extends React.Component {
   }
 
   render () {
-    const {role, navigation} = this.props
+    const {role, navigation, invited, setInvited} = this.props
     return (
       <View style={s.container}>
         <View style={s.head}>
@@ -33,20 +34,49 @@ class Champion extends React.Component {
           />
         </View>
         <ScrollView style={s.content} contentContainerStyle={s.scrollContent}>
+          {invited && (
+            <TouchableOpacity activeOpacity={0.7} style={s.championInvitedCard} onPress={() => setInvited(false)}>
+              <Icon
+                style={AppStyles.primaryIcon}
+                name='trophy'
+              />
+              <Txt.View style={s.championInvited} textStyle={s.championInvitedText}>{I18n.t('championInvited')}</Txt.View>
+              <Icon
+                style={AppStyles.primaryIcon}
+                name='pencil'
+              />
+            </TouchableOpacity>
+          )}
           <Card
             style={s.card}
             title={'What to consider when choosing a Champion:'}
-            cover={<Image source={Images.champion}/>}
+            titleStyle={invited && s.cardTitle}
+            cover={
+              <View style={s.imageWrapper}>
+                <Image source={Images.champion}/>
+                {invited && (
+                  <View style={s.checkIconWrapper}>
+                    <Icon
+                      style={s.checkIcon}
+                      name='check'
+                    />
+                  </View>
+                )}
+              </View>
+            }
           >
             <Txt.View textStyle={s.cardDescriptionText}>
               {`Being a new mom can be even more special when it’s shared with someone close. A “champion” is a person who supports you and stands up for you. They are with you before, during, and after your baby’s birth. This can be the baby’s dad, your partner, your mom, or someone else who cares about you and the baby.`}
             </Txt.View>
           </Card>
-          <Txt.View style={s.sectionHeader} textStyle={s.sectionHeaderText}>{'Invite Your Champion'}</Txt.View>
-          <Card
-            style={s.card}
-            cover={
-              <View>
+          {!invited && [
+            <Txt.View key='sectionHeader' style={s.sectionHeader} textStyle={s.sectionHeaderText}>
+              {'Invite Your Champion'}
+            </Txt.View>,
+            <Card
+              key='card'
+              style={s.card}
+              cover={
                 <Input.Group>
                   <Link
                     onClick={() => navigation.navigate('ChampionRole')}
@@ -134,14 +164,14 @@ class Champion extends React.Component {
                     blurOnSubmit
                   />
                 </Input.Group>
-              </View>
-            }
-            actions={[<Button key='1' size='sm' outline type='primary'>{I18n.t('inviteChampion')}</Button>]}
-          >
-            <Txt.View textStyle={s.cardDescriptionText}>
-              {`When you tap Invite Champion we will send your champion an email with information about this app and their important role in helping you reach your goals. They will also be able see all the information about the other members of your care team.`}
-            </Txt.View>
-          </Card>
+              }
+              actions={[<Button key='1' size='sm' outline type='primary'>{I18n.t('inviteChampion')}</Button>]}
+            >
+              <Txt.View textStyle={s.cardDescriptionText}>
+                {`When you tap Invite Champion we will send your champion an email with information about this app and their important role in helping you reach your goals. They will also be able see all the information about the other members of your care team.`}
+              </Txt.View>
+            </Card>
+          ]}
         </ScrollView>
       </View>
     )
@@ -152,7 +182,9 @@ const mapStateToProps = state => ({
   ...state.champion,
 })
 
-const mapDispatchToProps = {}
+const mapDispatchToProps = {
+  setInvited,
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(
   reduxForm({

@@ -21,6 +21,7 @@ export default StyleSheet.create({
     flex: 1,
   },
   card: {
+    marginBottom: Metrics.smallMargin,
   },
   cardTitleText: {
     fontSize: Fonts.size.h1,
@@ -35,5 +36,12 @@ export default StyleSheet.create({
   },
   cardDescription: {
     marginBottom: Metrics.baseMargin,
+  },
+  sectionHeader: {
+    marginVertical: Metrics.smallMargin,
+  },
+  sectionHeaderText: {
+    fontWeight: '300',
+    fontSize: Fonts.size.h1,
   },
 })

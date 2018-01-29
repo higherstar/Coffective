@@ -1,7 +1,7 @@
 import React from 'react'
 import { DrawerNavigator, StackNavigator } from 'react-navigation'
 import { TouchableOpacity } from 'react-native'
-import { ApplicationStyles, Colors, Fonts, Metrics } from '../themes'
+import { AppStyles, Colors, Fonts, Metrics } from '../themes'
 import { Drawer, Txt } from '../components'
 import Welcome from '../containers/Welcome/Welcome'
 import Guide from '../containers/Guide/Guide'
@@ -80,7 +80,7 @@ const MainNav = StackNavigator({
     backgroundColor: Colors.background,
   },
   navigationOptions: ({navigation}) => ({
-    headerStyle: ApplicationStyles.transparentHeader,
+    headerStyle: AppStyles.transparentHeader,
     headerTitleStyle: {
       color: Colors.white,
       fontSize: Fonts.size.h4,

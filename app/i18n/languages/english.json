@@ -7,7 +7,7 @@
   "welcomeBack": "Welcome back,",
   "signInToContinue": "SIGN IN TO CONTINUE",
   "forgotPassword": "Forgot password?",
-  "email": "Your Email or Phone number",
+  "emailOrPhone": "Your Email or Phone number",
   "password": "Password",
   "newUser": "New User?",
   "forgotPasswordHeader": "Forgot password?",
@@ -48,5 +48,11 @@
   "go": "Go",
   "wicTitle": "About WIC",
   "hospitalTitle": "Hospital Considerations",
-  "championTitle": "Choosing Your Champions"
+  "championTitle": "Choosing Your Champions",
+  "firstName": "First Name",
+  "lastName": "Last Name",
+  "phone": "Phone number",
+  "email": "Email",
+  "championRole": "Your Champion's Role",
+  "inviteChampion": "Invite Champion"
 }

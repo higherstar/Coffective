@@ -45,10 +45,10 @@ class Register extends React.Component {
               focus
               withRef
               name='email'
-              placeholder={I18n.t('email')}
+              placeholder={I18n.t('emailOrPhone')}
               keyboardType='email-address'
               returnKeyType='next'
-              onSubmitEditing={() => this.password.refs.password.focus()}
+              onSubmitEditing={() => this.password.getRenderedComponent().refs.password.focus()}
             />
             <Field
               component={Input}
@@ -67,7 +67,7 @@ class Register extends React.Component {
               returnKeyType='go'
               placeholder={I18n.t('choosePassword')}
               secureTextEntry
-              onSubmitEditing={() => this.verifyPassword.refs.verifyPassword.focus()}
+              onSubmitEditing={() => this.verifyPassword.getRenderedComponent().refs.verifyPassword.focus()}
             />
             <Field
               component={Input}

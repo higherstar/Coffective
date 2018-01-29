@@ -26,11 +26,13 @@ export const getCategories = () => (dispatch, getState, {fetch}) => {
           header: 'Choose your Champion',
           description: `There are a few things to consider when choosing and communicating with a champion.`,
           image: 'https://dummyimage.com/320x240',
+          screen: 'Champion',
         },
         {
           header: 'Choose your Hospital',
           description: `There are a few things to consider when choosing a hospital to ensure you are receiving the best care possible.`,
           image: 'https://dummyimage.com/320x240',
+          screen: 'Hospital',
         },
         {
           header: 'Are you Eligible for WIC?',

@@ -25,7 +25,6 @@ class BuildTeam extends React.Component {
 
   render () {
     const {navigation, categories} = this.props
-    // TODO add small carousel
     return (
       <View style={s.container}>
         <View style={s.head}>

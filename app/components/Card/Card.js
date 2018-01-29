@@ -14,7 +14,7 @@ class Card extends React.Component {
     const {title, children, style, cover, actions} = this.props
     return (
       <View style={[s.card, style]}>
-        {cover && <View>{cover}</View>}
+        {cover && <View style={s.cover}>{cover}</View>}
         {title && (
           <Txt.View style={s.title} textStyle={s.titleText}>
             {title.toUpperCase()}

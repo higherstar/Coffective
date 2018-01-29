@@ -20,6 +20,11 @@ const AppStyles = {
     fontSize: Metrics.icons.md,
     color: Colors.inputIcon,
   },
+  radioOptionIcon: {
+    fontSize: Metrics.icons.md,
+    color: Colors.primary,
+    paddingHorizontal: Metrics.baseMargin,
+  },
 }
 
 export default AppStyles

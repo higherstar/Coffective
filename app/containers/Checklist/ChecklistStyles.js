@@ -58,38 +58,11 @@ export default StyleSheet.create({
     marginVertical: Metrics.smallMargin,
     marginHorizontal: Metrics.baseMargin,
   },
-  item: {
-    marginLeft: Metrics.smallMargin * 1.5,
-    paddingVertical: Metrics.smallMargin,
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
   notLast: {
     borderBottomColor: Colors.border,
     borderBottomWidth: 1,
   },
-  itemName: {
-
-  },
-  itemNameText: {
-
-  },
-  itemNotChecked: {
+  notChecked: {
     color: Colors.muted,
-  },
-  itemCheckbox: {
-
-  },
-  itemLink: {
-    flexDirection: 'row',
-    flex: 1,
-    justifyContent: 'space-between',
-    marginLeft: Metrics.smallMargin * 1.5,
-    paddingRight: Metrics.baseMargin,
-  },
-  itemIcon: {
-    alignSelf: 'center',
-    fontSize: Metrics.icons.md,
-    color: Colors.inputIcon,
   },
 })

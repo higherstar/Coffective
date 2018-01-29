@@ -57,20 +57,4 @@ export default StyleSheet.create({
     fontSize: Fonts.size.medium,
     fontWeight: '500',
   },
-  options: {
-  },
-  option: {
-    marginLeft: Metrics.marginX,
-    paddingVertical: Metrics.smallMargin * 1.5,
-    borderBottomColor: Colors.border,
-    borderBottomWidth: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  checkIcon: {
-    fontSize: Metrics.icons.md,
-    color: Colors.primary,
-    paddingHorizontal: Metrics.baseMargin,
-  },
 })

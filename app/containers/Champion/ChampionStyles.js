@@ -44,4 +44,13 @@ export default StyleSheet.create({
     fontWeight: '300',
     fontSize: Fonts.size.h1,
   },
+  role: {
+  },
+  roleText: {
+    fontSize: Fonts.size.input,
+    color: Colors.inputPlaceholder,
+  },
+  selectedRoleText: {
+    color: Colors.inputText,
+  },
 })

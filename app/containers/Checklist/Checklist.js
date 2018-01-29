@@ -3,12 +3,12 @@ import { ScrollView, Image, View, TouchableOpacity } from 'react-native'
 import { getChecklist } from '../../reducers/checklist'
 import I18n from 'react-native-i18n'
 import { connect } from 'react-redux'
-import { Txt } from '../../components'
+import { Txt, Link } from '../../components'
 import Icon from 'react-native-vector-icons/dist/FontAwesome'
 import s from './ChecklistStyles'
-import Checkbox from 'react-native-check-box'
 import { Images } from '../../themes'
 import { DrawerButton } from '../../navigation/AppNavigation'
+import Checkbox from 'react-native-check-box'
 
 // TODO move to constants
 const colors = [
@@ -75,23 +75,21 @@ class Checklist extends React.Component {
                 />
               </View>
               {group.items.map((item, j) =>
-                <View key={j} style={[s.item, j < group.items.length - 1 && s.notLast]}>
-                  <Checkbox
-                    style={s.itemCheckbox}
-                    onClick={()=> {}}
-                    isChecked={item.checked}
-                    checkBoxColor={'#00D6FF'}
-                  />
-                  <TouchableOpacity activeOpacity={0.7} style={s.itemLink} onPress={() => {}}>
-                    <Txt.View style={s.itemName} textStyle={[s.itemNameText, !item.checked && s.itemNotChecked]}>
-                      {item.header}
-                    </Txt.View>
-                    <Icon
-                      style={s.itemIcon}
-                      name='angle-right'
+                <Link
+                  key={j}
+                  style={j < group.items.length - 1 && s.notLast}
+                  prefix={
+                    <Checkbox
+                      onClick={() => {}}
+                      isChecked={item.checked}
+                      checkBoxColor={'#00D6FF'}
                     />
-                  </TouchableOpacity>
-                </View>
+                  }
+                >
+                  <Txt.View textStyle={[!item.checked && s.notChecked]}>
+                    {item.header}
+                  </Txt.View>
+                </Link>
               )}
             </View>
           )}

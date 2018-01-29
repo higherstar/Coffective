@@ -13,7 +13,7 @@ class Input extends React.Component {
     const {style, inputStyle, refField, prefix, suffix, size, ...props} = this.props
     return (
       <View style={[s.wrapper, style]}>
-        {prefix}
+        {prefix && <View style={s.prefix}>{prefix}</View>}
         <TextInput
           underlineColorAndroid='transparent'
           textAlignVertical='center'

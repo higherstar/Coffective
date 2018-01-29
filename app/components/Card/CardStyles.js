@@ -7,6 +7,10 @@ export default StyleSheet.create({
     borderRadius: 7,
     backgroundColor: Colors.white,
   },
+  cover: {
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.border,
+  },
   title: {
     borderBottomWidth: 1,
     borderBottomColor: Colors.border,

@@ -22,6 +22,7 @@ import FindSupport from '../containers/FindSupport/FindSupport'
 import Wic from '../containers/Wic/Wic'
 import Hospital from '../containers/Hospital/Hospital'
 import Champion from '../containers/Champion/Champion'
+import ChampionRole from '../containers/ChampionRole/ChampionRole'
 import s from './AppNavigationStyles'
 import Icon from 'react-native-vector-icons/dist/MaterialIcons'
 
@@ -74,6 +75,7 @@ const MainNav = StackNavigator({
   Wic: {screen: Wic},
   Hospital: {screen: Hospital},
   Champion: {screen: Champion},
+  ChampionRole: {screen: ChampionRole},
 }, {
   initialRouteName: 'Champion',
   cardStyle: {

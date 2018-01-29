@@ -1,12 +1,11 @@
 // @flow
 import React from 'react'
-import { Image, ScrollView, TouchableOpacity, View } from 'react-native'
+import { Image, ScrollView, View } from 'react-native'
 import I18n from 'react-native-i18n'
 import { connect } from 'react-redux'
-import { Input, Txt } from '../../components'
+import { Input, Txt, RadioButtons } from '../../components'
 import s from './StateStyles'
 import { selectState } from '../../reducers/register'
-import { RadioButtons } from 'react-native-radio-buttons'
 import Icon from 'react-native-vector-icons/dist/FontAwesome'
 import { SkipButton } from '../../navigation/AppNavigation'
 import { Images } from '../../themes'
@@ -70,17 +69,6 @@ const states = [
   'Wyoming'
 ]
 
-const StateItem = ({option, selected, onSelect, index}) =>
-  <TouchableOpacity style={s.option} activeOpacity={1} onPress={onSelect} key={index}>
-    <Txt.View>{option}</Txt.View>
-    {selected && (
-      <Icon
-        style={s.checkIcon}
-        name='check'
-      />
-    )}
-  </TouchableOpacity>
-
 class State extends React.Component {
   static navigationOptions = ({navigation}) => ({
     headerLeft: null,
@@ -138,10 +126,6 @@ class State extends React.Component {
               navigation.navigate('Age')
             }}
             selectedOption={selectedState}
-            renderContainer={(children) => <View>{children}</View>}
-            renderOption={(option, selected, onSelect, index) =>
-              <StateItem option={option} selected={selected} onSelect={onSelect} key={index}/>
-            }
           />
         </ScrollView>
       </View>

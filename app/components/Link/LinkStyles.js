@@ -8,14 +8,17 @@ export default StyleSheet.create({
   item: {
     flexDirection: 'row',
     height: itemHeight,
+    position: 'relative',
   },
   link: {
     flexDirection: 'row',
     flex: 1,
-    justifyContent: 'space-between',
     height: itemHeight,
     alignItems: 'center',
     paddingRight: Metrics.baseMargin,
+  },
+  content: {
+    flex: 1,
   },
   hasPrefix: {
     paddingLeft: prefixWidth,

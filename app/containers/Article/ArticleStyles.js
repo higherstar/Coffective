@@ -59,6 +59,7 @@ export default StyleSheet.create({
     textAlign: 'center'
   },
   itemDescription: {
+    // fix for cropped line
     flex: 2,
     padding: Metrics.smallMargin * 1.5,
   },

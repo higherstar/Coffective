@@ -59,6 +59,7 @@ class Checklist extends React.Component {
               </View>
               {articles.filter(item => item.learn_categories.includes(category.id)).map((article, j) =>
                 <Link
+                  prefixType='checkbox'
                   key={j}
                   prefix={
                     <Checkbox
@@ -68,10 +69,9 @@ class Checklist extends React.Component {
                     />
                   }
                   onClick={() => navigation.navigate('Article', {article, category})}
+                  textStyle={[!article.checked && s.notChecked]}
                 >
-                  <Txt.View textStyle={[!article.checked && s.notChecked]}>
-                    {article.title.rendered}
-                  </Txt.View>
+                  {article.title.rendered}
                 </Link>
               )}
             </View>

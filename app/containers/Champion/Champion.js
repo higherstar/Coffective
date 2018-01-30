@@ -86,10 +86,9 @@ class Champion extends React.Component {
                         name='trophy'
                       />
                     }
+                    textStyle={[s.roleText, role && s.selectedRoleText]}
                   >
-                    <Txt.View style={s.role} textStyle={[s.roleText, role && s.selectedRoleText]}>
-                      {role || I18n.t('championRole')}
-                    </Txt.View>
+                    {role || I18n.t('championRole')}
                   </Link>
                   <Field
                     component={Input}

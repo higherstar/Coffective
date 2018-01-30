@@ -13,7 +13,7 @@ class Link extends React.Component {
   }
 
   render () {
-    const {style, textStyle, children, onClick, prefixType, prefix} = this.props
+    const {style, textStyle, children, onClick, prefixType, prefix, iconColor} = this.props
     return (
       <View style={[s.item, prefix && prefixType === 'checkbox' && s.hasPrefix, style]}>
         {prefix && prefixType === 'checkbox' && <View style={s.prefix}>{prefix}</View>}
@@ -23,7 +23,7 @@ class Link extends React.Component {
             {children}
           </Txt.View>
           <Icon
-            style={s.icon}
+            style={[s.icon, iconColor && {color: iconColor}]}
             name='angle-right'
           />
         </TouchableOpacity>

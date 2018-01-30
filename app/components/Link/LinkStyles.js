@@ -21,12 +21,9 @@ export default StyleSheet.create({
     flex: 1,
   },
   hasPrefix: {
-    paddingLeft: prefixWidth,
   },
   prefix: {
-    position: 'absolute',
-    left: 0,
-    width: prefixWidth,
+    minWidth: prefixWidth,
     alignSelf: 'center',
     alignItems: 'center',
   },

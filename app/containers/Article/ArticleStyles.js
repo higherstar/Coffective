@@ -71,5 +71,20 @@ export default StyleSheet.create({
     position: 'absolute',
     right: Metrics.baseMargin,
     top: Metrics.baseMargin
-  }
+  },
+  sectionLink: {
+    marginVertical: Metrics.smallMargin,
+  },
+  sectionLinkText: {
+    fontSize: Fonts.size.medium,
+    fontFamily: Fonts.type.secondary,
+    fontWeight: '600',
+  },
+  sectionImageWrapper: {
+    paddingHorizontal: Metrics.doubleBaseMargin,
+  },
+  sectionImage: {
+    width: 50,
+    height: 50,
+  },
 })

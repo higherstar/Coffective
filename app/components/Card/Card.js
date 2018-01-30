@@ -20,10 +20,12 @@ class Card extends React.Component {
             {title.toUpperCase()}
           </Txt.View>
         )}
-        <View style={s.body}>
-          {children}
-          {actions && <View style={s.actions}>{actions}</View>}
-        </View>
+        {children && (
+          <View style={s.body}>
+            {children}
+            {actions && <View style={s.actions}>{actions}</View>}
+          </View>
+        )}
       </View>
     )
   }

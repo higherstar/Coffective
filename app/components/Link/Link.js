@@ -13,7 +13,7 @@ class Link extends React.Component {
   render () {
     const {style, children, onClick, prefix} = this.props
     return (
-      <View style={[s.item, style]}>
+      <View style={[s.item, prefix && s.hasPrefix, style]}>
         {prefix && <View style={s.prefix}>{prefix}</View>}
         <TouchableOpacity activeOpacity={0.7} style={s.link} onPress={onClick}>
           {children}

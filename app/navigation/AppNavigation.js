@@ -17,6 +17,7 @@ import Home from '../containers/Home/Home'
 import BuildTeam from '../containers/BuildTeam/BuildTeam'
 import Faq from '../containers/Faq/Faq'
 import Checklist from '../containers/Checklist/Checklist'
+import Article from '../containers/Article/Article'
 import HowItWorks from '../containers/HowItWorks/HowItWorks'
 import FindSupport from '../containers/FindSupport/FindSupport'
 import Wic from '../containers/Wic/Wic'
@@ -70,6 +71,7 @@ const MainNav = StackNavigator({
   BuildTeam: {screen: BuildTeam},
   Faq: {screen: Faq},
   Checklist: {screen: Checklist},
+  Article: {screen: Article},
   HowItWorks: {screen: HowItWorks},
   FindSupport: {screen: FindSupport},
   Wic: {screen: Wic},
@@ -77,7 +79,7 @@ const MainNav = StackNavigator({
   Champion: {screen: Champion},
   ChampionRole: {screen: ChampionRole},
 }, {
-  initialRouteName: 'Champion',
+  initialRouteName: 'Checklist',
   cardStyle: {
     backgroundColor: Colors.background,
   },

@@ -2,19 +2,23 @@ import { StyleSheet } from 'react-native'
 import { AppStyles, Metrics } from '../../themes'
 
 const prefixWidth = 50
+const itemHeight = 50
 
 export default StyleSheet.create({
   item: {
     flexDirection: 'row',
-    alignItems: 'center',
-    height: 50,
-    paddingHorizontal: Metrics.baseMargin,
+    height: itemHeight,
   },
   link: {
     flexDirection: 'row',
     flex: 1,
     justifyContent: 'space-between',
-    paddingLeft: prefixWidth - Metrics.baseMargin,
+    height: itemHeight,
+    alignItems: 'center',
+    paddingRight: Metrics.baseMargin,
+  },
+  hasPrefix: {
+    paddingLeft: prefixWidth,
   },
   prefix: {
     position: 'absolute',

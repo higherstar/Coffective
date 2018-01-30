@@ -16,52 +16,54 @@ export default StyleSheet.create({
     height: null,
     flex: 1,
   },
+  scrollContent: {
+    padding: Metrics.smallMargin,
+  },
   content: {
     flex: 1,
-    paddingHorizontal: Metrics.marginX / 2,
-    marginBottom: Metrics.marginX / 2,
   },
-  group: {
+  category: {
     backgroundColor: Colors.white,
-    borderBottomRightRadius: 7,
-    borderBottomLeftRadius: 7,
-    marginTop: Metrics.marginX / 2,
+    borderRadius: 7,
+    marginBottom: Metrics.smallMargin,
     ...Metrics.boxShadow,
   },
-  groupHead: {
+  categoryHead: {
     height: headHeight,
     flexDirection: 'row',
     alignItems: 'center',
     // TODO overflow hidden turns box shadow off - fix it
     borderTopRightRadius: 7,
     borderTopLeftRadius: 7,
+    overflow: 'hidden',
   },
-  groupName: {
+  categoryName: {
     flex: 1,
   },
-  groupNameText: {
+  categoryNameText: {
     fontSize: Fonts.size.medium,
     fontFamily: Fonts.type.secondary,
     fontWeight: '500',
   },
-  groupIconWrapper: {
+  categoryIconWrapper: {
     paddingHorizontal: Metrics.smallMargin * 1.5,
   },
-  groupIcon: {
+  categoryIcon: {
     alignSelf: 'center',
     fontSize: Metrics.icons.md,
   },
-  groupImage: {
-    resizeMode: 'contain',
-    width: headHeight - Metrics.smallMargin,
-    height: headHeight - Metrics.smallMargin,
-    marginVertical: Metrics.smallMargin,
-    marginHorizontal: Metrics.baseMargin,
-  },
-  notLast: {
-    borderBottomColor: Colors.border,
-    borderBottomWidth: 1,
-  },
+  // TODO
+  // categoryImage: {
+  //   resizeMode: 'contain',
+  //   width: headHeight - Metrics.smallMargin,
+  //   height: headHeight - Metrics.smallMargin,
+  //   marginVertical: Metrics.smallMargin,
+  //   marginHorizontal: Metrics.baseMargin,
+  // },
+  // notLast: {
+  //   borderBottomColor: Colors.border,
+  //   borderBottomWidth: 1,
+  // },
   notChecked: {
     color: Colors.muted,
   },

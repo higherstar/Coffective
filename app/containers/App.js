@@ -1,5 +1,6 @@
 import '../config'
 import DebugConfig from '../config/DebugConfig'
+import AppConfig from '../config/AppConfig'
 import React from 'react'
 import { Provider } from 'react-redux'
 import Root from './Root/Root'
@@ -11,7 +12,7 @@ import createFetch from '../createFetch'
 EStyleSheet.build({})
 
 const customFetch = createFetch(fetch, {
-  apiUrl: 'http://127.0.0.1:8081',
+  apiUrl: AppConfig.apiUrl,
 })
 
 // create our store

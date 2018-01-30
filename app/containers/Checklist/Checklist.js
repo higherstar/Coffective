@@ -1,6 +1,6 @@
 import React from 'react'
 import { ScrollView, Image, View, TouchableOpacity } from 'react-native'
-import { getChecklist } from '../../reducers/checklist'
+import { getCategories, getArticles } from '../../reducers/checklist'
 import I18n from 'react-native-i18n'
 import { connect } from 'react-redux'
 import { Txt, Link } from '../../components'
@@ -9,25 +9,7 @@ import s from './ChecklistStyles'
 import { Images } from '../../themes'
 import { DrawerButton } from '../../navigation/AppNavigation'
 import Checkbox from 'react-native-check-box'
-
-// TODO move to constants
-const colors = [
-  '#C08C5C',
-  '#F176AF',
-  '#B5AAEF',
-  '#EDBEA4',
-  '#E8CD79',
-  '#A8CEA5',
-]
-
-const colors2 = [
-  '#F1E7DE',
-  '#FFF0F7',
-  '#F5F4FC',
-  '#FFFAF7',
-  '#FBF7EB',
-  '#EAFBE9',
-]
+import Color from 'color'
 
 class Checklist extends React.Component {
   static navigationOptions = ({navigation}) => ({
@@ -39,12 +21,13 @@ class Checklist extends React.Component {
   })
 
   componentWillMount () {
-    this.props.getChecklist()
+    this.props.getCategories()
+    this.props.getArticles()
   }
 
   render () {
-    const { checklist } = this.props
-    // TODO change Checkbox images
+    const { categories, articles, navigation } = this.props
+    // TODO image for category - no backend image
     return (
       <View style={s.container}>
         <View style={s.head}>
@@ -53,41 +36,41 @@ class Checklist extends React.Component {
             source={Images.checklistBackground}
           />
         </View>
-        <ScrollView style={s.content}>
-          {checklist.map((group, i) =>
-            <View key={i} style={s.group}>
-              <View style={[s.groupHead, {backgroundColor: colors2[i]}]}>
-                <TouchableOpacity activeOpacity={0.7} style={s.groupIconWrapper}>
+        <ScrollView style={s.content} contentContainerStyle={s.scrollContent}>
+          {categories.map((category, i) =>
+            <View key={i} style={s.category}>
+              <View style={[s.categoryHead, {backgroundColor: Color(category.acf.color).fade(0.7)}]}>
+                <TouchableOpacity activeOpacity={0.7} style={s.categoryIconWrapper}>
                   <Icon
-                    style={[s.groupIcon, {color: colors[i]}]}
+                    style={[s.categoryIcon, {color: category.acf.color}]}
                     name='question-circle'
                   />
                 </TouchableOpacity>
                 <Txt.View
-                  style={s.groupName}
-                  textStyle={[s.groupNameText, { color: colors[i] }]}
+                  style={s.categoryName}
+                  textStyle={[s.categoryNameText, { color: category.acf.color }]}
                 >
-                  {group.header.toUpperCase()}
+                  {category.name.toUpperCase()}
                 </Txt.View>
-                <Image
-                  source={{uri: group.image}}
-                  style={s.groupImage}
-                />
+                {/*<Image*/}
+                  {/*source={{uri: category.image}}*/}
+                  {/*style={s.categoryImage}*/}
+                {/*/>*/}
               </View>
-              {group.items.map((item, j) =>
+              {articles.filter(item => item.learn_categories.includes(category.id)).map((article, j) =>
                 <Link
                   key={j}
-                  style={j < group.items.length - 1 && s.notLast}
                   prefix={
                     <Checkbox
                       onClick={() => {}}
-                      isChecked={item.checked}
+                      isChecked={article.checked}
                       checkBoxColor={'#00D6FF'}
                     />
                   }
+                  onClick={() => navigation.navigate('Article', {article, category})}
                 >
-                  <Txt.View textStyle={[!item.checked && s.notChecked]}>
-                    {item.header}
+                  <Txt.View textStyle={[!article.checked && s.notChecked]}>
+                    {article.title.rendered}
                   </Txt.View>
                 </Link>
               )}
@@ -104,7 +87,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = {
-  getChecklist,
+  getCategories,
+  getArticles,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Checklist)

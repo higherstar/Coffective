@@ -4,124 +4,36 @@ import { getToken } from './user'
 // ------------------------------------
 // Constants
 // ------------------------------------
-export const GET_CHECKLIST_REQUEST = 'BuildTeam.GET_CHECKLIST_REQUEST'
-export const GET_CHECKLIST_SUCCESS = 'BuildTeam.GET_CHECKLIST_SUCCESS'
-export const GET_CHECKLIST_FAILURE = 'BuildTeam.GET_CHECKLIST_FAILURE'
+export const GET_CATEGORIES_REQUEST = 'Checklist.GET_CATEGORIES_REQUEST'
+export const GET_CATEGORIES_SUCCESS = 'Checklist.GET_CATEGORIES_SUCCESS'
+export const GET_CATEGORIES_FAILURE = 'Checklist.GET_CATEGORIES_FAILURE'
+
+export const GET_ARTICLES_REQUEST = 'Checklist.GET_ARTICLES_REQUEST'
+export const GET_ARTICLES_SUCCESS = 'Checklist.GET_ARTICLES_SUCCESS'
+export const GET_ARTICLES_FAILURE = 'Checklist.GET_ARTICLES_FAILURE'
 
 // ------------------------------------
 // Actions
 // ------------------------------------
-export const getChecklist = () => (dispatch, getState, {fetch}) => {
-  dispatch({type: GET_CHECKLIST_REQUEST})
+export const getCategories = () => (dispatch, getState, {fetch}) => {
+  dispatch({type: GET_CATEGORIES_REQUEST})
   const {token} = dispatch(getToken())
-  return fetch(`/checklist/`, {
+  return fetch(`/learn_categories/`, {
     method: 'GET',
     token,
-    success: (checklist) => dispatch({type: GET_CHECKLIST_SUCCESS, checklist}),
-    failure: (err) => {
-      // TODO backend
-      // dispatch({type: GET_CHECKLIST_FAILURE, error: err})
-      dispatch({type: GET_CHECKLIST_SUCCESS, checklist: [
-        {
-          header: 'Get Ready',
-          image: 'https://dummyimage.com/60x60',
-          items: [
-            {
-              header: 'Have Champion Support',
-              description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.`,
-            },
-            {
-              header: 'Labor Begin On Own',
-              description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.`,
-            },
-            {
-              header: 'Comfort During Labor',
-              description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.`,
-            },
-          ]
-        },
-        {
-          header: 'Fall In Love',
-          image: 'https://dummyimage.com/60x60',
-          items: [
-            {
-              header: 'Initial Skin to skin',
-              description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.`,
-            },
-            {
-              header: 'Magical First Hour',
-              description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.`,
-            },
-            {
-              header: 'Baby\'s First Feed',
-              description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.`,
-            },
-            {
-              header: 'Delayed Procedure',
-              description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.`,
-            },
-          ]
-        },
-        {
-          header: 'Get Ready',
-          image: 'https://dummyimage.com/60x60',
-          items: [
-            {
-              header: 'Have Champion Support',
-              description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.`,
-            },
-            {
-              header: 'Labor Begin On Own',
-              description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.`,
-            },
-            {
-              header: 'Comfort During Labor',
-              description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.`,
-            },
-          ]
-        },
-        {
-          header: 'Fall In Love',
-          image: 'https://dummyimage.com/60x60',
-          items: [
-            {
-              header: 'Initial Skin to skin',
-              description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.`,
-            },
-            {
-              header: 'Magical First Hour',
-              description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.`,
-            },
-            {
-              header: 'Baby\'s First Feed',
-              description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.`,
-            },
-            {
-              header: 'Delayed Procedure',
-              description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.`,
-            },
-          ]
-        },
-        {
-          header: 'Get Ready',
-          image: 'https://dummyimage.com/60x60',
-          items: [
-            {
-              header: 'Have Champion Support',
-              description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.`,
-            },
-            {
-              header: 'Labor Begin On Own',
-              description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.`,
-            },
-            {
-              header: 'Comfort During Labor',
-              description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.`,
-            },
-          ]
-        }
-      ]})
-    }
+    success: (categories) => dispatch({type: GET_CATEGORIES_SUCCESS, categories}),
+    failure: (error) => dispatch({type: GET_CATEGORIES_FAILURE, error}),
+  })
+}
+
+export const getArticles = () => (dispatch, getState, {fetch}) => {
+  dispatch({type: GET_ARTICLES_REQUEST})
+  const {token} = dispatch(getToken())
+  return fetch(`/learn/`, {
+    method: 'GET',
+    token,
+    success: (articles) => dispatch({type: GET_ARTICLES_SUCCESS, articles}),
+    failure: (error) => dispatch({type: GET_ARTICLES_FAILURE, error}),
   })
 }
 
@@ -130,18 +42,29 @@ export const getChecklist = () => (dispatch, getState, {fetch}) => {
 // ------------------------------------
 const initialState = {
   loading: false,
-  checklist: [],
+  categories: [],
+  articles: [],
 }
 
 export default createReducer(initialState, {
-  [GET_CHECKLIST_REQUEST]: (state, action) => ({
+  [GET_CATEGORIES_REQUEST]: (state, action) => ({
     loading: true,
   }),
-  [GET_CHECKLIST_SUCCESS]: (state, {checklist}) => ({
+  [GET_CATEGORIES_SUCCESS]: (state, {categories}) => ({
     loading: false,
-    checklist,
+    categories,
   }),
-  [GET_CHECKLIST_FAILURE]: (state, action) => ({
+  [GET_CATEGORIES_FAILURE]: (state, action) => ({
+    loading: false,
+  }),
+  [GET_ARTICLES_REQUEST]: (state, action) => ({
+    loading: true,
+  }),
+  [GET_ARTICLES_SUCCESS]: (state, {articles}) => ({
+    loading: false,
+    articles,
+  }),
+  [GET_ARTICLES_FAILURE]: (state, action) => ({
     loading: false,
   }),
 })

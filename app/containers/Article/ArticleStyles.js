@@ -33,4 +33,42 @@ export default StyleSheet.create({
   submit: {
     borderRadius: 0,
   },
+  item: {
+    position: 'relative',
+    flex: 1,
+  },
+  itemImage: {
+    resizeMode: 'cover',
+    width: null,
+    height: 220,
+    flex: 1,
+  },
+  itemDescriptionWrapper: {
+    flexDirection: 'row',
+  },
+  itemIndex: {
+    maxWidth: 50,
+    flex: 1,
+    justifyContent: 'center',
+    // TODO fix for border - overflow hidden breaks boxShadow
+    borderBottomLeftRadius: 7,
+  },
+  itemIndexText: {
+    fontSize: Fonts.size.h1,
+    fontWeight: '300',
+    textAlign: 'center'
+  },
+  itemDescription: {
+    flex: 2,
+    padding: Metrics.smallMargin * 1.5,
+  },
+  itemDescriptionText: {
+    color: Colors.grey,
+    fontFamily: Fonts.type.secondary,
+  },
+  dots: {
+    position: 'absolute',
+    right: Metrics.baseMargin,
+    top: Metrics.baseMargin
+  }
 })

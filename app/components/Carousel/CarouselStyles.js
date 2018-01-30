@@ -18,9 +18,6 @@ export default StyleSheet.create({
     // overflow: 'visible',
     // paddingHorizontal: 20,
     // flex: 1,
-    paddingHorizontal: Metrics.baseMargin,
-    paddingTop: Metrics.doubleBaseMargin,
-    paddingBottom: Metrics.baseMargin * 1.5,
     // width: Metrics.screenWidth - Metrics.doubleBaseMargin
   },
   notActive: {
@@ -30,8 +27,6 @@ export default StyleSheet.create({
   dots: {
     flexDirection: 'row',
     justifyContent: 'center',
-    marginBottom: Metrics.baseMargin * 1.5,
-    paddingHorizontal: Metrics.marginX,
   },
   dot: {
     width: 10,

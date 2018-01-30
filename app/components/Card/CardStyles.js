@@ -8,6 +8,8 @@ export default StyleSheet.create({
     backgroundColor: Colors.white,
   },
   cover: {
+  },
+  bordered: {
     borderBottomWidth: 1,
     borderBottomColor: Colors.border,
   },

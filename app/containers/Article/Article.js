@@ -34,26 +34,24 @@ class Article extends React.Component {
           <View style={s.scrollContent}>
             <Card
               style={s.card}
-              cover={<Image source={Images.hospital}/>}
-            >
-              <Txt.View style={s.cardTitle} textStyle={s.cardTitleText}>{article.acf.introduction_title}</Txt.View>
-              <Txt.View style={s.cardDescription} textStyle={s.cardDescriptionText}>{article.acf.introduction}</Txt.View>
-              <Txt.View style={s.cardTitle} textStyle={s.cardTitleText}>{article.acf.how_it_works_title}</Txt.View>
-              <Txt.View style={s.cardDescription} textStyle={s.cardDescriptionText}>
-                {article.acf.how_it_works_introduction}
-              </Txt.View>
-            </Card>
+              cover={
+                <View>
+                  <Image source={Images.hospital}/>
+                  <Card.Meta title={article.acf.introduction_title} description={article.acf.introduction} bordered/>
+                  <Card.Meta
+                    title={article.acf.how_it_works_title}
+                    description={article.acf.how_it_works_introduction}
+                  />
+                </View>
+              }
+            />
             <Card
               style={s.card}
+              cover={
+                <Card.Meta title={article.acf.youll_love_title} description={article.acf.youll_love_text}/>
+              }
               actions={[<Button key='1' size='sm' outline type='primary'>LEARN MORE ABOUT WHY’S</Button>]}
-            >
-              <Txt.View style={s.cardTitle} textStyle={s.cardTitleText}>
-                {article.acf.youll_love_title}
-              </Txt.View>
-              <Txt.View style={s.cardDescription} textStyle={s.cardDescriptionText}>
-                {article.acf.youll_love_text}
-              </Txt.View>
-            </Card>
+            />
             <Txt.View style={s.sectionHeader} textStyle={s.sectionHeaderText}>
               {article.acf.faqs_title}
             </Txt.View>

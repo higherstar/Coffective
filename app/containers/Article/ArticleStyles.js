@@ -23,19 +23,6 @@ export default StyleSheet.create({
   card: {
     marginBottom: Metrics.smallMargin,
   },
-  cardTitleText: {
-    fontSize: Fonts.size.h1,
-    fontWeight: '300',
-  },
-  cardDescriptionText: {
-    color: Colors.grey,
-    fontFamily: Fonts.type.secondary
-  },
-  cardTitle: {
-    marginBottom: Metrics.smallMargin,
-  },
-  cardDescription: {
-  },
   sectionHeader: {
     marginVertical: Metrics.smallMargin,
   },

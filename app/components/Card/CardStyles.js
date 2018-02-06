@@ -8,10 +8,10 @@ export default StyleSheet.create({
     backgroundColor: Colors.white,
   },
   cover: {
-    // fix https://github.com/facebook/react-native/issues/449
+    // TODO fix https://github.com/facebook/react-native/issues/449
     borderTopLeftRadius: 7,
     borderTopRightRadius: 7,
-    overflow: 'hidden',
+    // overflow: 'hidden',
   },
   bordered: {
     borderBottomWidth: 1,

@@ -1,6 +1,6 @@
 // @flow
 import React from 'react'
-import { Image, ScrollView, View, TouchableOpacity } from 'react-native'
+import { Image, ScrollView, KeyboardAvoidingView, View, TouchableOpacity } from 'react-native'
 import I18n from 'react-native-i18n'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
@@ -26,7 +26,7 @@ class Champion extends React.Component {
   render () {
     const {role, navigation, invited, setInvited} = this.props
     return (
-      <View style={s.container}>
+      <KeyboardAvoidingView style={s.container} behavior='padding'>
         <View style={s.head}>
           <Image
             style={s.backgroundImage}
@@ -172,7 +172,7 @@ class Champion extends React.Component {
             </Card>
           ]}
         </ScrollView>
-      </View>
+      </KeyboardAvoidingView>
     )
   }
 }

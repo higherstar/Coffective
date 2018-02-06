@@ -37,45 +37,48 @@ class Checklist extends React.Component {
           />
         </View>
         <ScrollView style={s.content} contentContainerStyle={s.scrollContent}>
-          {categories.map((category, i) =>
-            <View key={i} style={s.category}>
-              <View style={[s.categoryHead, {backgroundColor: Color(category.acf.color).fade(0.7)}]}>
-                <TouchableOpacity activeOpacity={0.7} style={s.categoryIconWrapper}>
-                  <Icon
-                    style={[s.categoryIcon, {color: category.acf.color}]}
-                    name='question-circle'
-                  />
-                </TouchableOpacity>
-                <Txt.View
-                  style={s.categoryName}
-                  textStyle={[s.categoryNameText, { color: category.acf.color }]}
-                >
-                  {category.name.toUpperCase()}
-                </Txt.View>
-                {/*<Image*/}
+          {categories.map((category, i) => {
+            const categoryArticles = articles.filter(item => item.learn_categories.includes(category.id))
+            return categoryArticles.length ? (
+              <View key={i} style={s.category}>
+                <View style={[s.categoryHead, {backgroundColor: Color(category.acf.color).fade(0.7)}]}>
+                  <TouchableOpacity activeOpacity={0.7} style={s.categoryIconWrapper}>
+                    <Icon
+                      style={[s.categoryIcon, {color: category.acf.color}]}
+                      name='question-circle'
+                    />
+                  </TouchableOpacity>
+                  <Txt.View
+                    style={s.categoryName}
+                    textStyle={[s.categoryNameText, { color: category.acf.color }]}
+                  >
+                    {category.name.toUpperCase()}
+                  </Txt.View>
+                  {/*<Image*/}
                   {/*source={{uri: category.image}}*/}
                   {/*style={s.categoryImage}*/}
-                {/*/>*/}
+                  {/*/>*/}
+                </View>
+                {categoryArticles.map((article, j) =>
+                  <Link
+                    prefixType='checkbox'
+                    key={j}
+                    prefix={
+                      <Checkbox
+                        onClick={() => {}}
+                        isChecked={article.checked}
+                        checkBoxColor={'#00D6FF'}
+                      />
+                    }
+                    onClick={() => navigation.navigate('Article', {article, category})}
+                    textStyle={[!article.checked && s.notChecked]}
+                  >
+                    {article.title.rendered}
+                  </Link>
+                )}
               </View>
-              {articles.filter(item => item.learn_categories.includes(category.id)).map((article, j) =>
-                <Link
-                  prefixType='checkbox'
-                  key={j}
-                  prefix={
-                    <Checkbox
-                      onClick={() => {}}
-                      isChecked={article.checked}
-                      checkBoxColor={'#00D6FF'}
-                    />
-                  }
-                  onClick={() => navigation.navigate('Article', {article, category})}
-                  textStyle={[!article.checked && s.notChecked]}
-                >
-                  {article.title.rendered}
-                </Link>
-              )}
-            </View>
-          )}
+            ) : null
+          })}
         </ScrollView>
       </View>
     )

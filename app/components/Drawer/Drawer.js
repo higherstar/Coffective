@@ -13,10 +13,10 @@ const Divider = () =>
 
 const DrawerItem = ({label, icon, onClick}) =>
   <TouchableOpacity activeOpacity={0.5} style={s.item} onPress={onClick}>
-    <Icon
-      name='user'
-      style={s.icon}
-    />
+    {/*<Icon*/}
+      {/*name={icon}*/}
+      {/*style={s.icon}*/}
+    {/*/>*/}
     <Txt.View style={s.label} textStyle={s.labelText}>
       {label}
     </Txt.View>
@@ -62,13 +62,13 @@ class Drawer extends React.Component {
           />
         </View>
         <ScrollView style={s.content}>
-          <DrawerItem label={'Start Here'} onClick={() => this.navigate('HowItWorks')}/>
-          <DrawerItem label={'Checklist'} onClick={() => this.navigate('Checklist')}/>
-          <DrawerItem label={'Ask Questions'} onClick={() => this.navigate('Faq')}/>
-          <DrawerItem label={'Build Your Team'} onClick={() => this.navigate('BuildTeam')}/>
-          <DrawerItem label={'Find Support'} onClick={() => this.navigate('FindSupport')}/>
+          <DrawerItem label={'Start Here'} onClick={() => this.navigate('HowItWorks')} icon='angle-double-right'/>
+          <DrawerItem label={'Checklist'} onClick={() => this.navigate('Checklist')} icon='check-square'/>
+          <DrawerItem label={'Ask Questions'} onClick={() => this.navigate('Faq')} icon='question-circle'/>
+          <DrawerItem label={'Build Your Team'} onClick={() => this.navigate('BuildTeam')} icon='users'/>
+          <DrawerItem label={'Find Support'} onClick={() => this.navigate('FindSupport')} icon='handshake'/>
           <Divider/>
-          <DrawerItem label={'Settings'} onClick={() => this.navigate('Settings')}/>
+          <DrawerItem label={'Settings'} onClick={() => this.navigate('Settings')} icon='cog'/>
         </ScrollView>
       </View>
     )

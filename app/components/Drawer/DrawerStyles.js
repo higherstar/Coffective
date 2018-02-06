@@ -31,7 +31,7 @@ export default StyleSheet.create({
   },
   headerText: {
     color: Colors.white,
-    fontSize: Fonts.size.h1,
+    fontSize: Fonts.size.h3,
     fontWeight: '300',
   },
   subHeader: {

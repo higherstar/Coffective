@@ -79,7 +79,7 @@ const MainNav = StackNavigator({
   Champion: {screen: Champion},
   ChampionRole: {screen: ChampionRole},
 }, {
-  initialRouteName: 'Checklist',
+  initialRouteName: 'Welcome',
   cardStyle: {
     backgroundColor: Colors.background,
   },
@@ -103,7 +103,7 @@ const DrawerNav = DrawerNavigator({
   Checklist: {screen: Checklist, navigationOptions: {drawerLabel: 'Checklist'}},
   BuildTeam: {screen: BuildTeam, navigationOptions: {drawerLabel: 'BuildTeam'}},
 }, {
-  drawerWidth: Metrics.screenWidth,
+  drawerWidth: 300,
   drawerPosition: 'left',
   contentComponent: Drawer,
   drawerOpenRoute: 'DrawerOpen',

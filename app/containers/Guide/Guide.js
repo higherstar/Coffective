@@ -15,7 +15,7 @@ class Guide extends React.Component {
     headerRight: null,
   }
 
-  componentWillMount () {
+  componentDidMount () {
     this.props.getCarousel()
   }
 

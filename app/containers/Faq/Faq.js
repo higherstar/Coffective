@@ -18,7 +18,7 @@ class Faq extends React.Component {
     )
   })
 
-  componentWillMount () {
+  componentDidMount () {
     this.props.getCommonQuestions()
   }
 

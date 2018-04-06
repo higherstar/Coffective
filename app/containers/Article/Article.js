@@ -46,9 +46,6 @@ class Article extends React.Component {
     )
   })
 
-  componentWillMount () {
-  }
-
   render () {
     const {navigation} = this.props
     const {article, category} = navigation.state.params

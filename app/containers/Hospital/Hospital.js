@@ -25,9 +25,6 @@ class Hospital extends React.Component {
     )
   })
 
-  componentWillMount () {
-  }
-
   render () {
     return (
       <View style={s.container}>

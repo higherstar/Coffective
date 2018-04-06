@@ -20,9 +20,6 @@ class Champion extends React.Component {
     )
   })
 
-  componentWillMount () {
-  }
-
   render () {
     const {role, navigation, invited, setInvited} = this.props
     return (

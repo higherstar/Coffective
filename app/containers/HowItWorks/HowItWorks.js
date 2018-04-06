@@ -18,7 +18,7 @@ class HowItWorks extends React.Component {
     )
   })
 
-  componentWillMount () {
+  componentDidMount () {
     this.props.getSections()
   }
 

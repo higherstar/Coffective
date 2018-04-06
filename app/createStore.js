@@ -5,6 +5,7 @@ import Config from './config/DebugConfig'
 import thunk from 'redux-thunk'
 import ScreenTracking from './reducers/ScreenTrackingMiddleware'
 import createHelpers from './createHelpers'
+import { createReactNavigationReduxMiddleware } from 'react-navigation-redux-helpers'
 
 // creates the store
 export default (rootReducer, helpersConfig) => {
@@ -12,6 +13,13 @@ export default (rootReducer, helpersConfig) => {
 
   const middleware = []
   const enhancers = []
+
+  /* ------------- Navigation Middleware ------------ */
+  const navigationMiddleware = createReactNavigationReduxMiddleware(
+    'root',
+    state => state.nav
+  )
+  middleware.push(navigationMiddleware)
 
   /* ------------- Analytics Middleware ------------- */
   middleware.push(ScreenTracking)

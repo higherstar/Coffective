@@ -24,9 +24,6 @@ class Wic extends React.Component {
     )
   })
 
-  componentWillMount () {
-  }
-
   render () {
     return (
       <View style={s.container}>

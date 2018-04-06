@@ -28,9 +28,6 @@ class ChampionRole extends React.Component {
     )
   })
 
-  componentWillMount () {
-  }
-
   render () {
     const {navigation, role, setRole} = this.props
     return (

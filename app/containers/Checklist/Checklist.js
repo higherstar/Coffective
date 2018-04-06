@@ -20,7 +20,7 @@ class Checklist extends React.Component {
     )
   })
 
-  componentWillMount () {
+  componentDidMount () {
     this.props.getCategories()
     this.props.getArticles()
   }

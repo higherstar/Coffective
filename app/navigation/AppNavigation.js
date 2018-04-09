@@ -79,7 +79,7 @@ const MainNav = StackNavigator({
   Champion: {screen: Champion},
   ChampionRole: {screen: ChampionRole},
 }, {
-  initialRouteName: 'Welcome',
+  initialRouteName: 'FindSupport',
   cardStyle: {
     backgroundColor: Colors.background,
   },

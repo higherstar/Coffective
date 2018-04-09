@@ -8,6 +8,9 @@ export default StyleSheet.create({
   content: {
     flex: 1,
   },
+  scrollContent: {
+    minHeight: Metrics.screenHeight - Metrics.navBarHeight
+  },
   head: {
     height: Metrics.navBarHeight,
   },
@@ -45,5 +48,55 @@ export default StyleSheet.create({
   },
   orgTypeSelect: {
     marginBottom: Metrics.smallMargin,
-  }
+  },
+  placesWrapper: {
+    marginTop: Metrics.screenHeight * 0.5,
+  },
+  placesHeader: {
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.border,
+    padding: Metrics.smallMargin,
+    backgroundColor: Colors.white,
+  },
+  placesHeaderText: {
+    fontFamily: Fonts.type.secondary,
+    color: Colors.grey,
+    fontSize: Fonts.size.medium,
+    fontWeight: '500',
+  },
+  placeLink: {
+    backgroundColor: Colors.white,
+  },
+  placeLinkContent: {
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.border,
+  },
+  placeImageWrapper: {
+    paddingHorizontal: Metrics.baseMargin,
+  },
+  placeImage: {
+    width: 25,
+    height: 25,
+  },
+  header: {
+    marginTop: Metrics.baseMargin,
+    marginBottom: Metrics.smallMargin,
+  },
+  headerText: {
+
+  },
+  lastUpdate: {
+    marginBottom: Metrics.smallMargin,
+  },
+  lastUpdateText: {
+    color: Colors.primary,
+    fontSize: Fonts.size.small,
+  },
+  description: {
+    marginBottom: Metrics.baseMargin,
+  },
+  descriptionText: {
+    color: Colors.grey,
+    fontSize: Fonts.size.small,
+  },
 })

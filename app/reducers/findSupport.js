@@ -4,51 +4,22 @@ import { getToken } from './user'
 // ------------------------------------
 // Constants
 // ------------------------------------
-export const GET_CATEGORIES_REQUEST = 'FindSupport.GET_CATEGORIES_REQUEST'
-export const GET_CATEGORIES_SUCCESS = 'FindSupport.GET_CATEGORIES_SUCCESS'
-export const GET_CATEGORIES_FAILURE = 'FindSupport.GET_CATEGORIES_FAILURE'
+export const GET_PLACES_REQUEST = 'FindSupport.GET_PLACES_REQUEST'
+export const GET_PLACES_SUCCESS = 'FindSupport.GET_PLACES_SUCCESS'
+export const GET_PLACES_FAILURE = 'FindSupport.GET_PLACES_FAILURE'
 
 // ------------------------------------
 // Actions
 // ------------------------------------
-export const getCategories = () => (dispatch, getState, {fetch}) => {
-  dispatch({type: GET_CATEGORIES_REQUEST})
+export const getPlaces = () => (dispatch, getState, {fetch}) => {
+  dispatch({type: GET_PLACES_REQUEST})
   const {token} = dispatch(getToken())
-  return fetch(`/categories/`, {
+  return fetch(`/resources`, {
     method: 'GET',
     token,
-    success: (categories) => dispatch({type: GET_CATEGORIES_SUCCESS, categories}),
+    success: (places) => dispatch({type: GET_PLACES_SUCCESS, places}),
     failure: (err) => {
-      // TODO backend
-      // dispatch({type: GET_CATEGORIES_FAILURE, error: err})
-      dispatch({type: GET_CATEGORIES_SUCCESS, categories: [
-        {
-          header: 'Choose your Champion',
-          description: `There are a few things to consider when choosing and communicating with a champion.`,
-          image: 'https://dummyimage.com/320x240',
-        },
-        {
-          header: 'Choose your Hospital',
-          description: `There are a few things to consider when choosing a hospital to ensure you are receiving the best care possible.`,
-          image: 'https://dummyimage.com/320x240',
-        },
-        {
-          header: 'Are you Eligible for WIC?',
-          description: `WIC income eligibility is higher that many people think. There are few things to consider before choosing the clinic that is right for you.`,
-          image: 'https://dummyimage.com/320x240',
-          screen: 'Wic',
-        },
-        {
-          header: 'Choose your Doctor or Midwife',
-          description: `You healthcare provider plays a critical role in helping you set and reach your goals. Be sure to share your wishes!`,
-          image: 'https://dummyimage.com/320x240',
-        },
-        {
-          header: 'Choose your Baby’s Doctor',
-          description: `Your baby’s healthcare provider plays a critical role in ensuring things go well in the hospital and once you get home.`,
-          image: 'https://dummyimage.com/320x240',
-        },
-      ]})
+      dispatch({type: GET_PLACES_FAILURE, error: err})
     }
   })
 }
@@ -58,18 +29,18 @@ export const getCategories = () => (dispatch, getState, {fetch}) => {
 // ------------------------------------
 const initialState = {
   loading: false,
-  categories: [],
+  places: [],
 }
 
 export default createReducer(initialState, {
-  [GET_CATEGORIES_REQUEST]: (state, action) => ({
+  [GET_PLACES_REQUEST]: (state, action) => ({
     loading: true,
   }),
-  [GET_CATEGORIES_SUCCESS]: (state, {categories}) => ({
+  [GET_PLACES_SUCCESS]: (state, {places}) => ({
     loading: false,
-    categories,
+    places,
   }),
-  [GET_CATEGORIES_FAILURE]: (state, action) => ({
+  [GET_PLACES_FAILURE]: (state, action) => ({
     loading: false,
   }),
 })

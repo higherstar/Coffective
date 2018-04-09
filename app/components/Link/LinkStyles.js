@@ -7,18 +7,18 @@ const itemHeight = 50
 export default StyleSheet.create({
   item: {
     flexDirection: 'row',
-    height: itemHeight,
+    minHeight: itemHeight,
     position: 'relative',
   },
   link: {
     flexDirection: 'row',
     flex: 1,
-    height: itemHeight,
+    minHeight: itemHeight,
     alignItems: 'center',
-    paddingRight: Metrics.baseMargin,
   },
   content: {
     flex: 1,
+    paddingRight: Metrics.baseMargin,
   },
   hasPrefix: {
   },
@@ -29,5 +29,7 @@ export default StyleSheet.create({
   },
   icon: {
     ...AppStyles.inputIcon,
+    position: 'absolute',
+    right: Metrics.smallMargin,
   },
 })

@@ -4,6 +4,11 @@ import R from 'ramda'
 import s from './SelectStyles'
 import {Colors} from '../../themes'
 
+/*
+* https://github.com/lawnstarter/react-native-picker-select
+* TODO refactor this component
+* */
+
 export default class Select extends PureComponent {
   constructor(props) {
     super(props)

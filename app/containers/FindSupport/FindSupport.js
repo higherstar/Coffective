@@ -1,13 +1,15 @@
 // @flow
 import React from 'react'
-import {Image, View} from 'react-native'
+import {Image, View, ScrollView} from 'react-native'
 import {connect} from 'react-redux'
-import {Button, Input, Select} from '../../components'
+import {Button, Input, Select, Link, Txt} from '../../components'
 import I18n from 'react-native-i18n'
 import s from './FindSupportStyles'
 import {Images} from '../../themes'
 import {DrawerButton} from '../../navigation/AppNavigation'
 import MapView from 'react-native-maps'
+import {getPlaces} from '../../reducers/findSupport'
+import m from 'moment'
 
 class FindSupport extends React.Component {
   static navigationOptions = ({navigation}) => ({
@@ -66,6 +68,7 @@ class FindSupport extends React.Component {
 
   render() {
     const {orgType, orgTypes} = this.state
+    const {getPlaces, places} = this.props
     return (
       <View style={s.container}>
         <View style={s.head}>
@@ -74,8 +77,7 @@ class FindSupport extends React.Component {
             source={Images.findSupportBackground}
           />
         </View>
-        <View style={s.content}>
-
+        <ScrollView style={s.content} contentContainerStyle={s.scrollContent}>
           <View style={s.mapWrapper}>
             <MapView
               style={s.map}
@@ -113,12 +115,39 @@ class FindSupport extends React.Component {
                 type='primary'
                 size='md'
                 style={s.goBtn}
+                onClick={getPlaces}
               >
                 {I18n.t('go')}
               </Button>
             </View>
           </View>
-        </View>
+          {places.length > 0 && (
+            <View style={s.placesWrapper}>
+              <Txt.View style={s.placesHeader} textStyle={s.placesHeaderText}>{'LEARN MORE AT:'}</Txt.View>
+              <View style={s.places}>
+                {places.map((place, i) =>
+                  <Link
+                    key={i}
+                    style={s.placeLink}
+                    contentStyle={s.placeLinkContent}
+                    prefix={
+                      <View style={s.placeImageWrapper}>
+                        <Image
+                          source={{uri: 'https://dummyimage.com/60x60'}}
+                          style={s.placeImage}
+                        />
+                      </View>
+                    }
+                  >
+                    <Txt.View style={s.header} textStyle={s.headerText}>{place.title.rendered}</Txt.View>
+                    <Txt.View style={s.lastUpdate} textStyle={s.lastUpdateText}>{'Last Update'}: {m(place.modified).format('YYYY-YY-DD')}</Txt.View>
+                    <Txt.View style={s.description} textStyle={s.descriptionText}>{place.acf.short_description}</Txt.View>
+                  </Link>
+                )}
+              </View>
+            </View>
+          )}
+        </ScrollView>
       </View>
     )
   }
@@ -128,6 +157,8 @@ const mapStateToProps = state => ({
   ...state.findSupport,
 })
 
-const mapDispatchToProps = {}
+const mapDispatchToProps = {
+  getPlaces,
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(FindSupport)

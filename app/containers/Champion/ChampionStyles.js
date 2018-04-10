@@ -62,14 +62,17 @@ export default StyleSheet.create({
     fontWeight: '600',
     color: Colors.primary,
   },
-  imageWrapper: {
-    position: 'relative',
+  image: {
+    // TODO
+    resizeMode: 'cover',
+    width: null,
+    flex: 1,
   },
   checkIconWrapper: {
     width: 50,
     height: 50,
     position: 'absolute',
-    bottom: -25,
+    top: -25,
     borderRadius: 25,
     backgroundColor: Colors.green,
     borderColor: Colors.white,
@@ -84,5 +87,17 @@ export default StyleSheet.create({
   },
   cardTitle: {
     marginTop: Metrics.baseMargin,
+  },
+  title: {
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.border,
+    paddingHorizontal: Metrics.smallMargin,
+    paddingVertical: Metrics.smallMargin * 1.5,
+  },
+  titleText: {
+    color: Colors.grey,
+    fontWeight: '500',
+    fontFamily: Fonts.type.secondary,
+    fontSize: Fonts.size.medium,
   },
 })

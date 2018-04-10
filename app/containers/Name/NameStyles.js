@@ -8,8 +8,7 @@ export default StyleSheet.create({
     flex: 1,
   },
   backgroundImage: {
-    ...StyleSheet.absoluteFillObject,
-    resizeMode: 'cover',
+    ...Metrics.backgroundFullScreenImage,
   },
   content: {
     flex: 1,

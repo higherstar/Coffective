@@ -11,7 +11,7 @@ export default StyleSheet.create({
     // TODO fix https://github.com/facebook/react-native/issues/449
     borderTopLeftRadius: 7,
     borderTopRightRadius: 7,
-    // overflow: 'hidden',
+    overflow: 'hidden',
   },
   bordered: {
     borderBottomWidth: 1,

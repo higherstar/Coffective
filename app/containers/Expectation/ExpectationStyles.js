@@ -1,6 +1,5 @@
 import { StyleSheet } from 'react-native'
 import { Colors, Metrics, Fonts } from '../../themes'
-import Color from 'color'
 
 export default StyleSheet.create({
   container: {
@@ -8,8 +7,7 @@ export default StyleSheet.create({
     paddingTop: Metrics.navBarHeight,
   },
   backgroundImage: {
-    ...StyleSheet.absoluteFillObject,
-    resizeMode: 'cover',
+    ...Metrics.backgroundFullScreenImage,
   },
   content: {
     flexBasis: '55%',

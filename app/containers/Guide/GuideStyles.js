@@ -15,8 +15,7 @@ export default StyleSheet.create({
     backgroundColor: Colors.primary,
   },
   backgroundImage: {
-    ...StyleSheet.absoluteFillObject,
-    resizeMode: 'cover',
+    ...Metrics.backgroundFullScreenImage,
   },
   itemWrapper: {
     paddingHorizontal: Metrics.baseMargin,

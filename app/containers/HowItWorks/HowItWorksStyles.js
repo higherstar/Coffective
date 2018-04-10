@@ -9,15 +9,8 @@ export default StyleSheet.create({
   content: {
     flex: 1,
   },
-  // background: {
-  //   ...StyleSheet.absoluteFillObject,
-  // },
   backgroundImage: {
-    resizeMode: 'cover',
-    // width: null,
-    // height: null,
-    // flex: 1,
-    ...StyleSheet.absoluteFillObject,
+    ...Metrics.backgroundFullScreenImage,
   },
   header: {
     paddingHorizontal: Metrics.marginX,

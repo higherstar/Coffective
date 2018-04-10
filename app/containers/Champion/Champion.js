@@ -46,11 +46,8 @@ class Champion extends React.Component {
           )}
           <Card
             style={s.card}
-            title={'What to consider when choosing a Champion:'}
-            titleStyle={invited && s.cardTitle}
-            cover={
-              <View style={s.imageWrapper}>
-                <Image source={Images.champion}/>
+            title={
+              <View>
                 {invited && (
                   <View style={s.checkIconWrapper}>
                     <Icon
@@ -59,7 +56,13 @@ class Champion extends React.Component {
                     />
                   </View>
                 )}
+                <Txt.View style={[s.title, invited && s.cardTitle]} textStyle={s.titleText}>
+                  {'What to consider when choosing a Champion:'.toUpperCase()}
+                </Txt.View>
               </View>
+            }
+            cover={
+              <Image source={Images.champion} style={s.image}/>
             }
           >
             <Txt.View textStyle={s.cardDescriptionText}>

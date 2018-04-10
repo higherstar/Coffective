@@ -13,10 +13,12 @@ class Card extends React.Component {
     return (
       <View style={[s.card, style]}>
         {cover && <View style={[s.cover, children && s.bordered]}>{cover}</View>}
-        {title && (
+        {typeof title === 'string' ? (
           <Txt.View style={[s.title, titleStyle]} textStyle={s.titleText}>
             {title.toUpperCase()}
           </Txt.View>
+        ) : (
+          title
         )}
         {children && (
           <View style={s.body}>

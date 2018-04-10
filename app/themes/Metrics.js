@@ -1,4 +1,4 @@
-import { Dimensions, Platform, StatusBar } from 'react-native'
+import {Dimensions, Platform, StatusBar, StyleSheet} from 'react-native'
 
 const { width, height } = Dimensions.get('window')
 
@@ -60,6 +60,13 @@ const metrics = {
     shadowOpacity: 0.1,
     // android 5.0+
     elevation: 1,
+  },
+  backgroundFullScreenImage: {
+    resizeMode: 'cover',
+    width: null,
+    height: null,
+    flex: 1,
+    ...StyleSheet.absoluteFillObject,
   },
 }
 

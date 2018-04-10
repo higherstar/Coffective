@@ -21,7 +21,6 @@
     "fixcode": "standard --fix"
   },
   "dependencies": {
-    "apisauce": "^0.14.2",
     "color": "^3.0.0",
     "moment": "^2.22.0",
     "ramda": "^0.25.0",

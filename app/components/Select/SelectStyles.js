@@ -5,9 +5,14 @@ export default StyleSheet.create({
   viewContainer: {
     alignSelf: 'stretch',
     // input styles
-    paddingHorizontal: Metrics.baseMargin,
     borderRadius: Metrics.inputBorderRadius,
     backgroundColor: Colors.white,
+  },
+  inputAndroidWrapper: {
+    paddingLeft: Metrics.smallMargin,
+  },
+  inputIOSWrapper: {
+    paddingHorizontal: Metrics.baseMargin,
   },
   input: {
     fontSize: Fonts.size.input,
@@ -75,10 +80,5 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     padding: 10,
     fontSize: 18,
-  },
-  underline: {
-    borderTopWidth: 1,
-    borderTopColor: '#888988',
-    marginHorizontal: 4,
   },
 })

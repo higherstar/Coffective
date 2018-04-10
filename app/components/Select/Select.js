@@ -169,7 +169,7 @@ export default class Select extends PureComponent {
 
   renderIOS() {
     return (
-      <View style={[s.viewContainer, this.props.style.viewContainer]}>
+      <View style={[s.viewContainer, s.inputIOSWrapper, this.props.style.viewContainer]}>
         <TouchableWithoutFeedback
           onPress={() => {
             this.togglePicker(true)
@@ -227,7 +227,7 @@ export default class Select extends PureComponent {
     }
 
     return (
-      <View style={[s.viewContainer, this.props.style.viewContainer]}>
+      <View style={[s.viewContainer, s.inputAndroidWrapper, this.props.style.viewContainer]}>
         <Picker
           style={[s.input, this.props.style.inputAndroid, this.renderPlaceholderStyle()]}
           onValueChange={this.onValueChange}
@@ -238,7 +238,6 @@ export default class Select extends PureComponent {
         >
           {this.renderPickerItems()}
         </Picker>
-        <View style={[s.underline, this.props.style.underline]}/>
       </View>
     )
   }

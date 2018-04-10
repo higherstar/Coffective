@@ -95,7 +95,7 @@ def enableProguardInReleaseBuilds = false
 
 android {
     compileSdkVersion 25
-    buildToolsVersion '25.0.2'
+    buildToolsVersion '27.0.3'
 
     defaultConfig {
         applicationId "com.coffectivetest"
@@ -152,8 +152,8 @@ dependencies {
         exclude group: 'com.google.android.gms', module: 'play-services-base'
         exclude group: 'com.google.android.gms', module: 'play-services-maps'
     }
-    compile 'com.google.android.gms:play-services-base:10.2.0'
-    compile 'com.google.android.gms:play-services-maps:10.2.0'
+    compile 'com.google.android.gms:play-services-base:11.+'
+    compile 'com.google.android.gms:play-services-maps:11.+'
 
     compile project(':react-native-svg')
     compile project(':react-native-video')

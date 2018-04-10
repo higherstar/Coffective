@@ -33,7 +33,7 @@ const metrics = {
   ...margins,
   screenWidth: width < height ? width : height,
   screenHeight: width < height ? height : width,
-  navBarHeight: (Platform.OS === 'ios') ? 64 : (56 + StatusBar.currentHeight),
+  navBarHeight: (Platform.OS === 'ios') ? 64 : 56,
   navBarWithOutStatusBarHeight: (Platform.OS === 'ios') ? 44 : 56,
   icons: {
     // tiny: 15,
@@ -59,7 +59,7 @@ const metrics = {
     shadowRadius: 2,
     shadowOpacity: 0.1,
     // android 5.0+
-    elevation: 2,
+    elevation: 1,
   },
 }
 

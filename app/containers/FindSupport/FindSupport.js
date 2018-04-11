@@ -71,7 +71,6 @@ class FindSupport extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.places && !R.equals(nextProps.places, this.props.places)) {
-      console.log(nextProps)
       this.fitAllMarkers(nextProps.places)
     }
   }

@@ -1,5 +1,5 @@
-import { StyleSheet } from 'react-native'
-import { Colors, Metrics, Fonts } from '../../themes'
+import {StyleSheet} from 'react-native'
+import {Colors, Fonts, Metrics} from '../../themes'
 
 export default StyleSheet.create({
   container: {
@@ -21,7 +21,8 @@ export default StyleSheet.create({
     flex: 1,
   },
   actions: {
-    padding: Metrics.baseMargin,
+    paddingTop: Metrics.baseMargin,
+    paddingHorizontal: Metrics.baseMargin,
   },
   actionsFooter: {
     flexDirection: 'row',
@@ -33,15 +34,14 @@ export default StyleSheet.create({
     marginLeft: Metrics.smallMargin,
     flexBasis: '25%',
   },
-  // TODO https://github.com/react-community/react-native-maps/issues/118
   mapWrapper: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
+    ...StyleSheet.absoluteFillObject,
     justifyContent: 'flex-end',
     alignItems: 'center',
+    maxHeight: Metrics.screenHeight - Metrics.navBarHeight,
+  },
+  hasPlaces: {
+    maxHeight: Metrics.screenHeight - Metrics.navBarHeight - 100,
   },
   map: {
     ...StyleSheet.absoluteFillObject,
@@ -50,7 +50,7 @@ export default StyleSheet.create({
     marginBottom: Metrics.smallMargin,
   },
   placesWrapper: {
-    marginTop: Metrics.screenHeight * 0.5,
+    marginTop: Metrics.screenHeight - Metrics.navBarHeight - 130 - 100,
   },
   placesHeader: {
     borderBottomWidth: 1,
@@ -82,9 +82,7 @@ export default StyleSheet.create({
     marginTop: Metrics.baseMargin,
     marginBottom: Metrics.smallMargin,
   },
-  headerText: {
-
-  },
+  headerText: {},
   lastUpdate: {
     marginBottom: Metrics.smallMargin,
   },

@@ -1,15 +1,18 @@
 // @flow
 import React from 'react'
-import {Image, View, ScrollView} from 'react-native'
+import {Image, ScrollView, View} from 'react-native'
 import {connect} from 'react-redux'
-import {Button, Input, Select, Link, Txt} from '../../components'
+import {Button, Input, Link, Select, Txt} from '../../components'
 import I18n from 'react-native-i18n'
 import s from './FindSupportStyles'
 import {Images} from '../../themes'
 import {DrawerButton} from '../../navigation/AppNavigation'
-import MapView from 'react-native-maps'
+import MapView, {Marker} from 'react-native-maps'
 import {getPlaces} from '../../reducers/findSupport'
 import m from 'moment'
+import R from 'ramda'
+
+const DEFAULT_PADDING = {top: 200, right: 25, bottom: 25, left: 25}
 
 class FindSupport extends React.Component {
   static navigationOptions = ({navigation}) => ({
@@ -66,6 +69,25 @@ class FindSupport extends React.Component {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.places && !R.equals(nextProps.places, this.props.places)) {
+      console.log(nextProps)
+      this.fitAllMarkers(nextProps.places)
+    }
+  }
+
+  fitAllMarkers(places) {
+    const markers = places.map(place => ({
+      latitude: +place.acf.location.lat,
+      longitude: +place.acf.location.lng,
+    }))
+    this.map.fitToCoordinates(markers, {
+      edgePadding: DEFAULT_PADDING,
+      animated: true,
+    })
+  }
+
+
   render() {
     const {orgType, orgTypes} = this.state
     const {getPlaces, places} = this.props
@@ -78,16 +100,25 @@ class FindSupport extends React.Component {
           />
         </View>
         <ScrollView style={s.content} contentContainerStyle={s.scrollContent}>
-          <View style={s.mapWrapper}>
+          <View style={[s.mapWrapper, places.length > 0 && s.hasPlaces]}>
             <MapView
-              style={s.map}
-              initialRegion={{
-                latitude: 37.78825,
-                longitude: -122.4324,
-                latitudeDelta: 0.0922,
-                longitudeDelta: 0.0421,
+              ref={ref => {
+                this.map = ref
               }}
-            />
+              style={s.map}
+            >
+              {places.map((place, i) => (
+                <Marker
+                  key={i}
+                  coordinate={{
+                    latitude: +place.acf.location.lat,
+                    longitude: +place.acf.location.lng,
+                  }}
+                  title={place.title.rendered}
+                  description={place.acf.location.address}
+                />
+              ))}
+            </MapView>
           </View>
           <View style={s.actions}>
             <Select
@@ -140,8 +171,10 @@ class FindSupport extends React.Component {
                     }
                   >
                     <Txt.View style={s.header} textStyle={s.headerText}>{place.title.rendered}</Txt.View>
-                    <Txt.View style={s.lastUpdate} textStyle={s.lastUpdateText}>{'Last Update'}: {m(place.modified).format('YYYY-YY-DD')}</Txt.View>
-                    <Txt.View style={s.description} textStyle={s.descriptionText}>{place.acf.short_description}</Txt.View>
+                    <Txt.View style={s.lastUpdate}
+                              textStyle={s.lastUpdateText}>{'Last Update'}: {m(place.modified).format('YYYY-YY-DD')}</Txt.View>
+                    <Txt.View style={s.description}
+                              textStyle={s.descriptionText}>{place.acf.short_description}</Txt.View>
                   </Link>
                 )}
               </View>

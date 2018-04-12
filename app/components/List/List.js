@@ -8,17 +8,20 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome'
 // TODO
 class List extends React.Component {
   static defaultProps = {
+    iconName: 'check-circle'
   }
 
   render () {
-    const {style, ...props} = this.props
+    const {style, prefix, iconName, iconStyle, titleTextStyle, titleProp, ...props} = this.props
     return (
       <FlatList
         style={[s.list, style]}
         renderItem={({item}) => (
           <View style={s.item}>
-            <Icon style={s.itemIcon} name='check-circle'/>
-            <Txt.View style={s.itemTitle} textStyle={s.itemTitleText}>{item.title}</Txt.View>
+            {prefix || <Icon style={[s.icon, iconStyle]} name={iconName}/>}
+            <Txt.View style={s.title} textStyle={[s.titleText, titleTextStyle]}>
+              {titleProp ? item[titleProp] : item}
+            </Txt.View>
           </View>
         )}
         {...props}

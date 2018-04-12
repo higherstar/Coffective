@@ -1,9 +1,9 @@
 // @flow
 import React from 'react'
-import { Text } from 'react-native'
-import type { TxtProps } from './TxtProps'
+import {Text} from 'react-native'
+import type {TxtProps} from './TxtProps'
 import s from './TxtStyles'
-import { Fonts } from '../../themes'
+import {Fonts} from '../../themes'
 
 class Txt extends React.Component<TxtProps, any> {
   static defaultProps = {
@@ -11,16 +11,19 @@ class Txt extends React.Component<TxtProps, any> {
     size: 'normal',
   }
 
-  render () {
-    const {children, size, type, weight, style} = this.props
+  render() {
+    const {children, size, type, weight, style, ...props} = this.props
     return (
-      <Text style={[
-        s.text,
-        {fontFamily: Fonts.type[type]},
-        {fontSize: Fonts.size[size]},
-        weight && {fontWeight: weight},
-        style,
-      ]}>
+      <Text
+        {...props}
+        style={[
+          s.text,
+          {fontFamily: Fonts.type[type]},
+          {fontSize: Fonts.size[size]},
+          weight && {fontWeight: weight},
+          style,
+        ]}
+      >
         {children}
       </Text>
     )

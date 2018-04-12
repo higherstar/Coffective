@@ -10,10 +10,10 @@ import { BackButton } from '../../navigation/AppNavigation'
 
 // TODO
 const listData = [
-  {title: 'Ask your doctor about what to expect'},
-  {title: 'Take a tour of the hospital'},
-  {title: 'Attend a hospital prenatal class'},
-  {title: 'Let hospital staff know you are prepared to receive the practices on the checklist'},
+  'Ask your doctor about what to expect',
+  'Take a tour of the hospital',
+  'Attend a hospital prenatal class',
+  'Let hospital staff know you are prepared to receive the practices on the checklist',
 ]
 
 class Hospital extends React.Component {
@@ -44,8 +44,7 @@ class Hospital extends React.Component {
             <Txt.View style={s.cardDescription} textStyle={s.cardDescriptionText}>{`Lorem Ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.`}</Txt.View>
             <List
               data={listData}
-              keyExtractor={(item, index) => item.title}
-              titleProp='title'
+              keyExtractor={(item, i) => i}
             />
           </Card>
         </ScrollView>

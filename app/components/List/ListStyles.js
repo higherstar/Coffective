@@ -8,14 +8,14 @@ export default StyleSheet.create({
     flexDirection: 'row',
     paddingVertical: Metrics.smallMargin / 2,
   },
-  itemTitle: {
+  title: {
     flex: 1,
   },
-  itemTitleText: {
+  titleText: {
     color: Colors.grey,
     fontFamily: Fonts.type.secondary,
   },
-  itemIcon: {
+  icon: {
     fontSize: Metrics.icons.md,
     color: Colors.primary,
     marginRight: Metrics.smallMargin,

@@ -72,7 +72,8 @@ export default StyleSheet.create({
     borderBottomColor: Colors.border,
   },
   placeImageWrapper: {
-    paddingHorizontal: Metrics.baseMargin,
+    padding: Metrics.baseMargin,
+    alignSelf: 'flex-start',
   },
   placeImage: {
     width: 25,

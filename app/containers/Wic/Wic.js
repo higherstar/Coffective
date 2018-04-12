@@ -10,9 +10,9 @@ import { BackButton } from '../../navigation/AppNavigation'
 
 // TODO
 const listData = [
-  {title: 'Preparing you for the hospital'},
-  {title: 'Teach you how to breastfeed and learn about your baby'},
-  {title: 'How to make breastfeeding work in your life'},
+  'Preparing you for the hospital',
+  'Teach you how to breastfeed and learn about your baby',
+  'How to make breastfeeding work in your life',
 ]
 
 class Wic extends React.Component {
@@ -50,8 +50,7 @@ class Wic extends React.Component {
             <List
               style={s.list}
               data={listData}
-              keyExtractor={(item, index) => item.title}
-              titleProp='title'
+              keyExtractor={(item, i) => i}
             />
           </Card>
         </ScrollView>

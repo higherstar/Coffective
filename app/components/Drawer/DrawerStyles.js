@@ -45,10 +45,8 @@ export default StyleSheet.create({
     paddingLeft: Metrics.baseMargin,
     flexDirection: 'row',
   },
-  label: {
-    marginLeft: Metrics.baseMargin,
-  },
   labelText: {
+    marginLeft: Metrics.baseMargin,
     color: Colors.drawerLabel,
     fontSize: Fonts.size.h6,
   },

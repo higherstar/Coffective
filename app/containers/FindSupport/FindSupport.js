@@ -2,15 +2,16 @@
 import React from 'react'
 import {Image, ScrollView, View} from 'react-native'
 import {connect} from 'react-redux'
-import {Button, Input, Link, Select, Txt} from '../../components'
+import {Button, Input, Link, Select, Txt, Img} from '../../components'
 import I18n from 'react-native-i18n'
 import s from './FindSupportStyles'
 import {Images} from '../../themes'
 import {DrawerButton} from '../../navigation/AppNavigation'
 import MapView, {Marker} from 'react-native-maps'
-import {getPlaces} from '../../reducers/findSupport'
+import {changeOrgType, changeZipCode, getPlaces} from '../../reducers/findSupport'
 import m from 'moment'
 import R from 'ramda'
+import {ORG_TYPES} from '../../constants'
 
 const DEFAULT_PADDING = {top: 200, right: 25, bottom: 25, left: 25}
 
@@ -22,52 +23,6 @@ class FindSupport extends React.Component {
       <DrawerButton navigation={navigation}/>
     )
   })
-
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      orgType: null,
-      orgTypes: [
-        {
-          label: 'Hospital',
-          value: 'hospital',
-        },
-        {
-          label: 'WIC',
-          value: 'wic',
-        },
-        {
-          label: 'Home Visiting Program',
-          value: 'home_visiting_program',
-        },
-        {
-          label: 'Community Breastfeeding Support Organization',
-          value: 'community_breastfeeding_support',
-        },
-        {
-          label: 'Advocacy',
-          value: 'advocacy',
-        },
-        {
-          label: 'OB/GYN',
-          value: 'ob_gyn',
-        },
-        {
-          label: 'Prenatal Health Clinic',
-          value: 'prenatal_health_clinic',
-        },
-        {
-          label: 'Breastfeeding Coalition',
-          value: 'breastfeeding_coalition',
-        },
-        {
-          label: 'Other',
-          value: 'other',
-        },
-      ],
-    }
-  }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.places && !R.equals(nextProps.places, this.props.places)) {
@@ -86,10 +41,9 @@ class FindSupport extends React.Component {
     })
   }
 
-
   render() {
-    const {orgType, orgTypes} = this.state
-    const {getPlaces, places} = this.props
+    const {getPlaces, places, orgType, changeOrgType, zipCode, changeZipCode, navigation} = this.props
+
     return (
       <View style={s.container}>
         <View style={s.head}>
@@ -115,7 +69,15 @@ class FindSupport extends React.Component {
                   }}
                   title={place.title.rendered}
                   description={place.acf.location.address}
-                />
+                >
+                  {/*not working without View wrapper*/}
+                  <View>
+                    <Img
+                      source={{uri: place.map_icon}}
+                      style={s.placeImage}
+                    />
+                  </View>
+                </Marker>
               ))}
             </MapView>
           </View>
@@ -128,18 +90,16 @@ class FindSupport extends React.Component {
                 label: 'Organization Type',
                 value: '',
               }}
-              items={orgTypes}
-              onValueChange={(item) => {
-                this.setState({
-                  orgType: item.value,
-                })
-              }}
+              items={ORG_TYPES}
+              onValueChange={(item) => changeOrgType(item)}
               value={orgType}
             />
             <View style={s.actionsFooter}>
               <Input
                 placeholder='Zip Code'
                 style={s.zipInput}
+                value={zipCode}
+                onChangeText={changeZipCode}
               />
               <Button
                 type='primary'
@@ -160,20 +120,28 @@ class FindSupport extends React.Component {
                     key={i}
                     style={s.placeLink}
                     contentStyle={s.placeLinkContent}
+                    prefixStyle={s.placeImageWrapper}
                     prefix={
-                      <View style={s.placeImageWrapper}>
-                        <Image
-                          source={{uri: 'https://dummyimage.com/60x60'}}
-                          style={s.placeImage}
-                        />
-                      </View>
+                      <Img
+                        source={{uri: place.icon}}
+                        style={s.placeImage}
+                      />
                     }
+                    onClick={() => navigation.navigate('SupportItem', {place})}
                   >
                     <Txt.View style={s.header} textStyle={s.headerText}>{place.title.rendered}</Txt.View>
-                    <Txt.View style={s.lastUpdate}
-                              textStyle={s.lastUpdateText}>{'Last Update'}: {m(place.modified).format('YYYY-YY-DD')}</Txt.View>
-                    <Txt.View style={s.description}
-                              textStyle={s.descriptionText}>{place.acf.short_description}</Txt.View>
+                    <Txt.View
+                      style={s.lastUpdate}
+                      textStyle={s.lastUpdateText}
+                    >
+                      {'Last Update'}: {m(place.modified).format('YYYY-MM-DD')}
+                    </Txt.View>
+                    <Txt.View
+                      style={s.description}
+                      textStyle={s.descriptionText}
+                    >
+                      {place.acf.short_description}
+                    </Txt.View>
                   </Link>
                 )}
               </View>
@@ -191,6 +159,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   getPlaces,
+  changeOrgType,
+  changeZipCode,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(FindSupport)

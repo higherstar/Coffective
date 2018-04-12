@@ -13,12 +13,12 @@ class Link extends React.Component {
   }
 
   render () {
-    const {style, textStyle, children, onClick, prefixType, prefix, iconColor, contentStyle} = this.props
+    const {style, prefixStyle, textStyle, children, onClick, prefixType, prefix, iconColor, contentStyle} = this.props
     return (
       <View style={[s.item, prefix && prefixType === 'checkbox' && s.hasPrefix, style]}>
         {prefix && prefixType === 'checkbox' && <View style={s.prefix}>{prefix}</View>}
         <TouchableOpacity activeOpacity={0.7} style={s.link} onPress={onClick}>
-          {prefix && prefixType === 'icon' && <View style={s.prefix}>{prefix}</View>}
+          {prefix && prefixType === 'icon' && <View style={[s.prefix, prefixStyle]}>{prefix}</View>}
           {typeof children === 'string' ? (
             <Txt.View style={[s.content, prefix && prefixType === 'icon' && s.hasPrefix]} textStyle={textStyle}>
               {children}

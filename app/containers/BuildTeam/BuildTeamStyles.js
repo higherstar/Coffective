@@ -29,7 +29,10 @@ export default StyleSheet.create({
   },
   image: {
     resizeMode: 'contain',
+    width: null,
+    height: null,
     flex: 1,
+    justifyContent: 'center',
   },
   row: {
     flex: 1,

@@ -1,8 +1,7 @@
-// @flow
 import React from 'react'
 import { ScrollView, TouchableOpacity, View, Image } from 'react-native'
 import { connect } from 'react-redux'
-import { Txt } from '../../components'
+import { Txt, Img } from '../../components'
 import I18n from 'react-native-i18n'
 import s from './BuildTeamStyles'
 import Icon from 'react-native-vector-icons/dist/FontAwesome'
@@ -25,6 +24,7 @@ class BuildTeam extends React.Component {
 
   render () {
     const {navigation, categories} = this.props
+    // navigation.navigate(category.screen)
     return (
       <View style={s.container}>
         <View style={s.head}>
@@ -38,21 +38,21 @@ class BuildTeam extends React.Component {
             <TouchableOpacity
               key={i}
               activeOpacity={0.7}
-              onPress={() => navigation.navigate(category.screen)}
+              onPress={() => {}}
               style={s.item}
             >
               <View style={s.imageWrapper}>
-                <Image
-                  source={{uri: category.image}}
+                <Img
+                  source={{uri: category.acf.icon}}
                   style={s.image}
                 />
               </View>
               <View style={[s.row, i < categories.length - 1 && s.notLast]}>
                 <Txt.View style={s.header} textStyle={s.headerText}>
-                  {category.header}
+                  {category.title.rendered}
                 </Txt.View>
                 <Txt.View style={s.description} textStyle={s.descriptionText}>
-                  {category.description}
+                  {category.acf.short_description}
                 </Txt.View>
                 <View style={s.iconWrapper}>
                   <Icon

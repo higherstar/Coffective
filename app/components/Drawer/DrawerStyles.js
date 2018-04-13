@@ -1,5 +1,7 @@
-import { Platform, StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native'
 import { Colors, Fonts, Metrics } from '../../themes'
+
+const prefixWidth = 50
 
 export default StyleSheet.create({
   container: {
@@ -34,8 +36,7 @@ export default StyleSheet.create({
     fontSize: Fonts.size.h3,
     fontWeight: '300',
   },
-  subHeader: {
-  },
+  subHeader: {},
   subHeaderText: {
     color: Colors.white,
   },
@@ -45,14 +46,19 @@ export default StyleSheet.create({
     paddingLeft: Metrics.baseMargin,
     flexDirection: 'row',
   },
+  label: {},
   labelText: {
-    marginLeft: Metrics.baseMargin,
     color: Colors.drawerLabel,
     fontSize: Fonts.size.h6,
   },
+  iconWrapper: {
+    minWidth: prefixWidth,
+    alignSelf: 'center',
+    alignItems: 'center',
+  },
   icon: {
-    color: Colors.primary,
-    fontSize: Metrics.icons.md,
+    width: 19,
+    height: 21,
   },
   divider: {
     height: 1,

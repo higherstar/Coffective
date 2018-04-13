@@ -4,19 +4,21 @@ import { Image, ScrollView, TouchableOpacity, View } from 'react-native'
 import { Txt } from '../'
 import s from './DrawerStyles'
 import { connect } from 'react-redux'
-import Icon from 'react-native-vector-icons/dist/FontAwesome'
 import ProgressCircle from 'react-native-progress/Circle'
-import {Colors} from '../../themes'
+import {Colors, Images} from '../../themes'
+import {Img} from '../../components'
 
 const Divider = () =>
   <View style={s.divider}/>
 
 const DrawerItem = ({label, icon, onClick}) =>
   <TouchableOpacity activeOpacity={0.5} style={s.item} onPress={onClick}>
-    {/*<Icon*/}
-      {/*name={icon}*/}
-      {/*style={s.icon}*/}
-    {/*/>*/}
+    <View style={s.iconWrapper}>
+      <Img
+        source={icon}
+        style={s.icon}
+      />
+    </View>
     <Txt.View style={s.label} textStyle={s.labelText}>
       {label}
     </Txt.View>
@@ -62,13 +64,13 @@ class Drawer extends React.Component {
           />
         </View>
         <ScrollView style={s.content}>
-          <DrawerItem label={'Start Here'} onClick={() => this.navigate('HowItWorks')} icon='angle-double-right'/>
-          <DrawerItem label={'Checklist'} onClick={() => this.navigate('Checklist')} icon='check-square'/>
-          <DrawerItem label={'Ask Questions'} onClick={() => this.navigate('Faq')} icon='question-circle'/>
-          <DrawerItem label={'Build Your Team'} onClick={() => this.navigate('BuildTeam')} icon='users'/>
-          <DrawerItem label={'Find Support'} onClick={() => this.navigate('FindSupport')} icon='handshake'/>
+          <DrawerItem label={'Start Here'} onClick={() => this.navigate('HowItWorks')} icon={Images.menu.start_here}/>
+          <DrawerItem label={'Checklist'} onClick={() => this.navigate('Checklist')} icon={Images.menu.checklist}/>
+          <DrawerItem label={'Ask Questions'} onClick={() => this.navigate('Faq')} icon={Images.menu.ask_questions}/>
+          <DrawerItem label={'Build Your Team'} onClick={() => this.navigate('BuildTeam')} icon={Images.menu.build_your_team}/>
+          <DrawerItem label={'Find Support'} onClick={() => this.navigate('FindSupport')} icon={Images.menu.find_support}/>
           <Divider/>
-          <DrawerItem label={'Settings'} onClick={() => this.navigate('Settings')} icon='cog'/>
+          <DrawerItem label={'Settings'} onClick={() => this.navigate('Settings')} icon={Images.menu.settings}/>
         </ScrollView>
       </View>
     )

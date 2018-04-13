@@ -66,6 +66,14 @@ const images = {
     for_mother: {uri: 'https://new.coffective.com/wp-content/uploads/2018/04/for_mother.svg'},
     for_champion: {uri: 'https://new.coffective.com/wp-content/uploads/2018/04/for_champion.svg'},
   },
+  menu: {
+    ask_questions: {uri: 'https://new.coffective.com/wp-content/uploads/2018/04/ask_questions.svg'},
+    build_your_team: {uri: 'https://new.coffective.com/wp-content/uploads/2018/04/build_your_team.svg'},
+    checklist: {uri: 'https://new.coffective.com/wp-content/uploads/2018/04/checklist.svg'},
+    settings: {uri: 'https://new.coffective.com/wp-content/uploads/2018/04/settings.svg'},
+    start_here: {uri: 'https://new.coffective.com/wp-content/uploads/2018/04/start_here.svg'},
+    find_support: {uri: 'https://new.coffective.com/wp-content/uploads/2018/04/find_support.svg'},
+  },
 }
 
 export default images

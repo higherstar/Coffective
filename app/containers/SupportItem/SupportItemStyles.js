@@ -77,4 +77,14 @@ export default StyleSheet.create({
   requirementsCardBody: {
     padding: Metrics.smallMargin,
   },
+  header: {
+    margin: Metrics.smallMargin,
+  },
+  headerText: {
+    fontSize: Fonts.size.h1,
+    fontWeight: '300',
+  },
+  breastPumps: {
+    marginTop: Metrics.smallMargin,
+  }
 })

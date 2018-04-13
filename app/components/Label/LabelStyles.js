@@ -22,6 +22,10 @@ export default StyleSheet.create({
     marginLeft: Metrics.smallMargin,
     textAlign: 'right',
   },
+  // TODO fix it
+  noPrefix: {
+    paddingLeft: Metrics.smallMargin,
+  },
   prefix: {
     minWidth: prefixWidth,
     alignSelf: 'center',

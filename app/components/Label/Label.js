@@ -12,7 +12,7 @@ class Label extends React.Component {
       <TouchableOpacity activeOpacity={onClick ? 0.7 : 1} onPress={onClick || noop} style={[s.wrapper, style]}>
         {prefix && <View style={s.prefix}>{prefix}</View>}
         {label && (
-          <Txt style={[s.labelText, labelTextStyle]}>
+          <Txt style={[s.labelText, !prefix && s.noPrefix, labelTextStyle]}>
             {label}
           </Txt>
         )}

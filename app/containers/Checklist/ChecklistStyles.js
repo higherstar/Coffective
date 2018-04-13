@@ -46,24 +46,31 @@ export default StyleSheet.create({
     fontWeight: '500',
   },
   categoryIconWrapper: {
-    paddingHorizontal: Metrics.smallMargin * 1.5,
+    paddingLeft: Metrics.smallMargin * 1.5,
+    paddingRight: Metrics.smallMargin,
   },
   categoryIcon: {
     alignSelf: 'center',
     fontSize: Metrics.icons.md,
   },
-  // TODO
-  // categoryImage: {
-  //   resizeMode: 'contain',
-  //   width: headHeight - Metrics.smallMargin,
-  //   height: headHeight - Metrics.smallMargin,
-  //   marginVertical: Metrics.smallMargin,
-  //   marginHorizontal: Metrics.baseMargin,
-  // },
-  // notLast: {
-  //   borderBottomColor: Colors.border,
-  //   borderBottomWidth: 1,
-  // },
+  videoIconWrapper: {
+    paddingRight: Metrics.smallMargin,
+  },
+  videoIcon: {
+    alignSelf: 'center',
+    fontSize: Metrics.icons.md,
+  },
+  categoryImage: {
+    resizeMode: 'contain',
+    width: headHeight - Metrics.smallMargin,
+    height: headHeight - Metrics.smallMargin,
+    marginVertical: Metrics.smallMargin,
+    marginHorizontal: Metrics.baseMargin,
+  },
+  notLast: {
+    borderBottomColor: Colors.border,
+    borderBottomWidth: 1,
+  },
   notChecked: {
     color: Colors.muted,
   },

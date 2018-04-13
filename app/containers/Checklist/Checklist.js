@@ -1,9 +1,9 @@
 import React from 'react'
-import { ScrollView, Image, View, TouchableOpacity } from 'react-native'
+import { ScrollView, Image, View, TouchableOpacity, Linking } from 'react-native'
 import { getCategories, getArticles } from '../../reducers/checklist'
 import I18n from 'react-native-i18n'
 import { connect } from 'react-redux'
-import { Txt, Link } from '../../components'
+import { Txt, Link, Img } from '../../components'
 import Icon from 'react-native-vector-icons/dist/FontAwesome'
 import s from './ChecklistStyles'
 import { Images } from '../../themes'
@@ -48,16 +48,28 @@ class Checklist extends React.Component {
                       name='question-circle'
                     />
                   </TouchableOpacity>
+                  <TouchableOpacity
+                    activeOpacity={0.7}
+                    style={s.videoIconWrapper}
+                    onPress={() => {
+                      Linking.openURL(category.acf.video)
+                    }}
+                  >
+                    <Icon
+                      style={[s.videoIcon, {color: category.acf.color}]}
+                      name='play-circle'
+                    />
+                  </TouchableOpacity>
                   <Txt.View
                     style={s.categoryName}
                     textStyle={[s.categoryNameText, { color: category.acf.color }]}
                   >
                     {category.name.toUpperCase()}
                   </Txt.View>
-                  {/*<Image*/}
-                  {/*source={{uri: category.image}}*/}
-                  {/*style={s.categoryImage}*/}
-                  {/*/>*/}
+                  <Img
+                    source={{uri: category.acf.icon.icon}}
+                    style={s.categoryImage}
+                  />
                 </View>
                 {categoryArticles.map((article, j) =>
                   <Link

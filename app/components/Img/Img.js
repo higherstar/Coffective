@@ -1,7 +1,7 @@
 import React from 'react'
 import {Image, StyleSheet} from 'react-native'
 import resolveAssetSource from 'react-native/Libraries/Image/resolveAssetSource'
-import SvgImage from 'react-native-svg-uri'
+import {SvgImage} from '../../components'
 
 const Img = props => {
   const source = resolveAssetSource(props.source)

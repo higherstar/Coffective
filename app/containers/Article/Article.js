@@ -48,14 +48,14 @@ class Article extends React.Component {
   render () {
     const {navigation} = this.props
     const {article, category} = navigation.state.params
-    // TODO set category color for header
     return (
       <View style={s.container}>
         <View style={s.head}>
           <Image
             style={s.backgroundImage}
-            source={Images.checklistBackground}
+            source={Images.checklistItemBackground}
           />
+          <View style={[s.overlay, {backgroundColor: Color(category.acf.color).fade(0.05)}]} />
         </View>
         <ScrollView style={s.content}>
           <View style={s.scrollContent}>

@@ -19,6 +19,7 @@ const images = {
   buildTeamBackground: require('../static/build_team_background.png'),
   faqBackground: require('../static/faq_background.png'),
   checklistBackground: require('../static/checklist_background.png'),
+  checklistItemBackground: require('../static/checklist_item_background.png'),
   howItWorksBackground: require('../static/how_it_works_background.png'),
   findSupportBackground: require('../static/find_support_background.png'),
   wicBackground: require('../static/wic_background.png'),

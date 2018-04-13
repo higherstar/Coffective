@@ -67,7 +67,7 @@ class Checklist extends React.Component {
                     {category.name.toUpperCase()}
                   </Txt.View>
                   <Img
-                    source={{uri: category.acf.icon.icon}}
+                    source={{uri: category.acf.icon.url}}
                     style={s.categoryImage}
                   />
                 </View>

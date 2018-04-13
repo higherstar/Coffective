@@ -14,6 +14,9 @@ export default StyleSheet.create({
   head: {
     height: Metrics.navBarHeight,
   },
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
+  },
   backgroundImage: {
     resizeMode: 'cover',
     width: null,

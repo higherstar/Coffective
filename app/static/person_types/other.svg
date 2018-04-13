@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="90px" height="90px" viewBox="0 0 90 90" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>other</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="45" cy="45" r="45"></circle>
+    </defs>
+    <g id="Registration" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-229.000000, -465.000000)">
+        <g id="Button" transform="translate(193.000000, 451.000000)">
+            <g id="other" transform="translate(36.000000, 14.000000)">
+                <circle id="Oval3" fill="#00A4DC" fill-rule="nonzero" cx="44.55" cy="38.25" r="16.65"></circle>
+                <path d="M72.2041306,80.8490612 C64.6485225,86.5915163 55.2223083,90 45,90 C34.4751768,90 24.7942635,86.3867926 17.1300191,80.3331371 C21.89198,70.1043916 32.3787541,63 44.55,63 C56.9248467,63 67.5583944,70.3440644 72.2041306,80.8490612 Z" id="Combined-Shape" fill="#00A4DC" fill-rule="nonzero"></path>
+                <g id="Oval">
+                    <circle stroke="#FFFFFF" stroke-width="10" cx="45" cy="45" r="40"></circle>
+                    <circle stroke="#00A4DC" stroke-width="8" cx="45" cy="45" r="41"></circle>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

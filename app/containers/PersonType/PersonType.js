@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Image, ScrollView, TouchableOpacity, View } from 'react-native'
-import { Button, Txt } from '../../components'
+import { Button, Txt, Img } from '../../components'
 import I18n from 'react-native-i18n'
 import s from './PersonTypeStyles'
 import { Images, Metrics } from '../../themes'
@@ -13,34 +13,33 @@ const personTypes = [
   {
     id: 1,
     name: 'Mom',
-    // TODO change images
-    image: Images.mother,
+    image: Images.personTypes.mother,
   },
   {
     id: 2,
     name: 'Parent',
-    image: Images.father,
+    image: Images.personTypes.parent,
 
   },
   {
     id: 3,
     name: 'Nurse',
-    image: Images.doctor,
+    image: Images.personTypes.nurse,
   },
   {
     id: 4,
     name: 'Provider',
-    image: Images.doctor,
+    image: Images.personTypes.provider,
   },
   {
     id: 5,
     name: 'Friend',
-    image: Images.doctor,
+    image: Images.personTypes.friend,
   },
   {
     id: 6,
     name: 'Other',
-    image: Images.doctor,
+    image: Images.personTypes.other,
   },
 ]
 
@@ -80,7 +79,7 @@ class PersonType extends React.Component {
                   navigation.navigate('Name')
                 }}
               >
-                <Image source={personType.image} style={s.image}/>
+                <Img source={personType.image} style={s.image}/>
                 <Txt.View style={s.name} textStyle={s.nameText}>
                   {personType.name}
                 </Txt.View>

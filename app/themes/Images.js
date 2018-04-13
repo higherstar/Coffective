@@ -44,6 +44,14 @@ const images = {
   doctor: require('../static/figure3.png'),
   father: require('../static/figure1.png'),
   arrowDown: require('../static/arrow.png'),
+  personTypes: {
+    mother: require('../static/person_types/mom.svg'),
+    parent: require('../static/person_types/parent.svg'),
+    nurse: require('../static/person_types/nurse.svg'),
+    friend: require('../static/person_types/friend.svg'),
+    provider: require('../static/person_types/provider.svg'),
+    other: require('../static/person_types/other.svg'),
+  }
 }
 
 export default images

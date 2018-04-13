@@ -53,9 +53,9 @@ class SupportItem extends React.Component {
             </Txt.View>
             <Card.Meta title={place.title.rendered} description={place.acf.description}/>
           </Card>
-          {(place.acf.phone_number ||
-            place.acf.fax ||
-            place.acf.website
+          {(!!place.acf.phone_number ||
+            !!place.acf.fax ||
+            !!place.acf.website
           ) && (
             <Card
               style={s.card}
@@ -105,8 +105,8 @@ class SupportItem extends React.Component {
               </Label.Group>
             </Card>
           )}
-          <Hours {...place.acf.clinic_hours}/>
-          {place.acf.language && (
+          {!!place.acf.clinic_hours && <Hours {...place.acf.clinic_hours}/>}
+          {!!place.acf.language && (
             <Card
               style={s.card}
               bodyStyle={s.cardBody}
@@ -128,7 +128,7 @@ class SupportItem extends React.Component {
               </Label.Group>
             </Card>
           )}
-          {place.acf.eligibility_requirements && (
+          {!!place.acf.eligibility_requirements && (
             <Card
               style={s.card}
               bodyStyle={s.requirementsCardBody}
@@ -143,7 +143,7 @@ class SupportItem extends React.Component {
               />
             </Card>
           )}
-          {place.acf.what_do_you_provide_services_to && (
+          {!!place.acf.what_do_you_provide_services_to && (
             <Card
               style={s.card}
               bodyStyle={s.weServeCardBody}

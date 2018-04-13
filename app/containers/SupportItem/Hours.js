@@ -50,28 +50,26 @@ const DAYS = [
 ]
 
 const Hours = (days) =>
-  days ? (
-    <React.Fragment>
-      <Txt.View style={s.header} textStyle={s.headerText}>{'Working Hours'}</Txt.View>
-      <ScrollView style={s.days} horizontal>
-        {DAYS.map((day, i) =>
-          days[day.dayProp] ? (
-            <Card
-              key={day.title}
-              title={day.title}
-              style={[s.card, i === 0 && s.first]}
-              titleStyle={s.cardTitle}
-              titleTextStyle={s.cardTitleText}
-              bodyStyle={s.cardBody}
-            >
-              <Txt.View textStyle={s.hoursText}>
-                {`${days[day.dayProp][0][day.fromProp]} - ${days[day.dayProp][0][day.toProp]}`}
-              </Txt.View>
-            </Card>
-          ) : null
-        )}
-      </ScrollView>
-    </React.Fragment>
-  ) : null
+  <React.Fragment>
+    <Txt.View style={s.header} textStyle={s.headerText}>{'Working Hours'}</Txt.View>
+    <ScrollView style={s.days} horizontal>
+      {DAYS.map((day, i) =>
+        days[day.dayProp] ? (
+          <Card
+            key={day.title}
+            title={day.title}
+            style={[s.card, i === 0 && s.first]}
+            titleStyle={s.cardTitle}
+            titleTextStyle={s.cardTitleText}
+            bodyStyle={s.cardBody}
+          >
+            <Txt.View textStyle={s.hoursText}>
+              {`${days[day.dayProp][0][day.fromProp]} - ${days[day.dayProp][0][day.toProp]}`}
+            </Txt.View>
+          </Card>
+        ) : null
+      )}
+    </ScrollView>
+  </React.Fragment>
 
 export default Hours

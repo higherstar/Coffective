@@ -22,18 +22,18 @@ export const getCategories = () => (dispatch, getState, {fetch}) => {
     method: 'GET',
     token,
     success: (categories) => dispatch({type: GET_CATEGORIES_SUCCESS, categories}),
-    failure: (error) => dispatch({type: GET_CATEGORIES_FAILURE, error}),
+    failure: () => dispatch({type: GET_CATEGORIES_FAILURE}),
   })
 }
 
 export const getArticles = () => (dispatch, getState, {fetch}) => {
   dispatch({type: GET_ARTICLES_REQUEST})
   const {token} = dispatch(getToken())
-  return fetch(`/learn/`, {
+  return fetch(`/learn?per_page=50`, {
     method: 'GET',
     token,
     success: (articles) => dispatch({type: GET_ARTICLES_SUCCESS, articles}),
-    failure: (error) => dispatch({type: GET_ARTICLES_FAILURE, error}),
+    failure: () => dispatch({type: GET_ARTICLES_FAILURE}),
   })
 }
 

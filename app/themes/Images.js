@@ -51,7 +51,12 @@ const images = {
     friend: require('../static/person_types/friend.svg'),
     provider: require('../static/person_types/provider.svg'),
     other: require('../static/person_types/other.svg'),
-  }
+  },
+  article: {
+    for_baby: require('../static/article/for_baby.svg'),
+    for_mother: require('../static/article/for_mother.svg'),
+    for_champion: require('../static/article/for_champion.svg'),
+  },
 }
 
 export default images

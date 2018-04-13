@@ -2,13 +2,12 @@ import React from 'react'
 import { Image, ScrollView, View } from 'react-native'
 import I18n from 'react-native-i18n'
 import { connect } from 'react-redux'
-import { Button, Card, Txt, Accordion, Carousel, Link } from '../../components'
+import { Button, Card, Txt, Accordion, Carousel, Link, Img } from '../../components'
 import s from './ArticleStyles'
 import { Images } from '../../themes'
 import { BackButton } from '../../navigation/AppNavigation'
 import Color from 'color'
 
-// TODO fix images http => https
 const CarouselCard = ({items, imageProp, descriptionProp, color}) =>
   <Card
     style={s.card}
@@ -19,7 +18,7 @@ const CarouselCard = ({items, imageProp, descriptionProp, color}) =>
       >
         {items.map((item, i) =>
           <View key={i} style={s.item}>
-            <Image source={{uri: item[imageProp].replace('http', 'https')}} style={s.itemImage}/>
+            <Image source={{uri: item[imageProp]}} style={s.itemImage}/>
             <View style={s.itemDescriptionWrapper}>
               <Txt.View
                 style={[s.itemIndex, {backgroundColor: Color(color).fade(0.7)}]}
@@ -49,7 +48,7 @@ class Article extends React.Component {
   render () {
     const {navigation} = this.props
     const {article, category} = navigation.state.params
-    // TODO set category color for header - change image
+    // TODO set category color for header
     return (
       <View style={s.container}>
         <View style={s.head}>
@@ -78,7 +77,7 @@ class Article extends React.Component {
               iconColor={category.acf.color}
               prefix={
                 <View style={s.sectionImageWrapper}>
-                  <Image source={{uri: 'https://dummyimage.com/60x60'}} style={s.sectionImage}/>
+                  <Img source={Images.article.for_mother} style={[s.sectionImage, {fill: category.acf.color}]}/>
                 </View>
               }
             >
@@ -96,7 +95,7 @@ class Article extends React.Component {
               iconColor={category.acf.color}
               prefix={
                 <View style={s.sectionImageWrapper}>
-                  <Image source={{uri: 'https://dummyimage.com/60x60'}} style={s.sectionImage}/>
+                  <Img source={Images.article.for_baby} style={[s.sectionImage, {fill: category.acf.color}]}/>
                 </View>
               }
             >
@@ -114,7 +113,7 @@ class Article extends React.Component {
               iconColor={category.acf.color}
               prefix={
                 <View style={s.sectionImageWrapper}>
-                  <Image source={{uri: 'https://dummyimage.com/60x60'}} style={s.sectionImage}/>
+                  <Img source={Images.article.for_champion} style={[s.sectionImage, {fill: category.acf.color}]}/>
                 </View>
               }
             >

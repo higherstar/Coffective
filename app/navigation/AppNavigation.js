@@ -20,10 +20,9 @@ import Checklist from '../containers/Checklist/Checklist'
 import Article from '../containers/Article/Article'
 import HowItWorks from '../containers/HowItWorks/HowItWorks'
 import FindSupport from '../containers/FindSupport/FindSupport'
-import Wic from '../containers/Wic/Wic'
-import Hospital from '../containers/Hospital/Hospital'
 import Champion from '../containers/Champion/Champion'
 import ChampionRole from '../containers/ChampionRole/ChampionRole'
+import TeamItem from '../containers/TeamItem/TeamItem'
 import s from './AppNavigationStyles'
 import Icon from 'react-native-vector-icons/dist/MaterialIcons'
 
@@ -74,10 +73,9 @@ const MainNav = StackNavigator({
   Article: {screen: Article},
   HowItWorks: {screen: HowItWorks},
   FindSupport: {screen: FindSupport},
-  Wic: {screen: Wic},
-  Hospital: {screen: Hospital},
   Champion: {screen: Champion},
   ChampionRole: {screen: ChampionRole},
+  TeamItem: {screen: TeamItem},
 }, {
   initialRouteName: 'Welcome',
   cardStyle: {

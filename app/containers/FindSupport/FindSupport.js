@@ -24,6 +24,10 @@ class FindSupport extends React.Component {
     )
   })
 
+  componentDidMount () {
+    this.props.getPlaces()
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.places && !R.equals(nextProps.places, this.props.places)) {
       this.fitAllMarkers(nextProps.places)
@@ -43,7 +47,7 @@ class FindSupport extends React.Component {
 
   render() {
     const {getPlaces, places, orgType, changeOrgType, zipCode, changeZipCode, navigation} = this.props
-
+    // TODO fix click on field - click without hiding keyboard
     return (
       <View style={s.container}>
         <View style={s.head}>

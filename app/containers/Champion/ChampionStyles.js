@@ -63,9 +63,9 @@ export default StyleSheet.create({
     color: Colors.primary,
   },
   image: {
-    // TODO
     resizeMode: 'cover',
     width: null,
+    height: 200,
     flex: 1,
   },
   checkIconWrapper: {

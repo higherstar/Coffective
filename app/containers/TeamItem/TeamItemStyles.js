@@ -21,6 +21,7 @@ export default StyleSheet.create({
     flex: 1,
   },
   card: {
+    marginBottom: Metrics.smallMargin,
   },
   cardTitleText: {
     fontSize: Fonts.size.h1,
@@ -34,6 +35,15 @@ export default StyleSheet.create({
     marginBottom: Metrics.smallMargin,
   },
   cardDescription: {
-    marginBottom: Metrics.baseMargin,
+    marginBottom: Metrics.smallMargin,
   },
+  list: {
+    marginTop: Metrics.smallMargin,
+  },
+  image: {
+    resizeMode: 'cover',
+    width: null,
+    height: 200,
+    flex: 1,
+  }
 })

@@ -20,38 +20,10 @@ export const inviteChampion = () => (dispatch, getState, {fetch}) => {
   return fetch(`/invite-champion/`, {
     method: 'GET',
     token,
-    success: (categories) => dispatch({type: INVITE_CHAMPION_SUCCESS, categories}),
-    failure: (err) => {
+    success: () => dispatch({type: INVITE_CHAMPION_SUCCESS}),
+    failure: () => {
       // TODO backend
-      // dispatch({type: INVITE_CHAMPION_FAILURE, error: err})
-      dispatch({type: INVITE_CHAMPION_SUCCESS, categories: [
-        {
-          header: 'Choose your Champion',
-          description: `There are a few things to consider when choosing and communicating with a champion.`,
-          image: 'https://dummyimage.com/320x240',
-        },
-        {
-          header: 'Choose your Hospital',
-          description: `There are a few things to consider when choosing a hospital to ensure you are receiving the best care possible.`,
-          image: 'https://dummyimage.com/320x240',
-        },
-        {
-          header: 'Are you Eligible for WIC?',
-          description: `WIC income eligibility is higher that many people think. There are few things to consider before choosing the clinic that is right for you.`,
-          image: 'https://dummyimage.com/320x240',
-          screen: 'Wic',
-        },
-        {
-          header: 'Choose your Doctor or Midwife',
-          description: `You healthcare provider plays a critical role in helping you set and reach your goals. Be sure to share your wishes!`,
-          image: 'https://dummyimage.com/320x240',
-        },
-        {
-          header: 'Choose your Baby’s Doctor',
-          description: `Your baby’s healthcare provider plays a critical role in ensuring things go well in the hospital and once you get home.`,
-          image: 'https://dummyimage.com/320x240',
-        },
-      ]})
+      dispatch({type: INVITE_CHAMPION_FAILURE})
     }
   })
 }
@@ -66,7 +38,7 @@ export const setInvited = (invited) => ({type: SET_INVITED, invited})
 const initialState = {
   loading: false,
   role: null,
-  invited: true,
+  invited: false,
 }
 
 export default createReducer(initialState, {

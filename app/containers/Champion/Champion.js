@@ -1,10 +1,9 @@
-// @flow
 import React from 'react'
 import { Image, ScrollView, KeyboardAvoidingView, View, TouchableOpacity } from 'react-native'
 import I18n from 'react-native-i18n'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
-import { Button, Card, Input, Link, Txt } from '../../components'
+import { Button, Card, Input, Link, Txt, Img } from '../../components'
 import s from './ChampionStyles'
 import { AppStyles, Images } from '../../themes'
 import { BackButton } from '../../navigation/AppNavigation'
@@ -14,7 +13,7 @@ import { setInvited } from '../../reducers/champion'
 class Champion extends React.Component {
   static navigationOptions = ({navigation}) => ({
     headerRight: null,
-    title: I18n.t('championTitle'),
+    headerTitle: navigation.state.params.category.title.rendered,
     headerLeft: (
       <BackButton navigation={navigation}/>
     )
@@ -22,6 +21,7 @@ class Champion extends React.Component {
 
   render () {
     const {role, navigation, invited, setInvited} = this.props
+    const {category} = navigation.state.params
     return (
       <KeyboardAvoidingView style={s.container} behavior='padding'>
         <View style={s.head}>
@@ -57,16 +57,16 @@ class Champion extends React.Component {
                   </View>
                 )}
                 <Txt.View style={[s.title, invited && s.cardTitle]} textStyle={s.titleText}>
-                  {'What to consider when choosing a Champion:'.toUpperCase()}
+                  {category.acf.top_heading}
                 </Txt.View>
               </View>
             }
             cover={
-              <Image source={Images.champion} style={s.image}/>
+              <Img style={s.image} source={{uri: category.acf.top_banner}}/>
             }
           >
             <Txt.View textStyle={s.cardDescriptionText}>
-              {`Being a new mom can be even more special when it’s shared with someone close. A “champion” is a person who supports you and stands up for you. They are with you before, during, and after your baby’s birth. This can be the baby’s dad, your partner, your mom, or someone else who cares about you and the baby.`}
+              {category.acf.basic_information}
             </Txt.View>
           </Card>
           {!invited && [
@@ -164,7 +164,11 @@ class Champion extends React.Component {
                   />
                 </Input.Group>
               }
-              actions={[<Button key='1' size='sm' outline type='primary'>{I18n.t('inviteChampion')}</Button>]}
+              actions={[
+                <Button key='1' size='sm' outline type='primary' onClick={() => setInvited(true)}>
+                  {I18n.t('inviteChampion')}
+                </Button>
+              ]}
             >
               <Txt.View textStyle={s.cardDescriptionText}>
                 {`When you tap Invite Champion we will send your champion an email with information about this app and their important role in helping you reach your goals. They will also be able see all the information about the other members of your care team.`}

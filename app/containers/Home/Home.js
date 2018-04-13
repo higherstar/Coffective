@@ -31,7 +31,7 @@ class Home extends React.Component {
           />
         </View>
         <ScrollView style={s.content}>
-          <TouchableOpacity activeOpacity={0.7} onPress={() => navigation.navigate('Wic')} style={s.wicCard}>
+          <TouchableOpacity activeOpacity={0.7} onPress={() => {}} style={s.wicCard}>
             <Txt.View style={s.wicDescription} textStyle={s.wicDescriptionText}>
               {I18n.t('wicDescription')}
             </Txt.View>

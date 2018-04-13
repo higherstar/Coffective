@@ -24,7 +24,7 @@ class BuildTeam extends React.Component {
 
   render () {
     const {navigation, categories} = this.props
-    // navigation.navigate(category.screen)
+
     return (
       <View style={s.container}>
         <View style={s.head}>
@@ -38,7 +38,7 @@ class BuildTeam extends React.Component {
             <TouchableOpacity
               key={i}
               activeOpacity={0.7}
-              onPress={() => {}}
+              onPress={() => navigation.navigate(category.slug === 'choose-your-champion' ? 'Champion' : 'TeamItem', {category})}
               style={s.item}
             >
               <View style={s.imageWrapper}>

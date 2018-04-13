@@ -23,6 +23,7 @@ import FindSupport from '../containers/FindSupport/FindSupport'
 import Champion from '../containers/Champion/Champion'
 import ChampionRole from '../containers/ChampionRole/ChampionRole'
 import TeamItem from '../containers/TeamItem/TeamItem'
+import SupportItem from '../containers/SupportItem/SupportItem'
 import s from './AppNavigationStyles'
 import Icon from 'react-native-vector-icons/dist/MaterialIcons'
 
@@ -76,6 +77,7 @@ const MainNav = StackNavigator({
   Champion: {screen: Champion},
   ChampionRole: {screen: ChampionRole},
   TeamItem: {screen: TeamItem},
+  SupportItem: {screen: SupportItem},
 }, {
   initialRouteName: 'Welcome',
   cardStyle: {

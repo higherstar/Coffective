@@ -37,7 +37,7 @@ class Drawer extends React.Component {
             source={{uri: user.image}}
           />
           <View style={s.headerWrapper}>
-            <Txt.View style={s.header} textStyle={s.headerText}>Hello Monika!</Txt.View>
+            <Txt.View style={s.header} textStyle={s.headerText}>Hello Mom!</Txt.View>
             <Txt.View style={s.subHeader} textStyle={s.subHeaderText}>40 Weeks to Go!</Txt.View>
           </View>
           <ProgressCircle

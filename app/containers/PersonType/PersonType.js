@@ -61,7 +61,7 @@ class PersonType extends React.Component {
             source={Images.personTypeBackground}
           />
         </View>
-        <ScrollView style={s.content}>
+        <ScrollView style={s.content} contentContainerStyle={s.scrollContent}>
           <Txt.View style={s.header} textStyle={s.headerText}>
             {I18n.t('welcome')}
           </Txt.View>

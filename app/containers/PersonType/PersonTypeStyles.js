@@ -2,11 +2,18 @@ import { StyleSheet } from 'react-native'
 import { Metrics, Colors, Fonts } from '../../themes'
 
 const tileSize = (Metrics.screenWidth - (Metrics.marginX * 2) - Metrics.smallMargin) / 2
+const footerHeight = 55
 
 export default StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: Metrics.navBarHeight,
+  },
+  content: {
+    flex: 1,
+  },
+  scrollContent: {
+    paddingBottom: footerHeight,
   },
   head: {
     position: 'absolute',
@@ -45,17 +52,15 @@ export default StyleSheet.create({
   haveAccountText: {
     color: Colors.muted,
   },
-  content: {
-    flex: 1,
-  },
   footer: {
     paddingHorizontal: Metrics.marginX,
-    paddingVertical: Metrics.baseMargin,
+    paddingVertical: Metrics.smallMargin,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: Colors.background,
     position: 'absolute',
+    height: footerHeight,
     bottom: 0,
     right: 0,
     left: 0,
@@ -78,10 +83,10 @@ export default StyleSheet.create({
     ...Metrics.boxShadow,
   },
   image: {
-    resizeMode: 'contain',
+    width: tileSize * 0.5,
+    height: tileSize * 0.5,
+    marginTop: Metrics.smallMargin,
     alignSelf: 'center',
-    flex: 1,
-    marginTop: Metrics.smallMargin
   },
   name: {
     padding: Metrics.smallMargin,

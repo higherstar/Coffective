@@ -73,7 +73,7 @@ class PersonType extends React.Component {
               <TouchableOpacity
                 key={personType.id}
                 activeOpacity={0.7}
-                style={[s.personType, {height: (Metrics.screenHeight - 230) / (personTypes.length / 2)}]}
+                style={s.personType}
                 onPress={() => {
                   setPersonType(personType)
                   navigation.navigate('Name')

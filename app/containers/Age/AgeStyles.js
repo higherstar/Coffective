@@ -60,10 +60,11 @@ export default StyleSheet.create({
     ...Metrics.boxShadow,
   },
   image: {
-    resizeMode: 'contain',
-    alignSelf: 'center',
     flex: 1,
-    marginTop: Metrics.smallMargin
+    width: tileSize * 0.5,
+    height: tileSize * 0.5,
+    marginTop: Metrics.smallMargin,
+    alignSelf: 'center',
   },
   name: {
     padding: Metrics.smallMargin,

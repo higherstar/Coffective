@@ -72,7 +72,7 @@ class Age extends React.Component {
               <TouchableOpacity
                 key={age.value}
                 activeOpacity={0.7}
-                style={[s.age, {height: (Metrics.screenHeight - 230) / (ages.length / 2)}]}
+                style={s.age}
                 onPress={() => {
                   setAge(age)
                   navigation.navigate('Expectation')

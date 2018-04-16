@@ -83,6 +83,7 @@ export default StyleSheet.create({
     ...Metrics.boxShadow,
   },
   image: {
+    flex: 1,
     width: tileSize * 0.5,
     height: tileSize * 0.5,
     marginTop: Metrics.smallMargin,

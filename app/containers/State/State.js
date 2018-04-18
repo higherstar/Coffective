@@ -78,16 +78,20 @@ class State extends React.Component {
   })
 
   state = {
-    filteredStates: states
+    filteredStates: states,
+    search: '',
   }
 
-  filterStates = (value) => {
-    this.setState({filteredStates: states.filter(item => item.toLowerCase().includes(value.toLowerCase()))})
+  handleChangeSearch = (value) => {
+    this.setState({
+      search: value,
+      filteredStates: states.filter(item => item.toLowerCase().includes(value.toLowerCase()))
+    })
   }
 
   render () {
     const {selectState, selectedState, navigation} = this.props
-    const {filteredStates} = this.state
+    const {filteredStates, search} = this.state
     return (
       <View style={s.container}>
         <View style={s.head}>
@@ -105,11 +109,10 @@ class State extends React.Component {
           </Txt.View>
           <Input
             style={s.search}
-            focus
-            name='search'
             placeholder={I18n.t('search')}
             returnKeyType='search'
-            onChangeText={this.filterStates}
+            value={search}
+            onChangeText={this.handleChangeSearch}
             suffix={
               <Icon
                 name='search'

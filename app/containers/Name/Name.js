@@ -23,7 +23,7 @@ class Name extends React.Component {
   }
 
   render () {
-    const {setName} = this.props
+    const {setName, name} = this.props
     return (
       <View style={s.container}>
         <Image
@@ -43,12 +43,11 @@ class Name extends React.Component {
           <Input
             component={Input}
             style={s.name}
-            focus
-            name='name'
             placeholder={I18n.t('name')}
             returnKeyType='go'
             onSubmitEditing={this.submit}
             onChangeText={setName}
+            value={name}
             blurOnSubmit
           />
         </View>

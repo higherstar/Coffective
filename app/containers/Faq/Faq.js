@@ -38,7 +38,6 @@ class Faq extends React.Component {
           </Txt.View>
           <Input
             style={s.search}
-            focus
             name='search'
             placeholder={I18n.t('askQuestion')}
             returnKeyType='search'

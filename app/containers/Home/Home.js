@@ -9,15 +9,21 @@ import { Images } from '../../themes'
 import { DrawerButton } from '../../navigation/AppNavigation'
 
 class Home extends React.Component {
-  static navigationOptions = ({navigation}) => ({
-    headerRight: null,
-    // TODO https://github.com/react-navigation/react-navigation/issues/313
-    headerTitle: `Welcome, Monika`,
-    headerTitleStyle: s.title,
-    headerLeft: (
-      <DrawerButton navigation={navigation}/>
-    )
-  })
+  static navigationOptions = ({navigation}) => {
+    return ({
+      headerRight: null,
+      headerTitle: navigation.state.params ? `Welcome, ${navigation.state.params.user.name}` : '',
+      headerTitleStyle: s.title,
+      headerLeft: (
+        <DrawerButton navigation={navigation}/>
+      )
+    })
+  }
+
+  componentDidMount () {
+    // https://github.com/react-navigation/react-navigation/issues/313
+    this.props.navigation.setParams({user: this.props.user})
+  }
 
   render () {
     const {navigation} = this.props
@@ -39,7 +45,8 @@ class Home extends React.Component {
               {I18n.t('wicHeader')}
             </Txt.View>
           </TouchableOpacity>
-          <TouchableOpacity activeOpacity={0.7} onPress={() => navigation.navigate('BuildTeam')} style={s.buildTeamCard}>
+          <TouchableOpacity activeOpacity={0.7} onPress={() => navigation.navigate('BuildTeam')}
+                            style={s.buildTeamCard}>
             <Txt.View style={s.buildTeamHeader} textStyle={s.buildTeamHeaderText}>
               {I18n.t('buildTeamHeader')}
             </Txt.View>

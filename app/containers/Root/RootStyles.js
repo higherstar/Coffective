@@ -1,10 +1,18 @@
 import { StyleSheet } from 'react-native'
-import { Colors } from '../../themes/index'
+import { Fonts } from '../../themes'
 
 export default StyleSheet.create({
   applicationView: {
     flex: 1,
-    // TODO make sure it's needed
-    // backgroundColor: Colors.background
   },
+  message: {
+    fontFamily: Fonts.type.normal,
+    fontSize: Fonts.size.medium,
+    textAlign: 'center',
+  },
+  messageTitle: {
+    fontFamily: Fonts.type.normal,
+    fontSize: Fonts.size.regular,
+    textAlign: 'center',
+  }
 })

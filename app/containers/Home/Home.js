@@ -12,7 +12,7 @@ class Home extends React.Component {
   static navigationOptions = ({navigation}) => {
     return ({
       headerRight: null,
-      headerTitle: navigation.state.params ? `Welcome, ${navigation.state.params.user.name}` : '',
+      headerTitle: navigation.state.params && navigation.state.params.user ? `Welcome, ${navigation.state.params.user.name}` : '',
       headerTitleStyle: s.title,
       headerLeft: (
         <DrawerButton navigation={navigation}/>

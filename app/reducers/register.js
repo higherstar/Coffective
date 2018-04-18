@@ -1,5 +1,6 @@
 import createReducer from '../createReducer'
 import { NavigationActions as navigation } from 'react-navigation'
+import { MessageBarManager } from 'react-native-message-bar'
 
 // ------------------------------------
 // Constants
@@ -34,6 +35,10 @@ export const register = (values) => (dispatch, getState, {fetch}) => {
     success: (user) => {
       dispatch({type: REGISTER_SUCCESS})
       dispatch(navigation.navigate({ routeName: 'Login' }))
+      MessageBarManager.showAlert({
+        message: `You're registered successfully. Now you can login.`,
+        alertType: 'success',
+      })
       // TODO
       // dispatch(updateUser({
       //   id: user.id,
@@ -41,8 +46,12 @@ export const register = (values) => (dispatch, getState, {fetch}) => {
       //   age: age,
       // }))
     },
-    failure: (err) => {
+    failure: (error) => {
       dispatch({type: REGISTER_FAILURE})
+      MessageBarManager.showAlert({
+        message: error && error.message ? error.message : 'Something went wrong. Please try again.',
+        alertType: 'error',
+      })
     }
   })
 }
@@ -65,8 +74,6 @@ export const clear = () => ({type: CLEAR})
 // ------------------------------------
 const initialState = {
   loading: false,
-  error: null,
-  success: null,
   personType: null,
   name: '',
   selectedState: null,
@@ -77,16 +84,12 @@ const initialState = {
 export default createReducer(initialState, {
   [REGISTER_REQUEST]: (state, action) => ({
     loading: true,
-    error: null,
-    success: null,
   }),
-  [REGISTER_SUCCESS]: (state, {success}) => ({
+  [REGISTER_SUCCESS]: (state, action) => ({
     loading: false,
-    success,
   }),
-  [REGISTER_FAILURE]: (state, {error}) => ({
+  [REGISTER_FAILURE]: (state, action) => ({
     loading: false,
-    error,
   }),
   [SET_PERSON_TYPE]: (state, {personType}) => ({
     personType,
@@ -105,7 +108,10 @@ export default createReducer(initialState, {
   }),
   [CLEAR]: (state, action) => ({
     loading: false,
-    error: null,
-    success: null,
+    personType: null,
+    name: '',
+    selectedState: null,
+    age: null,
+    expectation: null,
   }),
 })

@@ -16,7 +16,11 @@ const colors = {
   background: '#FAFAFA',
   text: '#000',
   transparent: 'rgba(0, 0, 0, 0)',
-  green: '#84CD95'
+  green: '#84CD95',
+  success: '#52c41a',
+  warning: '#faad14',
+  info: '#1890ff',
+  error: '#f5222d',
 }
 
 export default colors

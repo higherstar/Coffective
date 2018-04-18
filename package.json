@@ -37,6 +37,7 @@
     "react-native-i18n": "2.0.12",
     "react-native-keyboard-aware-scroll-view": "^0.5.0",
     "react-native-maps": "0.16.4",
+    "react-native-message-bar": "^2.0.10",
     "react-native-progress": "^3.4.0",
     "react-native-radio-buttons": "^1.0.0",
     "react-native-scrollable-tab-view": "^0.8.0",

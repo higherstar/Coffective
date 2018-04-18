@@ -8,6 +8,7 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome'
 import {getCategories} from '../../reducers/buildTeam'
 import { Images } from '../../themes'
 import { DrawerButton } from '../../navigation/AppNavigation'
+import Spinner from 'react-native-loading-spinner-overlay'
 
 class BuildTeam extends React.Component {
   static navigationOptions = ({navigation}) => ({
@@ -23,7 +24,7 @@ class BuildTeam extends React.Component {
   }
 
   render () {
-    const {navigation, categories} = this.props
+    const {navigation, categories, loading} = this.props
 
     return (
       <View style={s.container}>
@@ -64,6 +65,7 @@ class BuildTeam extends React.Component {
             </TouchableOpacity>
           )}
         </ScrollView>
+        <Spinner visible={loading && !categories.length}/>
       </View>
     )
   }

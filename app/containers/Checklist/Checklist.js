@@ -10,6 +10,7 @@ import { Images } from '../../themes'
 import { DrawerButton } from '../../navigation/AppNavigation'
 import Checkbox from 'react-native-check-box'
 import Color from 'color'
+import Spinner from 'react-native-loading-spinner-overlay'
 
 // TODO backend :(
 const categoriesOrder = [
@@ -36,7 +37,7 @@ class Checklist extends React.Component {
   }
 
   render () {
-    const {categories, articles, navigation} = this.props
+    const {categories, articles, navigation, loading} = this.props
     return (
       <View style={s.container}>
         <View style={s.head}>
@@ -104,6 +105,7 @@ class Checklist extends React.Component {
               ) : null
             })}
         </ScrollView>
+        <Spinner visible={loading && !categories.length}/>
       </View>
     )
   }

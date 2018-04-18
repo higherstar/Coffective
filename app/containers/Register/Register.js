@@ -73,21 +73,21 @@ class Register extends React.Component {
             />
           </Input.Group>
           <View style={s.actions}>
-            <Button
-              type='default'
-              size='xl'
-              style={s.facebookBtn}
-              textStyle={s.facebookBtnText}
-              onClick={() => {}}
-              icon={
-                <Icon
-                  style={s.facebookIcon}
-                  name='facebook'
-                />
-              }
-            >
-              {I18n.t('signUpWithFacebook')}
-            </Button>
+            {/*<Button*/}
+              {/*type='default'*/}
+              {/*size='xl'*/}
+              {/*style={s.facebookBtn}*/}
+              {/*textStyle={s.facebookBtnText}*/}
+              {/*onClick={() => {}}*/}
+              {/*icon={*/}
+                {/*<Icon*/}
+                  {/*style={s.facebookIcon}*/}
+                  {/*name='facebook'*/}
+                {/*/>*/}
+              {/*}*/}
+            {/*>*/}
+              {/*{I18n.t('signUpWithFacebook')}*/}
+            {/*</Button>*/}
             <Button
               type='default'
               size='xl'

@@ -10,7 +10,7 @@ class Input extends React.Component {
   }
 
   render () {
-    const {style, inputStyle, refField, prefix, suffix, size, ...props} = this.props
+    const {style, input, inputStyle, refField, prefix, suffix, size, ...props} = this.props
     return (
       <View style={[s.wrapper, style]}>
         {prefix && <View style={s.prefix}>{prefix}</View>}
@@ -21,6 +21,7 @@ class Input extends React.Component {
           placeholderTextColor={Colors.inputPlaceholder}
           autoCorrect={false}
           style={[s.input, s[size], prefix && s.hasPrefix, suffix && s.hasSuffix, inputStyle]}
+          {...input}
           {...props}
           ref={refField}
         />

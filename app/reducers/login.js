@@ -19,9 +19,8 @@ export const login = (values) => (dispatch, getState, {fetch}) => {
   return fetch(`/jwt-auth/v1/token`, {
     method: 'POST',
     body: {
-      // TODO
-      username: 'serhii',
-      password: 'qwerty@123',
+      username: values.email,
+      password: values.password,
     },
     success: (res) => dispatch(loginSuccess(res)),
     failure: (err) => {

@@ -48,7 +48,6 @@ class Login extends React.Component {
                   name='user'
                 />
               }
-              focus
               withRef
               name='email'
               placeholder={I18n.t('emailOrPhone')}
@@ -67,7 +66,6 @@ class Login extends React.Component {
                   name='lock'
                 />
               }
-              focus
               withRef
               name='password'
               returnKeyType='go'
@@ -140,6 +138,6 @@ const mapDispatchToProps = {
 
 export default connect(mapStateToProps, mapDispatchToProps)(
   reduxForm({
-    form: 'login'
+    form: 'login',
   })(Login)
 )

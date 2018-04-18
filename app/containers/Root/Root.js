@@ -1,5 +1,5 @@
 import React  from 'react'
-import { StatusBar, View } from 'react-native'
+import { StatusBar, View, Platform } from 'react-native'
 import ReduxNavigation from '../../navigation/ReduxNavigation'
 import { connect } from 'react-redux'
 import { startup } from '../../reducers/global'
@@ -35,7 +35,7 @@ class RootContainer extends React.Component {
         <ReduxNavigation/>
         <MessageBar
           ref='alert'
-          viewTopInset={10}
+          viewTopInset={Platform.OS === 'ios' ? 0 : 10}
           messageStyle={s.message}
           titleStyle={s.messageTitle}
           stylesheetSuccess={{

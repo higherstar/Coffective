@@ -70,7 +70,7 @@ class PersonType extends React.Component {
           <View style={s.personTypes}>
             {personTypes.map(personType =>
               <TouchableOpacity
-                key={personType.id}
+                key={personType.value}
                 activeOpacity={0.7}
                 style={s.personType}
                 onPress={() => {

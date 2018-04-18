@@ -64,27 +64,8 @@ class Register extends React.Component {
               focus
               withRef
               name='password'
-              returnKeyType='next'
-              placeholder={I18n.t('choosePassword')}
-              secureTextEntry
-              onSubmitEditing={() => this.verifyPassword.getRenderedComponent().refs.verifyPassword.focus()}
-            />
-            <Field
-              component={Input}
-              ref={(componentRef) => this.verifyPassword = componentRef}
-              refField='verifyPassword'
-              style={s.password}
-              prefix={
-                <Icon
-                  style={s.passwordIcon}
-                  name='lock'
-                />
-              }
-              focus
-              withRef
-              name='verifyPassword'
               returnKeyType='go'
-              placeholder={I18n.t('verifyPassword')}
+              placeholder={I18n.t('choosePassword')}
               secureTextEntry
               onSubmitEditing={handleSubmit}
               blurOnSubmit

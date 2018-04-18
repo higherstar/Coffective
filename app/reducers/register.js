@@ -1,4 +1,5 @@
 import createReducer from '../createReducer'
+import { NavigationActions as navigation } from 'react-navigation'
 
 // ------------------------------------
 // Constants
@@ -18,24 +19,27 @@ export const CLEAR = 'Register.CLEAR'
 // ------------------------------------
 // Actions
 // ------------------------------------
-// TODO
 export const register = (values) => (dispatch, getState, {fetch}) => {
   dispatch({type: REGISTER_REQUEST})
   const {personType, name, selectedState, age, expectation} = getState().register
   return fetch(`/wp/v2/users`, {
     method: 'POST',
     body: {
-      username: 'admin1@examplewebsite.com',
-      email: 'admin1@examplewebsite.com',
-      password: 'qwerty@123',
-      name: 'Test 1',
-      roles: ['mom']
+      username: values.email,
+      email: values.email,
+      password: values.password,
+      name: name,
+      roles: personType ? [personType.value] : []
     },
-    headers: {
-      'Authorization': `Bearer ${'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvbmV3LmNvZmZlY3RpdmUuY29tIiwiaWF0IjoxNTIzOTY3MDM5LCJuYmYiOjE1MjM5NjcwMzksImV4cCI6MTUyNDU3MTgzOSwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiNyJ9fX0.6xn1aEcaxn6YrL2TCekaXdO7MV9GB0bpfLKa4yqE8N8'}`,
-    },
-    success: (res) => {
+    success: (user) => {
       dispatch({type: REGISTER_SUCCESS})
+      dispatch(navigation.navigate({ routeName: 'Login' }))
+      // TODO
+      // dispatch(updateUser({
+      //   id: user.id,
+      //   state: selectedState,
+      //   age: age,
+      // }))
     },
     failure: (err) => {
       dispatch({type: REGISTER_FAILURE})

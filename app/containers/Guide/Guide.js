@@ -57,7 +57,7 @@ class Guide extends React.Component {
             type='primary'
             style={s.signUpBtn}
             size='lg'
-            onClick={() => this.props.navigation.navigate('Register')}
+            onClick={() => this.props.navigation.navigate('PersonType')}
           >
             {I18n.t('signUp')}
           </Button>

@@ -48,7 +48,7 @@ class Name extends React.Component {
             placeholder={I18n.t('name')}
             returnKeyType='go'
             onSubmitEditing={this.submit}
-            onChange={setName}
+            onChangeText={setName}
             blurOnSubmit
           />
         </View>

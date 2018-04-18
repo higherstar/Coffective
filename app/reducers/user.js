@@ -14,6 +14,10 @@ export const GET_USER_REQUEST = 'User.GET_USER_REQUEST'
 export const GET_USER_SUCCESS = 'User.GET_USER_SUCCESS'
 export const GET_USER_FAILURE = 'User.GET_USER_FAILURE'
 
+export const UPDATE_USER_REQUEST = 'User.UPDATE_USER_REQUEST'
+export const UPDATE_USER_SUCCESS = 'User.UPDATE_USER_SUCCESS'
+export const UPDATE_USER_FAILURE = 'User.UPDATE_USER_FAILURE'
+
 export const SET_TOKEN = 'User.SET_TOKEN'
 export const EXPIRE_TOKEN = 'User.EXPIRE_TOKEN'
 
@@ -85,6 +89,20 @@ export const getUser = () => (dispatch, getState, {fetch}) => {
     dispatch(navigation.navigate({ routeName: 'Auth' }))
     return user
   }
+}
+
+export const updateUser = ({id, ...values}) => (dispatch, getState, {fetch}) => {
+  dispatch({type: UPDATE_USER_REQUEST})
+  return fetch(`/acf/v3/users/${id}`, {
+    method: 'POST',
+    body: values,
+    success: (res) => {
+      dispatch({type: UPDATE_USER_SUCCESS})
+    },
+    failure: (err) => {
+      dispatch({type: UPDATE_USER_FAILURE})
+    }
+  })
 }
 
 // ------------------------------------

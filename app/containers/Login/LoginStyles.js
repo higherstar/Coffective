@@ -25,12 +25,20 @@ export default StyleSheet.create({
     flex: 1,
   },
   logoWrapper: {
-    justifyContent: 'center',
+    height: 100,
   },
   logo: {
     maxHeight: 50,
     resizeMode: 'contain',
     alignSelf: 'center'
+  },
+  formWrapper: {
+    flex: 1,
+    // TODO fix width - should be generic
+    width: Metrics.screenWidth - Metrics.marginX * 2,
+    alignSelf: 'center',
+  },
+  form: {
   },
   actions: {
     position: 'absolute',

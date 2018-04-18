@@ -1,5 +1,4 @@
 import createReducer from '../createReducer'
-import { getToken } from './user'
 
 // ------------------------------------
 // Constants
@@ -13,10 +12,8 @@ export const GET_CATEGORIES_FAILURE = 'BuildTeam.GET_CATEGORIES_FAILURE'
 // ------------------------------------
 export const getCategories = () => (dispatch, getState, {fetch}) => {
   dispatch({type: GET_CATEGORIES_REQUEST})
-  const {token} = dispatch(getToken())
-  return fetch(`/build_your_team`, {
+  return fetch(`/wp/v2/build_your_team`, {
     method: 'GET',
-    token,
     success: (categories) => dispatch({type: GET_CATEGORIES_SUCCESS, categories}),
     failure: () => dispatch({type: GET_CATEGORIES_FAILURE})
   })

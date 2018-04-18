@@ -5,9 +5,16 @@ import { connect } from 'react-redux'
 import { startup } from '../../reducers/global'
 import ReduxPersist from '../../config/ReduxPersist'
 import s from './RootStyles'
+import { getTokenFromStorage, getUser } from '../../reducers/user'
 
 class RootContainer extends Component {
+  checkIfLoggedIn = async () => {
+    await this.props.getTokenFromStorage()
+    await this.props.getUser()
+  }
+
   componentDidMount () {
+    this.checkIfLoggedIn()
     // if redux persist is not active fire startup action
     if (!ReduxPersist.active) {
       this.props.startup()
@@ -26,6 +33,8 @@ class RootContainer extends Component {
 
 const mapDispatchToProps = {
   startup,
+  getUser,
+  getTokenFromStorage,
 }
 
 export default connect(null, mapDispatchToProps)(RootContainer)

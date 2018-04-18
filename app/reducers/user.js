@@ -1,4 +1,7 @@
 import createReducer from '../createReducer'
+import {AsyncStorage} from 'react-native'
+import { TOKEN_STORAGE_KEY } from '../constants'
+import { NavigationActions as navigation } from 'react-navigation'
 
 // ------------------------------------
 // Constants
@@ -11,18 +14,41 @@ export const GET_USER_REQUEST = 'User.GET_USER_REQUEST'
 export const GET_USER_SUCCESS = 'User.GET_USER_SUCCESS'
 export const GET_USER_FAILURE = 'User.GET_USER_FAILURE'
 
+export const SET_TOKEN = 'User.SET_TOKEN'
+export const EXPIRE_TOKEN = 'User.EXPIRE_TOKEN'
+
 // ------------------------------------
 // Actions
 // ------------------------------------
-export const getToken = () => (dispatch, getState) => {
-  // TODO backend
-  return {token: 'temp'}
+export const expireToken = () => (dispatch, getState) => {
+  AsyncStorage.removeItem(TOKEN_STORAGE_KEY)
+  dispatch({type: EXPIRE_TOKEN})
 }
 
-export const logoutSuccess = () => (dispatch, getState) => {
+export const logoutSuccess = () => (dispatch) => {
+  dispatch(expireToken())
   dispatch({type: LOGOUT_SUCCESS})
 }
 
+export const getToken = () => (dispatch, getState) => {
+  const {token} = getState().user
+  return {token}
+}
+
+export const getTokenFromStorage = () => async (dispatch, getState) => {
+  // await AsyncStorage.clear()
+  const token = await AsyncStorage.getItem(TOKEN_STORAGE_KEY)
+  if (token) {
+    dispatch(setToken(token))
+  }
+}
+
+export const setToken = (token) => (dispatch, getState) => {
+  AsyncStorage.setItem(TOKEN_STORAGE_KEY, token)
+  dispatch({type: SET_TOKEN, token})
+}
+
+// TODO add logout
 export const logout = () => (dispatch, getState, {fetch}) => {
   const {token} = dispatch(getToken())
   dispatch({type: LOGOUT_REQUEST})
@@ -42,21 +68,21 @@ export const getUser = () => (dispatch, getState, {fetch}) => {
   const {user} = getState().user
   if (!user && token) {
     dispatch({type: GET_USER_REQUEST})
-    return fetch(`/user/me/`, {
+    return fetch(`/wp/v2/users/me`, {
       method: 'GET',
       token,
-      success: (user) => dispatch({type: GET_USER_SUCCESS, user}),
+      success: (user) => {
+        dispatch({type: GET_USER_SUCCESS, user})
+        dispatch(navigation.navigate({ routeName: 'App' }))
+      },
       failure: (err) => {
-        // TODO backend
-        // dispatch({type: GET_USER_FAILURE, error: err})
-        dispatch({type: GET_USER_SUCCESS, user: {
-          first_name: 'John',
-          last_name: 'Doe',
-          image: 'https://dummyimage.com/60x60'
-        }})
+        // TODO show error
+        dispatch({type: GET_USER_FAILURE})
+        dispatch(navigation.navigate({ routeName: 'Auth' }))
       }
     })
   } else {
+    dispatch(navigation.navigate({ routeName: 'Auth' }))
     return user
   }
 }
@@ -66,14 +92,10 @@ export const getUser = () => (dispatch, getState, {fetch}) => {
 // ------------------------------------
 const initialState = {
   loading: false,
-  // TODO
-  loggedIn: true,
+  loggedIn: false,
   error: null,
-  user: {
-    first_name: 'John',
-    last_name: 'Doe',
-    image: 'https://dummyimage.com/60x60'
-  },
+  user: null,
+  token: null,
 }
 
 export default createReducer(initialState, {
@@ -89,5 +111,11 @@ export default createReducer(initialState, {
   [GET_USER_SUCCESS]: (state, {user}) => ({
     user,
     loggedIn: true,
+  }),
+  [SET_TOKEN]: (state, {token}) => ({
+    token,
+  }),
+  [EXPIRE_TOKEN]: (state, action) => ({
+    token: null,
   }),
 })

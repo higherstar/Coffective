@@ -18,7 +18,7 @@ export const getPlaces = () => (dispatch, getState, {fetch}) => {
   dispatch({type: GET_PLACES_REQUEST})
   const {zipCode, orgType} = getState().findSupport
   const {token} = dispatch(getToken())
-  return fetch(`/resources/${zipCode ? `zipcode=${zipCode}/` : ''}${orgType ? `type=${orgType}/` : ''}`, {
+  return fetch(`/wp/v2/resources/${zipCode ? `zipcode=${zipCode}/` : ''}${orgType ? `type=${orgType}/` : ''}`, {
     method: 'GET',
     token,
     success: (places) => {

@@ -1,6 +1,6 @@
 // @flow
 import React from 'react'
-import { Image, KeyboardAvoidingView, View } from 'react-native'
+import { Image, KeyboardAvoidingView, View, ScrollView } from 'react-native'
 import I18n from 'react-native-i18n'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
@@ -17,12 +17,10 @@ class Login extends React.Component {
   }
 
   render () {
-    // const {handleSubmit} = this.props
-    // TODO change when backend is done
-    const handleSubmit = () => this.props.navigation.navigate('Home')
+    const {handleSubmit, navigation} = this.props
     return (
-      <KeyboardAvoidingView style={s.container} behavior='padding'>
-        <View style={s.contentWrapper}>
+      <KeyboardAvoidingView style={s.container}>
+        <ScrollView style={s.content} contentContainerStyle={s.scrollContent} keyboardShouldPersistTaps='handled'>
           <View style={s.background}>
             <Image
               source={Images.loginBackground}
@@ -32,64 +30,62 @@ class Login extends React.Component {
           <View style={s.logoWrapper}>
             <Image source={Images.logo} style={s.logo}/>
           </View>
-          <View style={s.content}>
-            <Txt.View style={s.header} textStyle={s.headerText}>
-              {I18n.t('welcomeBack')}
-            </Txt.View>
-            <Txt.View style={s.description} textStyle={s.descriptionText}>
-              {I18n.t('signInToContinue')}
-            </Txt.View>
-            <Input.Group>
-              <Field
-                component={Input}
-                ref={(componentRef) => this.email = componentRef}
-                refField='email'
-                style={s.email}
-                prefix={
-                  <Icon
-                    style={s.emailIcon}
-                    name='user'
-                  />
-                }
-                focus
-                withRef
-                name='email'
-                placeholder={I18n.t('emailOrPhone')}
-                keyboardType='email-address'
-                returnKeyType='next'
-                onSubmitEditing={() => this.password.getRenderedComponent().refs.password.focus()}
-              />
-              <Field
-                component={Input}
-                ref={(componentRef) => this.password = componentRef}
-                refField='password'
-                style={s.password}
-                prefix={
-                  <Icon
-                    style={s.passwordIcon}
-                    name='lock'
-                  />
-                }
-                focus
-                withRef
-                name='password'
-                returnKeyType='go'
-                placeholder={I18n.t('password')}
-                secureTextEntry
-                onSubmitEditing={handleSubmit}
-                blurOnSubmit
-              />
-            </Input.Group>
-            <Button
-              type='link'
-              uppercase={false}
-              style={s.forgotPasswordBtn}
-              textStyle={s.forgotPasswordBtnText}
-              onClick={() => this.props.navigation.navigate('ForgotPassword')}
-            >
-              {I18n.t('forgotPassword')}
-            </Button>
-          </View>
+          <Txt.View style={s.header} textStyle={s.headerText}>
+            {I18n.t('welcomeBack')}
+          </Txt.View>
+          <Txt.View style={s.description} textStyle={s.descriptionText}>
+            {I18n.t('signInToContinue')}
+          </Txt.View>
+          <Input.Group>
+            <Field
+              component={Input}
+              ref={(componentRef) => this.email = componentRef}
+              refField='email'
+              style={s.email}
+              prefix={
+                <Icon
+                  style={s.emailIcon}
+                  name='user'
+                />
+              }
+              focus
+              withRef
+              name='email'
+              placeholder={I18n.t('emailOrPhone')}
+              keyboardType='email-address'
+              returnKeyType='next'
+              onSubmitEditing={() => this.password.getRenderedComponent().refs.password.focus()}
+            />
+            <Field
+              component={Input}
+              ref={(componentRef) => this.password = componentRef}
+              refField='password'
+              style={s.password}
+              prefix={
+                <Icon
+                  style={s.passwordIcon}
+                  name='lock'
+                />
+              }
+              focus
+              withRef
+              name='password'
+              returnKeyType='go'
+              placeholder={I18n.t('password')}
+              secureTextEntry
+              onSubmitEditing={handleSubmit}
+              blurOnSubmit
+            />
+          </Input.Group>
+          <Button
+            type='link'
+            uppercase={false}
+            style={s.forgotPasswordBtn}
+            textStyle={s.forgotPasswordBtnText}
+            onClick={() => this.props.navigation.navigate('ForgotPassword')}
+          >
+            {I18n.t('forgotPassword')}
+          </Button>
           <View style={s.actions}>
             <Button
               type='default'
@@ -116,8 +112,6 @@ class Login extends React.Component {
               }
             />
           </View>
-        </View>
-        <View style={s.footerWrapper}>
           <View style={s.footer}>
             <Txt.View textStyle={s.newUserText}>
               {I18n.t('newUser')}
@@ -125,12 +119,12 @@ class Login extends React.Component {
             <Button
               type='link'
               style={s.signUpBtn}
-              onClick={() => this.props.navigation.navigate('PersonType')}
+              onClick={() => navigation.navigate('PersonType')}
             >
               {I18n.t('signUp')}
             </Button>
           </View>
-        </View>
+        </ScrollView>
       </KeyboardAvoidingView>
     )
   }

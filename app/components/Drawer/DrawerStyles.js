@@ -67,7 +67,7 @@ export default StyleSheet.create({
     marginVertical: Metrics.smallMargin,
   },
   progress: {
-    marginRight: Metrics.baseMargin,
+    marginHorizontal: Metrics.smallMargin,
   },
   progressText: {},
   progressNumber: {

@@ -5,12 +5,16 @@ export default StyleSheet.create({
   container: {
     flex: 1,
   },
-  contentWrapper: {
+  content: {
+  },
+  scrollContent: {
+    paddingTop: Metrics.navBarHeight,
+    paddingHorizontal: Metrics.marginX,
     flex: 1,
-    position: 'relative',
   },
   background: {
     ...StyleSheet.absoluteFillObject,
+    bottom: Metrics.screenHeight * 0.17,
     borderBottomRightRadius: 100,
     overflow: 'hidden',
   },
@@ -20,37 +24,28 @@ export default StyleSheet.create({
     height: null,
     flex: 1,
   },
-  content: {
-    flex: 1,
-    paddingHorizontal: Metrics.marginX,
-    // TODO
-    paddingBottom: Metrics.doubleBaseMargin + Metrics.btnSizes.lg / 2,
-  },
   logoWrapper: {
-    flex: 1,
     justifyContent: 'center',
   },
   logo: {
     maxHeight: 50,
     resizeMode: 'contain',
-    flex: 1,
     alignSelf: 'center'
   },
   actions: {
     position: 'absolute',
-    bottom: -Metrics.btnSizes.lg / 2,
+    bottom: Metrics.screenHeight * 0.17 - Metrics.btnSizes.lg / 2,
     left: 0,
     right: 0,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  footerWrapper: {
-    minHeight: 100,
-  },
   footer: {
-    minHeight: 80,
-    marginTop: 20,
+    position: 'absolute',
+    bottom: Metrics.doubleBaseMargin,
+    left: 0,
+    right: 0,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',

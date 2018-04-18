@@ -28,7 +28,6 @@ export default StyleSheet.create({
     marginHorizontal: Metrics.baseMargin,
   },
   image: {
-    resizeMode: 'contain',
     width: null,
     height: null,
     flex: 1,

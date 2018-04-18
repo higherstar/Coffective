@@ -3,15 +3,17 @@ import { Colors, Fonts, Metrics } from '../../themes'
 
 export default StyleSheet.create({
   container: {
-    paddingTop: Metrics.navBarHeight,
-    paddingHorizontal: Metrics.marginX,
     flex: 1,
   },
   backgroundImage: {
     ...Metrics.backgroundFullScreenImage,
   },
   content: {
-    flex: 2,
+    paddingTop: Metrics.navBarHeight,
+    paddingHorizontal: Metrics.marginX,
+  },
+  scrollContent: {
+    flex: 1,
   },
   header: {
     marginBottom: Metrics.smallMargin,
@@ -44,10 +46,11 @@ export default StyleSheet.create({
   footer: {
   },
   actions: {
-    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+    marginTop: 'auto',
+    marginBottom: Metrics.doubleBaseMargin,
   },
   facebookBtn: {
     marginRight: Metrics.baseMargin,

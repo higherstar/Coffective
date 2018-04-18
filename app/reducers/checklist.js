@@ -1,5 +1,4 @@
 import createReducer from '../createReducer'
-import { getToken } from './user'
 
 // ------------------------------------
 // Constants
@@ -17,10 +16,8 @@ export const GET_ARTICLES_FAILURE = 'Checklist.GET_ARTICLES_FAILURE'
 // ------------------------------------
 export const getCategories = () => (dispatch, getState, {fetch}) => {
   dispatch({type: GET_CATEGORIES_REQUEST})
-  const {token} = dispatch(getToken())
-  return fetch(`/learn_categories/`, {
+  return fetch(`/wp/v2/learn_categories/`, {
     method: 'GET',
-    token,
     success: (categories) => dispatch({type: GET_CATEGORIES_SUCCESS, categories}),
     failure: () => dispatch({type: GET_CATEGORIES_FAILURE}),
   })
@@ -28,10 +25,8 @@ export const getCategories = () => (dispatch, getState, {fetch}) => {
 
 export const getArticles = () => (dispatch, getState, {fetch}) => {
   dispatch({type: GET_ARTICLES_REQUEST})
-  const {token} = dispatch(getToken())
-  return fetch(`/learn?per_page=50`, {
+  return fetch(`/wp/v2/learn?per_page=50`, {
     method: 'GET',
-    token,
     success: (articles) => dispatch({type: GET_ARTICLES_SUCCESS, articles}),
     failure: () => dispatch({type: GET_ARTICLES_FAILURE}),
   })

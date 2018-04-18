@@ -18,16 +18,28 @@ export const CLEAR = 'Register.CLEAR'
 // ------------------------------------
 // Actions
 // ------------------------------------
+// TODO
 export const register = (values) => (dispatch, getState, {fetch}) => {
   dispatch({type: REGISTER_REQUEST})
-  return fetch(`/user/me/`, {
+  const {personType, name, selectedState, age, expectation} = getState().register
+  return fetch(`/wp/v2/users`, {
     method: 'POST',
     body: {
-      email: values.email,
-      password: values.password,
+      username: 'admin1@examplewebsite.com',
+      email: 'admin1@examplewebsite.com',
+      password: 'qwerty@123',
+      name: 'Test 1',
+      roles: ['mom']
     },
-    success: (res) => dispatch({type: REGISTER_SUCCESS, success: ''}),
-    failure: (err) => dispatch({type: REGISTER_FAILURE, error: ''})
+    headers: {
+      'Authorization': `Bearer ${'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvbmV3LmNvZmZlY3RpdmUuY29tIiwiaWF0IjoxNTIzOTY3MDM5LCJuYmYiOjE1MjM5NjcwMzksImV4cCI6MTUyNDU3MTgzOSwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiNyJ9fX0.6xn1aEcaxn6YrL2TCekaXdO7MV9GB0bpfLKa4yqE8N8'}`,
+    },
+    success: (res) => {
+      dispatch({type: REGISTER_SUCCESS})
+    },
+    failure: (err) => {
+      dispatch({type: REGISTER_FAILURE})
+    }
   })
 }
 

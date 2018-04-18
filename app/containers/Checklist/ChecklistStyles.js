@@ -61,7 +61,6 @@ export default StyleSheet.create({
     fontSize: Metrics.icons.md,
   },
   categoryImage: {
-    resizeMode: 'contain',
     width: headHeight - Metrics.smallMargin,
     height: headHeight - Metrics.smallMargin,
     marginVertical: Metrics.smallMargin,

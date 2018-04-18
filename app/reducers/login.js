@@ -1,5 +1,6 @@
 import createReducer from '../createReducer'
-import {getUser} from './user'
+import { getUser, setToken } from './user'
+import { NavigationActions as navigation } from 'react-navigation'
 
 // ------------------------------------
 // Constants
@@ -13,17 +14,28 @@ export const CLEAR = 'Login.CLEAR'
 // ------------------------------------
 // Actions
 // ------------------------------------
-export const login = () => (dispatch, getState, {fetch}) => {
+export const login = (values) => (dispatch, getState, {fetch}) => {
   dispatch({type: LOGIN_REQUEST})
-  return fetch(`/login/`, {
-    method: 'GET',
-    success: (res) => dispatch({type: LOGIN_SUCCESS}),
+  return fetch(`/jwt-auth/v1/token`, {
+    method: 'POST',
+    body: {
+      // TODO
+      username: 'serhii',
+      password: 'qwerty@123',
+    },
+    success: (res) => dispatch(loginSuccess(res)),
     failure: (err) => {
-      // TODO backend
-      // dispatch({type: LOGIN_FAILURE, error: err})
-      dispatch(getUser())
+      // TODO show error
+      dispatch({type: LOGIN_FAILURE})
     }
   })
+}
+
+export const loginSuccess = (auth) => (dispatch, getState) => {
+  dispatch({type: LOGIN_SUCCESS})
+  dispatch(setToken(auth.token))
+  dispatch(getUser())
+  dispatch(navigation.navigate({ routeName: 'Home' }))
 }
 
 export const clear = () => ({type: CLEAR})

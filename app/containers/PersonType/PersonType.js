@@ -11,33 +11,32 @@ import { SkipButton } from '../../navigation/AppNavigation'
 // TODO move it
 const personTypes = [
   {
-    id: 1,
+    value: 'mom',
     name: 'Mom',
     image: Images.personTypes.mother,
   },
   {
-    id: 2,
+    value: 'parent',
     name: 'Parent',
     image: Images.personTypes.parent,
-
   },
   {
-    id: 3,
+    value: 'nurse',
     name: 'Nurse',
     image: Images.personTypes.nurse,
   },
   {
-    id: 4,
+    value: 'provider',
     name: 'Provider',
     image: Images.personTypes.provider,
   },
   {
-    id: 5,
+    value: 'friend',
     name: 'Friend',
     image: Images.personTypes.friend,
   },
   {
-    id: 6,
+    value: 'other',
     name: 'Other',
     image: Images.personTypes.other,
   },

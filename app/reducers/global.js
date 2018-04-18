@@ -1,11 +1,22 @@
 // @flow
-
 import createReducer from '../createReducer'
 
-export const STARTUP = 'STARTUP'
+// ------------------------------------
+// Constants
+// ------------------------------------
+export const STARTUP = 'Global.STARTUP'
 
+// ------------------------------------
+// Actions
+// ------------------------------------
 export const startup = () => ({ type: STARTUP })
 
-export const INITIAL_STATE = {}
+// ------------------------------------
+// Reducer
+// ------------------------------------
+const initialState = {
+}
 
-export default createReducer(INITIAL_STATE)
+export default createReducer(initialState, {
+})
+

@@ -1,7 +1,7 @@
 import React from 'react'
-import { DrawerNavigator, StackNavigator } from 'react-navigation'
+import { DrawerNavigator, StackNavigator, SwitchNavigator } from 'react-navigation'
 import { TouchableOpacity } from 'react-native'
-import { AppStyles, Colors, Fonts, Metrics } from '../themes'
+import { AppStyles, Colors, Fonts } from '../themes'
 import { Drawer, Txt } from '../components'
 import Welcome from '../containers/Welcome/Welcome'
 import Guide from '../containers/Guide/Guide'
@@ -24,6 +24,7 @@ import Champion from '../containers/Champion/Champion'
 import ChampionRole from '../containers/ChampionRole/ChampionRole'
 import TeamItem from '../containers/TeamItem/TeamItem'
 import SupportItem from '../containers/SupportItem/SupportItem'
+import AuthLoading from '../containers/AuthLoading/AuthLoading'
 import s from './AppNavigationStyles'
 import Icon from 'react-native-vector-icons/dist/MaterialIcons'
 
@@ -55,18 +56,7 @@ export const SkipButton = ({navigation, routeName}) => (
   </TouchableOpacity>
 )
 
-// Manifest of possible screens
-const MainNav = StackNavigator({
-  Welcome: {screen: Welcome},
-  Guide: {screen: Guide},
-  Login: {screen: Login},
-  ForgotPassword: {screen: ForgotPassword},
-  Register: {screen: Register},
-  PersonType: {screen: PersonType},
-  Name: {screen: Name},
-  State: {screen: State},
-  Age: {screen: Age},
-  Expectation: {screen: Expectation},
+const AppStack = StackNavigator({
   Home: {screen: Home},
   BuildTeam: {screen: BuildTeam},
   Faq: {screen: Faq},
@@ -78,6 +68,35 @@ const MainNav = StackNavigator({
   ChampionRole: {screen: ChampionRole},
   TeamItem: {screen: TeamItem},
   SupportItem: {screen: SupportItem},
+}, {
+  initialRouteName: 'Home',
+  cardStyle: {
+    backgroundColor: Colors.background,
+  },
+  navigationOptions: ({navigation}) => ({
+    headerStyle: AppStyles.transparentHeader,
+    headerTitleStyle: {
+      color: Colors.white,
+      fontSize: Fonts.size.h4,
+      fontWeight: '300',
+    },
+    headerTintColor: Colors.white,
+    headerLeft: <BackButton navigation={navigation}/>,
+    headerRight: <DrawerButton navigation={navigation}/>,
+  }),
+})
+
+const AuthStack = StackNavigator({
+  Login: {screen: Login},
+  Welcome: {screen: Welcome},
+  Guide: {screen: Guide},
+  ForgotPassword: {screen: ForgotPassword},
+  Register: {screen: Register},
+  PersonType: {screen: PersonType},
+  Name: {screen: Name},
+  State: {screen: State},
+  Age: {screen: Age},
+  Expectation: {screen: Expectation},
 }, {
   initialRouteName: 'Welcome',
   cardStyle: {
@@ -96,12 +115,16 @@ const MainNav = StackNavigator({
   }),
 })
 
+const MainNav = SwitchNavigator({
+  Auth: AuthStack,
+  AuthLoading,
+  App: AppStack,
+}, {
+  initialRouteName: 'AuthLoading',
+})
+
 const DrawerNav = DrawerNavigator({
   Main: {screen: MainNav},
-  Home: {screen: Home, navigationOptions: {drawerLabel: 'Home'}},
-  Faq: {screen: Faq, navigationOptions: {drawerLabel: 'Faq'}},
-  Checklist: {screen: Checklist, navigationOptions: {drawerLabel: 'Checklist'}},
-  BuildTeam: {screen: BuildTeam, navigationOptions: {drawerLabel: 'BuildTeam'}},
 }, {
   drawerWidth: 300,
   drawerPosition: 'left',

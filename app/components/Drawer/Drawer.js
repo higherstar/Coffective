@@ -33,36 +33,38 @@ class Drawer extends React.Component {
     const {user} = this.props
     return (
       <View style={s.container}>
-        <View style={s.head}>
-          <Image
-            style={s.avatar}
-            source={{uri: user.image}}
-          />
-          <View style={s.headerWrapper}>
-            <Txt.View style={s.header} textStyle={s.headerText}>Hello Mom!</Txt.View>
-            <Txt.View style={s.subHeader} textStyle={s.subHeaderText}>40 Weeks to Go!</Txt.View>
+        {!!user && (
+          <View style={s.head}>
+            <Image
+              style={s.avatar}
+              source={{uri: user.avatar_urls['96']}}
+            />
+            <View style={s.headerWrapper}>
+              <Txt.View style={s.header} textStyle={s.headerText}>Hello {user.name}!</Txt.View>
+              <Txt.View style={s.subHeader} textStyle={s.subHeaderText}>40 Weeks to Go!</Txt.View>
+            </View>
+            <ProgressCircle
+              size={64}
+              progress={0.3}
+              thickness={4}
+              borderWidth={0}
+              showsText
+              formatText={() => [
+                <Txt style={s.progressNumber} key='number'>
+                  40{'\n'}
+                </Txt>,
+                <Txt style={s.progressUnit} key='unit'>
+                  WEEKS
+                </Txt>
+              ]}
+              textStyle={s.progressText}
+              style={s.progress}
+              color={Colors.white}
+              unfilledColor={Colors.whiteMuted}
+              direction='counter-clockwise'
+            />
           </View>
-          <ProgressCircle
-            size={64}
-            progress={0.3}
-            thickness={4}
-            borderWidth={0}
-            showsText
-            formatText={() => [
-              <Txt style={s.progressNumber} key='number'>
-                40{'\n'}
-              </Txt>,
-              <Txt style={s.progressUnit} key='unit'>
-                WEEKS
-              </Txt>
-            ]}
-            textStyle={s.progressText}
-            style={s.progress}
-            color={Colors.white}
-            unfilledColor={Colors.whiteMuted}
-            direction='counter-clockwise'
-          />
-        </View>
+        )}
         <ScrollView style={s.content}>
           <DrawerItem label={'Start Here'} onClick={() => this.navigate('HowItWorks')} icon={Images.menu.start_here}/>
           <DrawerItem label={'Checklist'} onClick={() => this.navigate('Checklist')} icon={Images.menu.checklist}/>

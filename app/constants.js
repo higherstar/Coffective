@@ -36,3 +36,5 @@ export const ORG_TYPES = [
     value: 'Other',
   },
 ]
+
+export const TOKEN_STORAGE_KEY = 'token'

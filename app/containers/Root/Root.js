@@ -35,7 +35,7 @@ class RootContainer extends React.Component {
         <ReduxNavigation/>
         <MessageBar
           ref='alert'
-          viewTopInset={Platform.OS === 'ios' ? 0 : 10}
+          viewTopInset={Platform.OS === 'ios' ? 10 : 0}
           messageStyle={s.message}
           titleStyle={s.messageTitle}
           stylesheetSuccess={{

@@ -9,6 +9,7 @@ import s from './RegisterStyles'
 import { register } from '../../reducers/register'
 import Icon from 'react-native-vector-icons/dist/FontAwesome'
 import {Images} from '../../themes'
+import Spinner from 'react-native-loading-spinner-overlay'
 
 class Register extends React.Component {
   static navigationOptions = {
@@ -16,7 +17,7 @@ class Register extends React.Component {
   }
 
   render () {
-    const {handleSubmit} = this.props
+    const {handleSubmit, loading} = this.props
     return (
       <KeyboardAvoidingView style={s.container}>
         <Image
@@ -101,6 +102,7 @@ class Register extends React.Component {
             />
           </View>
         </ScrollView>
+        <Spinner visible={loading}/>
       </KeyboardAvoidingView>
     )
   }

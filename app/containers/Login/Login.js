@@ -9,6 +9,7 @@ import { Images } from '../../themes'
 import s from './LoginStyles'
 import { login } from '../../reducers/login'
 import Icon from 'react-native-vector-icons/dist/FontAwesome'
+import Spinner from 'react-native-loading-spinner-overlay'
 
 class Login extends React.Component {
   static navigationOptions = {
@@ -17,7 +18,7 @@ class Login extends React.Component {
   }
 
   render () {
-    const {handleSubmit, navigation} = this.props
+    const {handleSubmit, navigation, loading} = this.props
     return (
       <KeyboardAvoidingView style={s.container}>
         <ScrollView style={s.content} contentContainerStyle={s.scrollContent} keyboardShouldPersistTaps='handled'>
@@ -123,6 +124,7 @@ class Login extends React.Component {
             </Button>
           </View>
         </ScrollView>
+        <Spinner visible={loading}/>
       </KeyboardAvoidingView>
     )
   }

@@ -1,13 +1,14 @@
 import React from 'react'
-import { ActivityIndicator, View, } from 'react-native'
+import { View, } from 'react-native'
 import s from './AuthLoadingStyles'
 import { connect } from 'react-redux'
+import Spinner from 'react-native-loading-spinner-overlay'
 
 class AuthLoading extends React.Component {
   render () {
     return (
       <View style={s.container}>
-        <ActivityIndicator/>
+        <Spinner visible/>
       </View>
     )
   }

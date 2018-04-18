@@ -1,4 +1,5 @@
 import createReducer from '../createReducer'
+import { MessageBarManager } from 'react-native-message-bar'
 
 // ------------------------------------
 // Constants
@@ -14,14 +15,24 @@ export const CLEAR = 'ForgotPassword.CLEAR'
 // ------------------------------------
 export const forgotPassword = (values) => (dispatch, getState, {fetch}) => {
   dispatch({type: FORGOT_PASSWORD_REQUEST})
-  return fetch(`/user/me/password-reset/`, {
-    method: 'POST',
-    body: values,
-    success: (res) => dispatch({type: FORGOT_PASSWORD_SUCCESS, success: ''}),
-    failure: (err) => dispatch({type: FORGOT_PASSWORD_FAILURE, error: ''}),
+  return fetch(`/wp/v2/users/forgot/email=${values.email}`, {
+    method: 'GET',
+    success: () => {
+      dispatch({type: FORGOT_PASSWORD_SUCCESS})
+      MessageBarManager.showAlert({
+        message: `Check your email for next instructions.`,
+        alertType: 'success',
+      })
+    },
+    failure: (error) => {
+      dispatch({type: FORGOT_PASSWORD_FAILURE})
+      MessageBarManager.showAlert({
+        message: error && error.msg ? error.msg : 'Something went wrong. Please try again.',
+        alertType: 'error',
+      })
+    },
   })
 }
-
 
 export const clear = () => ({type: CLEAR})
 
@@ -30,27 +41,19 @@ export const clear = () => ({type: CLEAR})
 // ------------------------------------
 const initialState = {
   loading: false,
-  success: null,
-  error: null,
 }
 
 export default createReducer(initialState, {
   [FORGOT_PASSWORD_REQUEST]: (state, action) => ({
     loading: true,
-    error: null,
-    success: null,
   }),
-  [FORGOT_PASSWORD_SUCCESS]: (state, {success}) => ({
+  [FORGOT_PASSWORD_SUCCESS]: (state, action) => ({
     loading: false,
-    success,
   }),
-  [FORGOT_PASSWORD_FAILURE]: (state, {error}) => ({
+  [FORGOT_PASSWORD_FAILURE]: (state, action) => ({
     loading: false,
-    error,
   }),
   [CLEAR]: (state, action) => ({
     loading: false,
-    success: null,
-    error: null,
   }),
 })

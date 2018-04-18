@@ -10,6 +10,7 @@ import { forgotPassword } from '../../reducers/forgotPassword'
 import Icon from 'react-native-vector-icons/dist/FontAwesome'
 import { Images } from '../../themes'
 import { BackButton } from '../../navigation/AppNavigation'
+import Spinner from 'react-native-loading-spinner-overlay'
 
 class ForgotPassword extends React.Component {
   static navigationOptions = ({navigation}) => ({
@@ -20,7 +21,7 @@ class ForgotPassword extends React.Component {
   })
 
   render () {
-    const {handleSubmit} = this.props
+    const {handleSubmit, loading} = this.props
     return (
       <View style={s.container}>
         <Image
@@ -36,7 +37,6 @@ class ForgotPassword extends React.Component {
         <Field
           component={Input}
           style={s.email}
-          focus
           name='email'
           prefix={
             <Icon
@@ -59,6 +59,7 @@ class ForgotPassword extends React.Component {
           onSubmitEditing={handleSubmit}
           blurOnSubmit
         />
+        <Spinner visible={loading}/>
       </View>
     )
   }

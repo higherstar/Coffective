@@ -1,18 +1,18 @@
 // @flow
 import React from 'react'
-import { Image, View, TouchableOpacity } from 'react-native'
+import { Image, TouchableOpacity, View } from 'react-native'
 import I18n from 'react-native-i18n'
 import { connect } from 'react-redux'
 import { Button, HorizontalPicker, Img, Txt } from '../../components'
 import s from './ExpectationStyles'
 import { setExpectation } from '../../reducers/register'
 import Icon from 'react-native-vector-icons/dist/FontAwesome'
-import { Images, Colors } from '../../themes'
+import { Images } from '../../themes'
 import { SkipButton } from '../../navigation/AppNavigation'
 import { noop } from '../../utils/utils'
 import LinearGradient from 'react-native-linear-gradient'
 
-const WEEKS = [...Array(41).keys()].splice(1)
+const WEEKS = Array.from(Array(40), (item, i) => i + 1)
 // TODO move it to constants
 const LINEAR_GRADIENT = ['rgba(255, 255, 255, 0)', 'rgba(255, 255, 255, 0.3)', 'rgba(255, 255, 255, 0.5)']
 
@@ -52,7 +52,9 @@ class Expectation extends React.Component {
             {I18n.t('expectationDescription')}
           </Txt.View>
           <View style={s.imageWrapper}>
-            <Img source={Images.expectation[expectation !== null ? expectation === 40 ? 9 : Math.ceil(expectation / 5) : 1]} style={s.image}/>
+            <Img
+              source={Images.expectation[expectation !== null ? expectation === 40 ? 9 : Math.ceil(expectation / 5) : 1]}
+              style={s.image}/>
           </View>
         </LinearGradient>
         <View style={s.footer}>
@@ -72,11 +74,21 @@ class Expectation extends React.Component {
               <PickerLine/>
             </View>
             <View style={s.pickerActions}>
-              <TouchableOpacity activeOpacity={0.5} onPress={() => expectation !== 1 ? setExpectation(expectation - 1) : noop}>
+              <TouchableOpacity
+                activeOpacity={0.5}
+                onPress={() => expectation !== 1 ? setExpectation(expectation - 1) : noop}
+                style={s.arrowBtn}
+              >
                 <Img source={Images.slideArrowLeft}/>
               </TouchableOpacity>
-              <Txt style={s.expectation}>{`Around ${41 - expectation} week${41 - expectation === 1 ? '' : 's'} from now`}</Txt>
-              <TouchableOpacity activeOpacity={0.5} onPress={() => expectation !== 40 ? setExpectation(expectation + 1) : noop}>
+              <Txt style={s.expectation}>
+                {`Around ${41 - expectation} week${41 - expectation === 1 ? '' : 's'} from now`}
+              </Txt>
+              <TouchableOpacity
+                activeOpacity={0.5}
+                onPress={() => expectation !== 40 ? setExpectation(expectation + 1) : noop}
+                style={s.arrowBtn}
+              >
                 <Img source={Images.slideArrowRight}/>
               </TouchableOpacity>
             </View>

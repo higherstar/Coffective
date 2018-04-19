@@ -31,7 +31,7 @@ class HorizontalPickerItem extends React.Component {
 
   constructor (props) {
     super(props)
-    this.state = intialState
+    this.state = initialState
   }
 }
 
@@ -50,7 +50,7 @@ const defaultProps = {
   foregroundColor: defaultForegroundColor,
 }
 
-const intialState = {
+const initialState = {
   selectedItem: null,
   bounds: null,
   padding: {left: 0, right: 0}
@@ -61,7 +61,7 @@ class HorizontalPicker extends React.Component {
 
   constructor (props) {
     super(props)
-    this.state = intialState
+    this.state = initialState
     this.isScrolling = false
     this.scrollX = -1
     this.ignoreNextScroll = false
@@ -325,7 +325,8 @@ class HorizontalPicker extends React.Component {
           onMomentumScrollBegin={this.onMomentumScrollBegin}
           onMomentumScrollEnd={this.onMomentumScrollEnd}
           onLayout={this.onLayout}
-          style={this.scrollView}>
+          style={this.scrollView}
+        >
           <View style={styles.contentContainer}>
             {bounds && this.renderChildren(this.props.children)}
           </View>

@@ -44,6 +44,7 @@ export default StyleSheet.create({
   pickerWrapper: {
   },
   picker: {
+    marginVertical: Metrics.smallMargin,
     height: 45,
     alignSelf: 'flex-end',
   },
@@ -64,8 +65,11 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    height: 30,
+    height: 25,
     marginVertical: Metrics.smallMargin,
+  },
+  arrowBtn: {
+    padding: Metrics.smallMargin,
   },
   expectation: {
     color: Colors.white,

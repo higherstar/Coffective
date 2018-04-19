@@ -79,8 +79,7 @@ export const getUser = () => (dispatch, getState, {fetch}) => {
         dispatch({type: GET_USER_SUCCESS, user})
         dispatch(navigation.navigate({ routeName: 'App' }))
       },
-      failure: (err) => {
-        // TODO show error
+      failure: () => {
         dispatch({type: GET_USER_FAILURE})
         dispatch(navigation.navigate({ routeName: 'Auth' }))
       }

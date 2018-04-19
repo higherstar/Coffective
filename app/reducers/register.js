@@ -25,26 +25,27 @@ export const register = (values) => (dispatch, getState, {fetch}) => {
   const {personType, name, selectedState, age, expectation} = getState().register
   return fetch(`/wp/v2/users`, {
     method: 'POST',
+    formData: true,
     body: {
       username: values.email,
       email: values.email,
       password: values.password,
-      name: name,
-      roles: personType ? [personType.value] : []
+      // TODO make it better and add other fields
+      ...(name ? {name} : {}),
+      ...(personType ? {roles: personType.value} : {}),
+      // TODO improve formData object for nested fields - JSON.stringify needed for object in form data
+      acf_data: JSON.stringify({
+        ...(selectedState ? {state: selectedState} : {}),
+        ...(age ? {age: age.value} : {}),
+      }),
     },
     success: (user) => {
       dispatch({type: REGISTER_SUCCESS})
-      dispatch(navigation.navigate({ routeName: 'Login' }))
+      dispatch(navigation.navigate({routeName: 'Login'}))
       MessageBarManager.showAlert({
         message: `You're registered successfully. Now you can login.`,
         alertType: 'success',
       })
-      // TODO
-      // dispatch(updateUser({
-      //   id: user.id,
-      //   state: selectedState,
-      //   age: age,
-      // }))
     },
     failure: (error) => {
       dispatch({type: REGISTER_FAILURE})
@@ -67,7 +68,6 @@ export const setAge = (age) => ({type: SET_AGE, age})
 export const setExpectation = (expectation) => ({type: SET_EXPECTATION, expectation})
 
 export const clear = () => ({type: CLEAR})
-
 
 // ------------------------------------
 // Reducer

@@ -27,7 +27,7 @@ export const forgotPassword = (values) => (dispatch, getState, {fetch}) => {
     failure: (error) => {
       dispatch({type: FORGOT_PASSWORD_FAILURE})
       MessageBarManager.showAlert({
-        message: error && error.msg ? error.msg : 'Something went wrong. Please try again.',
+        message: error && error.message ? error.message : 'Something went wrong. Please try again.',
         alertType: 'error',
       })
     },

@@ -3,6 +3,10 @@ import { Platform, ScrollView, StyleSheet, Text, TouchableWithoutFeedback, View,
 
 // import PropTypes from 'prop-types';
 
+/*
+* https://github.com/mkko/react-native-hpicker
+* */
+
 const defaultForegroundColor = '#000'
 const defaultItemWidth = 30
 const loggingEnabled = false
@@ -267,7 +271,9 @@ class HorizontalPicker extends React.Component {
     return (
       <TouchableWithoutFeedback key={itemValue} onPress={this.handleItemPress(itemValue)}>
         <View style={[styles.itemContainer, {width: this.getItemWidth()}]}>
-          <Text style={[styles.itemText, child.props.style, {color, opacity}]}>{child.props.label}</Text>
+          {child.props.children || (
+            <Text style={[styles.itemText, child.props.style, {color, opacity}]}>{child.props.label}</Text>
+          )}
         </View>
       </TouchableWithoutFeedback>
     )

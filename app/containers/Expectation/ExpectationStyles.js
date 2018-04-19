@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { Colors, Metrics, Fonts } from '../../themes'
+import { Colors, Fonts, Metrics } from '../../themes'
 
 export default StyleSheet.create({
   container: {
@@ -10,7 +10,7 @@ export default StyleSheet.create({
     ...Metrics.backgroundFullScreenImage,
   },
   content: {
-    flexBasis: '55%',
+    flexBasis: '60%',
     paddingHorizontal: Metrics.marginX,
   },
   header: {
@@ -34,20 +34,23 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   image: {
-    flex: 1,
-    resizeMode: 'contain',
-    width: Metrics.screenWidth * 0.5
+    // to make image in center of the bottom of woman
+    marginLeft: Metrics.doubleBaseMargin,
   },
   footer: {
-    flexBasis: '45%',
+    flexBasis: '40%',
     paddingHorizontal: Metrics.marginX,
   },
+  pickerWrapper: {
+  },
   picker: {
-    flex: 1,
+    height: 45,
+    alignSelf: 'flex-end',
   },
   actions: {
+    justifyContent: 'center',
+    alignItems: 'center',
     flex: 1,
-    alignSelf: 'center'
   },
   submitBtn: {
     ...Metrics.boxShadow,
@@ -56,5 +59,56 @@ export default StyleSheet.create({
     alignSelf: 'center',
     fontSize: Metrics.icons.lg,
     color: Colors.primary,
+  },
+  pickerActions: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    height: 30,
+    marginVertical: Metrics.smallMargin,
+  },
+  expectation: {
+    color: Colors.white,
+  },
+  line: {
+    backgroundColor: Colors.whiteMuted,
+    width: 1,
+    height: 20,
+    alignSelf: 'flex-end',
+    paddingBottom: 10,
+  },
+  long: {
+    height: 35,
+  },
+  selected: {
+    backgroundColor: Colors.white,
+    width: 2,
+    height: 45,
+    position: 'absolute',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    // screen width with paddings and line width / 2
+    left: (Metrics.screenWidth - Metrics.doubleBaseMargin - 1) / 2,
+    bottom: 0,
+  },
+  circle: {
+    width: 15,
+    height: 15,
+    borderRadius: 7.5,
+    backgroundColor: Colors.whiteMuted,
+    position: 'absolute',
+    bottom: -7.5,
+    left: -7.5,
+    right: 0,
+  },
+  dot: {
+    width: 5,
+    height: 5,
+    borderRadius: 2.5,
+    backgroundColor: Colors.white,
+    position: 'absolute',
+    bottom: -2.5,
+    left: -2.5,
+    right: 0,
   },
 })

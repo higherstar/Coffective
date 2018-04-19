@@ -4087,6 +4087,12 @@ react-native-keyboard-aware-scroll-view@^0.5.0:
     prop-types "^15.6.0"
     react-native-iphone-x-helper "^1.0.1"
 
+react-native-linear-gradient@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.4.0.tgz#51d8ea12bb72a59bede9edc87b694b16b64cf435"
+  dependencies:
+    prop-types "^15.5.10"
+
 react-native-loading-spinner-overlay@^0.5.2:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/react-native-loading-spinner-overlay/-/react-native-loading-spinner-overlay-0.5.2.tgz#b7bcd277476d596615fd7feee601789f9bdc7acc"

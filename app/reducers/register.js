@@ -37,6 +37,7 @@ export const register = (values) => (dispatch, getState, {fetch}) => {
       acf_data: JSON.stringify({
         ...(selectedState ? {state: selectedState} : {}),
         ...(age ? {age: age.value} : {}),
+        ...(expectation ? {expecting: expectation} : {}),
       }),
     },
     success: (user) => {
@@ -78,7 +79,7 @@ const initialState = {
   name: '',
   selectedState: null,
   age: null,
-  expectation: null,
+  expectation: 1,
 }
 
 export default createReducer(initialState, {
@@ -112,6 +113,6 @@ export default createReducer(initialState, {
     name: '',
     selectedState: null,
     age: null,
-    expectation: null,
+    expectation: 1,
   }),
 })

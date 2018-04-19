@@ -29,16 +29,16 @@ const images = {
   championBackground: require('../static/champion_background.png'),
   champion: require('../static/champion.png'),
   expectation: {
-    1: require('../static/expectation/1.png'),
-    2: require('../static/expectation/2.png'),
-    3: require('../static/expectation/3.png'),
-    4: require('../static/expectation/1.png'),
-    5: require('../static/expectation/2.png'),
-    6: require('../static/expectation/3.png'),
-    7: require('../static/expectation/1.png'),
-    8: require('../static/expectation/2.png'),
-    9: require('../static/expectation/3.png'),
-    10: require('../static/expectation/1.png'),
+    0: require('../static/expectation/Birth.svg'),
+    1: require('../static/expectation/1month.svg'),
+    2: require('../static/expectation/2month.svg'),
+    3: require('../static/expectation/3month.svg'),
+    4: require('../static/expectation/4month.svg'),
+    5: require('../static/expectation/5month.svg'),
+    6: require('../static/expectation/6month.svg'),
+    7: require('../static/expectation/7month.svg'),
+    8: require('../static/expectation/8month.svg'),
+    9: require('../static/expectation/9month.svg'),
   },
   //
   mother: require('../static/figure2.png'),
@@ -74,6 +74,8 @@ const images = {
     start_here: {uri: 'https://new.coffective.com/wp-content/uploads/2018/04/start_here.svg'},
     find_support: {uri: 'https://new.coffective.com/wp-content/uploads/2018/04/find_support.svg'},
   },
+  slideArrowLeft: require('../static/slider_arrow_left.svg'),
+  slideArrowRight: require('../static/slider_arrow_right.svg'),
 }
 
 export default images

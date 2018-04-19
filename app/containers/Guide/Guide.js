@@ -13,6 +13,7 @@ class Guide extends React.Component {
     header: null,
     headerLeft: null,
     headerRight: null,
+    drawerLockMode: 'locked-closed',
   }
 
   componentDidMount () {

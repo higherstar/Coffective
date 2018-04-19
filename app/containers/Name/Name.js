@@ -15,7 +15,8 @@ class Name extends React.Component {
     headerLeft: null,
     headerRight: (
       <SkipButton navigation={navigation} routeName='State'/>
-    )
+    ),
+    drawerLockMode: 'locked-closed',
   })
 
   submit = () => {

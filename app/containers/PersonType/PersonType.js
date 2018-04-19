@@ -47,7 +47,8 @@ class PersonType extends React.Component {
     headerLeft: null,
     headerRight: (
       <SkipButton navigation={navigation} routeName='Name'/>
-    )
+    ),
+    drawerLockMode: 'locked-closed',
   })
 
   render () {

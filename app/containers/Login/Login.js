@@ -15,6 +15,7 @@ class Login extends React.Component {
   static navigationOptions = {
     headerLeft: null,
     headerRight: null,
+    drawerLockMode: 'locked-closed',
   }
 
   render () {

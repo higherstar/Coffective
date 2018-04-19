@@ -13,6 +13,7 @@ class Welcome extends React.Component {
     header: null,
     headerLeft: null,
     headerRight: null,
+    drawerLockMode: 'locked-closed',
   }
 
   render () {

@@ -47,7 +47,8 @@ class Age extends React.Component {
     headerLeft: null,
     headerRight: (
       <SkipButton navigation={navigation} routeName='Expectation'/>
-    )
+    ),
+    drawerLockMode: 'locked-closed',
   })
 
   render () {

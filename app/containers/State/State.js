@@ -74,7 +74,8 @@ class State extends React.Component {
     headerLeft: null,
     headerRight: (
       <SkipButton navigation={navigation} routeName='Age'/>
-    )
+    ),
+    drawerLockMode: 'locked-closed',
   })
 
   state = {

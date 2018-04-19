@@ -14,6 +14,7 @@ import Spinner from 'react-native-loading-spinner-overlay'
 class Register extends React.Component {
   static navigationOptions = {
     header: null,
+    drawerLockMode: 'locked-closed',
   }
 
   render () {

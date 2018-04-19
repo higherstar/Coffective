@@ -17,7 +17,8 @@ class ForgotPassword extends React.Component {
     headerRight: null,
     headerLeft: (
       <BackButton navigation={navigation} text={I18n.t('back')}/>
-    )
+    ),
+    drawerLockMode: 'locked-closed',
   })
 
   render () {

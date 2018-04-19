@@ -33,7 +33,8 @@ class Expectation extends React.Component {
     headerRight: (
       // TODO if skip set expectation to null
       <SkipButton navigation={navigation} routeName='Register'/>
-    )
+    ),
+    drawerLockMode: 'locked-closed',
   })
 
   render () {

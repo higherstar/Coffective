@@ -1,6 +1,6 @@
 // @flow
 import React from 'react'
-import {Image, ScrollView, View} from 'react-native'
+import { Image, KeyboardAvoidingView, ScrollView, View } from 'react-native'
 import {connect} from 'react-redux'
 import {Button, Input, Link, Select, Txt, Img} from '../../components'
 import I18n from 'react-native-i18n'
@@ -47,16 +47,16 @@ class FindSupport extends React.Component {
 
   render() {
     const {getPlaces, places, orgType, changeOrgType, zipCode, changeZipCode, navigation} = this.props
-    // TODO fix click on field - click without hiding keyboard
+
     return (
-      <View style={s.container}>
+      <KeyboardAvoidingView style={s.container}>
         <View style={s.head}>
           <Image
             style={s.backgroundImage}
             source={Images.findSupportBackground}
           />
         </View>
-        <ScrollView style={s.content} contentContainerStyle={s.scrollContent}>
+        <ScrollView style={s.content} contentContainerStyle={s.scrollContent} keyboardShouldPersistTaps='handled'>
           <View style={[s.mapWrapper, places.length > 0 && s.hasPlaces]}>
             <MapView
               ref={ref => {
@@ -97,6 +97,7 @@ class FindSupport extends React.Component {
               items={ORG_TYPES}
               onValueChange={(item) => changeOrgType(item)}
               value={orgType}
+              onDownArrow={() => this.zipCode.focus()}
             />
             <View style={s.actionsFooter}>
               <Input
@@ -104,6 +105,9 @@ class FindSupport extends React.Component {
                 style={s.zipInput}
                 value={zipCode}
                 onChangeText={changeZipCode}
+                refField={(ref) => {
+                  this.zipCode = ref
+                }}
               />
               <Button
                 type='primary'
@@ -152,7 +156,7 @@ class FindSupport extends React.Component {
             </View>
           )}
         </ScrollView>
-      </View>
+      </KeyboardAvoidingView>
     )
   }
 }

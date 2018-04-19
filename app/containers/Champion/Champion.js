@@ -38,7 +38,7 @@ class Champion extends React.Component {
             source={Images.championBackground}
           />
         </View>
-        <ScrollView style={s.content} contentContainerStyle={s.scrollContent}>
+        <ScrollView style={s.content} contentContainerStyle={s.scrollContent} keyboardShouldPersistTaps='handled'>
           {invited && (
             <TouchableOpacity activeOpacity={0.7} style={s.championInvitedCard} onPress={() => setInvited(false)}>
               <Icon

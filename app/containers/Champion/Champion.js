@@ -8,7 +8,8 @@ import s from './ChampionStyles'
 import { AppStyles, Images } from '../../themes'
 import { BackButton } from '../../navigation/AppNavigation'
 import Icon from 'react-native-vector-icons/dist/FontAwesome'
-import { setInvited } from '../../reducers/champion'
+import { inviteChampion, setInvited, setRole } from '../../reducers/champion'
+import Spinner from 'react-native-loading-spinner-overlay'
 
 class Champion extends React.Component {
   static navigationOptions = ({navigation}) => ({
@@ -19,11 +20,18 @@ class Champion extends React.Component {
     )
   })
 
+  componentDidMount () {
+    // TODO make it pretty
+    if (this.props.user.acf && this.props.user.acf && this.props.user.acf.champion_role) {
+      this.props.setRole(this.props.user.acf.champion_role)
+    }
+  }
+
   render () {
-    const {role, navigation, invited, setInvited} = this.props
+    const {role, navigation, invited, setInvited, handleSubmit, loading} = this.props
     const {category} = navigation.state.params
     return (
-      <KeyboardAvoidingView style={s.container} behavior='padding'>
+      <KeyboardAvoidingView style={s.container}>
         <View style={s.head}>
           <Image
             style={s.backgroundImage}
@@ -100,9 +108,8 @@ class Champion extends React.Component {
                         name='user'
                       />
                     }
-                    focus
                     withRef
-                    name='first_name'
+                    name='champion_first_name'
                     placeholder={I18n.t('firstName')}
                     returnKeyType='next'
                     onSubmitEditing={() => this.lastName.getRenderedComponent().refs.lastName.focus()}
@@ -117,9 +124,8 @@ class Champion extends React.Component {
                         name='user'
                       />
                     }
-                    focus
                     withRef
-                    name='last_name'
+                    name='champion_last_name'
                     placeholder={I18n.t('lastName')}
                     returnKeyType='next'
                     onSubmitEditing={() => this.email.getRenderedComponent().refs.email.focus()}
@@ -135,9 +141,8 @@ class Champion extends React.Component {
                         name='envelope'
                       />
                     }
-                    focus
                     withRef
-                    name='email'
+                    name='champion_email'
                     placeholder={I18n.t('email')}
                     keyboardType='email-address'
                     returnKeyType='next'
@@ -153,19 +158,18 @@ class Champion extends React.Component {
                         name='phone'
                       />
                     }
-                    focus
                     withRef
-                    name='phone'
+                    name='champion_phone'
                     placeholder={I18n.t('phone')}
                     keyboardType='numeric'
                     returnKeyType='done'
-                    onSubmitEditing={() => {}}
+                    onSubmitEditing={handleSubmit}
                     blurOnSubmit
                   />
                 </Input.Group>
               }
               actions={[
-                <Button key='1' size='sm' outline type='primary' onClick={() => setInvited(true)}>
+                <Button key='1' size='sm' outline type='primary' onClick={handleSubmit}>
                   {I18n.t('inviteChampion')}
                 </Button>
               ]}
@@ -176,6 +180,7 @@ class Champion extends React.Component {
             </Card>
           ]}
         </ScrollView>
+        <Spinner visible={loading}/>
       </KeyboardAvoidingView>
     )
   }
@@ -183,10 +188,21 @@ class Champion extends React.Component {
 
 const mapStateToProps = state => ({
   ...state.champion,
+  user: state.user.user,
+  initialValues: {
+    // TODO make it pretty
+    champion_role: state.user.acf ? state.user.acf.champion_role : '',
+    champion_first_name: state.user.acf ? state.user.acf.champion_first_name : '',
+    champion_last_name: state.user.acf ? state.user.acf.champion_last_name : '',
+    champion_phone: state.user.acf ? state.user.acf.champion_phone : '',
+    champion_email: state.user.acf ? state.user.acf.champion_email : '',
+  }
 })
 
 const mapDispatchToProps = {
   setInvited,
+  setRole,
+  onSubmit: inviteChampion,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(

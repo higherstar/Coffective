@@ -9,7 +9,7 @@ import { BackButton } from '../../navigation/AppNavigation'
 import { Images } from '../../themes'
 import { setRole } from '../../reducers/champion'
 
-// TODO
+// TODO move it to constants
 const roles = [
   'Father',
   'Partner',

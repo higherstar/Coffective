@@ -76,7 +76,6 @@ export const getUser = () => (dispatch, getState, {fetch}) => {
       method: 'GET',
       token,
       success: (user) => {
-        console.log('g', user)
         dispatch({type: GET_USER_SUCCESS, user})
         dispatch(navigation.navigate({ routeName: 'App' }))
       },

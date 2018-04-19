@@ -29,16 +29,17 @@ const images = {
   championBackground: require('../static/champion_background.png'),
   champion: require('../static/champion.png'),
   expectation: {
-    0: require('../static/expectation/Birth.svg'),
-    1: require('../static/expectation/1month.svg'),
-    2: require('../static/expectation/2month.svg'),
-    3: require('../static/expectation/3month.svg'),
-    4: require('../static/expectation/4month.svg'),
-    5: require('../static/expectation/5month.svg'),
-    6: require('../static/expectation/6month.svg'),
-    7: require('../static/expectation/7month.svg'),
-    8: require('../static/expectation/8month.svg'),
-    9: require('../static/expectation/9month.svg'),
+    // static svgs doesn't work for release build on Android using react-native-svg-uri
+    0: {uri: 'https://new.coffective.com/wp-content/uploads/2018/04/birth.svg'},
+    1: {uri: 'https://new.coffective.com/wp-content/uploads/2018/04/1month.svg'},
+    2: {uri: 'https://new.coffective.com/wp-content/uploads/2018/04/2month.svg'},
+    3: {uri: 'https://new.coffective.com/wp-content/uploads/2018/04/3month.svg'},
+    4: {uri: 'https://new.coffective.com/wp-content/uploads/2018/04/4month.svg'},
+    5: {uri: 'https://new.coffective.com/wp-content/uploads/2018/04/5month.svg'},
+    6: {uri: 'https://new.coffective.com/wp-content/uploads/2018/04/6month.svg'},
+    7: {uri: 'https://new.coffective.com/wp-content/uploads/2018/04/7month.svg'},
+    8: {uri: 'https://new.coffective.com/wp-content/uploads/2018/04/8month.svg'},
+    9: {uri: 'https://new.coffective.com/wp-content/uploads/2018/04/9month.svg'},
   },
   //
   mother: require('../static/figure2.png'),
@@ -74,8 +75,8 @@ const images = {
     start_here: {uri: 'https://new.coffective.com/wp-content/uploads/2018/04/start_here.svg'},
     find_support: {uri: 'https://new.coffective.com/wp-content/uploads/2018/04/find_support.svg'},
   },
-  slideArrowLeft: require('../static/slider_arrow_left.svg'),
-  slideArrowRight: require('../static/slider_arrow_right.svg'),
+  slideArrowLeft: {uri: 'https://new.coffective.com/wp-content/uploads/2018/04/slider_arrow_left.svg'},
+  slideArrowRight: {uri: 'https://new.coffective.com/wp-content/uploads/2018/04/slider_arrow_right.svg'},
 }
 
 export default images

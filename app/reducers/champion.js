@@ -1,5 +1,6 @@
 import createReducer from '../createReducer'
 import { getToken } from './user'
+import { MessageBarManager } from 'react-native-message-bar'
 
 // ------------------------------------
 // Constants
@@ -14,16 +15,37 @@ export const SET_INVITED = 'Champion.SET_INVITED'
 // ------------------------------------
 // Actions
 // ------------------------------------
-export const inviteChampion = () => (dispatch, getState, {fetch}) => {
+export const inviteChampion = (values) => (dispatch, getState, {fetch}) => {
   dispatch({type: INVITE_CHAMPION_REQUEST})
   const {token} = dispatch(getToken())
-  return fetch(`/invite-champion/`, {
-    method: 'GET',
+  const {user} = getState().user
+  const {role} = getState().champion
+  console.log({
+    ...values,
+    champion_role: role,
+  })
+  return fetch(`/acf/v3/users/${user.id}`, {
+    method: 'POST',
+    body: {
+      ...values,
+      champion_role: role,
+    },
     token,
-    success: () => dispatch({type: INVITE_CHAMPION_SUCCESS}),
-    failure: () => {
-      // TODO backend
+    success: (newAcf) => {
+      // TODO update user acf
+      dispatch(setInvited(true))
+      dispatch({type: INVITE_CHAMPION_SUCCESS})
+      MessageBarManager.showAlert({
+        message: `Champion invited.`,
+        alertType: 'success',
+      })
+    },
+    failure: (error) => {
       dispatch({type: INVITE_CHAMPION_FAILURE})
+      MessageBarManager.showAlert({
+        message: error && error.message ? error.message : 'Something went wrong. Please try again.',
+        alertType: 'error',
+      })
     }
   })
 }

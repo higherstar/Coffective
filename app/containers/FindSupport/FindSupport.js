@@ -1,17 +1,17 @@
 // @flow
 import React from 'react'
 import { Image, KeyboardAvoidingView, ScrollView, View } from 'react-native'
-import {connect} from 'react-redux'
-import {Button, Input, Link, Select, Txt, Img} from '../../components'
+import { connect } from 'react-redux'
+import { Button, Img, Input, Link, Select, Txt } from '../../components'
 import I18n from 'react-native-i18n'
 import s from './FindSupportStyles'
-import {Images} from '../../themes'
-import {DrawerButton} from '../../navigation/AppNavigation'
-import MapView, {Marker} from 'react-native-maps'
-import {changeOrgType, changeZipCode, getPlaces} from '../../reducers/findSupport'
+import { Images } from '../../themes'
+import { DrawerButton } from '../../navigation/AppNavigation'
+import MapView, { Marker } from 'react-native-maps'
+import { changeOrgType, changeZipCode, getPlaces } from '../../reducers/findSupport'
 import m from 'moment'
 import R from 'ramda'
-import {ORG_TYPES} from '../../constants'
+import { MAP_STYLE, ORG_TYPES } from '../../constants'
 
 const DEFAULT_PADDING = {top: 200, right: 25, bottom: 25, left: 25}
 
@@ -28,13 +28,13 @@ class FindSupport extends React.Component {
     this.props.getPlaces()
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     if (nextProps.places && !R.equals(nextProps.places, this.props.places)) {
       this.fitAllMarkers(nextProps.places)
     }
   }
 
-  fitAllMarkers(places) {
+  fitAllMarkers (places) {
     const markers = places.map(place => ({
       latitude: +place.acf.location.lat,
       longitude: +place.acf.location.lng,
@@ -45,7 +45,7 @@ class FindSupport extends React.Component {
     })
   }
 
-  render() {
+  render () {
     const {getPlaces, places, orgType, changeOrgType, zipCode, changeZipCode, navigation} = this.props
 
     return (
@@ -62,6 +62,7 @@ class FindSupport extends React.Component {
               ref={ref => {
                 this.map = ref
               }}
+              customMapStyle={MAP_STYLE}
               style={s.map}
             >
               {places.map((place, i) => (

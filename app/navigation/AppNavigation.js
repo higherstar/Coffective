@@ -98,7 +98,7 @@ const AuthStack = StackNavigator({
   Age: {screen: Age},
   Expectation: {screen: Expectation},
 }, {
-  initialRouteName: 'Expectation',
+  initialRouteName: 'Welcome',
   cardStyle: {
     backgroundColor: Colors.background,
   },

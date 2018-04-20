@@ -7,6 +7,7 @@ import s from './GuideStyles'
 import { connect } from 'react-redux'
 import { getCarousel } from '../../reducers/carousel'
 import {Images} from '../../themes'
+import Spinner from 'react-native-loading-spinner-overlay'
 
 class Guide extends React.Component {
   static navigationOptions = {
@@ -21,7 +22,7 @@ class Guide extends React.Component {
   }
 
   render () {
-    const {carousel} = this.props
+    const {carousel, loading} = this.props
     return (
       <View style={s.container}>
         <Image
@@ -37,17 +38,17 @@ class Guide extends React.Component {
             <View key={i} style={s.item}>
               <Image
                 style={s.image}
-                source={item.image}
+                source={{uri: item.banner_image}}
               />
               <View style={s.content}>
                 <Txt.View style={s.subHeader} textStyle={s.subHeaderText}>
-                  {item.subHeader.toUpperCase()}
+                  {item.acf.top_title.toUpperCase()}
                 </Txt.View>
                 <Txt.View type='light' size='h1' style={s.header} textStyle={s.headerText}>
-                  {item.header}
+                  {item.title.rendered}
                 </Txt.View>
                 <Txt.View type='mediumText' size='medium' style={s.description} textStyle={s.descriptionText}>
-                  {item.description}
+                  {item.acf.description}
                 </Txt.View>
               </View>
             </View>
@@ -71,6 +72,7 @@ class Guide extends React.Component {
             {I18n.t('login')}
           </Button>
         </Button.Group>
+        <Spinner visible={loading && !carousel.length}/>
       </View>
     )
   }

@@ -1,8 +1,10 @@
 import { StyleSheet } from 'react-native'
-import { Colors, Metrics, Fonts } from '../../themes'
+import { Colors, Metrics } from '../../themes'
+
+const prefixWidth = 35
 
 export default StyleSheet.create({
-  option: {
+  optionWrapper: {
     marginLeft: Metrics.marginX,
     paddingVertical: Metrics.smallMargin * 1.5,
     borderBottomColor: Colors.border,
@@ -10,5 +12,17 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+  },
+  option: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingLeft: prefixWidth,
+  },
+  icon: {
+    position: 'absolute',
+    left: 0,
+    width: prefixWidth,
+    alignSelf: 'center',
+    alignItems: 'center',
   },
 })

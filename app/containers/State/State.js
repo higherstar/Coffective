@@ -3,71 +3,13 @@ import React from 'react'
 import { Image, ScrollView, View } from 'react-native'
 import I18n from 'react-native-i18n'
 import { connect } from 'react-redux'
-import { Input, Txt, RadioButtons } from '../../components'
+import { Input, RadioButtons, Txt } from '../../components'
 import s from './StateStyles'
 import { selectState } from '../../reducers/register'
 import Icon from 'react-native-vector-icons/dist/FontAwesome'
 import { SkipButton } from '../../navigation/AppNavigation'
 import { Images } from '../../themes'
-
-// TODO move it
-const states = [
-  'Alaska',
-  'Alabama',
-  'Arkansas',
-  'American Samoa',
-  'Arizona',
-  'California',
-  'Colorado',
-  'Connecticut',
-  'District of Columbia',
-  'Delaware',
-  'Florida',
-  'Georgia',
-  'Guam',
-  'Hawaii',
-  'Iowa',
-  'Idaho',
-  'Illinois',
-  'Indiana',
-  'Kansas',
-  'Kentucky',
-  'Louisiana',
-  'Massachusetts',
-  'Maryland',
-  'Maine',
-  'Michigan',
-  'Minnesota',
-  'Missouri',
-  'Mississippi',
-  'Montana',
-  'North Carolina',
-  ' North Dakota',
-  'Nebraska',
-  'New Hampshire',
-  'New Jersey',
-  'New Mexico',
-  'Nevada',
-  'New York',
-  'Ohio',
-  'Oklahoma',
-  'Oregon',
-  'Pennsylvania',
-  'Puerto Rico',
-  'Rhode Island',
-  'South Carolina',
-  'South Dakota',
-  'Tennessee',
-  'Texas',
-  'Utah',
-  'Virginia',
-  'Virgin Islands',
-  'Vermont',
-  'Washington',
-  'Wisconsin',
-  'West Virginia',
-  'Wyoming'
-]
+import { STATES } from '../../constants'
 
 class State extends React.Component {
   static navigationOptions = ({navigation}) => ({
@@ -79,14 +21,14 @@ class State extends React.Component {
   })
 
   state = {
-    filteredStates: states,
+    filteredStates: STATES,
     search: '',
   }
 
   handleChangeSearch = (value) => {
     this.setState({
       search: value,
-      filteredStates: states.filter(item => item.toLowerCase().includes(value.toLowerCase()))
+      filteredStates: STATES.filter(item => item.toLowerCase().includes(value.toLowerCase()))
     })
   }
 

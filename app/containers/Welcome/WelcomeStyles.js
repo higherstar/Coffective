@@ -6,12 +6,8 @@ export default StyleSheet.create({
     flex: 1,
     position: 'relative',
   },
-  backgroundVideo: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    bottom: 0,
-    right: 0,
+  backgroundImage: {
+    ...Metrics.backgroundFullScreenImage,
   },
   content: {
     backgroundColor: Colors.transparent,

@@ -1,7 +1,6 @@
 // @flow
 import React from 'react'
-import { View } from 'react-native'
-import Video from 'react-native-video'
+import { Image, View } from 'react-native'
 import I18n from 'react-native-i18n'
 import { connect } from 'react-redux'
 import { Button, Txt } from '../../components'
@@ -19,12 +18,9 @@ class Welcome extends React.Component {
   render () {
     return (
       <View style={s.container}>
-        <Video
-          source={Images.backgroundVideo}
-          style={s.backgroundVideo}
-          muted
-          resizeMode='cover'
-          repeat
+        <Image
+          source={Images.welcomeBackground}
+          style={s.backgroundImage}
         />
         <View style={s.content}>
           <Txt.View style={s.header} textStyle={s.headerText}>

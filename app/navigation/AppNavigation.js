@@ -41,8 +41,8 @@ export const BackButton = ({navigation, text}) => (
 export const DrawerButton = ({navigation}) => (
   <TouchableOpacity
     style={s.iconWrapper}
-    onPress={() => navigation.navigate('DrawerOpen')}>
-
+    onPress={() => navigation.navigate('DrawerOpen')}
+  >
     <Icon style={s.icon} name='menu'/>
   </TouchableOpacity>
 )
@@ -50,8 +50,8 @@ export const DrawerButton = ({navigation}) => (
 export const SkipButton = ({navigation, routeName}) => (
   <TouchableOpacity
     style={s.skipBtn}
-    onPress={() => navigation.navigate(routeName)}>
-
+    onPress={() => navigation.navigate(routeName)}
+  >
     <Txt style={s.skipBtnText}>Skip</Txt>
   </TouchableOpacity>
 )

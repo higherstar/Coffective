@@ -24,7 +24,7 @@ export default StyleSheet.create({
     marginBottom: Metrics.baseMargin,
     flex: 1,
   },
-  wicCard: {
+  checklistCard: {
     position: 'relative',
     backgroundColor: Colors.white,
     borderRadius: 14,
@@ -33,17 +33,17 @@ export default StyleSheet.create({
     minHeight: 200,
     ...Metrics.boxShadow,
   },
-  wicHeader: {
+  checklistHeader: {
     marginBottom: Metrics.smallMargin,
   },
-  wicHeaderText: {
+  checklistHeaderText: {
     fontSize: Fonts.size.h1,
     fontWeight: '300',
   },
-  wicDescription: {
+  checklistDescription: {
     marginBottom: Metrics.smallMargin,
   },
-  wicDescriptionText: {
+  checklistDescriptionText: {
     color: '#8E8E93',
     fontFamily: Fonts.type.secondary,
     fontWeight: '500',

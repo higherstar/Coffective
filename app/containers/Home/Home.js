@@ -37,16 +37,23 @@ class Home extends React.Component {
           />
         </View>
         <ScrollView style={s.content}>
-          <TouchableOpacity activeOpacity={0.7} onPress={() => {}} style={s.wicCard}>
-            <Txt.View style={s.wicDescription} textStyle={s.wicDescriptionText}>
-              {I18n.t('wicDescription')}
+          <TouchableOpacity
+            activeOpacity={0.7}
+            onPress={() => navigation.navigate('Checklist')}
+            style={s.checklistCard}
+          >
+            <Txt.View style={s.checklistDescription} textStyle={s.checklistDescriptionText}>
+              {'Get you and your baby off to a great start'}
             </Txt.View>
-            <Txt.View style={s.wicHeader} textStyle={s.wicHeaderText}>
-              {I18n.t('wicHeader')}
+            <Txt.View style={s.checklistHeader} textStyle={s.checklistHeaderText}>
+              {'Checklist'}
             </Txt.View>
           </TouchableOpacity>
-          <TouchableOpacity activeOpacity={0.7} onPress={() => navigation.navigate('BuildTeam')}
-                            style={s.buildTeamCard}>
+          <TouchableOpacity
+            activeOpacity={0.7}
+            onPress={() => navigation.navigate('BuildTeam')}
+            style={s.buildTeamCard}
+          >
             <Txt.View style={s.buildTeamHeader} textStyle={s.buildTeamHeaderText}>
               {I18n.t('buildTeamHeader')}
             </Txt.View>

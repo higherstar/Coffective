@@ -69,7 +69,7 @@ const AppStack = StackNavigator({
   TeamItem: {screen: TeamItem},
   SupportItem: {screen: SupportItem},
 }, {
-  initialRouteName: 'BuildTeam',
+  initialRouteName: 'Home',
   cardStyle: {
     backgroundColor: Colors.background,
   },

@@ -77,10 +77,13 @@ class FindSupport extends React.Component {
                 >
                   {/*not working without View wrapper*/}
                   <View>
-                    <Img
-                      source={{uri: place.map_icon}}
-                      style={s.placeImage}
-                    />
+                    {/*TODO backend doesn't return icons sometimes*/}
+                    {place.map_icon ? (
+                      <Img
+                        source={{uri: place.map_icon}}
+                        style={s.placeImage}
+                      />
+                    ) : null}
                   </View>
                 </Marker>
               ))}
@@ -131,10 +134,12 @@ class FindSupport extends React.Component {
                     contentStyle={s.placeLinkContent}
                     prefixStyle={s.placeImageWrapper}
                     prefix={
-                      <Img
-                        source={{uri: place.icon}}
-                        style={s.placeImage}
-                      />
+                      place.icon ? (
+                        <Img
+                          source={{uri: place.icon}}
+                          style={s.placeImage}
+                        />
+                      ) : null
                     }
                     onClick={() => navigation.navigate('SupportItem', {place})}
                   >

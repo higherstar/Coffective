@@ -67,11 +67,12 @@ class State extends React.Component {
         <ScrollView style={s.content} keyboardShouldPersistTaps='handled' keyboardDismissMode='on-drag'>
           <RadioButtons
             options={filteredStates}
-            onSelection={(...props) => {
-              selectState(...props)
+            onSelection={(item) => {
+              selectState(item.label)
               navigation.navigate('Age')
             }}
             selectedOption={selectedState}
+            testOptionEqual={(selectedValue, option) => selectedValue === option.label}
           />
         </ScrollView>
       </View>

@@ -192,10 +192,10 @@ export const STATES = [
 ]
 
 export const CHAMPION_ROLES = [
-  {value: 'Father', label: 'Father'},
-  {value: 'Partner', label: 'Partner'},
-  {value: 'Grandmother', label: 'Grandmother'},
-  {value: 'Friend', label: 'Friend'},
-  {value: 'Doula', label: 'Doula'},
-  {value: 'Other', label: 'Other'},
+  {label: 'Father'},
+  {label: 'Partner'},
+  {label: 'Grandmother'},
+  {label: 'Friend'},
+  {label: 'Doula'},
+  {label: 'Other'},
 ]

@@ -33,10 +33,11 @@ class ChampionRole extends React.Component {
           <RadioButtons
             options={CHAMPION_ROLES}
             onSelection={(item) => {
-              setRole(item)
+              setRole(item.label)
               navigation.goBack()
             }}
             selectedOption={role}
+            testOptionEqual={(selectedValue, option) => selectedValue === option.label}
           />
         </ScrollView>
       </View>

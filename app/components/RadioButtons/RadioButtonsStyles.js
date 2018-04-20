@@ -16,6 +16,8 @@ export default StyleSheet.create({
   option: {
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  withIcon: {
     paddingLeft: prefixWidth,
   },
   icon: {

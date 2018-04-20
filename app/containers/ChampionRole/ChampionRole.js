@@ -8,16 +8,7 @@ import s from './ChampionRoleStyles'
 import { BackButton } from '../../navigation/AppNavigation'
 import { Images } from '../../themes'
 import { setRole } from '../../reducers/champion'
-
-// TODO move it to constants
-const roles = [
-  'Father',
-  'Partner',
-  'Grandmother',
-  'Friend',
-  'Doula',
-  'Other',
-]
+import { CHAMPION_ROLES } from '../../constants'
 
 class ChampionRole extends React.Component {
   static navigationOptions = ({navigation}) => ({
@@ -40,7 +31,7 @@ class ChampionRole extends React.Component {
         </View>
         <ScrollView style={s.content} contentContainerStyle={s.scrollContent}>
           <RadioButtons
-            options={roles}
+            options={CHAMPION_ROLES}
             onSelection={(item) => {
               setRole(item)
               navigation.goBack()

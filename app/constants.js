@@ -190,3 +190,12 @@ export const STATES = [
   {label: 'Wisconsin', icon: 'WI'},
   {label: 'Wyoming', icon: 'WY'},
 ]
+
+export const CHAMPION_ROLES = [
+  {value: 'Father', label: 'Father'},
+  {value: 'Partner', label: 'Partner'},
+  {value: 'Grandmother', label: 'Grandmother'},
+  {value: 'Friend', label: 'Friend'},
+  {value: 'Doula', label: 'Doula'},
+  {value: 'Other', label: 'Other'},
+]

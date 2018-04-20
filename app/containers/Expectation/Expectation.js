@@ -12,8 +12,9 @@ import { SkipButton } from '../../navigation/AppNavigation'
 import { noop } from '../../utils/utils'
 import LinearGradient from 'react-native-linear-gradient'
 
+const WEEKS_COUNT = 41
 // 41 is birth
-const WEEKS = Array.from(Array(41), (item, i) => i + 1)
+const WEEKS = Array.from(Array(WEEKS_COUNT), (item, i) => i + 1)
 // TODO move it to constants
 const LINEAR_GRADIENT = ['rgba(255, 255, 255, 0)', 'rgba(255, 255, 255, 0.3)', 'rgba(255, 255, 255, 0.5)']
 
@@ -21,10 +22,10 @@ const getExpectationImage = (expectation) => {
   let image = 'month1'
   if (expectation) {
     switch (expectation) {
-      case 41:
+      case WEEKS_COUNT:
         image = 'birth'
         break
-      case 40:
+      case WEEKS_COUNT - 1:
         image = 'month9'
         break
       default:
@@ -36,10 +37,10 @@ const getExpectationImage = (expectation) => {
 }
 
 const getExpectationLabel = (expectation) => {
-  if (expectation === 41) {
+  if (expectation === WEEKS_COUNT) {
     return `I've given birth`
   }
-  return `Around ${41 - expectation} week${41 - expectation === 1 ? '' : 's'} from now`
+  return `Around ${WEEKS_COUNT - expectation} week${WEEKS_COUNT - expectation === 1 ? '' : 's'} from now`
 }
 
 // TODO move to another component and improve - do not remove wrappers - it doesn't work without them
@@ -113,7 +114,7 @@ class Expectation extends React.Component {
               </Txt>
               <TouchableOpacity
                 activeOpacity={0.5}
-                onPress={() => expectation !== 40 ? setExpectation(expectation + 1) : noop}
+                onPress={() => expectation !== WEEKS_COUNT ? setExpectation(expectation + 1) : noop}
                 style={s.arrowBtn}
               >
                 <Img source={Images.slideArrowRight}/>

@@ -17,10 +17,7 @@ export const getCarousel = () => (dispatch, getState, {fetch}) => {
   return fetch(`/wp/v2/welcome_guide`, {
     method: 'GET',
     token,
-    success: (carousel) => {
-      dispatch({type: GET_CAROUSEL_SUCCESS, carousel})
-      console.log(carousel)
-    },
+    success: (carousel) => dispatch({type: GET_CAROUSEL_SUCCESS, carousel}),
     failure: () => dispatch({type: GET_CAROUSEL_FAILURE})
   })
 }

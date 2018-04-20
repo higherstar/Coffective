@@ -24,6 +24,7 @@ class Champion extends React.Component {
     // TODO make it pretty
     if (this.props.user.acf && this.props.user.acf && this.props.user.acf.champion_role) {
       this.props.setRole(this.props.user.acf.champion_role)
+      this.props.setInvited(true)
     }
   }
 
@@ -191,11 +192,11 @@ const mapStateToProps = state => ({
   user: state.user.user,
   initialValues: {
     // TODO make it pretty
-    champion_role: state.user.acf ? state.user.acf.champion_role : '',
-    champion_first_name: state.user.acf ? state.user.acf.champion_first_name : '',
-    champion_last_name: state.user.acf ? state.user.acf.champion_last_name : '',
-    champion_phone: state.user.acf ? state.user.acf.champion_phone : '',
-    champion_email: state.user.acf ? state.user.acf.champion_email : '',
+    champion_role: state.user.user.acf ? state.user.user.acf.champion_role : '',
+    champion_first_name: state.user.user.acf ? state.user.user.acf.champion_first_name : '',
+    champion_last_name: state.user.user.acf ? state.user.user.acf.champion_last_name : '',
+    champion_phone: state.user.user.acf ? state.user.user.acf.champion_phone : '',
+    champion_email: state.user.user.acf ? state.user.user.acf.champion_email : '',
   }
 })
 

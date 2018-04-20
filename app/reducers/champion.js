@@ -1,5 +1,5 @@
 import createReducer from '../createReducer'
-import { getToken } from './user'
+import { getToken, setUser } from './user'
 import { MessageBarManager } from 'react-native-message-bar'
 
 // ------------------------------------
@@ -20,19 +20,19 @@ export const inviteChampion = (values) => (dispatch, getState, {fetch}) => {
   const {token} = dispatch(getToken())
   const {user} = getState().user
   const {role} = getState().champion
-  console.log({
-    ...values,
-    champion_role: role,
-  })
-  return fetch(`/acf/v3/users/${user.id}`, {
+  return fetch(`/wp/v2/users/${user.id}`, {
     method: 'POST',
+    formData: true,
     body: {
-      ...values,
-      champion_role: role,
+      // TODO improve formData object for nested fields
+      acf_data: JSON.stringify({
+        ...values,
+        champion_role: role,
+      })
     },
     token,
-    success: (newAcf) => {
-      // TODO update user acf
+    success: (updatedUser) => {
+      dispatch(setUser(updatedUser))
       dispatch(setInvited(true))
       dispatch({type: INVITE_CHAMPION_SUCCESS})
       MessageBarManager.showAlert({

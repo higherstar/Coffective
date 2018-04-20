@@ -18,12 +18,6 @@ export default StyleSheet.create({
   content: {
     flex: 1,
   },
-  avatar: {
-    width: 66,
-    height: 66,
-    resizeMode: 'cover',
-    borderRadius: 33,
-  },
   headerWrapper: {
     marginLeft: Metrics.smallMargin,
     flex: 1,

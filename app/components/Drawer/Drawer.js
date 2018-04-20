@@ -35,10 +35,6 @@ class Drawer extends React.Component {
       <View style={s.container}>
         {!!user && (
           <View style={s.head}>
-            <Image
-              style={s.avatar}
-              source={{uri: user.avatar_urls['96']}}
-            />
             <View style={s.headerWrapper}>
               <Txt.View style={s.header} textStyle={s.headerText}>Hello {user.name}!</Txt.View>
               <Txt.View style={s.subHeader} textStyle={s.subHeaderText}>40 Weeks to Go!</Txt.View>

@@ -22,6 +22,7 @@ class Welcome extends React.Component {
           source={Images.welcomeBackground}
           style={s.backgroundImage}
         />
+        <View style={s.overlay}/>
         <View style={s.content}>
           <Txt.View style={s.header} textStyle={s.headerText}>
             {I18n.t('welcomeHeader')}

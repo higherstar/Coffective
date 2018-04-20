@@ -9,6 +9,10 @@ export default StyleSheet.create({
   backgroundImage: {
     ...Metrics.backgroundFullScreenImage,
   },
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+  },
   content: {
     backgroundColor: Colors.transparent,
     justifyContent: 'flex-end',

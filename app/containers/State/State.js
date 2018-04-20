@@ -28,7 +28,7 @@ class State extends React.Component {
   handleChangeSearch = (value) => {
     this.setState({
       search: value,
-      filteredStates: STATES.filter(item => item.toLowerCase().includes(value.toLowerCase()))
+      filteredStates: STATES.filter(item => item.label.toLowerCase().includes(value.toLowerCase()))
     })
   }
 

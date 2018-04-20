@@ -24,7 +24,6 @@ export const inviteChampion = (values) => (dispatch, getState, {fetch}) => {
     method: 'POST',
     formData: true,
     body: {
-      // TODO improve formData object for nested fields
       acf_data: JSON.stringify({
         ...values,
         champion_role: role,

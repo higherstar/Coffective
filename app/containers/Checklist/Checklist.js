@@ -1,6 +1,6 @@
 import React from 'react'
 import { Image, Linking, ScrollView, TouchableOpacity, View } from 'react-native'
-import { getArticles, getCategories } from '../../reducers/checklist'
+import { ACF_CATEGORIES, CATEGORIES_ORDER, checkItem, getArticles, getCategories } from '../../reducers/checklist'
 import I18n from 'react-native-i18n'
 import { connect } from 'react-redux'
 import { Img, Link, Txt } from '../../components'
@@ -11,16 +11,13 @@ import { DrawerButton } from '../../navigation/AppNavigation'
 import Checkbox from 'react-native-check-box'
 import Color from 'color'
 import Spinner from 'react-native-loading-spinner-overlay'
+import flatten from 'lodash/flatten'
 
-// TODO backend :(
-const categoriesOrder = [
-  'get-ready',
-  'fall-in-love',
-  'keep-baby-close',
-  'learn-your-baby',
-  'nourish',
-  'protect',
-]
+// TODO use best practices on backend
+const getCheckedItems = (acf) => {
+  // it returns all checked items from all categories names from user acf
+  return flatten(ACF_CATEGORIES.map(category => acf[category]))
+}
 
 class Checklist extends React.Component {
   static navigationOptions = ({navigation}) => ({
@@ -37,7 +34,9 @@ class Checklist extends React.Component {
   }
 
   render () {
-    const {categories, articles, navigation, loading} = this.props
+    const {categories, articles, navigation, loading, acf, checkItem} = this.props
+    const checkedItems = getCheckedItems(acf)
+
     return (
       <View style={s.container}>
         <View style={s.head}>
@@ -47,7 +46,7 @@ class Checklist extends React.Component {
           />
         </View>
         <ScrollView style={s.content} contentContainerStyle={s.scrollContent}>
-          {categoriesOrder
+          {CATEGORIES_ORDER
             .map(slug => categories.find(item => item.slug === slug))
             .filter(item => item)
             .map((category, i) => {
@@ -84,23 +83,29 @@ class Checklist extends React.Component {
                       style={s.categoryImage}
                     />
                   </View>
-                  {categoryArticles.map((article, j) =>
-                    <Link
-                      prefixType='checkbox'
-                      key={j}
-                      prefix={
-                        <Checkbox
-                          onClick={() => {}}
-                          isChecked={article.checked}
-                          checkBoxColor={'#00D6FF'}
-                        />
-                      }
-                      onClick={() => navigation.navigate('Article', {article, category})}
-                      textStyle={[!article.checked && s.notChecked]}
-                    >
-                      {article.title.rendered}
-                    </Link>
-                  )}
+                  {categoryArticles.map((article, j) => {
+                    const checked = !!checkedItems.find(item => item === article.title.rendered)
+                    return (
+                      <Link
+                        prefixType='checkbox'
+                        key={j}
+                        prefix={
+                          <Checkbox
+                            onClick={() => checkItem({
+                              title: article.title.rendered,
+                              category: category.slug,
+                            })}
+                            isChecked={checked}
+                            checkBoxColor={'#00D6FF'}
+                          />
+                        }
+                        onClick={() => navigation.navigate('Article', {article, category, checked})}
+                        textStyle={[!article.checked && s.notChecked]}
+                      >
+                        {article.title.rendered}
+                      </Link>
+                    )
+                  })}
                 </View>
               ) : null
             })}
@@ -113,11 +118,13 @@ class Checklist extends React.Component {
 
 const mapStateToProps = state => ({
   ...state.checklist,
+  acf: state.user.user.acf,
 })
 
 const mapDispatchToProps = {
   getCategories,
   getArticles,
+  checkItem,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Checklist)

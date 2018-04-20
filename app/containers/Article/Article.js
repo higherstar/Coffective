@@ -7,6 +7,7 @@ import s from './ArticleStyles'
 import { Images } from '../../themes'
 import { BackButton } from '../../navigation/AppNavigation'
 import Color from 'color'
+import { checkItem } from '../../reducers/checklist'
 
 const CarouselCard = ({items, imageProp, descriptionProp, color}) =>
   <Card
@@ -46,8 +47,8 @@ class Article extends React.Component {
   })
 
   render () {
-    const {navigation} = this.props
-    const {article, category} = navigation.state.params
+    const {navigation, checkItem} = this.props
+    const {article, category, checked} = navigation.state.params
     return (
       <View style={s.container}>
         <View style={s.head}>
@@ -150,9 +151,12 @@ class Article extends React.Component {
             type='primary'
             size='lg'
             style={s.submit}
-            onClick={() => navigation.goBack()}
+            onClick={() => checkItem({
+              title: article.title.rendered,
+              category: category.slug,
+            })}
           >
-            {I18n.t('wantThis')}
+            {checked ? I18n.t('doNotWantThis') : I18n.t('wantThis')}
           </Button>
         </ScrollView>
       </View>
@@ -164,6 +168,8 @@ const mapStateToProps = state => ({
   ...state.checklist,
 })
 
-const mapDispatchToProps = {}
+const mapDispatchToProps = {
+  checkItem,
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Article)

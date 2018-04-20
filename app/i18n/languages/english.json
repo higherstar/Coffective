@@ -57,5 +57,6 @@
   "championRoleTitle": "Your Champion's Role",
   "inviteChampion": "Invite Champion",
   "championInvited": "CHAMPION INVITED",
-  "wantThis": "I'm prepared and I want this"
+  "wantThis": "I'm prepared and I want this",
+  "doNotWantThis": "I don't want this"
 }

@@ -151,10 +151,13 @@ class Article extends React.Component {
             type='primary'
             size='lg'
             style={s.submit}
-            onClick={() => checkItem({
-              title: article.title.rendered,
-              category: category.slug,
-            })}
+            onClick={() => {
+              checkItem({
+                title: article.title.rendered,
+                category: category.slug,
+              })
+              navigation.goBack()
+            }}
           >
             {checked ? I18n.t('doNotWantThis') : I18n.t('wantThis')}
           </Button>

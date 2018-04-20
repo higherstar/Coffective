@@ -1,7 +1,6 @@
 import createReducer from '../createReducer'
 import {MessageBarManager} from 'react-native-message-bar'
 import { getToken, setUser } from './user'
-import { NavigationActions as navigation } from 'react-navigation'
 
 // ------------------------------------
 // Constants
@@ -102,7 +101,6 @@ export const checkItem = ({title, category}) => (dispatch, getState, {fetch}) =>
     ...user.acf,
     [acfCategory]: newCheckedCategoryItems,
   }}))
-  dispatch(navigation.back())
   return fetch(`/wp/v2/users/${user.id}`, {
     method: 'POST',
     formData: true,

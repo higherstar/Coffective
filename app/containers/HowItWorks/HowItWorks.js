@@ -19,7 +19,8 @@ class HowItWorks extends React.Component {
   })
 
   componentDidMount () {
-    this.props.getSections()
+    // TODO remove if it should not be retrieved from backend
+    // this.props.getSections()
   }
 
   render () {

@@ -12,9 +12,35 @@ import { SkipButton } from '../../navigation/AppNavigation'
 import { noop } from '../../utils/utils'
 import LinearGradient from 'react-native-linear-gradient'
 
-const WEEKS = Array.from(Array(40), (item, i) => i + 1)
+// 41 is birth
+const WEEKS = Array.from(Array(41), (item, i) => i + 1)
 // TODO move it to constants
 const LINEAR_GRADIENT = ['rgba(255, 255, 255, 0)', 'rgba(255, 255, 255, 0.3)', 'rgba(255, 255, 255, 0.5)']
+
+const getExpectationImage = (expectation) => {
+  let image = 'month1'
+  if (expectation) {
+    switch (expectation) {
+      case 41:
+        image = 'birth'
+        break
+      case 40:
+        image = 'month9'
+        break
+      default:
+        image = `month${Math.ceil(expectation / 5)}`
+        break
+    }
+  }
+  return Images.expectation[image]
+}
+
+const getExpectationLabel = (expectation) => {
+  if (expectation === 41) {
+    return `I've given birth`
+  }
+  return `Around ${41 - expectation} week${41 - expectation === 1 ? '' : 's'} from now`
+}
 
 // TODO move to another component and improve - do not remove wrappers - it doesn't work without them
 const PickerLine = () =>
@@ -54,7 +80,7 @@ class Expectation extends React.Component {
           </Txt.View>
           <View style={s.imageWrapper}>
             <Img
-              source={Images.expectation[expectation !== null ? expectation === 40 ? 9 : Math.ceil(expectation / 5) : 1]}
+              source={getExpectationImage(expectation)}
               style={s.image}/>
           </View>
         </LinearGradient>
@@ -83,7 +109,7 @@ class Expectation extends React.Component {
                 <Img source={Images.slideArrowLeft}/>
               </TouchableOpacity>
               <Txt style={s.expectation}>
-                {`Around ${41 - expectation} week${41 - expectation === 1 ? '' : 's'} from now`}
+                {getExpectationLabel(expectation)}
               </Txt>
               <TouchableOpacity
                 activeOpacity={0.5}

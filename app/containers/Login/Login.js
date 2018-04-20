@@ -92,18 +92,18 @@ class Login extends React.Component {
           </View>
         </ScrollView>
         <View style={s.actions}>
-          <Button
-            type='default'
-            size='xl'
-            style={s.facebookBtn}
-            onClick={() => {}}
-            icon={
-              <Icon
-                style={s.facebookIcon}
-                name='facebook'
-              />
-            }
-          />
+          {/*<Button*/}
+            {/*type='default'*/}
+            {/*size='xl'*/}
+            {/*style={s.facebookBtn}*/}
+            {/*onClick={() => {}}*/}
+            {/*icon={*/}
+              {/*<Icon*/}
+                {/*style={s.facebookIcon}*/}
+                {/*name='facebook'*/}
+              {/*/>*/}
+            {/*}*/}
+          {/*/>*/}
           <Button
             type='default'
             size='xl'

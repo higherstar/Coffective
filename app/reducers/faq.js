@@ -4,35 +4,22 @@ import { getToken } from './user'
 // ------------------------------------
 // Constants
 // ------------------------------------
-export const GET_COMMON_QUESTIONS_REQUEST = 'Faq.GET_COMMON_QUESTIONS_REQUEST'
-export const GET_COMMON_QUESTIONS_SUCCESS = 'Faq.GET_COMMON_QUESTIONS_SUCCESS'
-export const GET_COMMON_QUESTIONS_FAILURE = 'Faq.GET_COMMON_QUESTIONS_FAILURE'
+export const GET_QUESTIONS_REQUEST = 'Faq.GET_QUESTIONS_REQUEST'
+export const GET_QUESTIONS_SUCCESS = 'Faq.GET_QUESTIONS_SUCCESS'
+export const GET_QUESTIONS_FAILURE = 'Faq.GET_QUESTIONS_FAILURE'
 
 // ------------------------------------
 // Actions
 // ------------------------------------
-export const getCommonQuestions = () => (dispatch, getState, {fetch}) => {
-  dispatch({type: GET_COMMON_QUESTIONS_REQUEST})
+export const getQuestions = ({search} = {}) => (dispatch, getState, {fetch}) => {
+  dispatch({type: GET_QUESTIONS_REQUEST})
   const {token} = dispatch(getToken())
-  return fetch(`/common-questions/`, {
+  // backend should use query params
+  return fetch(`/wp/v2/faq/${search ? `search=${search}/` : ''}`, {
     method: 'GET',
     token,
-    success: (commonQuestions) => dispatch({type: GET_COMMON_QUESTIONS_SUCCESS, commonQuestions}),
-    failure: (err) => {
-      // TODO backend
-      // dispatch({type: GET_COMMON_QUESTIONS_FAILURE, error: err})
-      dispatch({type: GET_COMMON_QUESTIONS_SUCCESS, commonQuestions: [
-        {
-          header: 'Does breastfeeding hurt?',
-        },
-        {
-          header: 'When should I stop breastfeeding?',
-        },
-        {
-          header: 'How to convince my partner to let me breastfeed',
-        },
-      ]})
-    }
+    success: (questions) => dispatch({type: GET_QUESTIONS_SUCCESS, questions}),
+    failure: () => dispatch({type: GET_QUESTIONS_FAILURE})
   })
 }
 
@@ -41,18 +28,18 @@ export const getCommonQuestions = () => (dispatch, getState, {fetch}) => {
 // ------------------------------------
 const initialState = {
   loading: false,
-  commonQuestions: [],
+  questions: [],
 }
 
 export default createReducer(initialState, {
-  [GET_COMMON_QUESTIONS_REQUEST]: (state, action) => ({
+  [GET_QUESTIONS_REQUEST]: (state, action) => ({
     loading: true,
   }),
-  [GET_COMMON_QUESTIONS_SUCCESS]: (state, {commonQuestions}) => ({
+  [GET_QUESTIONS_SUCCESS]: (state, {questions}) => ({
     loading: false,
-    commonQuestions,
+    questions,
   }),
-  [GET_COMMON_QUESTIONS_FAILURE]: (state, action) => ({
+  [GET_QUESTIONS_FAILURE]: (state, action) => ({
     loading: false,
   }),
 })

@@ -1,14 +1,15 @@
 // @flow
 import React from 'react'
-import { Image, ScrollView, TouchableOpacity, View } from 'react-native'
+import { Image, ScrollView, View } from 'react-native'
 import I18n from 'react-native-i18n'
 import { connect } from 'react-redux'
-import { Input, Txt } from '../../components'
+import { Accordion, Input, Txt } from '../../components'
 import s from './FaqStyles'
-import { getCommonQuestions } from '../../reducers/faq'
+import { getQuestions } from '../../reducers/faq'
 import Icon from 'react-native-vector-icons/dist/FontAwesome'
 import { Images } from '../../themes'
 import { DrawerButton } from '../../navigation/AppNavigation'
+import debounce from 'lodash/debounce'
 
 class Faq extends React.Component {
   static navigationOptions = ({navigation}) => ({
@@ -18,12 +19,26 @@ class Faq extends React.Component {
     )
   })
 
+  constructor (props) {
+    super(props)
+    this.state = {
+      search: undefined,
+    }
+
+    this.getQuestions = debounce(this.props.getQuestions, 800)
+  }
+
   componentDidMount () {
-    this.props.getCommonQuestions()
+    this.props.getQuestions()
+  }
+
+  handleChangeSearch = (search) => {
+    this.setState({search})
+    this.getQuestions({search})
   }
 
   render () {
-    const {commonQuestions} = this.props
+    const {questions} = this.props
     return (
       <View style={s.container}>
         <View style={s.head}>
@@ -38,10 +53,11 @@ class Faq extends React.Component {
           </Txt.View>
           <Input
             style={s.search}
+            focus
             name='search'
             placeholder={I18n.t('askQuestion')}
             returnKeyType='search'
-            onChangeText={() => {}}
+            onChangeText={this.handleChangeSearch}
             suffix={
               <Icon
                 name='search'
@@ -51,23 +67,23 @@ class Faq extends React.Component {
           />
         </View>
         <View style={s.contentWrapper}>
-          <Txt.View style={s.commonQuestionsHeader} textStyle={s.commonQuestionsHeaderText}>
+          <Txt.View style={s.questionsHeader} textStyle={s.questionsHeaderText}>
             {I18n.t('commonQuestions')}
           </Txt.View>
           <ScrollView style={s.content} keyboardShouldPersistTaps='handled' keyboardDismissMode='on-drag'>
-            {commonQuestions.map((item, i) =>
-              <TouchableOpacity key={i} activeOpacity={0.7} style={s.item}>
-                <Txt.View style={s.itemHeader}>
-                  {item.header}
-                </Txt.View>
-                <View style={s.iconWrapper}>
+            <View style={s.questions}>
+              <Accordion
+                sections={questions}
+                headerProp='title.rendered'
+                descriptionProp='acf.answer'
+                icon={
                   <Icon
                     name='angle-right'
                     style={s.icon}
                   />
-                </View>
-              </TouchableOpacity>
-            )}
+                }
+              />
+            </View>
           </ScrollView>
         </View>
       </View>
@@ -80,7 +96,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = {
-  getCommonQuestions,
+  getQuestions,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Faq)

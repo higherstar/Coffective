@@ -9,8 +9,6 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
     flex: 1,
     minHeight: 50,
-  },
-  notLast: {
     borderBottomWidth: 1,
     borderBottomColor: Colors.border,
   },

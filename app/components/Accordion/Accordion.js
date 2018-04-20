@@ -6,14 +6,17 @@ import s from './AccordionStyles'
 import RNAccordion from 'react-native-collapsible/Accordion'
 import Icon from 'react-native-vector-icons/dist/FontAwesome'
 import { Colors } from '../../themes'
+import get from 'lodash/get'
 
-const AccordionHeader = ({ header, notLast }) =>
-  <View style={[s.row, notLast && s.notLast]}>
+const AccordionHeader = ({ header, icon }) =>
+  <View style={s.row}>
     <Txt.View style={s.header} textStyle={s.headerText}>{header}</Txt.View>
-    <Icon
-      name='plus-circle'
-      style={s.icon}
-    />
+    {icon || (
+      <Icon
+        name='plus-circle'
+        style={s.icon}
+      />
+    )}
   </View>
 
 const AccordionDescription = ({ description, isActive }) =>
@@ -25,15 +28,15 @@ class Accordion extends React.Component {
   }
 
   render () {
-    const {sections, headerProp, descriptionProp, ...props} = this.props
+    const {sections, headerProp, descriptionProp, icon, ...props} = this.props
     return (
       <RNAccordion
         sections={sections}
         renderHeader={(data, index, isActive) => (
-          <View><AccordionHeader header={data[headerProp]} notLast={sections.length - 1 !== index}/></View>
+          <View><AccordionHeader header={get(data, headerProp)} icon={icon}/></View>
         )}
         renderContent={(data, index, isActive) => (
-          <View><AccordionDescription description={data[descriptionProp]} isActive={isActive}/></View>
+          <View><AccordionDescription description={get(data, descriptionProp)} isActive={isActive}/></View>
         )}
         {...props}
       />

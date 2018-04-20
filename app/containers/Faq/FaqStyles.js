@@ -9,7 +9,7 @@ export default StyleSheet.create({
   },
   contentWrapper: {
     flex: 1,
-    marginTop: headMargin + Metrics.baseMargin
+    marginTop: headMargin + Metrics.baseMargin,
   },
   head: {
     paddingTop: Metrics.navBarHeight,
@@ -47,34 +47,20 @@ export default StyleSheet.create({
     fontSize: Fonts.size.h1,
     fontWeight: '300',
   },
-  commonQuestionsHeader: {
+  questionsHeader: {
     borderBottomColor: Colors.border,
     borderBottomWidth: 1,
     paddingHorizontal: Metrics.baseMargin,
     paddingVertical: Metrics.smallMargin,
   },
-  commonQuestionsHeaderText: {
+  questionsHeaderText: {
     color: Colors.muted,
     fontSize: Fonts.size.medium,
     fontFamily: Fonts.type.secondary,
     fontWeight: '500',
   },
-  item: {
-    position: 'relative',
+  questions: {
     marginLeft: Metrics.baseMargin,
-  },
-  itemHeader: {
-    borderBottomColor: Colors.border,
-    borderBottomWidth: 1,
-    paddingVertical: Metrics.smallMargin * 1.5,
-    paddingRight: Metrics.doubleBaseMargin,
-  },
-  iconWrapper: {
-    position: 'absolute',
-    top: 0,
-    bottom: 0,
-    right: Metrics.baseMargin,
-    justifyContent: 'center'
   },
   icon: {
     fontSize: Metrics.icons.md,

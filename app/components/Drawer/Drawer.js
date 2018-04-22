@@ -64,7 +64,7 @@ class Drawer extends React.Component {
         <ScrollView style={s.content}>
           <DrawerItem label={'Start Here'} onClick={() => this.navigate('HowItWorks')} icon={Images.menu.start_here}/>
           <DrawerItem label={'Checklist'} onClick={() => this.navigate('Checklist')} icon={Images.menu.checklist}/>
-          <DrawerItem label={'Ask Questions'} onClick={() => this.navigate('Faq')} icon={Images.menu.ask_questions}/>
+          {/*<DrawerItem label={'Ask Questions'} onClick={() => this.navigate('Faq')} icon={Images.menu.ask_questions}/>*/}
           <DrawerItem label={'Build Your Team'} onClick={() => this.navigate('BuildTeam')} icon={Images.menu.build_your_team}/>
           <DrawerItem label={'Find Support'} onClick={() => this.navigate('FindSupport')} icon={Images.menu.find_support}/>
           {/*<Divider/>*/}

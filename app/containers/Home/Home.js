@@ -1,6 +1,6 @@
 // @flow
 import React from 'react'
-import { Image, ScrollView, TouchableOpacity, View } from 'react-native'
+import { Image, ScrollView, TouchableOpacity, View, ImageBackground } from 'react-native'
 import I18n from 'react-native-i18n'
 import { connect } from 'react-redux'
 import { Txt } from '../../components'
@@ -40,26 +40,34 @@ class Home extends React.Component {
           <TouchableOpacity
             activeOpacity={0.7}
             onPress={() => navigation.navigate('Checklist')}
-            style={s.checklistCard}
           >
-            <Txt.View style={s.checklistDescription} textStyle={s.checklistDescriptionText}>
-              {'Get you and your baby off to a great start'}
-            </Txt.View>
-            <Txt.View style={s.checklistHeader} textStyle={s.checklistHeaderText}>
-              {'Checklist'}
-            </Txt.View>
+            <ImageBackground
+              style={s.buildTeamCard}
+              source={Images.checkcListBackground}
+            >
+              <Txt.View textStyle={s.buildTeamHeaderText}>
+                {'Checklist'}
+              </Txt.View>
+              <Txt.View textStyle={s.buildTeamDescriptionText}>
+                {'Get you and your baby off to a great start'}
+              </Txt.View>
+            </ImageBackground>
           </TouchableOpacity>
           <TouchableOpacity
             activeOpacity={0.7}
             onPress={() => navigation.navigate('BuildTeam')}
-            style={s.buildTeamCard}
           >
-            <Txt.View style={s.buildTeamHeader} textStyle={s.buildTeamHeaderText}>
-              {I18n.t('buildTeamHeader')}
-            </Txt.View>
-            <Txt.View style={s.buildTeamDescription} textStyle={s.buildTeamDescriptionText}>
-              {I18n.t('buildTeamDescription')}
-            </Txt.View>
+            <ImageBackground
+              style={s.buildTeamCard}
+              source={Images.buildMyTeamBackground}
+            >
+              <Txt.View textStyle={s.buildTeamHeaderText}>
+                {I18n.t('buildTeamHeader')}
+              </Txt.View>
+              <Txt.View textStyle={s.buildTeamDescriptionText}>
+                {I18n.t('buildTeamDescription')}
+              </Txt.View>
+            </ImageBackground>
           </TouchableOpacity>
         </ScrollView>
       </View>

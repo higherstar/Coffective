@@ -6,7 +6,7 @@ export default StyleSheet.create({
     flex: 1,
   },
   head: {
-    height: 100,
+    height: 75,
   },
   backgroundImage: {
     resizeMode: 'cover',
@@ -33,9 +33,6 @@ export default StyleSheet.create({
     minHeight: 200,
     ...Metrics.boxShadow,
   },
-  checklistHeader: {
-    marginBottom: Metrics.smallMargin,
-  },
   checklistHeaderText: {
     fontSize: Fonts.size.h1,
     fontWeight: '300',
@@ -51,23 +48,17 @@ export default StyleSheet.create({
   },
   buildTeamCard: {
     position: 'relative',
-    backgroundColor: Colors.primary,
     borderRadius: 14,
     padding: Metrics.baseMargin,
+    paddingTop: 6.2 * Metrics.baseMargin,
     marginTop: Metrics.baseMargin,
     minHeight: 200,
     ...Metrics.boxShadow,
-  },
-  buildTeamHeader: {
-    marginBottom: Metrics.smallMargin,
   },
   buildTeamHeaderText: {
     fontSize: Fonts.size.h1,
     color: Colors.white,
     fontWeight: '300',
-  },
-  buildTeamDescription: {
-    marginBottom: Metrics.doubleBaseMargin,
   },
   buildTeamDescriptionText: {
     color: Colors.white,

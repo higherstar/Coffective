@@ -57,6 +57,7 @@ const images = {
     for_champion: {uri: 'https://new.coffective.com/wp-content/uploads/2018/04/for_champion.svg'},
   },
   menu: {
+    home: {uri: 'https://new.coffective.com/wp-content/uploads/2018/04/home-2.svg'},
     ask_questions: {uri: 'https://new.coffective.com/wp-content/uploads/2018/04/ask_questions.svg'},
     build_your_team: {uri: 'https://new.coffective.com/wp-content/uploads/2018/04/build_your_team.svg'},
     checklist: {uri: 'https://new.coffective.com/wp-content/uploads/2018/04/checklist.svg'},
@@ -117,7 +118,9 @@ const images = {
     'WI': {uri: 'https://new.coffective.com/wp-content/uploads/2018/04/WI.svg'},
     'WV': {uri: 'https://new.coffective.com/wp-content/uploads/2018/04/WV.svg'},
     'WY': {uri: 'https://new.coffective.com/wp-content/uploads/2018/04/WY.svg'},
-  }
+  },
+  buildMyTeamBackground: require('../static/build_your_team.png'),
+  checkcListBackground: require('../static/check_list.png'),
 }
 
 export default images

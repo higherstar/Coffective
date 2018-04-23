@@ -4,6 +4,7 @@ import { Image, TouchableOpacity, View } from 'react-native'
 import I18n from 'react-native-i18n'
 import { connect } from 'react-redux'
 import { Button, HorizontalPicker, Img, Txt } from '../../components'
+import SvgUri from "react-native-svg-from-uri";
 import s from './ExpectationStyles'
 import { setExpectation } from '../../reducers/register'
 import Icon from 'react-native-vector-icons/dist/FontAwesome'
@@ -80,7 +81,7 @@ class Expectation extends React.Component {
             {I18n.t('expectationDescription')}
           </Txt.View>
           <View style={s.imageWrapper}>
-            <Img
+            <SvgUri
               source={getExpectationImage(expectation)}
               style={s.image}/>
           </View>

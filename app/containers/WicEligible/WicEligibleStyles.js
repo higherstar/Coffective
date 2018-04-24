@@ -35,6 +35,16 @@ export default StyleSheet.create({
   cardTitle: {
     // marginBottom: Metrics.smallMargin,
     flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginHorizontal: -10,
+    borderBottomWidth: 1,
+    borderBottomColor: '#E5E5EA',
+
+    paddingVertical: 5,
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingBottom: 20,
     justifyContent: 'space-between'
   },
   cardDescription: {
@@ -56,7 +66,8 @@ export default StyleSheet.create({
   flex: {
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    marginHorizontal: -10
   },
   info: {
     color: '#A1B0C2',
@@ -84,7 +95,7 @@ export default StyleSheet.create({
     paddingLeft: 10
   },
   member: {
-    marginLeft: 10,
+    marginLeft: 20,
     color: '#A1B0C2'
   },
   howmuch: {
@@ -98,9 +109,10 @@ export default StyleSheet.create({
   houseHoldIncome: {
     marginTop: 20
   },
-  buttomSpecial: {
+  buttonSpecial: {
     height: 65,
-    borderRadius: 0
+    borderRadius: 0,
+    marginHorizontal: -10
   },
   list: {
     marginTop: Metrics.smallMargin

@@ -19,7 +19,7 @@ class WicEligible extends React.Component {
 
   static navigationOptions = ({ navigation }) => ({
     headerRight: null,
-    // headerTitle: navigation.state.params.category.title.rendered,
+    headerTitle: 'WIC Eligibility',
     headerLeft: <BackButton navigation={navigation} />
   })
 
@@ -89,17 +89,18 @@ class WicEligible extends React.Component {
           <Card style={s.card}>
             <View style={s.headView}>
               >
-              <Txt.View
+              <View
                 style={[s.cardTitle]}
                 textStyle={[s.houseHoldText, s.cardDescription]}>
                 <Image source={UserIcon} style={s.userIcon} />
                 <Text style={s.textHead}>
                   <Text style={s.member}>
-                    Household members: {this.state.title}
+                    Household members:{' '}
+                    <Text style={s.howmuch}>{this.state.title}</Text>
                   </Text>
                 </Text>
-              </Txt.View>
-              <Image source={Arrow} style={s.arrowIcon} />
+                <Image source={Arrow} style={s.arrowIcon} />
+              </View>
             </View>
 
             {this.state.title !== 0 ? (
@@ -146,10 +147,10 @@ class WicEligible extends React.Component {
               </View>
             )}
           </Card>
-          <Button style={s.buttomSpecial} type="primary">
+          <Button style={s.buttonSpecial} type="primary">
             I QUALIFY, CHOOSE MY CLINIC
           </Button>
-          <Button style={s.buttomSpecial}>I DON’T QUALIFY</Button>
+          <Button style={s.buttonSpecial}>I DON’T QUALIFY</Button>
         </ScrollView>
       </View>
     )

@@ -41,9 +41,9 @@ export const login = (values) => (dispatch, getState, {fetch}) => {
 }
 
 export const loginSuccess = (auth) => (dispatch, getState) => {
-  dispatch({type: LOGIN_SUCCESS})
-  dispatch(setToken(auth.token))
-  dispatch(getUser())
+  dispatch({type: LOGIN_SUCCESS});
+  dispatch(setToken(auth.token));
+  dispatch(getUser());
   dispatch(navigation.navigate({routeName: 'Home'}))
 }
 

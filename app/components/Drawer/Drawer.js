@@ -30,7 +30,8 @@ class Drawer extends React.Component {
   }
 
   render () {
-    const {user} = this.props
+    const {user} = this.props;
+    console.log(user);
     return (
       <View style={s.container}>
         {!!user && (

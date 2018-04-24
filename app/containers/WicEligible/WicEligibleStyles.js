@@ -66,7 +66,8 @@ export default StyleSheet.create({
   flex: {
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    marginHorizontal: -10
   },
   info: {
     color: '#A1B0C2',

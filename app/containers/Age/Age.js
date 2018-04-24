@@ -76,7 +76,6 @@ class Age extends React.Component {
                 style={s.age}
                 onPress={() => {
                   setAge(age);
-                  console.log(personType);
                   if(personType.value === 'mom')
                     navigation.navigate('Expectation');
                   else

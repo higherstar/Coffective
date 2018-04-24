@@ -4,7 +4,6 @@ import { Image, TouchableOpacity, View } from 'react-native'
 import I18n from 'react-native-i18n'
 import { connect } from 'react-redux'
 import { Button, HorizontalPicker, Img, Txt } from '../../components'
-import SvgUri from "react-native-svg-from-uri";
 import s from './ExpectationStyles'
 import { setExpectation } from '../../reducers/register'
 import Icon from 'react-native-vector-icons/dist/FontAwesome'
@@ -66,7 +65,7 @@ class Expectation extends React.Component {
   })
 
   render () {
-    const {setExpectation, navigation, expectation} = this.props
+    const {setExpectation, navigation, expectation} = this.props;
     return (
       <View style={s.container}>
         <Image
@@ -81,7 +80,7 @@ class Expectation extends React.Component {
             {I18n.t('expectationDescription')}
           </Txt.View>
           <View style={s.imageWrapper}>
-            <SvgUri
+            <Image
               source={getExpectationImage(expectation)}
               style={s.image}/>
           </View>
@@ -144,10 +143,10 @@ class Expectation extends React.Component {
 
 const mapStateToProps = state => ({
   ...state.register,
-})
+});
 
 const mapDispatchToProps = {
   setExpectation,
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Expectation)

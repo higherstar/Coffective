@@ -52,7 +52,7 @@ class Age extends React.Component {
   })
 
   render () {
-    const {setAge, navigation} = this.props
+    const {setAge, personType, navigation} = this.props
     return (
       <View style={s.container}>
         <View style={s.head}>
@@ -75,8 +75,12 @@ class Age extends React.Component {
                 activeOpacity={0.7}
                 style={s.age}
                 onPress={() => {
-                  setAge(age)
-                  navigation.navigate('Expectation')
+                  setAge(age);
+                  console.log(personType);
+                  if(personType.value === 'mom')
+                    navigation.navigate('Expectation');
+                  else
+                    navigation.navigate('Register');
                 }}
               >
                 <Img source={age.image} style={s.image}/>

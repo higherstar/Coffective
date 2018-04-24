@@ -19,7 +19,7 @@ class WicEligible extends React.Component {
 
   static navigationOptions = ({ navigation }) => ({
     headerRight: null,
-    // headerTitle: navigation.state.params.category.title.rendered,
+    headerTitle: 'WIC Eligibility',
     headerLeft: <BackButton navigation={navigation} />
   })
 

@@ -65,7 +65,7 @@ class Expectation extends React.Component {
   })
 
   render () {
-    const {setExpectation, navigation, expectation} = this.props
+    const {setExpectation, navigation, expectation} = this.props;
     return (
       <View style={s.container}>
         <Image
@@ -80,7 +80,7 @@ class Expectation extends React.Component {
             {I18n.t('expectationDescription')}
           </Txt.View>
           <View style={s.imageWrapper}>
-            <Img
+            <Image
               source={getExpectationImage(expectation)}
               style={s.image}/>
           </View>
@@ -143,10 +143,10 @@ class Expectation extends React.Component {
 
 const mapStateToProps = state => ({
   ...state.register,
-})
+});
 
 const mapDispatchToProps = {
   setExpectation,
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Expectation)

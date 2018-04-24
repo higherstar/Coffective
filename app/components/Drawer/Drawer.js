@@ -33,10 +33,10 @@ class Drawer extends React.Component {
   render () {
     const {user} = this.props;
     let weeks = 40;
-    if (user) {
+    if (user && user.acf.expecting) {
       let reg_date = moment(user.registration_date);
       let today = moment(new Date());
-      weeks = 40 - today.diff(reg_date, 'weeks');
+      weeks = 41 - parseInt(user.acf.expecting) - today.diff(reg_date, 'weeks');
     }
 
     return (
@@ -45,28 +45,35 @@ class Drawer extends React.Component {
           <View style={s.head}>
             <View style={s.headerWrapper}>
               <Txt.View style={s.header} textStyle={s.headerText}>Hello {user.name}!</Txt.View>
-              <Txt.View style={s.subHeader} textStyle={s.subHeaderText}>{weeks} Weeks to Go!</Txt.View>
+              {
+                (user && user.acf.expecting) ?
+                    <Txt.View style={s.subHeader} textStyle={s.subHeaderText}>{weeks} Weeks to Go!</Txt.View>
+                  : ''
+              }
             </View>
-            <ProgressCircle
-              size={64}
-              progress={0.3}
-              thickness={4}
-              borderWidth={0}
-              showsText
-              formatText={() => [
-                <Txt style={s.progressNumber} key='number'>
-                  {weeks}{'\n'}
-                </Txt>,
-                <Txt style={s.progressUnit} key='unit'>
-                  WEEKS
-                </Txt>
-              ]}
-              textStyle={s.progressText}
-              style={s.progress}
-              color={Colors.white}
-              unfilledColor={Colors.whiteMuted}
-              direction='counter-clockwise'
-            />
+            {
+              (user && user.acf.expecting) ?
+                <ProgressCircle
+                  size={64}
+                  progress={0.3}
+                  thickness={4}
+                  borderWidth={0}
+                  showsText
+                  formatText={() => [
+                    <Txt style={s.progressNumber} key='number'>
+                      {weeks}{'\n'}
+                    </Txt>,
+                    <Txt style={s.progressUnit} key='unit'>
+                      WEEKS
+                    </Txt>
+                  ]}
+                  textStyle={s.progressText}
+                  style={s.progress}
+                  color={Colors.white}
+                  unfilledColor={Colors.whiteMuted}
+                  direction='counter-clockwise'
+                /> : ''
+            }
           </View>
         )}
         <ScrollView style={s.content}>

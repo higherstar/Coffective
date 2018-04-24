@@ -27,6 +27,9 @@ class Welcome extends React.Component {
           <Txt.View style={s.header} textStyle={s.headerText}>
             {I18n.t('welcomeHeader')}
           </Txt.View>
+          <Txt.View style={s.description} textStyle={s.descriptionText}>
+            {I18n.t('welcomeDescription')}
+          </Txt.View>
           <Button
             type='primary'
             size='lg'

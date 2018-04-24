@@ -147,10 +147,10 @@ class WicEligible extends React.Component {
               </View>
             )}
           </Card>
-          <Button style={s.buttomSpecial} type="primary">
+          <Button style={s.buttonSpecial} type="primary">
             I QUALIFY, CHOOSE MY CLINIC
           </Button>
-          <Button style={s.buttomSpecial}>I DON’T QUALIFY</Button>
+          <Button style={s.buttonSpecial}>I DON’T QUALIFY</Button>
         </ScrollView>
       </View>
     )

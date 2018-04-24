@@ -109,9 +109,10 @@ export default StyleSheet.create({
   houseHoldIncome: {
     marginTop: 20
   },
-  buttomSpecial: {
+  buttonSpecial: {
     height: 65,
-    borderRadius: 0
+    borderRadius: 0,
+    marginHorizontal: -10
   },
   list: {
     marginTop: Metrics.smallMargin

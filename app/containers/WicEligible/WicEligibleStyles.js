@@ -35,6 +35,16 @@ export default StyleSheet.create({
   cardTitle: {
     // marginBottom: Metrics.smallMargin,
     flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginHorizontal: -10,
+    borderBottomWidth: 1,
+    borderBottomColor: '#E5E5EA',
+
+    paddingVertical: 5,
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingBottom: 20,
     justifyContent: 'space-between'
   },
   cardDescription: {
@@ -84,7 +94,7 @@ export default StyleSheet.create({
     paddingLeft: 10
   },
   member: {
-    marginLeft: 10,
+    marginLeft: 20,
     color: '#A1B0C2'
   },
   howmuch: {

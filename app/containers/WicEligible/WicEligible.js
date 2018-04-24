@@ -89,17 +89,18 @@ class WicEligible extends React.Component {
           <Card style={s.card}>
             <View style={s.headView}>
               >
-              <Txt.View
+              <View
                 style={[s.cardTitle]}
                 textStyle={[s.houseHoldText, s.cardDescription]}>
                 <Image source={UserIcon} style={s.userIcon} />
                 <Text style={s.textHead}>
                   <Text style={s.member}>
-                    Household members: {this.state.title}
+                    Household members:{' '}
+                    <Text style={s.howmuch}>{this.state.title}</Text>
                   </Text>
                 </Text>
-              </Txt.View>
-              <Image source={Arrow} style={s.arrowIcon} />
+                <Image source={Arrow} style={s.arrowIcon} />
+              </View>
             </View>
 
             {this.state.title !== 0 ? (

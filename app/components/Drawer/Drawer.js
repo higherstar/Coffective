@@ -1,6 +1,7 @@
 // @flow
 import React from 'react'
-import { Image, ScrollView, TouchableOpacity, View } from 'react-native'
+import { ScrollView, TouchableOpacity, View } from 'react-native'
+import moment from 'moment'
 import { Txt } from '../'
 import s from './DrawerStyles'
 import { connect } from 'react-redux'
@@ -30,14 +31,21 @@ class Drawer extends React.Component {
   }
 
   render () {
-    const {user} = this.props
+    const {user} = this.props;
+    let weeks = 40;
+    if (user) {
+      let reg_date = moment(user.registration_date);
+      let today = moment(new Date());
+      weeks = 40 - today.diff(reg_date, 'weeks');
+    }
+
     return (
       <View style={s.container}>
         {!!user && (
           <View style={s.head}>
             <View style={s.headerWrapper}>
               <Txt.View style={s.header} textStyle={s.headerText}>Hello {user.name}!</Txt.View>
-              <Txt.View style={s.subHeader} textStyle={s.subHeaderText}>40 Weeks to Go!</Txt.View>
+              <Txt.View style={s.subHeader} textStyle={s.subHeaderText}>{weeks} Weeks to Go!</Txt.View>
             </View>
             <ProgressCircle
               size={64}
@@ -47,7 +55,7 @@ class Drawer extends React.Component {
               showsText
               formatText={() => [
                 <Txt style={s.progressNumber} key='number'>
-                  40{'\n'}
+                  {weeks}{'\n'}
                 </Txt>,
                 <Txt style={s.progressUnit} key='unit'>
                   WEEKS

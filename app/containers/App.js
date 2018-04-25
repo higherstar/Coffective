@@ -18,6 +18,16 @@ const customFetch = createFetch(fetch, {
 // create our store
 const store = createStore({fetch: customFetch})
 
+function cacheImages(images) {
+  return images.map(image => {
+    if (typeof image === 'string') {
+      return Image.prefetch(image);
+    } else {
+      return Asset.fromModule(image).downloadAsync();
+    }
+  });
+}
+
 /**
  * Provides an entry point into our application.  Both index.ios.js and index.android.js
  * call this component first.
@@ -28,11 +38,13 @@ const store = createStore({fetch: customFetch})
  * We separate like this to play nice with React Native's hot reloading.
  */
 class App extends React.Component {
+
   componentDidMount () {
     SplashScreen.hide()
   }
 
   render () {
+
     return (
       <Provider store={store}>
         <Root/>

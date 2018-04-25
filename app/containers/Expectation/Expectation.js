@@ -80,7 +80,7 @@ class Expectation extends React.Component {
             {I18n.t('expectationDescription')}
           </Txt.View>
           <View style={s.imageWrapper}>
-            <Image
+            <Img
               source={getExpectationImage(expectation)}
               style={s.image}/>
           </View>

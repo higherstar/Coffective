@@ -19,6 +19,7 @@ const images = {
   howItWorksBackground: require('../static/how_it_works_background.png'),
   findSupportBackground: require('../static/find_support_background.png'),
   wicBackground: require('../static/wic_background.png'),
+  wicImage: require('../static/wicimage.png'),
   hospitalBackground: require('../static/hospital_background.png'),
   hospital: require('../static/hospital.png'),
   championBackground: require('../static/champion_background.png'),

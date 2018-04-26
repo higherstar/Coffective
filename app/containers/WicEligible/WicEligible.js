@@ -69,28 +69,24 @@ class WicEligible extends React.Component {
           <Image style={s.backgroundImage} source={Images.wicBackground} />
         </View>
         <ScrollView style={s.content} contentContainerStyle={s.scrollContent}>
-          {/*
-            <Card
+          <Card
             style={s.card}
-            cover={
-              <Img style={s.image} source={{ uri: category.acf.top_banner }} />
-            }
-            actions={actions[category.slug] || []}>
+            cover={<Img style={s.image} source={Images.wicImage} />}>
             <Txt.View style={s.cardTitle} textStyle={s.cardTitleText}>
-              {category.title.rendered}?
+              Are you eligible for WIC
             </Txt.View>
             <Txt.View
               style={s.cardDescription}
               textStyle={s.cardDescriptionText}>
-              We are here to help provide the information and support you need.
+              We just need a bit of information to see if you’re eligible for
+              WIC services.{' '}
             </Txt.View>
           </Card>
-            */}
           <Card style={s.card}>
             <View style={s.headView}>
               >
               <View
-                style={[s.cardTitle]}
+                style={[s.cardTitleBottom]}
                 textStyle={[s.houseHoldText, s.cardDescription]}>
                 <Image source={UserIcon} style={s.userIcon} />
                 <Text style={s.textHead}>

@@ -33,6 +33,10 @@ export default StyleSheet.create({
     marginBottom: 0
   },
   cardTitle: {
+    marginBottom: Metrics.smallMargin
+  },
+
+  cardTitleBottom: {
     // marginBottom: Metrics.smallMargin,
     flex: 1,
     flexDirection: 'row',

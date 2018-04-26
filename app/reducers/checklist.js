@@ -81,34 +81,83 @@ export const getArticles = () => (dispatch, getState, {fetch}) => {
   })
 }
 
-export const checkItem = ({title, category}) => (dispatch, getState, {fetch}) => {
-  dispatch({type: CHECK_ITEM_REQUEST})
-  const {token} = dispatch(getToken())
-  const {user} = getState().user
+// export const checkItem = ({title, category}) => (dispatch, getState, {fetch}) => {
+//   console.log(title);
+//   console.log(category);
+//   dispatch({type: CHECK_ITEM_REQUEST});
+//   const {token} = dispatch(getToken());
+//   const {user} = getState().user;
+//   console.log(user);
+//   // if item is in acf category remove from checked items and send new array
+//   // if no item add it to checked items and send new array
+//   const acfCategory = MAP_ACF_CATEGORIES[category]
+//   const checkedCategoryItems = user.acf[acfCategory] || []
+//   const checked = checkedCategoryItems.find(item => item === title)
+//   let newCheckedCategoryItems
+//   if (checked) {
+//     newCheckedCategoryItems = checkedCategoryItems.filter(item => item !== title)
+//   } else {
+//     newCheckedCategoryItems = [...checkedCategoryItems, title]
+//   }
+//   // update checkbox quickly to show user updated state
+//   dispatch(setUser({...user, acf: {
+//     ...user.acf,
+//     [acfCategory]: newCheckedCategoryItems,
+//   }}))
+//   return fetch(`/wp/v2/users/${user.id}`, {
+//     method: 'POST',
+//     formData: true,
+//     body: {
+//       acf_data: JSON.stringify({
+//         [acfCategory]: newCheckedCategoryItems,
+//       })
+//     },
+//     token,
+//     success: () => {
+//       dispatch({type: CHECK_ITEM_SUCCESS})
+//       MessageBarManager.showAlert({
+//         message: `${title} ${checked ? 'unchecked' : 'checked'}`,
+//         alertType: 'success',
+//       })
+//     },
+//     failure: (error) => {
+//       dispatch({type: CHECK_ITEM_FAILURE})
+//       // change checkbox state back if updating fails
+//       dispatch(setUser(user))
+//       MessageBarManager.showAlert({
+//         message: error && error.message ? error.message : 'Something went wrong. Please try again.',
+//         alertType: 'error',
+//       })
+//     }
+//   })
+// };
+
+
+export const checkItem = ({id, title, category}) => (dispatch, getState, {fetch}) => {
+  dispatch({type: CHECK_ITEM_REQUEST});
+  const {token} = dispatch(getToken());
+  const {user} = getState().user;
   // if item is in acf category remove from checked items and send new array
   // if no item add it to checked items and send new array
   const acfCategory = MAP_ACF_CATEGORIES[category]
   const checkedCategoryItems = user.acf[acfCategory] || []
-  const checked = checkedCategoryItems.find(item => item === title)
-  let newCheckedCategoryItems
+  const checked = checkedCategoryItems.find(item => item === id)
+  let newCheckedCategoryItems;
   if (checked) {
-    newCheckedCategoryItems = checkedCategoryItems.filter(item => item !== title)
+    newCheckedCategoryItems = checkedCategoryItems.filter(item => item !== id)
   } else {
-    newCheckedCategoryItems = [...checkedCategoryItems, title]
+    newCheckedCategoryItems = [...checkedCategoryItems, id]
   }
   // update checkbox quickly to show user updated state
   dispatch(setUser({...user, acf: {
-    ...user.acf,
+      ...user.acf,
+      [acfCategory]: newCheckedCategoryItems,
+    }}));
+
+  return fetch(`/wp/v2/users/me?acf_data=` + JSON.stringify({
     [acfCategory]: newCheckedCategoryItems,
-  }}))
-  return fetch(`/wp/v2/users/${user.id}`, {
+  }), {
     method: 'POST',
-    formData: true,
-    body: {
-      acf_data: JSON.stringify({
-        [acfCategory]: newCheckedCategoryItems,
-      })
-    },
     token,
     success: () => {
       dispatch({type: CHECK_ITEM_SUCCESS})
@@ -118,7 +167,8 @@ export const checkItem = ({title, category}) => (dispatch, getState, {fetch}) =>
       })
     },
     failure: (error) => {
-      dispatch({type: CHECK_ITEM_FAILURE})
+      console.log(error);
+      dispatch({type: CHECK_ITEM_FAILURE});
       // change checkbox state back if updating fails
       dispatch(setUser(user))
       MessageBarManager.showAlert({
@@ -127,7 +177,7 @@ export const checkItem = ({title, category}) => (dispatch, getState, {fetch}) =>
       })
     }
   })
-}
+};
 
 // ------------------------------------
 // Reducer

@@ -22,7 +22,6 @@ class Home extends React.Component {
   }
 
   componentDidMount () {
-    // https://github.com/react-navigation/react-navigation/issues/313
     this.props.navigation.setParams({user: this.props.user});
     this.props.getSlides();
     this.props.getHomeScreen();

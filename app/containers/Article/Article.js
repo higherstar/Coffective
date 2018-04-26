@@ -76,6 +76,7 @@ class Article extends React.Component {
               style={s.sectionLink}
               textStyle={[s.sectionLinkText, {color: category.acf.color}]}
               iconColor={category.acf.color}
+              removeArrow={true}
               prefix={
                 <View style={s.sectionImageWrapper}>
                   <Img source={Images.article.for_mother} style={[s.sectionImage, {fill: category.acf.color}]}/>
@@ -94,6 +95,7 @@ class Article extends React.Component {
               style={s.sectionLink}
               textStyle={[s.sectionLinkText, {color: category.acf.color}]}
               iconColor={category.acf.color}
+              removeArrow={true}
               prefix={
                 <View style={s.sectionImageWrapper}>
                   <Img source={Images.article.for_baby} style={[s.sectionImage, {fill: category.acf.color}]}/>
@@ -112,6 +114,7 @@ class Article extends React.Component {
               style={s.sectionLink}
               textStyle={[s.sectionLinkText, {color: category.acf.color}]}
               iconColor={category.acf.color}
+              removeArrow={true}
               prefix={
                 <View style={s.sectionImageWrapper}>
                   <Img source={Images.article.for_champion} style={[s.sectionImage, {fill: category.acf.color}]}/>

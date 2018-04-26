@@ -28,7 +28,7 @@ import flatten from "lodash/flatten";
 // TODO use best practices on backend
 const getCheckedItems = acf => {
   // it returns all checked items from all categories names from user acf
-  return flatten(ACF_CATEGORIES.map(category => acf[category]));
+  return flatten(ACF_CATEGORIES.map(category => acf[category] || [] ));
 };
 
 class Checklist extends React.Component {
@@ -53,6 +53,7 @@ class Checklist extends React.Component {
       checkItem
     } = this.props;
     const checkedItems = getCheckedItems(acf);
+    console.log(checkedItems);
 
     return (
       <View style={s.container}>
@@ -112,7 +113,7 @@ class Checklist extends React.Component {
                   </View>
                   {categoryArticles.map((article, j) => {
                     const checked = !!checkedItems.find(
-                      item => item === article.title.rendered
+                      item => item === article.id
                     );
                     return (
                       <Link
@@ -122,6 +123,7 @@ class Checklist extends React.Component {
                           <Checkbox
                             onClick={() =>
                               checkItem({
+                                id: article.id,
                                 title: article.title.rendered,
                                 category: category.slug
                               })

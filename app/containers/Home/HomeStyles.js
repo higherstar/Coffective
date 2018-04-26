@@ -55,6 +55,25 @@ export default StyleSheet.create({
     minHeight: 200,
     ...Metrics.boxShadow,
   },
+  buildTopTeamCard: {
+    position: 'relative',
+    borderRadius: 14,
+    padding: Metrics.baseMargin,
+    paddingTop: Metrics.baseMargin,
+    marginTop: Metrics.baseMargin,
+    minHeight: 200,
+    ...Metrics.boxShadow,
+  },
+  buildTopTeamHeaderText: {
+    fontSize: Fonts.size.medium,
+    color: Colors.blackMuted,
+    fontWeight: '300',
+  },
+  buildTopTeamDescriptionText: {
+    color: Colors.black,
+    fontFamily: Fonts.type.secondary,
+    fontSize: Fonts.size.h1,
+  },
   buildTeamHeaderText: {
     fontSize: Fonts.size.h1,
     color: Colors.white,
@@ -64,5 +83,76 @@ export default StyleSheet.create({
     color: Colors.white,
     fontFamily: Fonts.type.secondary,
     fontSize: Fonts.size.medium,
+  },
+  dots: {
+    position: 'absolute',
+    right: Metrics.baseMargin,
+    top: Metrics.baseMargin
+  },
+  dot: {
+    backgroundColor: Colors.blueMuted
+  },
+  activeDot: {
+    backgroundColor: Colors.blue
+  },
+  itemWrapper: {
+    marginTop: Metrics.baseMargin,
+  },
+  item: {
+    position: 'relative',
+    flex: 1,
+  },
+  slideImage: {
+    resizeMode: 'cover',
+    width: null,
+    height: null,
+    flex: 1,
+  },
+  slideTextBody: {
+    height: 100,
+    overflow: 'hidden',
+  },
+  subHeader: {
+    marginBottom: Metrics.smallMargin,
+  },
+  subHeaderText: {
+    fontWeight: '500',
+    fontFamily: Fonts.type.secondary,
+    fontSize: Fonts.size.medium,
+    color: Colors.blackMuted,
+  },
+  header: {
+    marginBottom: Metrics.smallMargin,
+  },
+  headerText: {
+    fontWeight: '300',
+    fontFamily: Fonts.type.secondary,
+    fontSize: Fonts.size.medium,
+  },
+  description: {},
+  descriptionText: {
+    fontFamily: Fonts.type.secondary,
+    fontSize: Fonts.size.small,
+    color: Colors.muted,
+  },
+  more: {
+    borderRadius: 30,
+    borderBottomLeftRadius: 0,
+    borderTopRightRadius: 0,
+    height: 30,
+    width: 60,
+    backgroundColor: Colors.white,
+    position: 'absolute',
+    right: 0,
+    bottom : 0,
+    shadowColor: Colors.white,
+    shadowOpacity: 1.0,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  moreText: {
+    fontFamily: Fonts.type.secondary,
+    fontSize: Fonts.size.medium,
+    color: Colors.blue,
   },
 })

@@ -18,6 +18,7 @@ export const reducers = combineReducers({
   checklist: require('./checklist').default,
   howItWorks: require('./howItWorks').default,
   findSupport: require('./findSupport').default,
+  home: require('./home').default,
   champion: require('./champion').default,
   // global: require('./global').default,
 })

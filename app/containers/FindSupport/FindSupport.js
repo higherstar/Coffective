@@ -25,6 +25,9 @@ class FindSupport extends React.Component {
   })
 
   componentDidMount () {
+    this.props.changeOrgType("");
+    this.props.changeZipCode("");
+
     this.props.getPlaces()
   }
 
@@ -149,6 +152,12 @@ class FindSupport extends React.Component {
                       textStyle={s.lastUpdateText}
                     >
                       {'Last Update'}: {m(place.modified).format('YYYY-MM-DD')}
+                    </Txt.View>
+                    <Txt.View
+                      style={s.address}
+                      textStyle={s.addressText}
+                    >
+                      {place.acf.location.address}
                     </Txt.View>
                     <Txt.View
                       style={s.description}

@@ -98,4 +98,11 @@ export default StyleSheet.create({
     color: Colors.grey,
     fontSize: Fonts.size.small,
   },
+  address: {
+    marginBottom: Metrics.baseMargin / 2,
+  },
+  addressText: {
+    color: Colors.grey,
+    fontSize: Fonts.size.small,
+  },
 })

@@ -5,7 +5,7 @@ import SwipeableViews from 'react-swipeable-views-native/lib/SwipeableViews.scro
 import type { CarouselProps } from './CarouselProps'
 import s from './CarouselStyles'
 
-const Dots = ({index, slides, onChangeIndex, style}) =>
+const Dots = ({index, slides, onChangeIndex, style, dotStyle, activeDotStyle}) =>
   <View style={[s.dots, style]}>
     {slides.map((x, i) =>
       <TouchableOpacity
@@ -13,7 +13,9 @@ const Dots = ({index, slides, onChangeIndex, style}) =>
         key={i}
         style={[
           s.dot,
+          dotStyle,
           index === i ? s.activeDot : {},
+          index === i ? activeDotStyle : {},
           i < slides.length - 1 ? s.notLastDot : {}
         ]}
       />
@@ -31,7 +33,7 @@ class Carousel extends React.Component<CarouselProps, any> {
 
   render () {
     const {index} = this.state
-    const {children, style, itemStyle, dotsStyle} = this.props
+    const {children, style, itemStyle, dotsStyle, dotStyle, activeDotStyle} = this.props
     return (
       <View style={[s.carouselWrapper, style]}>
         <SwipeableViews
@@ -48,8 +50,11 @@ class Carousel extends React.Component<CarouselProps, any> {
             }),
           )}
         </SwipeableViews>
+
         <Dots
           style={dotsStyle}
+          dotStyle={dotStyle}
+          activeDotStyle={activeDotStyle}
           index={index}
           onChangeIndex={this.changeIndex}
           slides={children}

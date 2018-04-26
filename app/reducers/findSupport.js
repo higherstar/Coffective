@@ -17,11 +17,13 @@ export const CHANGE_ORG_TYPE = 'FindSupport.CHANGE_ORG_TYPE'
 export const getPlaces = () => (dispatch, getState, {fetch}) => {
   dispatch({type: GET_PLACES_REQUEST})
   const {zipCode, orgType} = getState().findSupport
+  console.log(orgType);
   const {token} = dispatch(getToken())
   return fetch(`/wp/v2/resources/${zipCode ? `zipcode=${zipCode}/` : ''}${orgType ? `type=${orgType}/` : ''}`, {
     method: 'GET',
     token,
     success: (places) => {
+      console.log(places);
       dispatch({type: GET_PLACES_SUCCESS, places})
     },
     failure: (err) => {

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="90px" height="90px" viewBox="0 0 90 90" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>other</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Registration" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-229.000000, -465.000000)">
+        <g id="Button" transform="translate(193.000000, 451.000000)" fill-rule="nonzero">
+            <g id="other" transform="translate(36.000000, 14.000000)">
+                <circle id="Oval3" fill="#00A4DC" cx="44.55" cy="38.25" r="16.65"></circle>
+                <path d="M72.2041306,80.8490612 C64.6485225,86.5915163 55.2223083,90 45,90 C34.4751768,90 24.7942635,86.3867926 17.1300191,80.3331371 C21.89198,70.1043916 32.3787541,63 44.55,63 C56.9248467,63 67.5583944,70.3440644 72.2041306,80.8490612 Z" id="Combined-Shape" fill="#00A4DC"></path>
+                <path d="M45,80 C64.3299662,80 80,64.3299662 80,45 C80,25.6700338 64.3299662,10 45,10 C25.6700338,10 10,25.6700338 10,45 C10,64.3299662 25.6700338,80 45,80 Z M45,90 C20.1471863,90 0,69.8528137 0,45 C0,20.1471863 20.1471863,0 45,0 C69.8528137,0 90,20.1471863 90,45 C90,69.8528137 69.8528137,90 45,90 Z" id="Oval1" fill="#FFFFFF"></path>
+                <path d="M45,82 C65.4345357,82 82,65.4345357 82,45 C82,24.5654643 65.4345357,8 45,8 C24.5654643,8 8,24.5654643 8,45 C8,65.4345357 24.5654643,82 45,82 Z M45,90 C20.1471863,90 0,69.8528137 0,45 C0,20.1471863 20.1471863,0 45,0 C69.8528137,0 90,20.1471863 90,45 C90,69.8528137 69.8528137,90 45,90 Z" id="Oval" fill="#00A4DC"></path>
+            </g>
+        </g>
+    </g>
+</svg>

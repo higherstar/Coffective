@@ -5,5 +5,5 @@ import '../i18n/I18n'
 export default {
   // font scaling override - RN default is on
   allowTextFontScaling: true,
-  apiUrl: 'http://new.coffective.com/wp-json'
+  apiUrl: 'https://new.coffective.com/wp-json'
 }

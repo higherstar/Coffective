@@ -3,6 +3,7 @@ import React from 'react'
 import { Image, ScrollView, View, Text, ImageBackground } from 'react-native'
 import { connect } from 'react-redux'
 import { Button, Card, Img, List, Txt } from '../../components'
+import DropDown from '../../components/DropDown'
 import s from './WicEligibleStyles'
 import { getNumber } from '../../reducers/wiceligible'
 import { Images } from '../../themes'
@@ -84,14 +85,14 @@ class WicEligible extends React.Component {
           </Card>
           <Card style={s.card}>
             <View style={s.headView}>
-              >
               <View
                 style={[s.cardTitleBottom]}
                 textStyle={[s.houseHoldText, s.cardDescription]}>
                 <Image source={UserIcon} style={s.userIcon} />
                 <Text style={s.textHead}>
                   <Text style={s.member}>
-                    Household members:{' '}
+                    Household members:
+                    {/*  <DropDown /> */}
                     <Text style={s.howmuch}>{this.state.title}</Text>
                   </Text>
                 </Text>
@@ -146,6 +147,7 @@ class WicEligible extends React.Component {
           <Button style={s.buttonSpecial} type="primary">
             I QUALIFY, CHOOSE MY CLINIC
           </Button>
+
           <Button style={s.buttonSpecial}>I DON’T QUALIFY</Button>
         </ScrollView>
       </View>

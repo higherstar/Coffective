@@ -92,10 +92,12 @@ export default StyleSheet.create({
     width: 7,
     height: 12
   },
+  arrowLeftIcon: {
+    width: 7,
+    height: 12,
+    transform: [{ rotate: '180deg'}]
+  },
   textHead: {
-    flex: 1,
-    alignItems: 'center',
-    flexDirection: 'row',
     paddingLeft: 10
   },
   member: {
@@ -103,7 +105,8 @@ export default StyleSheet.create({
     color: '#A1B0C2'
   },
   howmuch: {
-    color: '#000'
+    color: '#000',
+    paddingLeft:  5,
   },
   headView: {
     flex: 1,

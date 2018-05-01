@@ -85,12 +85,15 @@ class Article extends React.Component {
             >
               {'SEE HOW IT WORKS\nFOR THE MOM'}
             </Link>
-            <CarouselCard
-              items={article.acf.for_moms}
-              color={category.acf.color}
-              imageProp='formom_image'
-              descriptionProp='formom_description_text'
-            />
+            {
+              article.acf.for_moms ?
+                <CarouselCard
+                  items={article.acf.for_moms}
+                  color={category.acf.color}
+                  imageProp='formom_image'
+                  descriptionProp='formom_description_text'
+                /> : null
+            }
             <Link
               style={s.sectionLink}
               textStyle={[s.sectionLinkText, {color: category.acf.color}]}
@@ -104,12 +107,15 @@ class Article extends React.Component {
             >
               {'SEE HOW IT WORKS\nFOR THE BABY'}
             </Link>
-            <CarouselCard
-              items={article.acf.for_baby}
-              color={category.acf.color}
-              imageProp='forbaby_image'
-              descriptionProp='forbaby_description_text'
-            />
+            {
+              article.acf.for_baby ?
+                <CarouselCard
+                  items={article.acf.for_baby}
+                  color={category.acf.color}
+                  imageProp='forbaby_image'
+                  descriptionProp='forbaby_description_text'
+                /> : null
+            }
             <Link
               style={s.sectionLink}
               textStyle={[s.sectionLinkText, {color: category.acf.color}]}
@@ -123,12 +129,15 @@ class Article extends React.Component {
             >
               {'SEE HOW IT WORKS\nFOR THE CHAMPION'}
             </Link>
-            <CarouselCard
-              items={article.acf.for_champion}
-              color={category.acf.color}
-              imageProp='forchamp_image'
-              descriptionProp='forchamp_description_text'
-            />
+            {
+              article.acf.for_champion ?
+                <CarouselCard
+                  items={article.acf.for_champion}
+                  color={category.acf.color}
+                  imageProp='forchamp_image'
+                  descriptionProp='forchamp_description_text'
+                /> : null
+            }
             <Card
               style={s.card}
               cover={
@@ -139,16 +148,19 @@ class Article extends React.Component {
             <Txt.View style={s.sectionHeader} textStyle={s.sectionHeaderText}>
               {article.acf.faqs_title}
             </Txt.View>
-            <Card
-              style={s.card}
-              cover={
-                <Accordion
-                  sections={article.acf.faqs}
-                  headerProp='question'
-                  descriptionProp='answer'
-                />
-              }
-            />
+            {
+              article.acf.faqs ?
+                <Card
+                  style={s.card}
+                  cover={
+                    <Accordion
+                      sections={article.acf.faqs}
+                      headerProp='question'
+                      descriptionProp='answer'
+                    />
+                  }
+                /> : null
+            }
           </View>
           <Button
             type='primary'

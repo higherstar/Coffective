@@ -24,12 +24,12 @@ const LEARN_YOUR_BABY = 'learn-your-baby'
 const NOURISH = 'nourish'
 const PROTECT = 'protect'
 
-const ACF_GET_READY = 'get_ready'
-const ACF_FALL_IN_LOVE = 'fall_in_love'
-const ACF_KEEP_BABY_CLOSE = 'keep_baby_close'
-const ACF_LEARN_YOUR_BABY = 'learn_your_baby'
-const ACF_NOURISH = 'nourish'
-const ACF_PROTECT = 'protect_breastfeeding'
+const ACF_GET_READY = 'get_ready_checklist'
+const ACF_FALL_IN_LOVE = 'fall_in_love_checklist'
+const ACF_KEEP_BABY_CLOSE = 'keep_baby_close_checklist'
+const ACF_LEARN_YOUR_BABY = 'learn_your_baby_checklist'
+const ACF_NOURISH = 'nourish_checklist'
+const ACF_PROTECT = 'protect_breastfeeding_checklist'
 
 // TODO backend can't change order :(
 export const CATEGORIES_ORDER = [
@@ -154,12 +154,17 @@ export const checkItem = ({id, title, category}) => (dispatch, getState, {fetch}
       [acfCategory]: newCheckedCategoryItems,
     }}));
 
-  return fetch(`/wp/v2/users/me?acf_data=` + JSON.stringify({
-    [acfCategory]: newCheckedCategoryItems,
-  }), {
+  return fetch(`/wp/v2/users/me`, {
     method: 'POST',
+    formData: true,
+    body: {
+      acf_data: JSON.stringify({
+        [acfCategory]: newCheckedCategoryItems,
+      })
+    },
     token,
-    success: () => {
+    success: (res) => {
+      console.log(res);
       dispatch({type: CHECK_ITEM_SUCCESS})
       MessageBarManager.showAlert({
         message: `${title} ${checked ? 'unchecked' : 'checked'}`,

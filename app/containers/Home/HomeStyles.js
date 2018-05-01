@@ -102,15 +102,24 @@ export default StyleSheet.create({
     position: 'relative',
     flex: 1,
   },
+  itemContent : {
+    flex: 1,
+    flexDirection: 'row'
+  },
   slideImage: {
     resizeMode: 'cover',
-    width: null,
-    height: null,
-    flex: 1,
+    flex: .35,
+    borderRadius: 20
   },
   slideTextBody: {
-    height: 100,
+    height: 110,
     overflow: 'hidden',
+  },
+  slideTextRightBody: {
+    paddingLeft: 10,
+    height: 110,
+    overflow: 'hidden',
+    flex: .65
   },
   subHeader: {
     marginBottom: Metrics.smallMargin,
@@ -144,7 +153,7 @@ export default StyleSheet.create({
     backgroundColor: Colors.white,
     position: 'absolute',
     right: 0,
-    bottom : 0,
+    bottom : 10,
     shadowColor: Colors.white,
     shadowOpacity: 1.0,
     alignItems: 'center',

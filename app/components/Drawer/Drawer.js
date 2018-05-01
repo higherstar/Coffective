@@ -1,6 +1,6 @@
 // @flow
 import React from 'react'
-import { ScrollView, TouchableOpacity, View } from 'react-native'
+import { ScrollView, TouchableOpacity, View, Text } from 'react-native'
 import moment from 'moment'
 import { Txt } from '../'
 import s from './DrawerStyles'
@@ -14,7 +14,7 @@ const Divider = () => <View style={s.divider} />
 const DrawerItem = ({ label, icon, onClick }) => (
   <TouchableOpacity activeOpacity={0.5} style={s.item} onPress={onClick}>
     <View style={s.iconWrapper}>
-      <Img source={icon} style={s.icon} />
+      <Img source={icon} style={s.icon} type={'offline'} />
     </View>
     <Txt.View style={s.label} textStyle={s.labelText}>
       {label}
@@ -48,7 +48,7 @@ class Drawer extends React.Component {
                   {weeks} Weeks to Go!
                 </Txt.View>
               ) : (
-                ''
+                <Text></Text>
               )}
             </View>
             {user && user.acf.expecting ? (
@@ -74,7 +74,7 @@ class Drawer extends React.Component {
                 direction='counter-clockwise'
               />
             ) : (
-              ''
+              <Text></Text>
             )}
           </View>
         )}

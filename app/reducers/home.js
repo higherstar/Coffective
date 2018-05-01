@@ -12,6 +12,14 @@ export const GET_HOMESCREEN_REQUEST = 'HOME.GET_HOMESCREEN_REQUEST'
 export const GET_HOMESCREEN_SUCCESS = 'HOME.GET_HOMESCREEN_SUCCESS'
 export const GET_HOMESCREEN_FAILURE = 'HOME.GET_HOMESCREEN_FAILURE'
 
+export const GET_HOME_ARTICLES_REQUEST = 'HOME.GET_HOME_ARTICLES_REQUEST'
+export const GET_HOME_ARTICLES_SUCCESS = 'HOME.GET_HOME_ARTICLES_SUCCESS'
+export const GET_HOME_ARTICLES_FAILURE = 'HOME.GET_HOME_ARTICLES_FAILURE'
+
+export const GET_HOME_CATEGORIES_REQUEST = 'HOME.GET_HOME_CATEGORIES_REQUEST'
+export const GET_HOME_CATEGORIES_SUCCESS = 'HOME.GET_HOME_CATEGORIES_SUCCESS'
+export const GET_HOME_CATEGORIES_FAILURE = 'HOME.GET_HOME_CATEGORIES_FAILURE'
+
 // ------------------------------------
 // Actions
 // ------------------------------------
@@ -46,12 +54,32 @@ export const getHomeScreen = () => (dispatch, getState, {fetch}) => {
   })
 };
 
+export const getHomeArticles = () => (dispatch, getState, {fetch}) => {
+  dispatch({type: GET_HOME_ARTICLES_REQUEST})
+  return fetch(`/wp/v2/learn?per_page=50`, {
+    method: 'GET',
+    success: (articles) => dispatch({type: GET_HOME_ARTICLES_SUCCESS, articles}),
+    failure: () => dispatch({type: GET_HOME_ARTICLES_FAILURE}),
+  })
+};
+
+export const getHomeCategories = () => (dispatch, getState, {fetch}) => {
+  dispatch({type: GET_HOME_CATEGORIES_REQUEST})
+  return fetch(`/wp/v2/learn_categories/`, {
+    method: 'GET',
+    success: (categories) => dispatch({type: GET_HOME_CATEGORIES_SUCCESS, categories}),
+    failure: () => dispatch({type: GET_HOME_CATEGORIES_FAILURE}),
+  })
+};
+
 // ------------------------------------
 // Reducer
 // ------------------------------------
 const initialState = {
   loading: false,
   slides: [],
+  articles: [],
+  categories: [],
   home: []
 }
 
@@ -74,6 +102,26 @@ export default createReducer(initialState, {
     home,
   }),
   [GET_HOMESCREEN_FAILURE]: (state, action) => ({
+    loading: false,
+  }),
+  [GET_HOME_ARTICLES_REQUEST]: (state, action) => ({
+    loading: true,
+  }),
+  [GET_HOME_ARTICLES_SUCCESS]: (state, {articles}) => ({
+    loading: false,
+    articles,
+  }),
+  [GET_HOME_ARTICLES_FAILURE]: (state, action) => ({
+    loading: false,
+  }),
+  [GET_HOME_CATEGORIES_REQUEST]: (state, action) => ({
+    loading: true,
+  }),
+  [GET_HOME_CATEGORIES_SUCCESS]: (state, {categories}) => ({
+    loading: false,
+    categories,
+  }),
+  [GET_HOME_CATEGORIES_FAILURE]: (state, action) => ({
     loading: false,
   }),
 })

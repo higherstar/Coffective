@@ -5,7 +5,7 @@ import {SvgImage} from '../../components'
 
 const Img = props => {
   const source = resolveAssetSource(props.source)
-  if (source && (source.uri && source.uri.match('.svg'))) {
+  if (source && ((source.uri && source.uri.match('.svg')))) {
     const otherProps = {}
     if (props.style) {
       const {width, height, fill, ...style} = StyleSheet.flatten(props.style)
@@ -22,6 +22,7 @@ const Img = props => {
     }
     return <SvgImage {...props} {...otherProps} source={source}/>
   } else {
+    console.log('png');
     return <Image {...props} />
   }
 }

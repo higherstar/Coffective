@@ -53,8 +53,6 @@ class Checklist extends React.Component {
       checkItem
     } = this.props;
     const checkedItems = getCheckedItems(acf);
-    console.log(checkedItems);
-
     return (
       <View style={s.container}>
         <View style={s.head}>
